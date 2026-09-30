@@ -1,0 +1,15 @@
+{
+  "hash": "a155ff2c9ee89b25cd2474fc6ada57c4",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 12 Assignment\"\nsubtitle: \"Mixed-effects models I\"\nformat: typst\n---\n\n\n\nRender this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 13's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\nUsing this week's tutorial's simulated `field_data` (or re-simulate it with a different `set.seed()`):\n\n1.  Fit the naive model `lm(response ~ treatment)` and the mixed model `lmer(response ~ treatment + (1 | site))`.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n2.  Compare the standard error on the `treatment` coefficient between the two models. Which is larger, and why does that make sense? <!--# Include your answer below -->\n\n3.  Re-run the simulation with `n_sites <- 4` instead of 8. Refit the mixed model.\n\n\n\n::: {.cell}\n\n:::\n\n\n\nIn 2–3 sentences: does anything about the model's output make you less confident in the random-effect estimate with so few sites? <!--# Include your answer below -->\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

@@ -1,0 +1,66 @@
+---
+title: "Nonparametric Alternatives and Choosing the Right Test"
+subtitle: "Week 14 · BIOL 4860/5860"
+format:
+  revealjs:
+    theme: [default, ../partials/slides.scss]
+    slide-number: true
+    footer: "BIOL 4860/5860 — Experimental Design and Analysis"
+    transition: fade
+---
+
+## The last new topic
+
+- Weeks 5–13 built up a toolkit: t-tests, ANOVA, regression, GLMs,
+  mixed models
+- Today: what to do when none of their assumptions hold — and how to
+  choose between everything you now know
+
+## When parametric tests break down
+
+- Small sample size **and** clear evidence of non-normality or
+  extreme outliers you can't justify removing
+- Nonparametric tests, based on ranks rather than raw values, are a
+  safer choice in that situation
+
+## Rank-based alternatives
+
+| Parametric test | Nonparametric alternative |
+|---|---|
+| t-test | Wilcoxon rank-sum test |
+| One-way ANOVA | Kruskal-Wallis test |
+| Pearson correlation | Spearman correlation |
+
+- Same questions, different machinery — less sensitive to outliers
+  and distributional shape
+
+## A general-purpose backup: permutation tests
+
+- Build a null distribution directly from your own data by shuffling
+  group labels
+- Useful when no standard nonparametric test fits your specific design
+- More computationally intensive, but conceptually simple
+
+## Choosing a test: the whole course in one slide
+
+1. What type is your outcome? (continuous, binary, count)
+2. How many groups / predictors?
+3. Are your residuals reasonably normal, with similar variance across
+   groups?
+4. Is there any non-independence (repeated measures, nesting) you
+   need to account for?
+5. If assumptions are badly violated and nothing else fits — consider
+   a nonparametric or permutation-based approach
+
+## Looking back
+
+- Week 1: why design matters
+- Weeks 2–4: R, data wrangling, EDA
+- Weeks 5–6: design principles, in theory and in the literature
+- Weeks 7–14: matching a design to the right statistical model
+
+## Next: final projects
+
+- Week 15: presentations
+- Bring together design, analysis, and communication — everything
+  this course covered

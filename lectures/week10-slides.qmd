@@ -1,0 +1,55 @@
+---
+title: "Multiple Regression and ANCOVA"
+subtitle: "Week 10 · BIOL 4860/5860"
+format:
+  revealjs:
+    theme: [default, ../partials/slides.scss]
+    slide-number: true
+    footer: "BIOL 4860/5860 — Experimental Design and Analysis"
+    transition: fade
+---
+
+## From one predictor to several
+
+- Last week: `y ~ x`, one continuous predictor
+- Real biological outcomes usually depend on more than one thing at once
+
+## Multiple regression
+
+- `lm(y ~ x1 + x2)` — each coefficient is the effect of that predictor
+  *holding the others constant*
+- Compare models with `anova(model_simple, model_full)` — does adding
+  a predictor meaningfully improve the fit?
+
+## ANCOVA: mixing categorical and continuous
+
+- One categorical predictor (treatment) + one continuous covariate
+  (e.g., starting size)
+- `lm(final ~ start + treatment)`
+- The treatment coefficient is the group difference **after
+  accounting for** the covariate
+
+## Why control for the covariate?
+
+- Without it: a group difference in `final_height` might just reflect
+  a group difference in `start_height`, not a true treatment effect
+- With it: you're comparing groups on a level playing field
+
+## Checking for an interaction
+
+- ANCOVA assumes parallel slopes across groups
+- `lm(final ~ start * treatment)` tests whether that assumption holds
+- A significant interaction means the treatment effect **depends on**
+  the covariate — a more interesting (and more complex) story
+
+## Connecting back to design
+
+- This is Experimental Designs III territory: multiple predictors
+  mean your design needs to consider more than one source of variation
+- A covariate you didn't measure is a covariate you can't control for
+
+## This week
+
+- **Wednesday (tutorial):** fit multiple regression and ANCOVA models,
+  test for interactions
+- **Assignment + Data Safari #3:** due this week

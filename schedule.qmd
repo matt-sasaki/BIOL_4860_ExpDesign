@@ -1,0 +1,69 @@
+---
+title: "Weekly Schedule"
+subtitle: "Spring 2027 · Mondays are lecture, Wednesdays are tutorials"
+toc: false
+---
+
+::: {.callout-note}
+**Mondays:** lecture (slides linked below). **Wednesdays:** hands-on
+tutorial in class, which feeds directly into that week's assignment.
+Data Safari exercises appear in Weeks 4, 7, 10, and 13, alongside the
+regular assignment.
+
+Each assignment/Data Safari link (e.g. "PS1") downloads the blank
+Quarto template (`.qmd`) — fill it in and render it yourself to
+produce your submission PDF. Tutorials and slides can be viewed with
+**Code → View
+Source** (top right of the page) if you'd like their `.qmd` source
+too.
+:::
+
+| Week | Topic | Slides | Tutorial | Assignment | Data Safari |
+|:---:|---|:---:|:---:|:---:|:---:|
+| 1 | Why experimental design matters; setting up R, RStudio, and Quarto | [Slides](lectures/week01-slides.qmd) | [Tutorial](lectures/week01-tutorial.qmd) | <a href="templates/week01-assignment.qmd" download="week01-assignment.qmd">PS1</a> | |
+| 2 | R fundamentals and data wrangling | [Slides](lectures/week02-slides.qmd) | [Tutorial](lectures/week02-tutorial.qmd) | <a href="templates/week02-assignment.qmd" download="week02-assignment.qmd">PS2</a> | |
+| 3 | Exploring data I: distributions and summary statistics | [Slides](lectures/week03-slides.qmd) | [Tutorial](lectures/week03-tutorial.qmd) | <a href="templates/week03-assignment.qmd" download="week03-assignment.qmd">PS3</a> | |
+| 4 | Exploring data II: relationships and group comparisons | [Slides](lectures/week04-slides.qmd) | [Tutorial](lectures/week04-tutorial.qmd) | <a href="templates/week04-assignment.qmd" download="week04-assignment.qmd">PS4</a> | <a href="templates/week04-data-safari.qmd" download="week04-data-safari.qmd">Safari 1</a> |
+| 5 | Principles of experimental design: replication, randomization, blocking | [Slides](lectures/week05-slides.qmd) | [Tutorial](lectures/week05-tutorial.qmd) | <a href="templates/week05-assignment.qmd" download="week05-assignment.qmd">PS5</a> | |
+| 6 | Design in practice: sketching designs from the published literature | [Slides](lectures/week06-slides.qmd) | [Tutorial](lectures/week06-tutorial.qmd) | <a href="templates/week06-assignment.qmd" download="week06-assignment.qmd">PS6</a> | |
+| 7 | Hypothesis testing I: the t-test and one-way ANOVA | [Slides](lectures/week07-slides.qmd) | [Tutorial](lectures/week07-tutorial.qmd) | <a href="templates/week07-assignment.qmd" download="week07-assignment.qmd">PS7</a> | <a href="templates/week07-data-safari.qmd" download="week07-data-safari.qmd">Safari 2</a> |
+| 8 | **Spring Break** | | | | |
+| 9 | Correlation and simple linear regression | [Slides](lectures/week09-slides.qmd) | [Tutorial](lectures/week09-tutorial.qmd) | <a href="templates/week09-assignment.qmd" download="week09-assignment.qmd">PS9</a> | |
+| 10 | Multiple regression and ANCOVA | [Slides](lectures/week10-slides.qmd) | [Tutorial](lectures/week10-tutorial.qmd) | <a href="templates/week10-assignment.qmd" download="week10-assignment.qmd">PS10</a> | <a href="templates/week10-data-safari.qmd" download="week10-data-safari.qmd">Safari 3</a> |
+| 11 | Generalized linear models: logistic regression for binary/count data | [Slides](lectures/week11-slides.qmd) | [Tutorial](lectures/week11-tutorial.qmd) | <a href="templates/week11-assignment.qmd" download="week11-assignment.qmd">PS11</a> | |
+| 12 | Accounting for non-independence: introduction to mixed-effects models | [Slides](lectures/week12-slides.qmd) | [Tutorial](lectures/week12-tutorial.qmd) | <a href="templates/week12-assignment.qmd" download="week12-assignment.qmd">PS12</a> | |
+| 13 | Mixed-effects models II: random slopes, nested vs. crossed designs | [Slides](lectures/week13-slides.qmd) | [Tutorial](lectures/week13-tutorial.qmd) | <a href="templates/week13-assignment.qmd" download="week13-assignment.qmd">PS13</a> | <a href="templates/week13-data-safari.qmd" download="week13-data-safari.qmd">Safari 4</a> |
+| 14 | Nonparametric alternatives and choosing the right test | [Slides](lectures/week14-slides.qmd) | [Tutorial](lectures/week14-tutorial.qmd) | <a href="templates/week14-assignment.qmd" download="week14-assignment.qmd">PS14</a> | |
+| 15 | **Final Project Presentations** | | | | |
+
+## Graduate project milestones (BIOL 5860 only)
+
+Four checkpoint deliverables spread across the semester, each
+documenting one stage of your independent project. See the
+[Assignments overview](assignments.qmd#project-graduate-students-only)
+for the full description. As with weekly assignments, click the name
+to download the blank `.qmd` template.
+
+| Due by end of | Milestone | Template |
+|---|---|:---:|
+| Week 7 | Experimental design and planned hypothesis testing | <a href="templates/project-01-design-and-hypotheses.qmd" download="project-01-design-and-hypotheses.qmd">Part 1</a> |
+| Week 10 | Data carpentry and exploration | <a href="templates/project-02-data-carpentry.qmd" download="project-02-data-carpentry.qmd">Part 2</a> |
+| Week 13 | Statistical modeling | <a href="templates/project-03-statistical-modeling.qmd" download="project-03-statistical-modeling.qmd">Part 3</a> |
+| Week 14 | Visualization | <a href="templates/project-04-visualization.qmd" download="project-04-visualization.qmd">Part 4</a> |
+| Week 15 | Final presentation covering the entire process | — |
+
+::: {.callout-note}
+These due dates are a suggested pacing (each milestone lands a week
+after the most relevant course content), not fixed by any particular
+constraint — adjust freely in this table and in the corresponding
+files' front matter if you'd prefer a different spread.
+:::
+
+## Notes
+
+- Slides open as a separate reveal.js presentation (use arrow keys or
+  click to advance); tutorials and assignments render as regular
+  pages on this site.
+- The graduate-only [Project](assignments.qmd#project-graduate-students-only)
+  is presented in Week 15, alongside undergraduate project
+  presentations.

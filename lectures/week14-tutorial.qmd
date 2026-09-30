@@ -1,0 +1,122 @@
+---
+title: "Week 14 Tutorial: Nonparametric Alternatives"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture on choosing the right test"
+toc: true
+---
+
+## Goals
+
+-   Know when parametric assumptions are too badly violated to trust
+-   Fit common nonparametric alternatives to the tests from this course
+-   Get a brief look at permutation tests as a general-purpose backup
+
+## Setup
+
+```{r}
+#| label: setup
+library(tidyverse)
+```
+
+## When parametric tests break down
+
+Recall from Labs 4–6: t-tests, ANOVA, and regression all assume roughly normal, equal-variance residuals. When sample sizes are small and that assumption clearly fails (e.g., strongly skewed data, extreme outliers you can't justify removing), nonparametric methods based on ranks are a safer choice.
+
+## Wilcoxon rank-sum test (nonparametric alternative to the t-test)
+
+```{r}
+data(sleep)
+wilcox.test(extra ~ group, data = sleep)
+```
+
+Compare to the parametric version from Week 7's tutorial:
+
+```{r}
+t.test(extra ~ group, data = sleep)
+```
+
+::: callout-note
+## Exercise 1
+
+The conclusions here happen to roughly agree. In general, why might a Wilcoxon test and a t-test disagree on a dataset with a small sample and a couple of extreme outliers? Which test is more sensitive to those outliers, and why?
+:::
+
+## Kruskal-Wallis test (nonparametric alternative to one-way ANOVA)
+
+```{r}
+data(PlantGrowth)
+kruskal.test(weight ~ group, data = PlantGrowth)
+```
+
+```{r}
+# Parametric version from Week 7's tutorial, for comparison
+summary(aov(weight ~ group, data = PlantGrowth))
+```
+
+## Spearman correlation (nonparametric alternative to Pearson)
+
+```{r}
+data(trees)
+cor.test(trees$Girth, trees$Volume, method = "spearman")
+cor.test(trees$Girth, trees$Volume, method = "pearson")
+```
+
+::: callout-note
+## Exercise 2
+
+Spearman correlation is based on ranks rather than raw values. Name one situation where Spearman would be clearly preferable to Pearson (think about the shape of the relationship, not just outliers).
+:::
+
+## A general-purpose backup: permutation test
+
+When no standard nonparametric test fits your design, a permutation test lets you build a null distribution directly from your data.
+
+```{r}
+set.seed(99)
+observed_diff <- PlantGrowth |>
+  filter(group %in% c("trt1", "trt2")) |>
+  group_by(group) |>
+  summarise(m = mean(weight)) |>
+  summarise(diff = diff(m)) |>
+  pull(diff)
+
+perm_data <- PlantGrowth |> filter(group %in% c("trt1", "trt2"))
+
+n_perm <- 2000
+perm_diffs <- replicate(n_perm, {
+  shuffled <- sample(perm_data$group)
+  perm_data |>
+    mutate(group = shuffled) |>
+    group_by(group) |>
+    summarise(m = mean(weight), .groups = "drop") |>
+    summarise(diff = diff(m)) |>
+    pull(diff)
+})
+
+p_value <- mean(abs(perm_diffs) >= abs(observed_diff))
+p_value
+```
+
+```{r}
+#| label: fig-perm
+#| fig-cap: "Permutation null distribution with observed difference"
+tibble(diff = perm_diffs) |>
+  ggplot(aes(diff)) +
+  geom_histogram(bins = 40, fill = "steelblue", alpha = 0.7) +
+  geom_vline(xintercept = observed_diff, color = "red", linewidth = 1) +
+  labs(x = "Permuted mean difference (trt2 - trt1)",
+       title = "Red line = observed difference") +
+  theme_minimal()
+```
+
+::: callout-note
+## Exercise 3
+
+Compare the permutation p-value to a standard `t.test()` p-value on the same two groups (`trt1` vs. `trt2` in `PlantGrowth`). Are they similar? In your own words, explain what the permutation test is doing conceptually — what does "shuffling `group`" simulate under the null hypothesis?
+:::
+
+## Wrap-up
+
+Keep this file — the exercises here feed directly into this week's
+[assignment](../assignments/week14-assignment.qmd). This is the last
+tutorial before final project presentations — see
+[Assignments](../assignments.qmd) for the final project deliverable.

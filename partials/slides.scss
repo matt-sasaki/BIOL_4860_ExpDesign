@@ -1,0 +1,28 @@
+/*-- scss:defaults --*/
+$body-bg: #FFFFFF;
+$body-color: #14171A;
+$presentation-heading-font: "Space Grotesk", "Inter", sans-serif;
+$presentation-font-size-root: 32px;
+$presentation-heading-color: #14171A;
+$link-color: #047857;
+$selection-bg: #E9F6EF;
+
+/*-- scss:rules --*/
+.reveal h1, .reveal h2, .reveal h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.reveal h2 {
+  color: #14171A;
+  border-bottom: 3px solid #047857;
+  padding-bottom: 0.2em;
+}
+.reveal .slide-number {
+  color: #4B4F54;
+}
+.reveal pre code {
+  font-family: "IBM Plex Mono", monospace;
+}
+.reveal #title-slide h1.title {
+  color: #047857;
+}

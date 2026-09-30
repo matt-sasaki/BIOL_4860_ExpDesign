@@ -1,0 +1,92 @@
+---
+title: "Week 3 Tutorial: Exploring Distributions"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture on EDA basics"
+toc: true
+---
+
+## Goals
+
+- Build a habit of exploring data visually *before* modeling it
+- Practice the core `ggplot2` grammar: geoms, aesthetics
+- Recognize skew and unequal variance by eye
+
+## Setup
+
+```{r}
+#| label: setup
+library(tidyverse)
+data(iris)
+iris <- as_tibble(iris)
+```
+
+## One numeric variable: distribution
+
+```{r}
+#| label: fig-hist
+#| fig-cap: "Distribution of sepal length"
+ggplot(iris, aes(Sepal.Length)) +
+  geom_histogram(binwidth = 0.2, fill = "steelblue", color = "white") +
+  theme_minimal()
+```
+
+```{r}
+#| label: fig-density
+#| fig-cap: "Density of sepal length by species"
+ggplot(iris, aes(Sepal.Length, fill = Species)) +
+  geom_density(alpha = 0.4) +
+  theme_minimal()
+```
+
+## One numeric + one categorical: comparing groups
+
+```{r}
+#| label: fig-box
+#| fig-cap: "Sepal length by species"
+ggplot(iris, aes(Species, Sepal.Length, fill = Species)) +
+  geom_boxplot(alpha = 0.6, show.legend = FALSE) +
+  geom_jitter(width = 0.15, alpha = 0.5) +
+  theme_minimal()
+```
+
+## Spotting problems before modeling
+
+```{r}
+iris |>
+  group_by(Species) |>
+  summarise(
+    mean = mean(Sepal.Length),
+    sd = sd(Sepal.Length),
+    skew_check = mean(Sepal.Length) - median(Sepal.Length)
+  )
+```
+
+::: {.callout-tip}
+## Why this matters
+A large gap between mean and median flags skew. Wildly different SDs
+across groups flag unequal variance. Both affect which statistical
+test is appropriate later in the course — EDA is where you catch
+this *before* you're deep into modeling.
+:::
+
+## Exercises
+
+::: {.callout-note}
+## Exercise 1
+For the built-in `ChickWeight` dataset, make a boxplot of final-day
+weight by `Diet` (you'll need to `filter()` to the last time point
+first). Does the spread look similar across diets?
+:::
+
+::: {.callout-note}
+## Exercise 2
+For `PlantGrowth`, compare the mean-vs-median gap across the three
+`group` levels the way we did for `iris` above. Do any groups look
+notably skewed?
+:::
+
+## Wrap-up
+
+Keep this file — the exercises here feed directly into this week's
+[assignment](../assignments/week03-assignment.qmd). Next week's
+tutorial continues with relationships between variables and
+multi-panel plots.

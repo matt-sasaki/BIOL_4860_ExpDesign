@@ -1,0 +1,85 @@
+---
+title: "R Fundamentals and Data Wrangling"
+subtitle: "Week 2 · BIOL 4860/5860"
+format:
+  revealjs:
+    theme: [default, ../partials/slides.scss]
+    slide-number: true
+    footer: "BIOL 4860/5860 — Experimental Design and Analysis"
+    transition: fade
+---
+
+## Last week
+
+- Got R, RStudio, and Quarto installed
+- Wrote a first few lines: vectors, `mean()`, `sd()`, a histogram
+
+## Today: two halves
+
+1. R fundamentals — functions, control flow, data frames
+2. Data wrangling — importing, cleaning, and reshaping data
+
+## Why functions?
+
+- Anything you do more than twice should probably be a function
+- A function takes input, does something, returns output
+
+```r
+classify_size <- function(x, threshold = 24) {
+  if (x > threshold) "large" else "small"
+}
+```
+
+## Data frames (tibbles)
+
+- The core data structure for this entire course
+- Each row = one observation; each column = one variable
+- `group_by()` + `summarise()` is the single most useful pattern you'll learn
+
+```r
+birds |>
+  group_by(species) |>
+  summarise(mean_wing = mean(wing_length))
+```
+
+## Importing real data
+
+- `read_csv("data/your_file.csv")` — the workhorse
+- Always look before you touch:
+  - `glimpse()` — what columns, what types
+  - `summary()` — ranges, missing values, obvious problems
+
+## The core dplyr verbs
+
+- `filter()` — keep some rows
+- `select()` — keep some columns
+- `mutate()` — add/change a column
+- `arrange()` — sort
+- `group_by()` + `summarise()` — collapse to group-level summaries
+
+## Tidy data: one row per observation
+
+- **Wide**: one row per subject, repeated-measure columns (`height_wk1`, `height_wk2`, ...)
+- **Long**: one row per subject-per-timepoint
+- Most models in R (and most of this course) expect **long** data
+
+## Wide → long → wide
+
+```r
+growth_long <- growth_wide |>
+  pivot_longer(cols = starts_with("height_wk"),
+               names_to = "week", values_to = "height")
+```
+
+- `pivot_wider()` does the reverse when you need it
+
+## Why this distinction matters
+
+- The experimental/observational unit should usually be **one row**
+- Get this wrong, and your model's degrees of freedom (and your
+  p-values) will be wrong too — a preview of Week 5
+
+## This week
+
+- **Wednesday (tutorial):** hands-on practice with all of the above
+- **Assignment:** apply these verbs to a new dataset

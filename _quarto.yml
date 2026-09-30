@@ -1,0 +1,56 @@
+project:
+  type: website
+  output-dir: docs
+  pre-render: scripts/build-templates.R
+  render:
+    - "*.qmd"
+    - "!README.md"
+    - "!templates/*.qmd"
+  resources:
+    - "templates/*.qmd"
+
+website:
+  title: "Experimental Design & Analysis in Biology"
+  description: "Course site for BIOL 4860/5860 — Experimental Design and Analysis (UMass Lowell, Spring 2027)"
+  favicon: images/favicon.png
+  navbar:
+    left:
+      - href: syllabus.qmd
+        text: Syllabus
+      - href: schedule.qmd
+        text: Schedule
+      - href: assignments.qmd
+        text: Assignments
+    right:
+      - icon: github
+        href: https://github.com/
+        aria-label: Course GitHub repository
+
+  page-footer:
+    left: "© 2026 Matthew Sasaki. Course materials licensed CC BY-NC 4.0 unless noted."
+    right: "Built with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme:
+      - cosmo
+      - styles-bold.scss
+    css: styles.css
+    include-in-header: partials/fonts.html
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    code-fold: false
+    code-tools: true
+    code-link: false
+    highlight-style: github
+    fig-width: 7
+    fig-height: 5
+    link-external-newwindow: true
+
+execute:
+  freeze: auto
+  warning: false
+  message: false
+
+editor: visual

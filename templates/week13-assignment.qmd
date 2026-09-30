@@ -1,0 +1,31 @@
+---
+title: "Week 13 Assignment"
+subtitle: "Mixed-effects models II"
+format: typst
+---
+
+Render this file to PDF and submit both the `.qmd` and the rendered `.pdf`, along with your Data Safari submission, via Canvas before Week 14's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+
+**Note:** This week also includes your final [Data Safari exercise](week13-data-safari.qmd) — a separate, short assignment. Both are due at the same time.
+
+## Part 1: Random slopes
+
+Using this week's tutorial's `field_data` and models:
+
+1.  Compare `m_mixed` (random intercept only) and `m_slopes` (random slope) with `anova()`.
+
+```{r}
+
+```
+
+Does the random-slopes model fit significantly better? <!--# Include your answer below -->
+
+2.  In 2–3 sentences: what would it mean, biologically, if the treatment effect really did vary meaningfully from site to site? <!--# Include your answer below -->
+
+## Part 2: Crossed vs. nested
+
+For each scenario, write the `lmer()` random-effects structure you'd use, and explain whether it's crossed, nested, or a mix of both: <!--# Include your answers below -->
+
+1.  Blood samples taken from 4 individual animals, each sampled at 3 time points.
+2.  Soil cores taken from 5 plots nested within 3 sites, with plots physically distinct per site.
+3.  Behavioral observations made by one of 3 observers, where each observer records data at every one of 6 field sites.

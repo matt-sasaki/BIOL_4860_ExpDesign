@@ -1,0 +1,31 @@
+---
+title: "Data Safari #4"
+subtitle: "Week 13 · Replicating a published figure"
+format: typst
+---
+
+The last Data Safari of the semester — same format as [Data Safari #1](week04-data-safari.qmd). Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas alongside this week's regular assignment, before Week 14's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+
+**Tip:** now that you've covered mixed-effects models, a great figure to look for is one showing **repeated measurements over time or across sites**, with individual trajectories (often shown as thin lines) and an overall group trend layered on top — the kind of data a mixed model would be built to analyze.
+
+## Instructions
+
+1.  **Find a paper** with a figure of this kind and publicly available data.
+
+Full citation: <!--# Include the citation below -->
+
+2.  **Recreate the figure**, working from the actual data file.
+
+```{r}
+
+```
+
+3.  **Reflect**: how easy was the data to find and use? How closely does your figure match? What would you change about the paper's data documentation? <!--# Include your reflection below -->
+
+## Bonus (optional)
+
+If you can identify the grouping structure (subject, site, etc.) in the data, try fitting a simple mixed model and see whether the random-effect variance looks large relative to the fixed effect — does that match the visual spread you see in the figure?
+
+```{r}
+
+```

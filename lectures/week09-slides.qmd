@@ -1,0 +1,54 @@
+---
+title: "Correlation and Linear Regression"
+subtitle: "Week 9 · BIOL 4860/5860"
+format:
+  revealjs:
+    theme: [default, ../partials/slides.scss]
+    slide-number: true
+    footer: "BIOL 4860/5860 — Experimental Design and Analysis"
+    transition: fade
+---
+
+## Welcome back
+
+- Spring Break's over — quick recap: t-tests and ANOVA compare
+  **group means**
+- Today: what if both variables are continuous?
+
+## Correlation
+
+- `cor()` / `cor.test()` — strength and direction of a linear
+  relationship, summarized in a single number (−1 to 1)
+- Says nothing about *why* two things move together
+
+## Simple linear regression
+
+- `lm(y ~ x)` — models y as a straight-line function of x
+- Gives you a slope (effect size), not just a correlation coefficient
+- `tidy()` and `glance()` (from `broom`) for clean summaries
+
+## Checking the fit
+
+- Residuals vs. fitted — is the relationship actually linear?
+- Q-Q plot — are residuals roughly normal?
+- R² — how much variance does the model explain?
+
+## Correlation and regression are not causation
+
+- `trees`: girth predicts volume — but nobody *assigned* girth
+- This is **observational data**
+- Contrast with Week 7, where treatment was randomly assigned — there,
+  a significant result supports a causal claim
+
+## Design still matters here
+
+- A strong, statistically significant regression from observational
+  data still can't prove causation
+- If you want to claim causation, you need an experiment — random
+  assignment of the predictor, not just measurement of it
+
+## This week
+
+- **Wednesday (tutorial):** fit and check a simple linear regression,
+  compare correlation vs. regression
+- **Assignment:** due this week

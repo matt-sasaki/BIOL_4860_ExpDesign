@@ -1,0 +1,45 @@
+---
+title: "Week 10 Assignment"
+subtitle: "Multiple regression and ANCOVA"
+format: typst
+---
+
+Render this file to PDF and submit both the `.qmd` and the rendered `.pdf`, along with your Data Safari submission, via Canvas before Week 11's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+
+**Note:** This week also includes a [Data Safari exercise](week10-data-safari.qmd) — a separate, short assignment. Both are due at the same time.
+
+## Part 1: Multiple regression
+
+Using the built-in `trees` dataset:
+
+1.  Fit `lm(Volume ~ Girth + Height)`.
+
+```{r}
+
+```
+
+2.  Compare its R² to the simple `Volume ~ Girth` model from Week 9. Support your answer with `anova()`.
+
+```{r}
+
+```
+
+Did adding `Height` meaningfully improve the fit? <!--# Include your answer below -->
+
+## Part 2: ANCOVA
+
+Using this week's tutorial's simulated `ancova_data` (or re-simulate it with a different `set.seed()` of your choosing):
+
+1.  Fit `lm(final_height ~ start_height + treatment)`.
+
+```{r}
+
+```
+
+2.  Fit the version with an interaction term and compare the two models.
+
+```{r}
+
+```
+
+3.  In 2–3 sentences: explain what the `treatment` coefficient means in the no-interaction model, and what a significant interaction would have meant instead. <!--# Include your answer below -->

@@ -1,0 +1,81 @@
+---
+title: "Week 12 Tutorial: Mixed-Effects Models I"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture on non-independence and random intercepts"
+toc: true
+---
+
+## Goals
+
+- Recognize non-independence from repeated measures or nested sampling
+- Fit a random-intercept mixed model with `lme4`
+
+## Setup
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(lme4)
+library(lmerTest)  # adds p-values to lmer output
+```
+
+## Why not just use `lm()`? Pseudoreplication revisited
+
+```{r}
+set.seed(21)
+n_sites <- 8
+n_per_site <- 6
+
+field_data <- tibble(site = factor(rep(1:n_sites, each = n_per_site))) |>
+  mutate(
+    site_effect = rep(rnorm(n_sites, 0, 3), each = n_per_site),
+    treatment = rep(rep(c("Control", "Treated"), n_per_site / 2), n_sites),
+    response = 10 + ifelse(treatment == "Treated", 2, 0) +
+      site_effect + rnorm(n(), 0, 1.5)
+  )
+```
+
+Measurements within the same site aren't independent — they share a
+site effect. Ignoring that (treating all 48 rows as independent)
+inflates your effective sample size and your false-positive rate.
+
+```{r}
+m_naive <- lm(response ~ treatment, data = field_data)
+summary(m_naive)$coefficients
+```
+
+## Random-intercept mixed model
+
+```{r}
+m_mixed <- lmer(response ~ treatment + (1 | site), data = field_data)
+summary(m_mixed)
+```
+
+::: {.callout-note}
+## Exercise 1
+Compare the standard error on the `treatment` coefficient between
+`m_naive` and `m_mixed`. Which is larger, and why does that make
+sense given that site is a real source of shared variation?
+:::
+
+```{r}
+#| label: fig-sites
+#| fig-cap: "Response by treatment, colored by site"
+ggplot(field_data, aes(treatment, response, color = site)) +
+  geom_jitter(width = 0.1) +
+  theme_minimal()
+```
+
+::: {.callout-note}
+## Exercise 2
+Refit `m_mixed` on a version of `field_data` with `n_sites <- 3`
+instead of 8 (re-run the simulation with that change). Does the mixed
+model still make sense with so few sites? (This is a preview of a
+real limitation of mixed models — they need enough groups to estimate
+the random-effect variance reliably, roughly 5–10 as a rule of thumb.)
+:::
+
+## Wrap-up
+
+Keep this file — the exercises here feed directly into this week's
+[assignment](../assignments/week12-assignment.qmd). Next week's
+tutorial continues with random slopes and crossed vs. nested designs.

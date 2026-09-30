@@ -1,0 +1,29 @@
+---
+title: "Project Part 4: Visualization"
+subtitle: "Graduate students only (BIOL 5860)"
+format: typst
+---
+
+The last of four checkpoint deliverables for the graduate project, due just before final presentations. Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas by the end of Week 14. See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+
+## 1. Key figure(s)
+
+Produce one or two publication-quality figures that best communicate your main result(s). Apply the plot-choice and design principles from Weeks 3–4 (appropriate geometry, clear labels, a colorblind-friendly palette if color is used).
+
+```{r}
+
+```
+
+## 2. Figure caption
+
+Write a caption for your main figure the way you would for a manuscript — describe what's shown, define any abbreviations or symbols, and state the key takeaway.
+
+<!--# Include your caption below -->
+
+## 3. Design justification
+
+In a few sentences, explain the choices you made (plot type, color, layout) and why they suit your data and audience better than the alternatives you considered. <!--# Include your answer below -->
+
+## 4. Looking ahead to your presentation
+
+In 2–3 sentences, outline how you'll walk through the full process — design, data, modeling, and this visualization — in your Week 15 presentation. <!--# Include your answer below -->

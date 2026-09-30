@@ -1,0 +1,15 @@
+{
+  "hash": "fc5b513fa531fd3d376eb44cc765a9ee",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 7 Assignment\"\nsubtitle: \"T-tests and ANOVA\"\nformat: typst\n---\n\n\n\nRender this file to PDF and submit both the `.qmd` and the rendered `.pdf`, along with your Data Safari submission, via Canvas before Week 9's lecture (Monday, following Spring Break). See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\n**Note:** This week also includes a [Data Safari exercise](week07-data-safari.qmd) — a separate, short assignment. Both are due at the same time.\n\n## Part 1: Conceptual\n\n1.  You have two groups and want to compare their means. What determines whether you should use a paired or unpaired t-test? <!--# Include your answer below -->\n\n2.  You have four groups. Why is running six separate pairwise t-tests a worse idea than a single one-way ANOVA followed by post-hoc comparisons? <!--# Include your answer below -->\n\n## Part 2: Applied\n\nUsing the built-in `PlantGrowth` dataset:\n\n1.  Fit a one-way ANOVA of `weight` by `group`.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n2.  Check the assumptions (residual diagnostic plots, Levene's test).\n\n\n\n::: {.cell}\n\n:::\n\n\n\n3.  Run a post-hoc comparison with Tukey correction.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n4.  Write a 2–3 sentence results-section-style summary of your findings (report the F-statistic, degrees of freedom, p-value, and which pairwise comparisons — if any — are significant). <!--# Include your answer below -->\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

@@ -1,0 +1,193 @@
+/*-- scss:defaults --*/
+
+// Palette — white background (so plots sit flush, not boxed on cream),
+// ink text, a quiet pine accent
+$paper:        #FFFFFF;
+$ink:          #1F2224;
+$ink-soft:     #5B5F63;
+$rule:         #E4E4E2;
+$pine:         #3D6B52;
+$pine-dim:     #F2F6F4;
+$rust:         #A2472D;
+
+$body-bg:      $paper;
+$body-color:   $ink;
+$primary:      $pine;
+$link-color:   $pine;
+$border-color: $rule;
+
+$font-family-sans-serif: "Inter", -apple-system, "Segoe UI", sans-serif;
+$font-family-monospace:  "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+$font-size-base: 1.06rem;
+$line-height-base: 1.65;
+$paragraph-margin-bottom: 1.3rem;
+$headings-font-weight: 500;
+$headings-line-height: 1.25;
+$h1-font-size: 2.1rem;
+$h2-font-size: 1.5rem;
+$h3-font-size: 1.2rem;
+$toc-font-size: 0.82rem;
+
+$navbar-bg: $paper;
+$navbar-fg: $ink;
+$navbar-hl: $pine;
+
+$table-border-color: $rule;
+$table-striped-bg: transparent;
+
+/*-- scss:rules --*/
+
+// Serif headings carry the page's identity; body stays plain sans
+h1, h2, h3, .navbar-title {
+  font-family: "Newsreader", Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-weight: 500; }
+h2 {
+  font-weight: 500;
+  margin-top: 2.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid $rule;
+}
+h3 { font-weight: 600; }
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+// Reading-width content column
+#quarto-document-content {
+  max-width: 760px;
+}
+
+p, li {
+  color: $ink;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+ul, ol {
+  padding-left: 1.4rem;
+}
+
+.subtitle {
+  color: $ink-soft;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.15rem;
+  font-style: italic;
+}
+
+// Quiet navbar: no color block, just a hairline and generous spacing
+.navbar {
+  border-bottom: 1px solid $rule;
+  box-shadow: none;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+.navbar-brand { font-size: 1.05rem; }
+.navbar-dark .navbar-nav .nav-link,
+.navbar .navbar-nav .nav-link {
+  color: $ink;
+  opacity: 0.75;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+  opacity: 1;
+  color: $pine;
+}
+.navbar .dropdown-menu {
+  border: 1px solid $rule;
+  box-shadow: none;
+  border-radius: 4px;
+}
+
+// Links: understated, underline on hover rather than permanent color block
+a { text-decoration: none; }
+p a, li a, td a {
+  text-decoration: underline;
+  text-decoration-color: rgba($pine, 0.35);
+  text-underline-offset: 2px;
+}
+p a:hover, li a:hover, td a:hover {
+  text-decoration-color: $pine;
+}
+
+// Callouts: a hairline + colored left rule instead of filled boxes
+div.callout.callout-style-default {
+  border: none !important;
+  border-left: 3px solid $rule !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding-left: 1.1rem;
+}
+div.callout.callout-style-default.callout-note,
+div.callout.callout-style-default.callout-tip {
+  border-left-color: $pine !important;
+}
+div.callout.callout-style-default.callout-important {
+  border-left-color: $rust !important;
+}
+div.callout .callout-header {
+  background: transparent !important;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+div.callout .callout-body-container {
+  padding: 0.1rem 0 0.4rem 0;
+}
+div.callout-icon::before { display: none; }
+
+// Tables: hairlines only, no shading, roomy padding
+table {
+  border-collapse: collapse;
+  font-size: 0.97rem;
+}
+thead th {
+  border-bottom: 1.5px solid $ink;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+}
+td, th {
+  border-color: $rule;
+  padding: 0.55rem 0.7rem;
+  vertical-align: top;
+}
+
+// Code — ligatures off: R's |> and -> must render as literal characters
+pre, code {
+  border-radius: 3px;
+  font-size: 0.88em;
+  font-variant-ligatures: none;
+  -webkit-font-feature-settings: "liga" 0, "calt" 0;
+  font-feature-settings: "liga" 0, "calt" 0;
+}
+div.sourceCode {
+  background: $pine-dim;
+  border: 1px solid $rule;
+}
+
+// Footer
+.nav-footer {
+  border-top: 1px solid $rule;
+  color: $ink-soft;
+  font-size: 0.85rem;
+}
+
+.content-block {
+  margin-bottom: 2.25rem;
+}
+
+// Sidebar (used on lab pages) stays quiet, no card chrome
+.sidebar nav[role="doc-toc"] ul li a {
+  color: $ink-soft;
+}
+.sidebar nav[role="doc-toc"] ul li a.active {
+  color: $pine;
+  font-weight: 500;
+}

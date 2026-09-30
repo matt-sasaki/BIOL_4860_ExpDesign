@@ -1,0 +1,87 @@
+---
+title: "Week 1 Tutorial: Getting R Running"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture on setup and why design matters"
+toc: true
+---
+
+## Goals
+
+- Confirm R, RStudio, and Quarto are installed and working
+- Get comfortable with the RStudio panes and project workflow
+- Write and run your first few lines of R
+
+## Installation check
+
+Run this chunk. If it errors, come to office hours or post on Canvas
+for install help — don't struggle with this alone before Week 2.
+
+```{r}
+#| label: setup
+r_version <- R.version.string
+r_version
+library(tidyverse)
+```
+
+## File types you'll see in this course
+
+| Extension | What it is |
+|---|---|
+| `.R` | Plain R script |
+| `.qmd` | Quarto document (code + prose, like this file) |
+| `.Rproj` | RStudio project file — keeps file paths relative |
+| `.csv` / `.xlsx` | Tabular data |
+| `.html` / `.pdf` | Rendered output from a `.qmd` |
+
+## Your first R
+
+```{r}
+# Assignment
+wing_length <- c(23.1, 25.4, 22.8, 26.0, 24.3)
+
+# Basic functions
+mean(wing_length)
+sd(wing_length)
+length(wing_length)
+```
+
+```{r}
+# Indexing
+wing_length[1]
+wing_length[wing_length > 24]
+```
+
+## Your first plot
+
+A small reward for getting everything installed:
+
+```{r}
+#| label: fig-first-plot
+#| fig-cap: "A first look at some simulated wing lengths"
+tibble(wing_length) |>
+  ggplot(aes(wing_length)) +
+  geom_histogram(binwidth = 1, fill = "steelblue", color = "white") +
+  theme_minimal()
+```
+
+## Exercises
+
+::: {.callout-note}
+## Exercise 1
+Create a vector `body_mass` with 5 values of your choosing (grams).
+Compute its mean, standard deviation, and range using built-in
+functions (don't hardcode the answers).
+:::
+
+::: {.callout-note}
+## Exercise 2
+In a sentence or two: why might a biologist care about *designing*
+an experiment carefully, rather than just collecting data and running
+a statistical test afterward? There's no single right answer — this
+is meant to get you thinking ahead of Week 5.
+:::
+
+## Wrap-up
+
+Keep this file — the exercises here feed directly into this week's
+[assignment](../assignments/week01-assignment.qmd). Next week we go
+much further into R syntax and start wrangling real data.

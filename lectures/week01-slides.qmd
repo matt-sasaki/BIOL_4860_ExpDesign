@@ -1,0 +1,64 @@
+---
+title: "Why Experimental Design Matters"
+subtitle: "Week 1 · BIOL 4860/5860"
+format:
+  revealjs:
+    theme: [default, ../partials/slides.scss]
+    slide-number: true
+    footer: "BIOL 4860/5860 — Experimental Design and Analysis"
+    transition: fade
+---
+
+## Welcome
+
+- Experiments are one of the main ways we expand our understanding of biology
+- This course: **design** experiments well, **analyze** the data in R, **communicate** the results
+- Three modules: R Crash Course → Data Exploration → Statistical Analysis and Interpretation
+
+## A question to sit with
+
+> If you ran the same experiment twice, would you trust the second
+> result as much as the first?
+
+- A good design makes the answer "yes"
+- A bad design can make even a huge effect impossible to trust
+
+## Why design comes before analysis
+
+- No statistical test can fix a poorly designed study
+- Common failure modes we'll dissect this semester:
+  - Pseudoreplication (measuring the same unit many times, treating it as many replicates)
+  - Confounding (treatment tangled up with some other variable)
+  - Underpowered studies (too few replicates to detect a real effect)
+
+## A biology example
+
+- Question: does a fertilizer increase plant growth?
+- Naive approach: one plant, control side vs. treated side, measured many times
+- Problem: **n = 1 plant** — no replication of the actual experimental unit
+- We'll spend Weeks 5–6 building the vocabulary to catch this
+
+## What "medium complexity" looks like by the end
+
+- Import and clean real data
+- Visualize it honestly
+- Choose a design and a matching statistical test
+- Fit that model in R, check its assumptions, interpret the result
+
+## This week
+
+- **Monday (today):** why design matters, course logistics
+- **Wednesday (tutorial):** install R/RStudio/Quarto, write your first lines of R
+- **This week's assignment:** a short reflection + a tiny R warm-up
+
+## Logistics
+
+- Course site: this website — syllabus, schedule, and all materials live here
+- Assignments submitted via Canvas as rendered `.qmd` files
+- Office hours: see the syllabus — use them, especially in Weeks 1–3
+
+## Questions?
+
+- Syllabus: policies, grading, required text
+- Schedule: what we're covering and when
+- Let's get R installed

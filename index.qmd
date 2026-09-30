@@ -1,0 +1,28 @@
+---
+title: "Experimental Design & Analysis in Biology"
+subtitle: "BIOL 4860/5860 — University of Massachusetts Lowell — Spring 2027"
+page-layout: full
+toc: false
+---
+
+::: content-block
+## Welcome
+
+Experiments are one of the main ways we expand our understanding of biology. In this hands-on course, you'll develop fundamental skills in experimental design, data analysis, and visualization — and learn to use R to analyze and visualize data. By the end, you'll be able to describe experimental designs and analytic techniques (t-tests, ANOVA, linear regression, mixed-effects models, and more) commonly used in biological research, evaluate the appropriateness of different designs, and work through analytic workflows of medium complexity.
+:::
+
+::: {.callout-note appearance="simple"}
+## Course Information
+
+**BIOL 4860/5860 — Experimental Design and Analysis · 3 Credits · Spring 2027**
+
+Monday & Wednesday 2-3:15pm in Olsen Hall TBD
+
+**Instructor:** Dr. Matthew Sasaki · **Office:** Olsen 205 · **Office Hours:** TBD, or by appointment · **Email:** Matthew_Sasaki\@uml.edu
+
+**Prerequisites:** Experimental Methods in Biology (BIOL.2330L) or graduate standing
+:::
+
+::: callout-note
+This web page contains all the information required for this course. Links to lecture slides, assignments, and key resources are all included. Note, however, that completed assignments will be submitted via Canvas.
+:::

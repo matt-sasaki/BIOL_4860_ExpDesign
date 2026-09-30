@@ -1,0 +1,17 @@
+{
+  "hash": "b154e1d04f63a446370c48bc1d5c406a",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 3 Tutorial: Exploring Distributions\"\nsubtitle: \"Wednesday tutorial · reinforces Monday's lecture on EDA basics\"\ntoc: true\n---\n\n\n\n## Goals\n\n- Build a habit of exploring data visually *before* modeling it\n- Practice the core `ggplot2` grammar: geoms, aesthetics\n- Recognize skew and unequal variance by eye\n\n## Setup\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\ndata(iris)\niris <- as_tibble(iris)\n```\n:::\n\n\n\n## One numeric variable: distribution\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(iris, aes(Sepal.Length)) +\n  geom_histogram(binwidth = 0.2, fill = \"steelblue\", color = \"white\") +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![Distribution of sepal length](week03-tutorial_files/figure-html/fig-hist-1.png){#fig-hist width=672}\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(iris, aes(Sepal.Length, fill = Species)) +\n  geom_density(alpha = 0.4) +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![Density of sepal length by species](week03-tutorial_files/figure-html/fig-density-1.png){#fig-density width=672}\n:::\n:::\n\n\n\n## One numeric + one categorical: comparing groups\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(iris, aes(Species, Sepal.Length, fill = Species)) +\n  geom_boxplot(alpha = 0.6, show.legend = FALSE) +\n  geom_jitter(width = 0.15, alpha = 0.5) +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![Sepal length by species](week03-tutorial_files/figure-html/fig-box-1.png){#fig-box width=672}\n:::\n:::\n\n\n\n## Spotting problems before modeling\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\niris |>\n  group_by(Species) |>\n  summarise(\n    mean = mean(Sepal.Length),\n    sd = sd(Sepal.Length),\n    skew_check = mean(Sepal.Length) - median(Sepal.Length)\n  )\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n# A tibble: 3 x 4\n  Species     mean    sd skew_check\n  <fct>      <dbl> <dbl>      <dbl>\n1 setosa      5.01 0.352    0.00600\n2 versicolor  5.94 0.516    0.0360 \n3 virginica   6.59 0.636    0.0880 \n```\n\n\n:::\n:::\n\n\n\n::: {.callout-tip}\n## Why this matters\nA large gap between mean and median flags skew. Wildly different SDs\nacross groups flag unequal variance. Both affect which statistical\ntest is appropriate later in the course — EDA is where you catch\nthis *before* you're deep into modeling.\n:::\n\n## Exercises\n\n::: {.callout-note}\n## Exercise 1\nFor the built-in `ChickWeight` dataset, make a boxplot of final-day\nweight by `Diet` (you'll need to `filter()` to the last time point\nfirst). Does the spread look similar across diets?\n:::\n\n::: {.callout-note}\n## Exercise 2\nFor `PlantGrowth`, compare the mean-vs-median gap across the three\n`group` levels the way we did for `iris` above. Do any groups look\nnotably skewed?\n:::\n\n## Wrap-up\n\nKeep this file — the exercises here feed directly into this week's\n[assignment](../assignments/week03-assignment.qmd). Next week's\ntutorial continues with relationships between variables and\nmulti-panel plots.\n",
+    "supporting": [
+      "week03-tutorial_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

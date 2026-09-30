@@ -1,0 +1,15 @@
+{
+  "hash": "eb5121da5abe7d5aa0d13794f1bb5f45",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 1 Assignment\"\nsubtitle: \"Setup and first steps in R\"\nformat: typst\n---\n\n\n\nComplete this after Wednesday's tutorial. As with all assignments, this is graded on completion, not correctness — the point is to show you engaged with the material. Once completed, render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 2's lecture (Monday). Late assignments follow the policy in the [syllabus](../syllabus.qmd#assignments): up to three weeks late, docked 2% per day.\n\n## Part 1: Reflection\n\nIn 3–4 sentences, answer: why might a biologist care about *designing* an experiment carefully, rather than just collecting data and running a statistical test afterward? Give a concrete example if you can, from your own subfield or otherwise. <!--# Include your answer below -->\n\n## Part 2: R warm-up\n\n1.  Create a vector of 8 numeric values representing a measurement of your choosing (e.g., body lengths, leaf counts, reaction times; incorporate the trait type into the object name).\n\n\n\n::: {.cell}\n\n:::\n\n\n\n2.  Compute its mean, standard deviation, minimum, and maximum using built-in R functions — don't hardcode the answers.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n3.  Make a histogram of your vector using `ggplot2`.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n4.  In one sentence, describe the shape of the distribution you see (symmetric? skewed? any obvious outliers?). <!--# Include your answer below -->\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

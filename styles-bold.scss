@@ -1,0 +1,199 @@
+/*-- scss:defaults --*/
+
+// Palette — white background retained, confident near-black ink,
+// and a bold emerald accent. To change the accent color later,
+// this is the only place you need to edit: $accent and $accent-dim
+// (a pale tint of $accent, used for callout fills and hover states).
+$paper:        #FFFFFF;
+$ink:          #14171A;
+$ink-soft:     #4B4F54;
+$rule:         #E7E7E5;
+$accent:       #047857;
+$accent-dim:   #E9F6EF;
+$amber:        #FFB300;
+$rust:         #C81E3A;
+
+$body-bg:      $paper;
+$body-color:   $ink;
+$primary:      $accent;
+$link-color:   $accent;
+$border-color: $rule;
+
+$font-family-sans-serif: "Inter", -apple-system, "Segoe UI", sans-serif;
+$font-family-monospace:  "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+$font-size-base: 1.06rem;
+$line-height-base: 1.65;
+$paragraph-margin-bottom: 1.3rem;
+$headings-font-weight: 700;
+$headings-line-height: 1.1;
+$h1-font-size: 2.75rem;
+$h2-font-size: 1.65rem;
+$h3-font-size: 1.25rem;
+$toc-font-size: 0.82rem;
+
+$navbar-bg: $paper;
+$navbar-fg: $ink;
+$navbar-hl: $accent;
+
+$table-border-color: $rule;
+$table-striped-bg: transparent;
+
+/*-- scss:rules --*/
+
+// Bold grotesk headings — big, tight, heavy
+h1, h2, h3, .navbar-title {
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-weight: 700; }
+h2 {
+  font-weight: 700;
+  margin-top: 3rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid $accent;
+}
+h3 { font-weight: 700; }
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+#quarto-document-content {
+  max-width: 760px;
+}
+
+p, li { color: $ink; }
+li { margin-bottom: 0.4rem; }
+ul, ol { padding-left: 1.4rem; }
+
+.subtitle {
+  color: $ink-soft;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+// Bold navbar: thick cobalt underline, filled pill for active/hover
+.navbar {
+  border-bottom: 3px solid $ink;
+  box-shadow: none;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+.navbar-brand {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.navbar-dark .navbar-nav .nav-link,
+.navbar .navbar-nav .nav-link {
+  color: $ink;
+  font-weight: 500;
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem !important;
+  margin-left: 0.15rem;
+  margin-right: 0.15rem;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+.navbar .navbar-nav .nav-link:hover {
+  background: $accent-dim;
+  color: $accent;
+}
+.navbar .navbar-nav .nav-link.active {
+  background: $accent;
+  color: $paper !important;
+}
+.navbar .dropdown-menu {
+  border: 2px solid $ink;
+  box-shadow: none;
+  border-radius: 8px;
+}
+
+// Links: bold weight, always underlined, confident color
+a { text-decoration: none; }
+p a, li a, td a {
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+}
+
+// Callouts: thick color bar + tinted fill, bold header
+// (covers both callout-style-default and the simple appearance variant)
+div.callout {
+  border: none !important;
+  border-left: 6px solid $accent !important;
+  border-radius: 0 !important;
+  background: $accent-dim !important;
+  padding: 0.9rem 1.1rem !important;
+}
+div.callout.callout-important {
+  border-left-color: $rust !important;
+  background: rgba($rust, 0.06) !important;
+}
+
+div.callout .callout-header {
+  background: transparent !important;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+}
+div.callout .callout-body-container {
+  padding: 0.2rem 0 0 0;
+}
+div.callout-icon::before { display: none; }
+
+// Tables: bold dark header row, white text, bold week numbers
+table {
+  border-collapse: collapse;
+  font-size: 0.97rem;
+}
+table.table > thead > tr > th {
+  --bs-table-bg: #{$ink};
+  --bs-table-color: #{$paper};
+  background: $ink !important;
+  color: $paper !important;
+  border-bottom: none;
+  font-weight: 700;
+  font-family: "Space Grotesk", sans-serif;
+}
+td, th {
+  border-color: $rule;
+  padding: 0.6rem 0.75rem;
+  vertical-align: top;
+}
+tbody tr td:first-child {
+  font-weight: 700;
+  color: $accent;
+}
+
+// Code
+pre, code {
+  border-radius: 3px;
+  font-size: 0.88em;
+  font-variant-ligatures: none;
+  -webkit-font-feature-settings: "liga" 0, "calt" 0;
+  font-feature-settings: "liga" 0, "calt" 0;
+}
+div.sourceCode {
+  background: #F7F8FA;
+  border: 1px solid $rule;
+  border-left: 3px solid $ink;
+}
+
+// Footer — bold rule
+.nav-footer {
+  border-top: 3px solid $ink;
+  color: $ink-soft;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.content-block { margin-bottom: 2.25rem; }
+
+.sidebar nav[role="doc-toc"] ul li a { color: $ink-soft; }
+.sidebar nav[role="doc-toc"] ul li a.active {
+  color: $accent;
+  font-weight: 700;
+}

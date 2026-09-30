@@ -1,0 +1,15 @@
+{
+  "hash": "074fc8be46571128694fa5d58b2e9053",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 9 Assignment\"\nsubtitle: \"Correlation and linear regression\"\nformat: typst\n---\n\n\n\nRender this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 10's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\nUsing the built-in `trees` dataset:\n\n1.  Compute the correlation between `Height` and `Volume`, with a significance test.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n2.  Fit a simple linear regression of `Volume ~ Height`.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n3.  Report the slope, R², and p-value, and interpret the slope in plain language (what does it mean biologically?). <!--# Include your answer below -->\n\n4.  Check the regression diagnostics.\n\n\n\n::: {.cell}\n\n:::\n\n\n\nDoes a straight line look like a reasonable fit here? <!--# Include your answer below -->\n\n5.  In 2–3 sentences: `trees` is observational data. What would need to be true about how the data were collected for you to make a causal claim (\"increasing height causes increased volume\") instead of just a correlational one? <!--# Include your answer below -->\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

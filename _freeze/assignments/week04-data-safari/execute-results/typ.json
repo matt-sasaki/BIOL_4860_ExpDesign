@@ -1,0 +1,15 @@
+{
+  "hash": "35587c56eaf89c7f23ba051fa53fe4b1",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Data Safari #1\"\nsubtitle: \"Week 4 · Replicating a published figure\"\nformat: typst\n---\n\n\n\nThis is the first of four Data Safari exercises this semester (Weeks 4, 7, 10, and 13). See the [Assignments overview](../assignments.qmd) for the general format — the instructions below are the same each time, applied to a new figure of your choosing. Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas alongside this week's regular assignment, before Week 5's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\n## Instructions\n\n1.  **Find a paper** in your own subfield with (a) a figure showing real data — a scatterplot, boxplot, or bar chart is easiest to start with — and (b) publicly available data, either in a supplement, a data repository (Dryad, Figshare, GenBank, etc.), or linked in the paper's data-availability statement.\n\nFull citation: <!--# Include the citation below -->\n\n2.  **Recreate the figure** as closely as you can using R and `ggplot2`, working from the actual data file.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n3.  **Reflect**, in a few sentences each:\n    -   How easy was it to find and load the data? Were column names, units, and structure clear from the paper and/or a data dictionary?\n    -   How closely does your version match the published figure? Note any differences in scale, color, or labeling, and your best guess at why they exist.\n    -   If you were a reviewer, what one change to the paper's methods or data documentation would have made this exercise easier?\n\n<!--# Include your reflection below -->\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

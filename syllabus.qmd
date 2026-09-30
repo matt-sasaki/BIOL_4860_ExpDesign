@@ -1,0 +1,143 @@
+---
+title: "Syllabus"
+subtitle: "BIOL 4860/5860 — Experimental Design and Analysis"
+toc: true
+---
+
+::: callout-note
+**University of Massachusetts Lowell · 3 Credits · Spring 2027** Monday & Wednesday, 2:00–3:15 PM, Olsen Hall TBD
+
+**Instructor:** Dr. Matthew Sasaki · **Office:** Olsen 205 · **Office Hours:** TBD, or by appointment · **Email:** Matthew_Sasaki\@uml.edu
+
+**Prerequisites:** Experimental Methods in Biology (BIOL.2330L) or graduate standing
+:::
+
+## Course description
+
+Experiments are one of the main ways in which we expand our understanding of biology. In this hands-on course, students will develop fundamental skills in experimental design, data analysis, and visualization. Students will also learn how to use the coding language R to analyze and visualize data. By the end of the course, students will be able to describe experimental designs and analytic techniques (t-tests, ANOVA, linear regression, mixed effects models, etc.) commonly used in biological research. Students will also be able to evaluate the appropriateness of different experimental designs in biological research, design experiments to answer specific questions, and work through analytic workflows of medium complexity.
+
+The course runs in three modules — see the full [Schedule](schedule.qmd) for week-by-week topics:
+
+1.  **R Crash Course** (Weeks 1–3) — introduction to R, data management best practices, and the typical analytic workflow for experimental work in the life sciences.
+2.  **Data Exploration** (Weeks 4–6) — working with data in R, focused on summarizing and visualizing key characteristics of biological data.
+3.  **Statistical Analysis and Interpretation** (Weeks 7–14) — commonly used experimental designs and the statistical techniques typically used to analyze biological data, pairing fundamental principles with applied practice each week.
+
+## Learning objectives
+
+At the end of this course, students will be able to:
+
+- Apply principles of data management and project organization to facilitate the analysis of experimental data.
+- Use the R coding language to import, clean, analyze, and visualize experimental data.
+- Produce robust exploratory data analyses and visualizations for commonly encountered experimental designs.
+- Discuss the appropriateness of different statistical tests for various experimental designs.
+- Interpret the results of key statistical analyses.
+
+## Required course materials
+
+The primary requirement is access to **Canvas** and a **UML email account**. This course will also require *R for Data Science*, version 2, by Wickham, Çetinkaya-Rundel, and Grolemund. You're welcome to purchase a hard copy, but the text is also [freely available online](https://r4ds.had.co.nz/index.html). Personal computers are welcome, and access to the computer lab will also be provided.
+
+## Communication
+
+All communication related to this course will come from the instructor's UML email or via Canvas announcements — please check both regularly. **Emails sent to the instructor must come from your UML email account.** For emails sent during the week, expect a response within 24 hours; if it's been more than 48 hours, a gentle reminder is welcome. Responses may be slower for emails sent over the weekend (Friday evening – Sunday evening) — please wait until Tuesday to follow up in that case.
+
+## Attendance, engagement, and classroom etiquette
+
+**Attendance** — Lectures begin promptly at the start of the scheduled class period; arrive on time and stay for the full period. Regular attendance is one of the most important contributors to student success. If you need to miss class, contact Dr. Sasaki as soon as possible to discuss how to stay on track.
+
+**Illness** — Please don't attend class if you're ill. Communicate your absence as soon as possible. You'll have an opportunity to make up missed assignments, but it's your responsibility to keep pace with lecture material.
+
+**Engagement and participation** — Expect in-class questions, group discussions, and activities meant to build critical thinking and understanding. Reaching the correct answer matters, but the *process* of getting there matters more. All students are expected to be respectful and engaged — asking questions, taking good notes, giving full effort in group work, and paying attention when others are sharing.
+
+**Cell phones and laptops** — Fine for notes or in-class activities; please avoid non-course use or distracting others. Persistent misuse may result in being asked to leave. Recording lectures without prior consent or a registered accommodation is not allowed.
+
+## Academic integrity policy
+
+All students are advised of the university policy on academic integrity. Academic honesty is essential to maintaining trust in the learning environment and ensuring all students are evaluated fairly. Students are responsible for the honest completion and representation of their own work; academic dishonesty in any form (plagiarism, cheating, fabrication, facilitating dishonesty) will not be tolerated and may result in disciplinary action, up to and including failure of the assignment or course, and referral to the provost's office.
+
+::: callout-important
+## AI statement
+
+You are strongly discouraged from the use of AI and LLM agents (e.g., ChatGPT, Claude, etc.) in this course. While some uses — like proofreading written assignments or brainstorming ideas — can be beneficial, an increasingly common observation is that use of AI tools when learning new techniques (and especially when learning to code) blocks the development of skills and understanding.
+
+Any AI usage must be documented in detail, and students must be able to describe how generated output was modified to reflect their own thoughts and perspective. Students are encouraged to think about (1) the consequences of AI usage for their own learning and for the environment, and (2) how AI use affects the development of critical thinking skills. As a general rule, **assignments generated entirely or primarily by AI will not be accepted**. In the event of suspected AI-generated responses, Dr. Sasaki may choose to check student understanding via a conversation and discuss how the answer was arrived at. After an initial warning, however, **violations of this policy will be considered academic misconduct**, subject to the university's Academic Integrity procedures.
+:::
+
+## Assignments
+
+Over the course of the semester, you will complete a range of [Assignments](assignments.qmd) meant to develop your understanding of key points from the lecture materials. These assignments fall into three general categories:
+
+***Problem Sets*** – Students will complete weekly coding problem sets, questions about concepts and theory with application in both hypothetical and real-world scenarios. When analyzing example data sets, students will be asked to describe the methods and interpret results, as might be required when preparing scientific publications. Problem sets are graded on completion.
+
+***Data Safari Exercises*** – In these exercises, students are tasked to replicate a figure from the published literature using the publicly available data from that study. Students will also be asked to reflect on the process for each exercise: How easy was it to follow the published methods? How well does your plot match the published version? How would you change the paper, plot, or data to improve reproducibility?
+
+***Projects*** – In addition to the above components, *graduate students* are required to complete a project over the course of the semester. These projects will be broken down into the main analytic steps we will cover in this course – experimental design and planned hypothesis testing, data carpentry and exploration, statistical modelling, and visualization. Ideally, students will complete this project using their own data, but data obtained from the published literature is also acceptable. Projects will be presented at the end of the semester.
+
+Assignments are distributed as **Quarto** (**`.qmd`**) templates, downloadable from the [Schedule](schedule.qmd). Complete them in the template, then render to **PDF** (via Typst, bundled with Quarto) and submit both the `.qmd` and the `.pdf`. Given the pacing and breadth of this course, it is important to turn work in on time. Late assignments can be turned in for credit up to three weeks following the deadline, but will be **docked 2% for every day past the due date (weekends included)**.
+
+## Exams and quizzes
+
+There are no midterm exams for this course. Each unit includes several short, in-class, open-note quizzes to gauge understanding of key concepts.
+
+## Attendance & participation
+
+Both regular attendance and active participation are essential given the nature of this course. Attendance is recorded using a combination of in-class check-ins/reflection assignments or data collection exercises. Participation points come from activities including (but not limited to) in-class discussions, out-of-class surveys and data collection exercises, and office hour visits.
+
+## Grading
+
+**Undergraduates:** Assignments 50%, Quizzes 40%, Attendance & Participation 10%.
+
+**Graduate students:** Project 50%, Assignments 25%, Quizzes 20%, Attendance & Participation 5%.
+
+::: panel-tabset
+## Undergraduate scale
+
+| Grade | Percentage |
+|-------|------------|
+| A     | 94–100     |
+| A-    | 90–93      |
+| B+    | 87–89      |
+| B     | 83–86      |
+| B-    | 80–82      |
+| C+    | 77–79      |
+| C     | 73–76      |
+| C-    | 70–72      |
+| D     | 60–69      |
+| F     | \< 60      |
+
+## Graduate scale
+
+| Grade | Percentage |
+|-------|------------|
+| A     | 94–100     |
+| A-    | 90–93      |
+| B+    | 87–89      |
+| B     | 83–86      |
+| B-    | 80–82      |
+| C+    | 76–79      |
+| F     | \< 75      |
+:::
+
+## Student mental health and well-being
+
+Your personal health and well-being are important to all of us at the university.
+
+| Service / Office | Description | Contact |
+|----|----|----|
+| Counseling Services | Crisis intervention, assessment, referrals, short-term individual counseling and group therapy | \(978\) 934-6800 |
+| UMatter2 | University-wide initiative supporting mental health, including the Togetherall peer-to-peer platform | \(978\) 934-6671 |
+| CLASS Advising | Advising services: goal setting, course selection, SIS functions, major/minor changes, course deletions | \(978\) 934-2936 · Advisement\@uml.edu |
+| Office of Student Life & Wellbeing | Advances holistic student success through health-promoting actions and campus culture | \(978\) 934-4342 · Wellbeing\@uml.edu |
+
+## Disability services
+
+If you are registered with Disability Services and require course accommodations, notify Dr. Sasaki via the Accommodate request process as soon as possible so appropriate arrangements can be made. Please connect during office hours or privately after class to discuss logistics. For more information or to register, visit the Disability Services website.
+
+## University privacy statement
+
+UMass Lowell recognizes the importance of mutual trust between students and faculty. Massachusetts is a two-party consent state, meaning it is illegal to record someone without their permission. Recordings of classroom lectures are the instructor's intellectual property; instructors may prohibit audio/video recording of their lectures unless the requesting student is registered with Disability Services and recording is an approved accommodation. Sharing or selling recordings of classroom activities, discussions, or lectures without the instructor's permission is prohibited and may result in sanctions for academic dishonesty or referral to the dean's or provost's office.
+
+::: callout-note
+## Course Schedule
+
+*Course schedule subject to change — see the [Schedule](schedule.qmd) page for the current, up-to-date version.*
+:::

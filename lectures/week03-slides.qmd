@@ -1,0 +1,69 @@
+---
+title: "Exploring Distributions"
+subtitle: "Week 3 · BIOL 4860/5860"
+format:
+  revealjs:
+    theme: [default, ../partials/slides.scss]
+    slide-number: true
+    footer: "BIOL 4860/5860 — Experimental Design and Analysis"
+    transition: fade
+---
+
+## From wrangling to exploring
+
+- You can now get data into R and reshape it
+- Before fitting any model: **look at your data**
+- This module (Weeks 3–4) is entirely about seeing what you have
+
+## Why explore before modeling?
+
+- Every statistical test we'll cover assumes something about your data
+  (roughly normal, similar variance across groups, no wild outliers)
+- Exploratory data analysis (EDA) is how you check those assumptions
+  *before* you're deep into a model and it's too late to notice
+
+## The grammar of graphics, briefly
+
+- `ggplot(data, aes(x, y)) + geom_*()`
+- Same three ingredients, every time: data, aesthetic mapping, geometry
+- Once you know this grammar, every new plot type is just a new `geom_*()`
+
+## One numeric variable
+
+- Histogram: `geom_histogram()` — shape of the distribution
+- Density: `geom_density()` — smoothed version, good for comparing groups
+
+## One numeric + one categorical
+
+- Boxplot: `geom_boxplot()` — median, spread, outliers at a glance
+- Add `geom_jitter()` on top to show the actual data points, not just the summary
+
+## What to look for
+
+- **Skew**: is the mean pulled away from the median?
+- **Unequal spread**: do groups have wildly different variances?
+- **Outliers**: are there points that don't look like they belong?
+
+## A quick numeric check
+
+```r
+iris |>
+  group_by(Species) |>
+  summarise(mean = mean(Sepal.Length),
+            sd = sd(Sepal.Length),
+            skew_check = mean(Sepal.Length) - median(Sepal.Length))
+```
+
+- A large mean–median gap flags skew before you even plot anything
+
+## Why this matters later
+
+- Skew and unequal variance are exactly the assumptions behind the
+  t-test and ANOVA we'll meet in Week 7
+- Catching a problem now is far cheaper than debugging a confusing
+  model result in six weeks
+
+## This week
+
+- **Wednesday (tutorial):** histograms, density plots, boxplots in R
+- **Assignment:** explore a new dataset and write up what you notice

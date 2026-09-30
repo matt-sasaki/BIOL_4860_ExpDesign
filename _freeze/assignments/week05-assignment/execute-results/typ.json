@@ -1,0 +1,15 @@
+{
+  "hash": "8924789f048251e3d1c5eb1cae0430f0",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 5 Assignment\"\nsubtitle: \"Replication, randomization, and blocking\"\nformat: typst\n---\n\n\n\nRender this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 6's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\n## Part 1: Design critique\n\nFor each scenario, name (a) the likely experimental unit, and (b) one design flaw: <!--# Include your answers below -->\n\n1.  A researcher wants to test whether a new diet increases growth rate in fish. They put 30 fish in one large tank with the new diet, and 30 fish in another tank with the standard diet.\n2.  A field ecologist wants to know if a pesticide affects pollinator visits. They spray one field and leave a neighboring field unsprayed, then count pollinator visits at 20 flowers in each field.\n3.  A greenhouse study assigns fertilizer treatments to pots by simply giving the new fertilizer to whichever pots were closest to the watering can.\n\n## Part 2: Simulation practice\n\nUsing this week's tutorial code as a starting point:\n\n1.  Change `n_blocks` to 3 (instead of 6) and re-run the simulation and both models.\n\n\n\n::: {.cell}\n\n:::\n\n\n\nDoes blocking still reduce the residual variance as much as it did with 6 blocks? <!--# Include your answer below -->\n\n2.  In 2–3 sentences: what does this suggest about the trade-off between number of blocks and the benefit of blocking? <!--# Include your answer below -->\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

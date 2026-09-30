@@ -1,0 +1,33 @@
+---
+title: "Week 9 Assignment"
+subtitle: "Correlation and linear regression"
+format: typst
+---
+
+Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 10's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+
+Using the built-in `trees` dataset:
+
+1.  Compute the correlation between `Height` and `Volume`, with a significance test.
+
+```{r}
+
+```
+
+2.  Fit a simple linear regression of `Volume ~ Height`.
+
+```{r}
+
+```
+
+3.  Report the slope, R², and p-value, and interpret the slope in plain language (what does it mean biologically?). <!--# Include your answer below -->
+
+4.  Check the regression diagnostics.
+
+```{r}
+
+```
+
+Does a straight line look like a reasonable fit here? <!--# Include your answer below -->
+
+5.  In 2–3 sentences: `trees` is observational data. What would need to be true about how the data were collected for you to make a causal claim ("increasing height causes increased volume") instead of just a correlational one? <!--# Include your answer below -->

@@ -1,0 +1,42 @@
+---
+title: "Week 11 Assignment"
+subtitle: "Logistic regression and other GLMs"
+format: typst
+---
+
+Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 12's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+
+## Part 1: Conceptual
+
+For each outcome, name the outcome type and the model you'd use (`lm`, logistic `glm`, or Poisson/negative-binomial `glm`): <!--# Include your answers below -->
+
+1.  Clutch size (number of eggs laid)
+2.  Whether a plant flowers this season (yes/no)
+3.  Leaf area in cm²
+4.  Number of ticks found on an individual host
+
+## Part 2: Applied
+
+Using this week's tutorial's simulated `seedlings` data (or re-simulate it with a different `set.seed()`):
+
+1.  Fit `glm(survived ~ light, family = binomial)`.
+
+```{r}
+
+```
+
+2.  Exponentiate the `light` coefficient and interpret it as an odds ratio, in a sentence a non-statistician biologist would understand.
+
+```{r}
+
+```
+
+<!--# Include your interpretation below -->
+
+3.  Using the simulated `counts` data, fit the Poisson model and check for overdispersion (residual deviance vs. residual df).
+
+```{r}
+
+```
+
+Is overdispersion a concern here? <!--# Include your answer below -->

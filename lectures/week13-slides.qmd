@@ -1,0 +1,58 @@
+---
+title: "Mixed-Effects Models II: Slopes, Crossed, and Nested Designs"
+subtitle: "Week 13 · BIOL 4860/5860"
+format:
+  revealjs:
+    theme: [default, ../partials/slides.scss]
+    slide-number: true
+    footer: "BIOL 4860/5860 — Experimental Design and Analysis"
+    transition: fade
+---
+
+## Last week vs. this week
+
+- Last week: random intercepts — each group gets its own baseline
+- This week: what if the **effect itself** varies by group, and what
+  happens with more complex grouping structures?
+
+## Random slopes
+
+- `lmer(response ~ treatment + (treatment | site), data = ...)`
+- Lets the treatment effect itself vary from site to site
+- Compare to the random-intercept-only model with `anova()` — does
+  allowing varying slopes meaningfully improve the fit?
+
+## Nested random effects
+
+- One factor's levels only make sense within another
+  (e.g., `plot` within `site` — "plot 1" at Site A isn't the same
+  physical plot as "plot 1" at Site B)
+- Syntax: `(1 | site/plot)`
+
+## Crossed random effects
+
+- Levels of one factor occur across multiple levels of another
+  (e.g., the same `observer` measures animals at several sites)
+- Syntax: `(1 | site) + (1 | observer)`
+
+## Telling them apart
+
+- Ask: does "level 1" mean the same thing across every group?
+  - Yes → crossed
+  - No → nested
+- Getting this wrong doesn't always error — it silently gives you the
+  wrong model
+
+## Putting it together
+
+- Design (Weeks 5–6) → naive vs. blocked model (Week 5) → mixed model
+  with random intercepts (Week 12) → random slopes and
+  crossed/nested structures (today)
+- Same underlying idea the whole way: account for the structure in
+  how your data were collected
+
+## This week
+
+- **Wednesday (tutorial):** fit random-slopes models, practice
+  writing crossed vs. nested syntax
+- **Assignment + Data Safari #4:** due this week

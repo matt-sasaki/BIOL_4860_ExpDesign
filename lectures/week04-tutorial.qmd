@@ -1,0 +1,79 @@
+---
+title: "Week 4 Tutorial: Visualizing Relationships"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture on relationships and group comparisons"
+toc: true
+---
+
+## Goals
+
+- Visualize relationships between two or more variables
+- Use faceting to compare patterns across groups
+- Choose plot types deliberately, not by habit
+
+## Setup
+
+```{r}
+#| label: setup
+library(tidyverse)
+data(iris)
+iris <- as_tibble(iris)
+```
+
+## Two numeric variables: relationships
+
+```{r}
+#| label: fig-scatter
+#| fig-cap: "Sepal length vs. petal length"
+ggplot(iris, aes(Sepal.Length, Petal.Length, color = Species)) +
+  geom_point(alpha = 0.7) +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal()
+```
+
+## Many variables: faceting
+
+```{r}
+#| label: fig-facet
+#| fig-cap: "Sepal length vs. width, faceted by species"
+ggplot(iris, aes(Sepal.Length, Sepal.Width)) +
+  geom_point() +
+  facet_wrap(~Species) +
+  theme_minimal()
+```
+
+## Choosing a plot deliberately
+
+A quick decision guide, roughly in order of how often you'll reach
+for it in this course:
+
+| You have... | Reach for... |
+|---|---|
+| One numeric variable | Histogram or density plot |
+| One numeric + one categorical | Boxplot or jittered points |
+| Two numeric variables | Scatterplot (+ trend line) |
+| A relationship that differs by group | Scatterplot colored by group, or `facet_wrap()` |
+| A variable over time, per individual | Line plot grouped by individual ID |
+
+## Exercises
+
+::: {.callout-note}
+## Exercise 1
+Using `ChickWeight`, plot `weight` vs. `Time` with one line per chick
+(`geom_line()`, grouped by `Chick`), colored by `Diet`. What pattern
+do you see?
+:::
+
+::: {.callout-note}
+## Exercise 2
+Pick one plot from this week or last week's tutorial and rewrite it
+with better axis labels, a descriptive title, and a
+colorblind-friendly palette (`scale_color_viridis_d()` /
+`scale_fill_viridis_d()`).
+:::
+
+## Wrap-up
+
+Keep this file — the exercises here feed directly into this week's
+[assignment](../assignments/week04-assignment.qmd), which also
+includes this course's first
+[Data Safari exercise](../assignments/week04-data-safari.qmd).

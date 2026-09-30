@@ -1,0 +1,15 @@
+{
+  "hash": "6cd9e525083860c86800a239f9bb74e2",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 14 Assignment\"\nsubtitle: \"Nonparametric alternatives and choosing the right test\"\nformat: typst\n---\n\n\n\nThis is the last weekly assignment before final project presentations — nice work getting through the whole sequence. Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 15's presentations. See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\n## Part 1: Applied\n\nUsing the built-in `chickwts` dataset:\n\n1.  Run a Kruskal-Wallis test of `weight` by `feed`.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n2.  Run the parametric one-way ANOVA equivalent for comparison.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n3.  Do the two tests agree on whether there's a significant difference among feed types? If they disagreed, which would you trust more, and why? <!--# Include your answer below -->\n\n## Part 2: Choosing a test, cover to cover\n\nFor each scenario, name the test or model from this course (any week) that you'd reach for, and briefly justify your choice: <!--# Include your answers below -->\n\n1.  Comparing mean growth between 2 treatment groups, with no reason to doubt normality or equal variance.\n2.  Comparing mean growth between 2 treatment groups, where one group has a couple of extreme outliers you can't justify removing.\n3.  Testing whether a continuous covariate predicts a binary outcome.\n4.  Testing a treatment effect when measurements are repeated across multiple sites, with random variation in both the baseline and the treatment effect from site to site.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

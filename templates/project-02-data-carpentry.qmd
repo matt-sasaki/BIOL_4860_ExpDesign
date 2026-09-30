@@ -1,0 +1,37 @@
+---
+title: "Project Part 2: Data Carpentry and Exploration"
+subtitle: "Graduate students only (BIOL 5860)"
+format: typst
+---
+
+The second of four checkpoint deliverables for the graduate project. Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas by the end of Week 10. See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+
+## 1. Import and structure
+
+Import your data and show its structure (`glimpse()` or equivalent).
+
+```{r}
+
+```
+
+## 2. Cleaning and tidying
+
+Document the cleaning/tidying steps you needed (renaming columns, handling missing values, reshaping between wide and long, merging files, etc.). Show the code for each step.
+
+```{r}
+
+```
+
+Briefly describe, in your own words, what each step accomplished and why it was necessary. <!--# Include your answer below -->
+
+## 3. Exploratory summaries and visualization
+
+Produce summary statistics and at least two exploratory plots of your key variables, following the practices from Weeks 3–4.
+
+```{r}
+
+```
+
+## 4. What the data are telling you
+
+Based on this exploration, do you see anything (skew, unequal variance, outliers, missing data, unexpected values) that might affect your planned analysis from Part 1? Do your hypotheses need any adjustment? <!--# Include your answer below -->

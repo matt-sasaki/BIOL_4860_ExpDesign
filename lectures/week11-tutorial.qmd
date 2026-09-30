@@ -1,0 +1,103 @@
+---
+title: "Week 11 Tutorial: Logistic Regression and GLMs"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture on generalized linear models"
+toc: true
+---
+
+## Goals
+
+-   Recognize when a binary or count outcome needs something other than `lm()`
+-   Fit and interpret a logistic regression (`glm` with a binomial family)
+-   Get a first look at Poisson regression for count data
+
+## Setup
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(broom)
+```
+
+## Why not just use `lm()`?
+
+A linear model fit to a 0/1 outcome can predict probabilities below 0 or above 1, and violates the constant-variance assumption near the extremes. **Logistic regression** models the log-odds of the outcome instead.
+
+## Logistic regression: survival example
+
+```{r}
+set.seed(11)
+n <- 100
+seedlings <- tibble(
+  light = runif(n, 0, 100),  # % canopy light
+  survived = rbinom(n, 1, plogis(-3 + 0.06 * light))
+)
+```
+
+```{r}
+#| label: fig-raw
+#| fig-cap: "Raw survival outcomes vs. light availability"
+ggplot(seedlings, aes(light, survived)) +
+  geom_jitter(height = 0.05, alpha = 0.5) +
+  theme_minimal()
+```
+
+```{r}
+m1 <- glm(survived ~ light, data = seedlings, family = binomial)
+summary(m1)
+```
+
+```{r}
+tidy(m1, conf.int = TRUE, exponentiate = TRUE)  # odds ratios
+```
+
+```{r}
+#| label: fig-fit
+#| fig-cap: "Fitted probability of survival by light level"
+ggplot(seedlings, aes(light, survived)) +
+  geom_jitter(height = 0.05, alpha = 0.4) +
+  geom_smooth(method = "glm", method.args = list(family = "binomial"), se = TRUE) +
+  theme_minimal()
+```
+
+::: callout-note
+## Exercise 1
+
+Interpret the exponentiated `light` coefficient (the odds ratio) in one sentence a non-statistician biologist would understand.
+:::
+
+## Poisson regression: a first look at count data
+
+```{r}
+set.seed(12)
+counts <- tibble(
+  density = runif(60, 1, 10),   # plants per m^2
+  seed_count = rpois(60, lambda = exp(0.5 + 0.15 * density))
+)
+
+m2 <- glm(seed_count ~ density, data = counts, family = poisson)
+summary(m2)
+```
+
+::: callout-note
+## Exercise 2
+
+Fit `m2` and report whether `density` significantly predicts `seed_count`. Then check for overdispersion by comparing the residual deviance to the residual degrees of freedom (`summary(m2)` prints both) — a ratio well above 1 suggests you'd want a quasi-Poisson or negative binomial model instead. Is that the case here?
+:::
+
+## Choosing a model by outcome type
+
+::: callout-note
+## Exercise 3
+
+For each scenario below, name the outcome type and the model you'd reach for (`lm`, logistic `glm`, or Poisson/negative-binomial `glm`):
+
+a.  Number of eggs laid per clutch
+b.  Whether a seed germinates (yes/no)
+c.  Body mass in grams
+d.  Number of parasites found on an individual host
+:::
+
+## Wrap-up
+
+Keep this file — the exercises here feed directly into this week's
+[assignment](../assignments/week11-assignment.qmd).

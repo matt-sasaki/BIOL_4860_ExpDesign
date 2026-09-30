@@ -1,0 +1,15 @@
+{
+  "hash": "79648d2ed5b19c426256e4acb865ba1c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 2 Assignment\"\nsubtitle: \"R fundamentals and data wrangling\"\nformat: typst\n---\n\n\n\nComplete this after Wednesday's tutorial. Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 3's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\n## Part 1: Functions and control flow\n\n1.  Write a function `classify_mass(x, threshold)` that returns `\"heavy\"` if `x > threshold` and `\"light\"` otherwise (default `threshold = 20`).\n\n\n\n::: {.cell}\n\n:::\n\n\n\n2.  Create a `body_mass` vector with 6 values of your choosing and apply your function to it with `sapply()`.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n3.  Combine `body_mass` with a `species` vector (your choosing) into a tibble, and compute the mean mass per species.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n## Part 2: Data wrangling\n\nUsing the `ChickWeight` built-in dataset (`data(ChickWeight)`):\n\n1.  `glimpse()` and `summary()` the data.\n\n\n\n::: {.cell}\n\n:::\n\n\n\nWhat are the columns, and what type is each? <!--# Include your answer below -->\n\n2.  Filter to just `Diet == 1` and compute the mean `weight` at each `Time` point.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n3.  The data are already in long format (one row per chick per time point). Use `pivot_wider()` to reshape it so each chick is one row, with one column per time point.\n\n\n\n::: {.cell}\n\n:::\n\n\n\nWhat does a row represent now? <!--# Include your answer below -->\n\n4.  In 2–3 sentences: why would you want the long format for fitting a model, but the wide format might be more useful for, say, a table in a report? <!--# Include your answer below -->\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

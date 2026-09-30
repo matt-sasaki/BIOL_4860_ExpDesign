@@ -1,0 +1,96 @@
+---
+title: "Week 9 Tutorial: Correlation and Linear Regression"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture on regression"
+toc: true
+---
+
+## Goals
+
+-   Distinguish correlation from regression, and both from causation
+-   Fit and interpret a simple linear regression in R
+-   Recognize when observational data can (and can't) stand in for an experiment
+
+## Setup
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(broom)
+data(trees)  # built-in: girth, height, volume of felled black cherry trees
+```
+
+## Correlation
+
+```{r}
+cor(trees$Girth, trees$Volume)
+cor.test(trees$Girth, trees$Volume)
+```
+
+```{r}
+#| label: fig-scatter
+#| fig-cap: "Tree volume vs. girth"
+ggplot(trees, aes(Girth, Volume)) +
+  geom_point() +
+  theme_minimal()
+```
+
+## Simple linear regression
+
+```{r}
+m1 <- lm(Volume ~ Girth, data = trees)
+summary(m1)
+```
+
+```{r}
+tidy(m1, conf.int = TRUE)
+glance(m1)
+```
+
+```{r}
+#| label: fig-fit
+#| fig-cap: "Linear fit of volume on girth"
+ggplot(trees, aes(Girth, Volume)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_minimal()
+```
+
+## Checking assumptions
+
+```{r}
+#| label: fig-diagnostics
+#| fig-cap: "Regression diagnostics"
+par(mfrow = c(2, 2))
+plot(m1)
+```
+
+::: callout-note
+## Exercise 1
+
+Look at the residuals-vs-fitted and scale-location plots. Is there a pattern suggesting the linear model isn't quite right for this relationship? (Hint: a tree's volume relates to girth² × height geometrically — what does that suggest about linearity?)
+:::
+
+## Correlation, regression, and design
+
+::: callout-important
+## Observational vs. experimental
+
+`trees` is **observational data** — nobody assigned girth to trees. A significant regression here tells you girth and volume are associated, not that increasing girth *causes* more volume (though biologically we have good reason to believe a causal relationship exists in this case). Contrast this with Week 7's tutorial, where treatment was **randomly assigned** — there, a significant result supports a causal claim.
+:::
+
+::: callout-note
+## Exercise 2
+
+Fit `lm(Height ~ Girth, data = trees)`. Is the relationship as strong as `Volume ~ Girth`? Report the R² for both models and explain what R² means in your own words.
+:::
+
+::: callout-note
+## Exercise 3
+
+Design a *experiment* (not observational study) that could test whether a fertilizer treatment causally increases tree girth. What would you randomize, what would you measure, and what regression or ANOVA model would you fit to the resulting data?
+:::
+
+## Wrap-up
+
+Keep this file — the exercises here feed directly into this week's
+[assignment](../assignments/week09-assignment.qmd).

@@ -1,0 +1,15 @@
+{
+  "hash": "d4612f272669a21bf2f108171b535f3c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 13 Assignment\"\nsubtitle: \"Mixed-effects models II\"\nformat: typst\n---\n\n\n\nRender this file to PDF and submit both the `.qmd` and the rendered `.pdf`, along with your Data Safari submission, via Canvas before Week 14's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\n**Note:** This week also includes your final [Data Safari exercise](week13-data-safari.qmd) — a separate, short assignment. Both are due at the same time.\n\n## Part 1: Random slopes\n\nUsing this week's tutorial's `field_data` and models:\n\n1.  Compare `m_mixed` (random intercept only) and `m_slopes` (random slope) with `anova()`.\n\n\n\n::: {.cell}\n\n:::\n\n\n\nDoes the random-slopes model fit significantly better? <!--# Include your answer below -->\n\n2.  In 2–3 sentences: what would it mean, biologically, if the treatment effect really did vary meaningfully from site to site? <!--# Include your answer below -->\n\n## Part 2: Crossed vs. nested\n\nFor each scenario, write the `lmer()` random-effects structure you'd use, and explain whether it's crossed, nested, or a mix of both: <!--# Include your answers below -->\n\n1.  Blood samples taken from 4 individual animals, each sampled at 3 time points.\n2.  Soil cores taken from 5 plots nested within 3 sites, with plots physically distinct per site.\n3.  Behavioral observations made by one of 3 observers, where each observer records data at every one of 6 field sites.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

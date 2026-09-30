@@ -1,0 +1,33 @@
+---
+title: "Project Part 3: Statistical Modeling"
+subtitle: "Graduate students only (BIOL 5860)"
+format: typst
+---
+
+The third of four checkpoint deliverables for the graduate project. Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas by the end of Week 13. See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+
+## 1. Model
+
+Fit the statistical model or test that matches your design (revisit your plan from Project Part 1 — update it here if your thinking has changed, and say why).
+
+```{r}
+
+```
+
+## 2. Assumptions and diagnostics
+
+Check the assumptions relevant to your model (residual diagnostics, equal variance, overdispersion, or whatever applies) the way we've practiced throughout the course.
+
+```{r}
+
+```
+
+Do the diagnostics look acceptable? If not, what did you do about it (transformation, a different model, a nonparametric alternative)? <!--# Include your answer below -->
+
+## 3. Results
+
+Report your results in a results-section style summary: effect sizes, test statistics, degrees of freedom, p-values, and confidence intervals where relevant. <!--# Include your answer below -->
+
+## 4. Interpretation
+
+In 3–5 sentences, interpret your results in the context of your original research question from Part 1. What do they mean biologically, and do they support or refute your hypotheses? <!--# Include your answer below -->

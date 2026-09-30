@@ -1,0 +1,17 @@
+{
+  "hash": "c1e044755b039c64be08795d6caaf0c6",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 1 Tutorial: Getting R Running\"\nsubtitle: \"Wednesday tutorial · reinforces Monday's lecture on setup and why design matters\"\ntoc: true\n---\n\n\n\n## Goals\n\n- Confirm R, RStudio, and Quarto are installed and working\n- Get comfortable with the RStudio panes and project workflow\n- Write and run your first few lines of R\n\n## Installation check\n\nRun this chunk. If it errors, come to office hours or post on Canvas\nfor install help — don't struggle with this alone before Week 2.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nr_version <- R.version.string\nr_version\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"R version 4.3.3 (2024-02-29)\"\n```\n\n\n:::\n\n```{.r .cell-code}\nlibrary(tidyverse)\n```\n:::\n\n\n\n## File types you'll see in this course\n\n| Extension | What it is |\n|---|---|\n| `.R` | Plain R script |\n| `.qmd` | Quarto document (code + prose, like this file) |\n| `.Rproj` | RStudio project file — keeps file paths relative |\n| `.csv` / `.xlsx` | Tabular data |\n| `.html` / `.pdf` | Rendered output from a `.qmd` |\n\n## Your first R\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# Assignment\nwing_length <- c(23.1, 25.4, 22.8, 26.0, 24.3)\n\n# Basic functions\nmean(wing_length)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 24.32\n```\n\n\n:::\n\n```{.r .cell-code}\nsd(wing_length)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 1.395349\n```\n\n\n:::\n\n```{.r .cell-code}\nlength(wing_length)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 5\n```\n\n\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# Indexing\nwing_length[1]\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 23.1\n```\n\n\n:::\n\n```{.r .cell-code}\nwing_length[wing_length > 24]\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 25.4 26.0 24.3\n```\n\n\n:::\n:::\n\n\n\n## Your first plot\n\nA small reward for getting everything installed:\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ntibble(wing_length) |>\n  ggplot(aes(wing_length)) +\n  geom_histogram(binwidth = 1, fill = \"steelblue\", color = \"white\") +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![A first look at some simulated wing lengths](week01-tutorial_files/figure-html/fig-first-plot-1.png){#fig-first-plot width=672}\n:::\n:::\n\n\n\n## Exercises\n\n::: {.callout-note}\n## Exercise 1\nCreate a vector `body_mass` with 5 values of your choosing (grams).\nCompute its mean, standard deviation, and range using built-in\nfunctions (don't hardcode the answers).\n:::\n\n::: {.callout-note}\n## Exercise 2\nIn a sentence or two: why might a biologist care about *designing*\nan experiment carefully, rather than just collecting data and running\na statistical test afterward? There's no single right answer — this\nis meant to get you thinking ahead of Week 5.\n:::\n\n## Wrap-up\n\nKeep this file — the exercises here feed directly into this week's\n[assignment](../assignments/week01-assignment.qmd). Next week we go\nmuch further into R syntax and start wrangling real data.\n",
+    "supporting": [
+      "week01-tutorial_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

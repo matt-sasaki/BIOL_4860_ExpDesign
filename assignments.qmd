@@ -1,0 +1,44 @@
+---
+title: "Assignments"
+toc: true
+---
+
+Over the semester you'll complete a range of assignments designed to build on the lecture material. Each one starts life as a **Quarto** (`.qmd`) template — download it from the [Schedule](schedule.qmd) page, fill in your answers and code directly in the file, then render it. Quarto compiles it straight to **PDF** via Typst (bundled with Quarto — no separate LaTeX install needed). Submit both the completed `.qmd` and the rendered `.pdf` via Canvas.
+
+Each week follows the same rhythm: a Monday lecture, a Wednesday hands-on tutorial, and a problem set due before the following Monday. See the [Schedule](schedule.qmd) for links to every week's specific slides, tutorial, and assignment files — click an assignment's name (e.g. "PS1") to download its blank `.qmd` template.
+
+::: callout-important
+## Late policy
+
+Late assignments can be submitted for credit up to **three weeks** past the deadline, but are docked **2% per day late** (weekends included).
+:::
+
+## Problem sets
+
+These problem sets combine conceptual questions (theory, application to hypothetical and real-world scenarios) with applied analysis of example datasets. When analyzing example data, you'll describe the methods and interpret results the way you would in a scientific publication. These assignments are **graded on completion, but questions may be recycled in quizzes.**
+
+## Data Safari exercises
+
+Four times this semester — Weeks 4, 7, 10, and 13 — you'll replicate a figure from the published literature using the publicly available data from that study and reflect on the process:
+
+- How easy was it to follow the published methods?
+- How well does your plot match the published version?
+- How would you change the paper, plot, or data to improve reproducibility?
+
+These assignments are graded on completion of a figure, clarity of the code, and quality of the reflections on the process.
+
+## Project (graduate students only)
+
+Graduate students (BIOL 5860) are required to complete a project over the course of the semester, presented in **Week 15**.
+
+The project is broken into the main analytic steps covered in the course — experimental design and planned hypothesis testing, data carpentry and exploration, statistical modeling, and visualization. Ideally you'll use your own research data, though data from the published literature is also acceptable. Quarto files detailing each of these major steps will be due throughout the semester, with the expectation that the final presentation will cover the entirety of the process.
+
+| Checkpoint | Due by end of |
+|----|----|
+| [Part 1: Experimental design and planned hypothesis testing](assignments/project-01-design-and-hypotheses.qmd) | Week 7 |
+| [Part 2: Data carpentry and exploration](assignments/project-02-data-carpentry.qmd) | Week 10 |
+| [Part 3: Statistical modeling](assignments/project-03-statistical-modeling.qmd) | Week 13 |
+| [Part 4: Visualization](assignments/project-04-visualization.qmd) | Week 14 |
+| Final presentation (entire process) | Week 15 |
+
+See the [Schedule](schedule.qmd#graduate-project-milestones-biol-5860-only) for downloadable templates and PDF previews of each checkpoint.

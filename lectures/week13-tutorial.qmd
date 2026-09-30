@@ -1,0 +1,89 @@
+---
+title: "Week 13 Tutorial: Mixed-Effects Models II"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture on random slopes and crossed/nested designs"
+toc: true
+---
+
+## Goals
+
+- Fit and interpret a random-slopes model
+- Distinguish crossed vs. nested random effects
+
+## Setup
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(lme4)
+library(lmerTest)
+```
+
+We'll reuse the simulated `field_data` from Week 12's tutorial.
+
+```{r}
+set.seed(21)
+n_sites <- 8
+n_per_site <- 6
+
+field_data <- tibble(site = factor(rep(1:n_sites, each = n_per_site))) |>
+  mutate(
+    site_effect = rep(rnorm(n_sites, 0, 3), each = n_per_site),
+    treatment = rep(rep(c("Control", "Treated"), n_per_site / 2), n_sites),
+    response = 10 + ifelse(treatment == "Treated", 2, 0) +
+      site_effect + rnorm(n(), 0, 1.5)
+  )
+
+m_mixed <- lmer(response ~ treatment + (1 | site), data = field_data)
+```
+
+## Random slopes
+
+Sometimes the treatment effect itself varies by site, not just the
+baseline.
+
+```{r}
+m_slopes <- lmer(response ~ treatment + (treatment | site), data = field_data)
+summary(m_slopes)
+```
+
+::: {.callout-note}
+## Exercise 1
+Compare `m_mixed` and `m_slopes` with `anova(m_mixed, m_slopes)` (this
+refits with ML automatically). Does allowing the treatment effect to
+vary by site improve the fit significantly here? Would you expect it
+to, given how `field_data` was simulated?
+:::
+
+## Crossed vs. nested random effects
+
+- **Nested**: each level of one factor only occurs within one level
+  of another (e.g., `plot` within `site` — plot 1 at Site A is a
+  different physical plot than plot 1 at Site B). Write as
+  `(1 | site/plot)`.
+- **Crossed**: levels of one factor occur across multiple levels of
+  another (e.g., the same `observer` measures animals at multiple
+  `site`s). Write as `(1 | site) + (1 | observer)`.
+
+::: {.callout-note}
+## Exercise 2
+You measure lizard body condition at 5 sites, with 3 plots per site
+(plots are physically distinct per site), and each plot is visited by
+one of 2 rotating observers who each work across multiple sites.
+Write the `lmer()` random-effects structure you'd use, and explain in
+one sentence why each grouping factor is crossed or nested.
+:::
+
+::: {.callout-note}
+## Exercise 3
+Look back at Week 5's tutorial on blocking. A randomized block design
+and a mixed model with `(1 | block)` are closely related ideas — both
+treat block-to-block variation as a nuisance to control for rather
+than a treatment to test. In 2–3 sentences, explain the connection in
+your own words.
+:::
+
+## Wrap-up
+
+Keep this file — the exercises here feed directly into this week's
+[assignment](../assignments/week13-assignment.qmd), which also
+includes a [Data Safari exercise](../assignments/week13-data-safari.qmd).

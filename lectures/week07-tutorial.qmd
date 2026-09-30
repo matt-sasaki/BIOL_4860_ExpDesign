@@ -1,0 +1,88 @@
+---
+title: "Week 7 Tutorial: T-Tests and ANOVA"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture on hypothesis testing"
+toc: true
+---
+
+## Goals
+
+-   Choose between a *t*-test and ANOVA based on the number of groups
+-   Fit both in R and check their assumptions
+-   Connect the test back to the design question: how many groups, how many replicates, what's the experimental unit?
+
+## Setup
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(car)      # Levene's test
+library(emmeans)  # post-hoc comparisons
+```
+
+## Two groups: the t-test
+
+```{r}
+data(sleep)  # built-in: extra sleep hours under two drugs
+sleep
+```
+
+```{r}
+t.test(extra ~ group, data = sleep)
+```
+
+::: callout-note
+## Exercise 1
+
+Is this a paired or unpaired design? (Hint: look at the `ID` column — hours from the same patient appear under both drugs.) Re-run the test with `paired = TRUE` and compare the p-value to the unpaired version. Which is more appropriate here, and why?
+:::
+
+## Three or more groups: one-way ANOVA
+
+```{r}
+data(PlantGrowth)
+m1 <- aov(weight ~ group, data = PlantGrowth)
+summary(m1)
+```
+
+```{r}
+#| label: fig-diagnostics
+#| fig-cap: "Residual diagnostics for the PlantGrowth ANOVA"
+par(mfrow = c(1, 2))
+plot(m1, which = c(1, 2))
+```
+
+```{r}
+leveneTest(weight ~ group, data = PlantGrowth)
+```
+
+```{r}
+emm <- emmeans(m1, ~ group)
+pairs(emm, adjust = "tukey")
+```
+
+::: callout-note
+## Exercise 2
+
+Report the ANOVA result (F, df, p) in one sentence suitable for a results section, and state which pairwise comparisons (if any) are significant after Tukey correction.
+:::
+
+## From test to design
+
+A test only tells you what to do with data you already have. The *design* determines whether that data can answer your question at all.
+
+::: callout-note
+## Exercise 3
+
+You want to know whether three fertilizer doses affect tomato yield. You have access to one greenhouse with 18 pots on a single bench.
+
+a.  What is the experimental unit?
+b.  Propose a randomization scheme for assigning doses to pots.
+c.  If you suspect a light gradient across the bench, how would you change the design (see Week 5's design-principles tutorial, or preview: think about `block` as a second factor)?
+d.  Which R function/test from this lab would you use to analyze the resulting data, assuming no blocking?
+:::
+
+## Wrap-up
+
+Keep this file — the exercises here feed directly into this week's
+[assignment](../assignments/week07-assignment.qmd), which also
+includes a [Data Safari exercise](../assignments/week07-data-safari.qmd).

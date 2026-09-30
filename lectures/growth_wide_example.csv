@@ -1,0 +1,13 @@
+plant_id,treatment,height_wk1,height_wk2,height_wk3
+1,Control,11.4,11.9,21.8
+2,Control,9.4,13.6,17.1
+3,Control,10.4,13.8,17.5
+4,Control,10.6,15,14.5
+5,Control,10.4,13.6,18.9
+6,Control,9.9,10,16.7
+7,Fertilizer,11.5,10.3,18.9
+8,Fertilizer,9.9,16,19.4
+9,Fertilizer,12,13.5,20.1
+10,Fertilizer,9.9,11.3,16.8
+11,Fertilizer,11.3,13.7,19
+12,Fertilizer,12.3,15.8,14.6

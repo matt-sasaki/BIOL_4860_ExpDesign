@@ -1,0 +1,15 @@
+{
+  "hash": "bce3644b06b14db68b56ffe3bdb78315",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 11 Assignment\"\nsubtitle: \"Logistic regression and other GLMs\"\nformat: typst\n---\n\n\n\nRender this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 12's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\n## Part 1: Conceptual\n\nFor each outcome, name the outcome type and the model you'd use (`lm`, logistic `glm`, or Poisson/negative-binomial `glm`): <!--# Include your answers below -->\n\n1.  Clutch size (number of eggs laid)\n2.  Whether a plant flowers this season (yes/no)\n3.  Leaf area in cm²\n4.  Number of ticks found on an individual host\n\n## Part 2: Applied\n\nUsing this week's tutorial's simulated `seedlings` data (or re-simulate it with a different `set.seed()`):\n\n1.  Fit `glm(survived ~ light, family = binomial)`.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n2.  Exponentiate the `light` coefficient and interpret it as an odds ratio, in a sentence a non-statistician biologist would understand.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n<!--# Include your interpretation below -->\n\n3.  Using the simulated `counts` data, fit the Poisson model and check for overdispersion (residual deviance vs. residual df).\n\n\n\n::: {.cell}\n\n:::\n\n\n\nIs overdispersion a concern here? <!--# Include your answer below -->\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

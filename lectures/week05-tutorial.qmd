@@ -1,0 +1,98 @@
+---
+title: "Week 5 Tutorial: Randomization, Replication, and Blocking"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture on design principles"
+toc: true
+---
+
+## Goals
+
+- Distinguish true replicates from pseudoreplicates
+- Simulate a randomized block design in R
+- See how blocking can reduce residual variance
+
+## Warm-up discussion
+
+::: {.callout-note}
+## Exercise 1: Spot the pseudoreplication
+A student measures leaf area on 40 leaves taken from a single tree
+per treatment (2 trees total, one per treatment) and treats each leaf
+as an independent replicate. What is the true experimental unit here?
+What would you recommend instead?
+:::
+
+## Simulating a randomized complete block design
+
+Suppose greenhouse bench position affects plant growth independent of
+treatment. A randomized block design assigns each treatment once per
+bench (block), so bench-to-bench variation can be separated from
+treatment effects.
+
+```{r}
+#| label: setup
+library(tidyverse)
+set.seed(1)
+```
+
+```{r}
+#| label: simulate-rcbd
+n_blocks <- 6
+treatments <- c("Control", "Low_N", "High_N")
+
+design <- expand_grid(block = factor(1:n_blocks), treatment = treatments)
+
+block_effect <- rnorm(n_blocks, mean = 0, sd = 3)
+names(block_effect) <- levels(design$block)
+
+design <- design |>
+  mutate(
+    trt_effect = case_when(
+      treatment == "Control" ~ 0,
+      treatment == "Low_N"   ~ 2,
+      treatment == "High_N"  ~ 5
+    ),
+    growth = 20 + trt_effect + block_effect[as.character(block)] +
+      rnorm(n(), 0, 1.5)
+  )
+
+design
+```
+
+```{r}
+#| label: fig-rcbd
+#| fig-cap: "Simulated growth by treatment, colored by block"
+ggplot(design, aes(treatment, growth, color = block, group = block)) +
+  geom_point(size = 2) +
+  geom_line(alpha = 0.4) +
+  theme_minimal()
+```
+
+## Compare a naive vs. blocked model
+
+```{r}
+m_naive  <- aov(growth ~ treatment, data = design)
+m_blocked <- aov(growth ~ treatment + block, data = design)
+
+summary(m_naive)
+summary(m_blocked)
+```
+
+::: {.callout-note}
+## Exercise 2
+Compare the residual (within-group) mean square between the two
+models. What happened to it once `block` was added, and why? How
+does this affect your ability to detect the treatment effect?
+:::
+
+::: {.callout-note}
+## Exercise 3
+Re-run the simulation with `block_effect` set to have `sd = 0.5`
+instead of `3`. Does blocking still help as much? What does this tell
+you about when blocking is worth the added design complexity?
+:::
+
+## Wrap-up
+
+Keep this file — the exercises here feed directly into this week's
+[assignment](../assignments/week05-assignment.qmd). Next week we
+practice recognizing these same design principles in published
+studies.

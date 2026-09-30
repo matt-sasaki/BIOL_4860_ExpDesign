@@ -1,0 +1,55 @@
+---
+title: "Week 2 Assignment"
+subtitle: "R fundamentals and data wrangling"
+format: typst
+---
+
+Complete this after Wednesday's tutorial. Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 3's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+
+## Part 1: Functions and control flow
+
+1.  Write a function `classify_mass(x, threshold)` that returns `"heavy"` if `x > threshold` and `"light"` otherwise (default `threshold = 20`).
+
+```{r}
+
+```
+
+2.  Create a `body_mass` vector with 6 values of your choosing and apply your function to it with `sapply()`.
+
+```{r}
+
+```
+
+3.  Combine `body_mass` with a `species` vector (your choosing) into a tibble, and compute the mean mass per species.
+
+```{r}
+
+```
+
+## Part 2: Data wrangling
+
+Using the `ChickWeight` built-in dataset (`data(ChickWeight)`):
+
+1.  `glimpse()` and `summary()` the data.
+
+```{r}
+
+```
+
+What are the columns, and what type is each? <!--# Include your answer below -->
+
+2.  Filter to just `Diet == 1` and compute the mean `weight` at each `Time` point.
+
+```{r}
+
+```
+
+3.  The data are already in long format (one row per chick per time point). Use `pivot_wider()` to reshape it so each chick is one row, with one column per time point.
+
+```{r}
+
+```
+
+What does a row represent now? <!--# Include your answer below -->
+
+4.  In 2–3 sentences: why would you want the long format for fitting a model, but the wide format might be more useful for, say, a table in a report? <!--# Include your answer below -->

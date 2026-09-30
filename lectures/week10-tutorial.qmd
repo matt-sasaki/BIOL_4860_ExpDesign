@@ -1,0 +1,94 @@
+---
+title: "Week 10 Tutorial: Multiple Regression and ANCOVA"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture on regression with multiple predictors"
+toc: true
+---
+
+## Goals
+
+-   Extend simple regression to multiple predictors
+-   Fit and interpret an ANCOVA (categorical + continuous predictor)
+-   Practice basic model comparison
+
+## Setup
+
+```{r}
+#| label: setup
+library(tidyverse)
+library(broom)
+data(trees)
+```
+
+## Multiple regression
+
+```{r}
+m1 <- lm(Volume ~ Girth + Height, data = trees)
+summary(m1)
+```
+
+```{r}
+tidy(m1, conf.int = TRUE)
+```
+
+::: callout-note
+## Exercise 1
+
+Compare this model's R² to the simple `Volume ~ Girth` model from Week 9's tutorial. Did adding `Height` meaningfully improve the fit? Use `anova(m_simple, m1)` to formally compare them (fit `m_simple` first).
+:::
+
+## ANCOVA: categorical + continuous predictor
+
+We'll simulate a dataset where plant height depends on both a continuous covariate (starting size) and a categorical treatment — a common design in biology.
+
+```{r}
+set.seed(7)
+n <- 40
+ancova_data <- tibble(
+  treatment = rep(c("Control", "Fertilizer"), each = n / 2),
+  start_height = runif(n, 5, 15),
+  final_height = 2 + 1.1 * start_height +
+    ifelse(treatment == "Fertilizer", 4, 0) +
+    rnorm(n, 0, 1.5)
+)
+```
+
+```{r}
+#| label: fig-ancova
+#| fig-cap: "Final height vs. starting height, by treatment"
+ggplot(ancova_data, aes(start_height, final_height, color = treatment)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal()
+```
+
+```{r}
+m_ancova <- lm(final_height ~ start_height + treatment, data = ancova_data)
+summary(m_ancova)
+```
+
+::: callout-note
+## Exercise 2
+
+In your own words, explain what the `treatment` coefficient represents in this model, and why controlling for `start_height` matters — what would happen to your conclusions if you ignored it and just compared `final_height` between groups with a t-test?
+:::
+
+## Checking for an interaction
+
+ANCOVA assumes the slopes are parallel across groups (no treatment-by-covariate interaction). Always check this.
+
+```{r}
+m_interaction <- lm(final_height ~ start_height * treatment, data = ancova_data)
+anova(m_ancova, m_interaction)
+```
+
+::: callout-note
+## Exercise 3
+
+Is the interaction term significant? What would it mean, biologically, if it were? Then design a scenario (2–3 sentences) — a real or hypothetical biology dataset — where you'd genuinely expect treatment effects to depend on a covariate like starting size or age.
+:::
+
+## Wrap-up
+
+Keep this file — the exercises here feed directly into this week's
+[assignment](../assignments/week10-assignment.qmd), which also
+includes a [Data Safari exercise](../assignments/week10-data-safari.qmd).

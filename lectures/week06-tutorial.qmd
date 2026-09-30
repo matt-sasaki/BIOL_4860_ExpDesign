@@ -1,0 +1,82 @@
+---
+title: "Week 6 Tutorial: Design in Practice"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture on reading designs in the published literature"
+toc: true
+---
+
+## Goals
+
+- Practice identifying the elements of an experimental design from a
+  methods section, rather than from a textbook diagram
+- Build a habit of asking the same short list of questions of any
+  paper you read
+
+## A framework for reading a methods section
+
+Whenever you read the methods of a paper, try to answer these
+questions, in this order:
+
+1. **What is the experimental unit?** The thing that was
+   independently assigned to a treatment — not necessarily the thing
+   that was measured (recall Week 5's pseudoreplication discussion).
+2. **What are the treatments/groups, and how many levels does each
+   factor have?**
+3. **How many experimental units per treatment (the replication)?**
+4. **Was assignment to treatment randomized?** If so, how — and if
+   not, is it an observational study instead?
+5. **Was there any blocking, matching, or other control for a known
+   source of variation?**
+6. **What was the response variable, and how was it measured?**
+7. **What statistical test or model did the authors use to analyze
+   it** — and does that choice match the design (matching what we
+   covered in Weeks 5 and 7 onward)?
+
+## Worked example (hypothetical)
+
+Consider a hypothetical study: researchers want to know whether a
+soil amendment increases seedling survival in a restoration
+planting. They have 40 plots across a hillside, and randomly assign
+half to receive the amendment and half to serve as controls. Survival
+is recorded after one growing season.
+
+Applying the framework:
+
+1. **Experimental unit:** the plot (not the individual seedling —
+   seedlings within a plot share soil and microclimate, so they
+   aren't independent).
+2. **Treatments:** one factor, two levels (amendment vs. control).
+3. **Replication:** 20 plots per treatment.
+4. **Randomization:** yes — amendment assigned randomly across plots.
+5. **Blocking:** none mentioned; if the hillside has a known
+   elevation gradient, that's a missed opportunity to block.
+6. **Response variable:** proportion of seedlings surviving per plot.
+7. **Analysis:** a logistic regression or a t-test on
+   arcsine-transformed proportions would both be defensible choices
+   here — this connects to Week 11's lecture on the logistic
+   alternative to `lm()`.
+
+## Exercise: find your own paper
+
+::: {.callout-note}
+## Exercise 1
+Find one primary research article in your own subfield that includes
+an experiment (not a purely observational study). Using the
+framework above, answer all seven questions for that paper's design.
+If any answer isn't clear from the methods section, say so — that's
+itself a useful finding about how clearly (or not) the study reported
+its design.
+:::
+
+::: {.callout-note}
+## Exercise 2
+Would you have designed the study differently? Propose one concrete
+change (e.g., adding a blocking factor, increasing replication,
+changing what's randomized) and explain what it would buy you.
+:::
+
+## Wrap-up
+
+This tutorial is deliberately close to this week's
+[assignment](../assignments/week06-assignment.qmd) — the assignment
+asks you to do a more polished, formally written version of exactly
+this exercise with a paper of your choosing.

@@ -1,0 +1,56 @@
+---
+title: "Hypothesis Testing I: T-Tests and ANOVA"
+subtitle: "Week 7 · BIOL 4860/5860"
+format:
+  revealjs:
+    theme: [default, ../partials/slides.scss]
+    slide-number: true
+    footer: "BIOL 4860/5860 — Experimental Design and Analysis"
+    transition: fade
+---
+
+## From design to your first test
+
+- Weeks 5–6: design principles, and finding them in the literature
+- Today: your first formal hypothesis test — connecting a design to
+  the right analysis
+
+## The simplest case: two groups
+
+- Comparing a numeric outcome between exactly two groups
+- The tool: `t.test()`
+- Paired or unpaired? Depends on your design — measurements from the
+  same subject under two conditions are **paired**
+
+## Three or more groups: ANOVA
+
+- Comparing means across 3+ groups
+- The tool: `aov()`
+- Null hypothesis: all group means are equal
+- A significant ANOVA tells you *some* group differs — not *which*
+
+## Checking assumptions
+
+- Residuals roughly normal (Q-Q plot)
+- Similar variance across groups (Levene's test, residuals-vs-fitted plot)
+- These are exactly the checks Weeks 3–4 trained you to make
+
+## After a significant ANOVA: post-hoc tests
+
+- `emmeans()` + `pairs()` for pairwise comparisons
+- Correct for multiple comparisons (Tukey) — testing many pairs
+  inflates your false-positive rate
+
+## From test back to design
+
+- A test only tells you what to do with data you already have
+- The **design** determines whether the data can answer your
+  question at all
+- Example: 3 fertilizer doses, 1 greenhouse, 18 pots — what's the
+  experimental unit? How would you randomize?
+
+## This week
+
+- **Wednesday (tutorial):** fit both tests in R, check assumptions,
+  run post-hoc comparisons
+- **Assignment + Data Safari #2:** due this week

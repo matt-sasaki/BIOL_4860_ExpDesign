@@ -1,0 +1,161 @@
+---
+title: "Week 2 Tutorial: R Fundamentals and Data Wrangling"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture on R syntax and importing/tidying data"
+toc: true
+---
+
+## Goals
+
+- Practice core R syntax: functions, control flow, data frames
+- Import data from `.csv` and inspect it before doing anything else
+- Practice core `dplyr` verbs and reshape data with `pivot_longer()`/`pivot_wider()`
+
+## Setup
+
+```{r}
+#| label: setup
+library(tidyverse)
+```
+
+## Part 1: R fundamentals
+
+### Functions and control flow
+
+```{r}
+wing_length <- c(23.1, 25.4, 22.8, 26.0, 24.3)
+species <- c("A", "A", "B", "B", "B")
+
+classify_size <- function(x, threshold = 24) {
+  if (x > threshold) {
+    "large"
+  } else {
+    "small"
+  }
+}
+
+sapply(wing_length, classify_size)
+```
+
+```{r}
+# A simple loop (you'll rarely need this once you know vectorized ops,
+# but it's worth understanding)
+for (i in seq_along(wing_length)) {
+  cat(species[i], "-", wing_length[i], "\n")
+}
+```
+
+### Data frames
+
+```{r}
+birds <- tibble(species, wing_length)
+birds
+
+birds |>
+  group_by(species) |>
+  summarise(mean_wing = mean(wing_length), n = n())
+```
+
+::: {.callout-note}
+## Exercise 1
+Write a function `classify_mass(x, threshold)` analogous to
+`classify_size()` above, returning `"heavy"` or `"light"`. Then create
+a `body_mass` vector with 5 values and apply your function to it with
+`sapply()`.
+:::
+
+## Part 2: Data wrangling
+
+### Import and preview
+
+We'll simulate writing out and reading back a small dataset, since
+you won't always start with your own `.csv`. In your own work,
+replace this with `read_csv("data/your_file.csv")`.
+
+```{r}
+set.seed(42)
+growth_wide <- tibble(
+  plant_id = 1:12,
+  treatment = rep(c("Control", "Fertilizer"), each = 6),
+  height_wk1 = round(rnorm(12, 10, 1), 1),
+  height_wk2 = round(rnorm(12, 14, 1.5), 1),
+  height_wk3 = round(rnorm(12, 18, 2), 1)
+)
+
+write_csv(growth_wide, "growth_wide_example.csv")
+growth_wide <- read_csv("growth_wide_example.csv")
+```
+
+```{r}
+glimpse(growth_wide)
+summary(growth_wide)
+```
+
+### Core dplyr verbs
+
+```{r}
+growth_wide |>
+  filter(treatment == "Fertilizer") |>
+  select(plant_id, height_wk3) |>
+  arrange(desc(height_wk3))
+```
+
+```{r}
+growth_wide |>
+  mutate(growth_wk1_to_wk3 = height_wk3 - height_wk1) |>
+  group_by(treatment) |>
+  summarise(mean_growth = mean(growth_wk1_to_wk3), .groups = "drop")
+```
+
+### Tidy data: wide → long
+
+Most statistical models in R expect **long/tidy** data — one row per
+observation, not one row per subject with repeated-measure columns.
+
+```{r}
+growth_long <- growth_wide |>
+  pivot_longer(
+    cols = starts_with("height_wk"),
+    names_to = "week",
+    names_prefix = "height_wk",
+    values_to = "height"
+  ) |>
+  mutate(week = as.integer(week))
+
+growth_long
+```
+
+```{r}
+#| label: fig-growth
+#| fig-cap: "Plant height over time by treatment"
+ggplot(growth_long, aes(week, height, group = plant_id, color = treatment)) +
+  geom_line(alpha = 0.5) +
+  geom_point() +
+  theme_minimal()
+```
+
+### Long → wide
+
+```{r}
+growth_long |>
+  pivot_wider(names_from = week, values_from = height, names_prefix = "wk_")
+```
+
+::: {.callout-note}
+## Exercise 2
+Add a column `total_growth` to `growth_wide` (week 3 height minus
+week 1 height) and identify the plant with the largest total growth
+in each treatment group, using `slice_max()`.
+:::
+
+::: {.callout-note}
+## Exercise 3
+Why does it matter, for later statistical modeling, whether your data
+are in wide or long format? Answer in 2–3 sentences, referencing the
+concept of the experimental/observational unit.
+:::
+
+## Wrap-up
+
+Keep this file — the exercises here feed directly into this week's
+[assignment](../assignments/week02-assignment.qmd). Next week we
+start exploring and visualizing data in earnest.

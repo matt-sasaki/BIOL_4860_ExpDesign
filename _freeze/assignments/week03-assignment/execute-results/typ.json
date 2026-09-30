@@ -1,0 +1,15 @@
+{
+  "hash": "c17cd4a4cfb49cd0fdf918e5433ed178",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 3 Assignment\"\nsubtitle: \"Exploring distributions\"\nformat: typst\n---\n\n\n\nRender this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 4's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\nUsing the built-in `chickwts` dataset (`data(chickwts)`) — note this is a different dataset from `ChickWeight`.\n\n1.  Make a histogram of `weight`, choosing a bin width you think shows the shape well.\n\n\n\n::: {.cell}\n\n:::\n\n\n\nExplain your bin-width choice in one sentence. <!--# Include your answer below -->\n\n2.  Make a boxplot of `weight` by `feed`.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n3.  For each `feed` group, compute the mean, standard deviation, and the mean–median gap (as in this week's tutorial).\n\n\n\n::: {.cell}\n\n:::\n\n\n\nWhich group(s) look most skewed? <!--# Include your answer below -->\n\n4.  Based on what you see, would you be comfortable assuming roughly equal variance across all `feed` groups? Why or why not? (There's no need to run a formal test yet — just describe what the plots and numbers suggest.) <!--# Include your answer below -->\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

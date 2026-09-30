@@ -1,0 +1,17 @@
+{
+  "hash": "1a1809cf56c3adea728ff0e4be335c4f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Week 4 Tutorial: Visualizing Relationships\"\nsubtitle: \"Wednesday tutorial · reinforces Monday's lecture on relationships and group comparisons\"\ntoc: true\n---\n\n\n\n## Goals\n\n- Visualize relationships between two or more variables\n- Use faceting to compare patterns across groups\n- Choose plot types deliberately, not by habit\n\n## Setup\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\ndata(iris)\niris <- as_tibble(iris)\n```\n:::\n\n\n\n## Two numeric variables: relationships\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(iris, aes(Sepal.Length, Petal.Length, color = Species)) +\n  geom_point(alpha = 0.7) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![Sepal length vs. petal length](week04-tutorial_files/figure-html/fig-scatter-1.png){#fig-scatter width=672}\n:::\n:::\n\n\n\n## Many variables: faceting\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(iris, aes(Sepal.Length, Sepal.Width)) +\n  geom_point() +\n  facet_wrap(~Species) +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![Sepal length vs. width, faceted by species](week04-tutorial_files/figure-html/fig-facet-1.png){#fig-facet width=672}\n:::\n:::\n\n\n\n## Choosing a plot deliberately\n\nA quick decision guide, roughly in order of how often you'll reach\nfor it in this course:\n\n| You have... | Reach for... |\n|---|---|\n| One numeric variable | Histogram or density plot |\n| One numeric + one categorical | Boxplot or jittered points |\n| Two numeric variables | Scatterplot (+ trend line) |\n| A relationship that differs by group | Scatterplot colored by group, or `facet_wrap()` |\n| A variable over time, per individual | Line plot grouped by individual ID |\n\n## Exercises\n\n::: {.callout-note}\n## Exercise 1\nUsing `ChickWeight`, plot `weight` vs. `Time` with one line per chick\n(`geom_line()`, grouped by `Chick`), colored by `Diet`. What pattern\ndo you see?\n:::\n\n::: {.callout-note}\n## Exercise 2\nPick one plot from this week or last week's tutorial and rewrite it\nwith better axis labels, a descriptive title, and a\ncolorblind-friendly palette (`scale_color_viridis_d()` /\n`scale_fill_viridis_d()`).\n:::\n\n## Wrap-up\n\nKeep this file — the exercises here feed directly into this week's\n[assignment](../assignments/week04-assignment.qmd), which also\nincludes this course's first\n[Data Safari exercise](../assignments/week04-data-safari.qmd).\n",
+    "supporting": [
+      "week04-tutorial_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

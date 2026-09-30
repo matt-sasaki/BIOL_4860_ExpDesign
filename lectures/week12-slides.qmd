@@ -1,0 +1,59 @@
+---
+title: "Accounting for Non-Independence: Mixed-Effects Models I"
+subtitle: "Week 12 · BIOL 4860/5860"
+format:
+  revealjs:
+    theme: [default, ../partials/slides.scss]
+    slide-number: true
+    footer: "BIOL 4860/5860 — Experimental Design and Analysis"
+    transition: fade
+---
+
+## A problem we've flagged since Week 5
+
+- Pseudoreplication: measurements within the same site/subject/plot
+  aren't independent
+- Ignoring this inflates your effective sample size and false-positive rate
+- Today: a proper tool for handling it, instead of just avoiding it
+
+## Random vs. fixed effects
+
+- **Fixed effect**: a variable whose specific levels you care about
+  (e.g., treatment)
+- **Random effect**: a grouping variable representing a sample from a
+  larger population of possible groups (e.g., site, subject)
+
+## The random-intercept model
+
+- `lmer(response ~ treatment + (1 | site), data = ...)`
+- Lets each site have its own baseline, while estimating one shared
+  treatment effect
+- Standard errors on fixed effects usually get **larger** and more
+  honest once you do this correctly
+
+## Why not just add `site` as a fixed effect?
+
+- You could — but then you're estimating a separate parameter for
+  every site, and can't generalize beyond the specific sites you
+  sampled
+- A random effect treats site as a sample from a broader population,
+  which is usually what you actually want to say
+
+## Connecting back to blocking
+
+- A randomized block design (Week 5) and `(1 | block)` are close
+  cousins — both treat block-to-block variation as a nuisance to
+  control for, not a treatment to test
+- Mixed models generalize this idea beyond simple block designs
+
+## A practical limit
+
+- Random effects need enough groups to estimate their variance
+  reliably — as a rule of thumb, 5–10 groups minimum
+- With very few groups, consider a fixed effect instead
+
+## This week
+
+- **Wednesday (tutorial):** fit a random-intercept model, compare to
+  a naive `lm()`
+- **Assignment:** due this week
