@@ -1,6 +1,7 @@
 ---
-title: "Project Part 4: Visualization"
+title: "Project Checkpoint Part 4: Visualization"
 subtitle: "Graduate students only (BIOL 5860)"
+author: PUT YOUR NAME HERE
 format: typst
 ---
 

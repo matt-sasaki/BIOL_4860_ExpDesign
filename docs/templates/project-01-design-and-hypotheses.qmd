@@ -1,18 +1,19 @@
 ---
-title: "Project Part 1: Experimental Design and Planned Hypothesis Testing"
-subtitle: "Graduate students only (BIOL 5860)"
+title: "Project Checkpoint Part 1: Experimental Design and Planned Hypothesis Testing"
+subtitle: "Graduate students only (BIOL.5860)"
+author: PUT YOUR NAME HERE
 format: typst
 ---
 
-This is the first of four checkpoint deliverables for the graduate project (see the [Assignments overview](../assignments.qmd#project-graduate-students-only)). Use your own research data if at all possible; data from the published literature is also acceptable if you don't yet have your own. Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas by the end of Week 7. See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+This is the first of four checkpoint deliverables for the graduate project (see the [Assignments overview](../assignments.qmd#project-graduate-students-only)). Use your own research data if at all possible (discuss options with Dr. Sasaki if you're planning on using data from the published literature). Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas by the end of Week 7. See the [syllabus](../syllabus.qmd#assignments) for the late policy.
 
 ## 1. Research question and system
 
-Describe the biological system and the question you're investigating. What gap or uncertainty does this address? <!--# Include your answer below -->
+Describe the biological system and the question you're investigating. What gap or uncertainty does this address? Aim for 1-2 paragraphs, covering the background needed for a generalist audience to understand the question you're trying to answer. <!--# Include your answer below -->
 
 ## 2. Hypotheses
 
-State your null and alternative hypotheses in plain language, and, where applicable, in terms of a testable statistical prediction (e.g., "mean X differs between groups," "Y increases with X"). <!--# Include your answer below -->
+State your null and alternative hypotheses. Be sure this hypothesis is framed as a testable statistical prediction (e.g., "mean X differs between groups," "Y increases with X"). <!--# Include your answer below -->
 
 ## 3. Design
 
@@ -30,4 +31,4 @@ Using the seven-question framework from Weeks 5–6:
 
 ## 4. Planned analysis
 
-Based on the design above and what you've learned so far this semester, which statistical test or model do you plan to use, and why? It's fine if this changes later — this is a plan, not a commitment. <!--# Include your answer below -->
+Based on the design above, how are you testing your hypothesis? Feel free to include specific tests/approaches you're planning, but a simple statement about which groups are being compared is fine for now. It's also fine if this changes later — this is a plan, not a commitment. <!--# Include your answer below -->
