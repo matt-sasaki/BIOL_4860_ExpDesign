@@ -1,0 +1,17 @@
+{
+  "hash": "1fed1007338d55647569d74aa7754872",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Project Checkpoint Part 4: Visualization\"\nsubtitle: \"Graduate students only (BIOL 5860)\"\nauthor: PUT YOUR NAME HERE\nformat: typst\n---\n\nThis is the last of four checkpoint deliverables for the graduate project, due just before final presentations. Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas by the end of Week 14. See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\n## 1. Key figure(s)\n\nProduce one or two publication-quality figures that best communicate your main result(s). Apply the plot-choice and design principles from Weeks 3–4 (appropriate geometry, clear labels, a colorblind-friendly palette if color is used). You must use ggPlot or base R to create this plot.\n\nFurther, using the chunk options, write a caption each figure as you would for a manuscript — describe what's shown, define any abbreviations or symbols, and state the key takeaway.\n\nIf you're creating multiple figures, use one chunk per figure.\n\n\n::: {.cell}\n\n:::\n\n\n## 2. Design justification\n\nIn a couple sentences, explain the choices you made (plot type, color, layout) and why they suit your data and audience better than the alternatives you considered. What are the features you're trying to emphasize in the plot? <!--# Include your answer below -->\n\n## 3. Looking ahead to your presentation\n\nIn 2–3 sentences, outline how you'll walk through the full process — design, data, modeling, and this visualization — in your Week 15 presentation. What is your narrative arc? <!--# Include your answer below -->\n",
+    "supporting": [
+      "project-04-visualization_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

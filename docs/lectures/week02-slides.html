@@ -7,8 +7,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.10.18">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <title>Experimental Design &amp; Analysis in Biology – R Fundamentals and Data Wrangling</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,13 +20,10 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
+    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: 1.5em;}
-    div.column{flex: auto;}
-    @media screen {
-    div.columns{gap: min(4vw, 1.5em);}
-    div.column{overflow-x: auto;}
-    }
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -226,9 +223,9 @@
 <li>Anything you do more than twice should probably be a function</li>
 <li>A function takes input, does something, returns output</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a>classify_size <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">threshold =</span> <span class="dv">24</span>) {</span>
-<span id="cb1-2"><a aria-label="2"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> threshold) <span class="st">"large"</span> <span class="cf">else</span> <span class="st">"small"</span></span>
-<span id="cb1-3"><a aria-label="3"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>classify_size <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">threshold =</span> <span class="dv">24</span>) {</span>
+<span id="cb1-2"><a></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> threshold) <span class="st">"large"</span> <span class="cf">else</span> <span class="st">"small"</span></span>
+<span id="cb1-3"><a></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="data-frames-tibbles" class="slide level2">
 <h2>Data frames (tibbles)</h2>
@@ -237,9 +234,9 @@
 <li>Each row = one observation; each column = one variable</li>
 <li><code>group_by()</code> + <code>summarise()</code> is the single most useful pattern you’ll learn</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>birds <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a aria-label="3"></a>  <span class="fu">summarise</span>(<span class="at">mean_wing =</span> <span class="fu">mean</span>(wing_length))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>birds <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a></a>  <span class="fu">summarise</span>(<span class="at">mean_wing =</span> <span class="fu">mean</span>(wing_length))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="importing-real-data" class="slide level2">
 <h2>Importing real data</h2>
@@ -272,9 +269,9 @@
 </section>
 <section id="wide-long-wide" class="slide level2">
 <h2>Wide → long → wide</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>growth_long <span class="ot">&lt;-</span> growth_wide <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a aria-label="2"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"height_wk"</span>),</span>
-<span id="cb3-3"><a aria-label="3"></a>               <span class="at">names_to =</span> <span class="st">"week"</span>, <span class="at">values_to =</span> <span class="st">"height"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>growth_long <span class="ot">&lt;-</span> growth_wide <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"height_wk"</span>),</span>
+<span id="cb3-3"><a></a>               <span class="at">names_to =</span> <span class="st">"week"</span>, <span class="at">values_to =</span> <span class="st">"height"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>pivot_wider()</code> does the reverse when you need it</li>
 </ul>

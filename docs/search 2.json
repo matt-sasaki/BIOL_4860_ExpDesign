@@ -1,0 +1,1514 @@
+[
+  {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Note\n\n\n\nUniversity of Massachusetts Lowell · 3 Credits · Spring 2027 Monday & Wednesday, 2:00–3:15 PM, Olsen Hall TBD\nInstructor: Dr. Matthew Sasaki · Office: Olsen 205 · Office Hours: TBD, or by appointment · Email: Matthew_Sasaki@uml.edu\nPrerequisites: Experimental Methods in Biology (BIOL.2330L) or graduate standing"
+  },
+  {
+    "objectID": "syllabus.html#course-description",
+    "href": "syllabus.html#course-description",
+    "title": "Syllabus",
+    "section": "Course description",
+    "text": "Course description\nExperiments are one of the main ways in which we expand our understanding of biology. In this hands-on course, students will develop fundamental skills in experimental design, data analysis, and visualization. Students will also learn how to use the coding language R to analyze and visualize data. By the end of the course, students will be able to describe experimental designs and analytic techniques (t-tests, ANOVA, linear regression, mixed effects models, etc.) commonly used in biological research. Students will also be able to evaluate the appropriateness of different experimental designs in biological research, design experiments to answer specific questions, and work through analytic workflows of medium complexity.\nThe course runs in three modules — see the full Schedule for week-by-week topics:\n\nR Crash Course (Weeks 1–3) — introduction to R, data management best practices, and the typical analytic workflow for experimental work in the life sciences.\nData Exploration (Weeks 4–6) — working with data in R, focused on summarizing and visualizing key characteristics of biological data.\nStatistical Analysis and Interpretation (Weeks 7–14) — commonly used experimental designs and the statistical techniques typically used to analyze biological data, pairing fundamental principles with applied practice each week."
+  },
+  {
+    "objectID": "syllabus.html#learning-objectives",
+    "href": "syllabus.html#learning-objectives",
+    "title": "Syllabus",
+    "section": "Learning objectives",
+    "text": "Learning objectives\nAt the end of this course, students will be able to:\n\nApply principles of data management and project organization to facilitate the analysis of experimental data.\nUse the R coding language to import, clean, analyze, and visualize experimental data.\nProduce robust exploratory data analyses and visualizations for commonly encountered experimental designs.\nDiscuss the appropriateness of different statistical tests for various experimental designs.\nInterpret the results of key statistical analyses."
+  },
+  {
+    "objectID": "syllabus.html#required-course-materials",
+    "href": "syllabus.html#required-course-materials",
+    "title": "Syllabus",
+    "section": "Required course materials",
+    "text": "Required course materials\nThe primary requirement is access to Canvas and a UML email account. This course will also require R for Data Science, version 2, by Wickham, Çetinkaya-Rundel, and Grolemund. You’re welcome to purchase a hard copy, but the text is also freely available online. Personal computers are welcome, and access to the computer lab will also be provided."
+  },
+  {
+    "objectID": "syllabus.html#communication",
+    "href": "syllabus.html#communication",
+    "title": "Syllabus",
+    "section": "Communication",
+    "text": "Communication\nAll communication related to this course will come from the instructor’s UML email or via Canvas announcements — please check both regularly. Emails sent to the instructor must come from your UML email account. For emails sent during the week, expect a response within 24 hours; if it’s been more than 48 hours, a gentle reminder is welcome. Responses may be slower for emails sent over the weekend (Friday evening – Sunday evening) — please wait until Tuesday to follow up in that case."
+  },
+  {
+    "objectID": "syllabus.html#attendance-engagement-and-classroom-etiquette",
+    "href": "syllabus.html#attendance-engagement-and-classroom-etiquette",
+    "title": "Syllabus",
+    "section": "Attendance, engagement, and classroom etiquette",
+    "text": "Attendance, engagement, and classroom etiquette\nAttendance — Lectures begin promptly at the start of the scheduled class period; arrive on time and stay for the full period. Regular attendance is one of the most important contributors to student success. If you need to miss class, contact Dr. Sasaki as soon as possible to discuss how to stay on track.\nIllness — Please don’t attend class if you’re ill. Communicate your absence as soon as possible. You’ll have an opportunity to make up missed assignments, but it’s your responsibility to keep pace with lecture material.\nEngagement and participation — Expect in-class questions, group discussions, and activities meant to build critical thinking and understanding. Reaching the correct answer matters, but the process of getting there matters more. All students are expected to be respectful and engaged — asking questions, taking good notes, giving full effort in group work, and paying attention when others are sharing.\nCell phones and laptops — Fine for notes or in-class activities; please avoid non-course use or distracting others. Persistent misuse may result in being asked to leave. Recording lectures without prior consent or a registered accommodation is not allowed."
+  },
+  {
+    "objectID": "syllabus.html#academic-integrity-policy",
+    "href": "syllabus.html#academic-integrity-policy",
+    "title": "Syllabus",
+    "section": "Academic integrity policy",
+    "text": "Academic integrity policy\nAll students are advised of the university policy on academic integrity. Academic honesty is essential to maintaining trust in the learning environment and ensuring all students are evaluated fairly. Students are responsible for the honest completion and representation of their own work; academic dishonesty in any form (plagiarism, cheating, fabrication, facilitating dishonesty) will not be tolerated and may result in disciplinary action, up to and including failure of the assignment or course, and referral to the provost’s office.\n\n\n\n\n\n\nImportantAI statement\n\n\n\nYou are strongly discouraged from the use of AI and LLM agents (e.g., ChatGPT, Claude, etc.) in this course. While some uses — like proofreading written assignments or brainstorming ideas — can be beneficial, an increasingly common observation is that use of AI tools when learning new techniques (and especially when learning to code) blocks the development of skills and understanding.\nAny AI usage must be documented in detail, and students must be able to describe how generated output was modified to reflect their own thoughts and perspective. Students are encouraged to think about (1) the consequences of AI usage for their own learning and for the environment, and (2) how AI use affects the development of critical thinking skills. As a general rule, assignments generated entirely or primarily by AI will not be accepted. In the event of suspected AI-generated responses, Dr. Sasaki may choose to check student understanding via a conversation and discuss how the answer was arrived at. After an initial warning, however, violations of this policy will be considered academic misconduct, subject to the university’s Academic Integrity procedures."
+  },
+  {
+    "objectID": "syllabus.html#assignments",
+    "href": "syllabus.html#assignments",
+    "title": "Syllabus",
+    "section": "Assignments",
+    "text": "Assignments\nOver the course of the semester, you will complete a range of Assignments meant to develop your understanding of key points from the lecture materials. These assignments fall into three general categories:\nProblem Sets – Students will complete weekly coding problem sets, questions about concepts and theory with application in both hypothetical and real-world scenarios. When analyzing example data sets, students will be asked to describe the methods and interpret results, as might be required when preparing scientific publications. Problem sets are graded on completion.\nData Safari Exercises – In these exercises, students are tasked to replicate a figure from the published literature using the publicly available data from that study. Students will also be asked to reflect on the process for each exercise: How easy was it to follow the published methods? How well does your plot match the published version? How would you change the paper, plot, or data to improve reproducibility?\nProjects – In addition to the above components, graduate students are required to complete a project over the course of the semester. These projects will be broken down into the main analytic steps we will cover in this course – experimental design and planned hypothesis testing, data carpentry and exploration, statistical modelling, and visualization. Ideally, students will complete this project using their own data, but data obtained from the published literature is also acceptable. Projects will be presented at the end of the semester.\nAssignments are distributed as Quarto (.qmd) templates, downloadable from the Schedule. Complete them in the template, then render to PDF (via Typst, bundled with Quarto) and submit both the .qmd and the .pdf. Given the pacing and breadth of this course, it is important to turn work in on time. Late assignments can be turned in for credit up to three weeks following the deadline, but will be docked 2% for every day past the due date (weekends included)."
+  },
+  {
+    "objectID": "syllabus.html#exams-and-quizzes",
+    "href": "syllabus.html#exams-and-quizzes",
+    "title": "Syllabus",
+    "section": "Exams and quizzes",
+    "text": "Exams and quizzes\nThere are no midterm exams for this course. Each unit includes several short, in-class, open-note quizzes to gauge understanding of key concepts."
+  },
+  {
+    "objectID": "syllabus.html#attendance-participation",
+    "href": "syllabus.html#attendance-participation",
+    "title": "Syllabus",
+    "section": "Attendance & participation",
+    "text": "Attendance & participation\nBoth regular attendance and active participation are essential given the nature of this course. Attendance is recorded using a combination of in-class check-ins/reflection assignments or data collection exercises. Participation points come from activities including (but not limited to) in-class discussions, out-of-class surveys and data collection exercises, and office hour visits."
+  },
+  {
+    "objectID": "syllabus.html#grading",
+    "href": "syllabus.html#grading",
+    "title": "Syllabus",
+    "section": "Grading",
+    "text": "Grading\nUndergraduates: Assignments 50%, Quizzes 40%, Attendance & Participation 10%.\nGraduate students: Project 50%, Assignments 25%, Quizzes 20%, Attendance & Participation 5%.\n\nUndergraduate scaleGraduate scale\n\n\n\n\n\nGrade\nPercentage\n\n\n\n\nA\n94–100\n\n\nA-\n90–93\n\n\nB+\n87–89\n\n\nB\n83–86\n\n\nB-\n80–82\n\n\nC+\n77–79\n\n\nC\n73–76\n\n\nC-\n70–72\n\n\nD\n60–69\n\n\nF\n&lt; 60\n\n\n\n\n\n\n\n\nGrade\nPercentage\n\n\n\n\nA\n94–100\n\n\nA-\n90–93\n\n\nB+\n87–89\n\n\nB\n83–86\n\n\nB-\n80–82\n\n\nC+\n76–79\n\n\nF\n&lt; 75"
+  },
+  {
+    "objectID": "syllabus.html#student-mental-health-and-well-being",
+    "href": "syllabus.html#student-mental-health-and-well-being",
+    "title": "Syllabus",
+    "section": "Student mental health and well-being",
+    "text": "Student mental health and well-being\nYour personal health and well-being are important to all of us at the university.\n\n\n\n\n\n\n\n\nService / Office\nDescription\nContact\n\n\n\n\nCounseling Services\nCrisis intervention, assessment, referrals, short-term individual counseling and group therapy\n(978) 934-6800\n\n\nUMatter2\nUniversity-wide initiative supporting mental health, including the Togetherall peer-to-peer platform\n(978) 934-6671\n\n\nCLASS Advising\nAdvising services: goal setting, course selection, SIS functions, major/minor changes, course deletions\n(978) 934-2936 · Advisement@uml.edu\n\n\nOffice of Student Life & Wellbeing\nAdvances holistic student success through health-promoting actions and campus culture\n(978) 934-4342 · Wellbeing@uml.edu"
+  },
+  {
+    "objectID": "syllabus.html#disability-services",
+    "href": "syllabus.html#disability-services",
+    "title": "Syllabus",
+    "section": "Disability services",
+    "text": "Disability services\nIf you are registered with Disability Services and require course accommodations, notify Dr. Sasaki via the Accommodate request process as soon as possible so appropriate arrangements can be made. Please connect during office hours or privately after class to discuss logistics. For more information or to register, visit the Disability Services website."
+  },
+  {
+    "objectID": "syllabus.html#university-privacy-statement",
+    "href": "syllabus.html#university-privacy-statement",
+    "title": "Syllabus",
+    "section": "University privacy statement",
+    "text": "University privacy statement\nUMass Lowell recognizes the importance of mutual trust between students and faculty. Massachusetts is a two-party consent state, meaning it is illegal to record someone without their permission. Recordings of classroom lectures are the instructor’s intellectual property; instructors may prohibit audio/video recording of their lectures unless the requesting student is registered with Disability Services and recording is an approved accommodation. Sharing or selling recordings of classroom activities, discussions, or lectures without the instructor’s permission is prohibited and may result in sanctions for academic dishonesty or referral to the dean’s or provost’s office.\n\n\n\n\n\n\nNoteCourse Schedule\n\n\n\nCourse schedule subject to change — see the Schedule page for the current, up-to-date version."
+  },
+  {
+    "objectID": "lectures/week14-tutorial.html",
+    "href": "lectures/week14-tutorial.html",
+    "title": "Week 14 Tutorial: Nonparametric Alternatives",
+    "section": "",
+    "text": "Know when parametric assumptions are too badly violated to trust\nFit common nonparametric alternatives to the tests from this course\nGet a brief look at permutation tests as a general-purpose backup"
+  },
+  {
+    "objectID": "lectures/week14-tutorial.html#goals",
+    "href": "lectures/week14-tutorial.html#goals",
+    "title": "Week 14 Tutorial: Nonparametric Alternatives",
+    "section": "",
+    "text": "Know when parametric assumptions are too badly violated to trust\nFit common nonparametric alternatives to the tests from this course\nGet a brief look at permutation tests as a general-purpose backup"
+  },
+  {
+    "objectID": "lectures/week14-tutorial.html#setup",
+    "href": "lectures/week14-tutorial.html#setup",
+    "title": "Week 14 Tutorial: Nonparametric Alternatives",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "lectures/week14-tutorial.html#when-parametric-tests-break-down",
+    "href": "lectures/week14-tutorial.html#when-parametric-tests-break-down",
+    "title": "Week 14 Tutorial: Nonparametric Alternatives",
+    "section": "When parametric tests break down",
+    "text": "When parametric tests break down\nRecall from Labs 4–6: t-tests, ANOVA, and regression all assume roughly normal, equal-variance residuals. When sample sizes are small and that assumption clearly fails (e.g., strongly skewed data, extreme outliers you can’t justify removing), nonparametric methods based on ranks are a safer choice."
+  },
+  {
+    "objectID": "lectures/week14-tutorial.html#wilcoxon-rank-sum-test-nonparametric-alternative-to-the-t-test",
+    "href": "lectures/week14-tutorial.html#wilcoxon-rank-sum-test-nonparametric-alternative-to-the-t-test",
+    "title": "Week 14 Tutorial: Nonparametric Alternatives",
+    "section": "Wilcoxon rank-sum test (nonparametric alternative to the t-test)",
+    "text": "Wilcoxon rank-sum test (nonparametric alternative to the t-test)\n\ndata(sleep)\nwilcox.test(extra ~ group, data = sleep)\n\n\n    Wilcoxon rank sum test with continuity correction\n\ndata:  extra by group\nW = 25.5, p-value = 0.06933\nalternative hypothesis: true location shift is not equal to 0\n\n\nCompare to the parametric version from Week 7’s tutorial:\n\nt.test(extra ~ group, data = sleep)\n\n\n    Welch Two Sample t-test\n\ndata:  extra by group\nt = -1.8608, df = 17.776, p-value = 0.07939\nalternative hypothesis: true difference in means between group 1 and group 2 is not equal to 0\n95 percent confidence interval:\n -3.3654832  0.2054832\nsample estimates:\nmean in group 1 mean in group 2 \n           0.75            2.33 \n\n\n\n\n\n\n\n\nNoteExercise 1\n\n\n\nThe conclusions here happen to roughly agree. In general, why might a Wilcoxon test and a t-test disagree on a dataset with a small sample and a couple of extreme outliers? Which test is more sensitive to those outliers, and why?"
+  },
+  {
+    "objectID": "lectures/week14-tutorial.html#kruskal-wallis-test-nonparametric-alternative-to-one-way-anova",
+    "href": "lectures/week14-tutorial.html#kruskal-wallis-test-nonparametric-alternative-to-one-way-anova",
+    "title": "Week 14 Tutorial: Nonparametric Alternatives",
+    "section": "Kruskal-Wallis test (nonparametric alternative to one-way ANOVA)",
+    "text": "Kruskal-Wallis test (nonparametric alternative to one-way ANOVA)\n\ndata(PlantGrowth)\nkruskal.test(weight ~ group, data = PlantGrowth)\n\n\n    Kruskal-Wallis rank sum test\n\ndata:  weight by group\nKruskal-Wallis chi-squared = 7.9882, df = 2, p-value = 0.01842\n\n\n\n# Parametric version from Week 7's tutorial, for comparison\nsummary(aov(weight ~ group, data = PlantGrowth))\n\n            Df Sum Sq Mean Sq F value Pr(&gt;F)  \ngroup        2  3.766  1.8832   4.846 0.0159 *\nResiduals   27 10.492  0.3886                 \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1"
+  },
+  {
+    "objectID": "lectures/week14-tutorial.html#spearman-correlation-nonparametric-alternative-to-pearson",
+    "href": "lectures/week14-tutorial.html#spearman-correlation-nonparametric-alternative-to-pearson",
+    "title": "Week 14 Tutorial: Nonparametric Alternatives",
+    "section": "Spearman correlation (nonparametric alternative to Pearson)",
+    "text": "Spearman correlation (nonparametric alternative to Pearson)\n\ndata(trees)\ncor.test(trees$Girth, trees$Volume, method = \"spearman\")\n\n\n    Spearman's rank correlation rho\n\ndata:  trees$Girth and trees$Volume\nS = 224.61, p-value &lt; 2.2e-16\nalternative hypothesis: true rho is not equal to 0\nsample estimates:\n      rho \n0.9547151 \n\ncor.test(trees$Girth, trees$Volume, method = \"pearson\")\n\n\n    Pearson's product-moment correlation\n\ndata:  trees$Girth and trees$Volume\nt = 20.478, df = 29, p-value &lt; 2.2e-16\nalternative hypothesis: true correlation is not equal to 0\n95 percent confidence interval:\n 0.9322519 0.9841887\nsample estimates:\n      cor \n0.9671194 \n\n\n\n\n\n\n\n\nNoteExercise 2\n\n\n\nSpearman correlation is based on ranks rather than raw values. Name one situation where Spearman would be clearly preferable to Pearson (think about the shape of the relationship, not just outliers)."
+  },
+  {
+    "objectID": "lectures/week14-tutorial.html#a-general-purpose-backup-permutation-test",
+    "href": "lectures/week14-tutorial.html#a-general-purpose-backup-permutation-test",
+    "title": "Week 14 Tutorial: Nonparametric Alternatives",
+    "section": "A general-purpose backup: permutation test",
+    "text": "A general-purpose backup: permutation test\nWhen no standard nonparametric test fits your design, a permutation test lets you build a null distribution directly from your data.\n\nset.seed(99)\nobserved_diff &lt;- PlantGrowth |&gt;\n  filter(group %in% c(\"trt1\", \"trt2\")) |&gt;\n  group_by(group) |&gt;\n  summarise(m = mean(weight)) |&gt;\n  summarise(diff = diff(m)) |&gt;\n  pull(diff)\n\nperm_data &lt;- PlantGrowth |&gt; filter(group %in% c(\"trt1\", \"trt2\"))\n\nn_perm &lt;- 2000\nperm_diffs &lt;- replicate(n_perm, {\n  shuffled &lt;- sample(perm_data$group)\n  perm_data |&gt;\n    mutate(group = shuffled) |&gt;\n    group_by(group) |&gt;\n    summarise(m = mean(weight), .groups = \"drop\") |&gt;\n    summarise(diff = diff(m)) |&gt;\n    pull(diff)\n})\n\np_value &lt;- mean(abs(perm_diffs) &gt;= abs(observed_diff))\np_value\n\n[1] 0.008\n\n\n\ntibble(diff = perm_diffs) |&gt;\n  ggplot(aes(diff)) +\n  geom_histogram(bins = 40, fill = \"steelblue\", alpha = 0.7) +\n  geom_vline(xintercept = observed_diff, color = \"red\", linewidth = 1) +\n  labs(x = \"Permuted mean difference (trt2 - trt1)\",\n       title = \"Red line = observed difference\") +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Permutation null distribution with observed difference\n\n\n\n\n\n\n\n\n\n\n\nNoteExercise 3\n\n\n\nCompare the permutation p-value to a standard t.test() p-value on the same two groups (trt1 vs. trt2 in PlantGrowth). Are they similar? In your own words, explain what the permutation test is doing conceptually — what does “shuffling group” simulate under the null hypothesis?"
+  },
+  {
+    "objectID": "lectures/week14-tutorial.html#wrap-up",
+    "href": "lectures/week14-tutorial.html#wrap-up",
+    "title": "Week 14 Tutorial: Nonparametric Alternatives",
+    "section": "Wrap-up",
+    "text": "Wrap-up\nKeep this file — the exercises here feed directly into this week’s assignment. This is the last tutorial before final project presentations — see Assignments for the final project deliverable."
+  },
+  {
+    "objectID": "lectures/week13-tutorial.html",
+    "href": "lectures/week13-tutorial.html",
+    "title": "Week 13 Tutorial: Mixed-Effects Models II",
+    "section": "",
+    "text": "Fit and interpret a random-slopes model\nDistinguish crossed vs. nested random effects"
+  },
+  {
+    "objectID": "lectures/week13-tutorial.html#goals",
+    "href": "lectures/week13-tutorial.html#goals",
+    "title": "Week 13 Tutorial: Mixed-Effects Models II",
+    "section": "",
+    "text": "Fit and interpret a random-slopes model\nDistinguish crossed vs. nested random effects"
+  },
+  {
+    "objectID": "lectures/week13-tutorial.html#setup",
+    "href": "lectures/week13-tutorial.html#setup",
+    "title": "Week 13 Tutorial: Mixed-Effects Models II",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(tidyverse)\nlibrary(lme4)\nlibrary(lmerTest)\n\nWe’ll reuse the simulated field_data from Week 12’s tutorial.\n\nset.seed(21)\nn_sites &lt;- 8\nn_per_site &lt;- 6\n\nfield_data &lt;- tibble(site = factor(rep(1:n_sites, each = n_per_site))) |&gt;\n  mutate(\n    site_effect = rep(rnorm(n_sites, 0, 3), each = n_per_site),\n    treatment = rep(rep(c(\"Control\", \"Treated\"), n_per_site / 2), n_sites),\n    response = 10 + ifelse(treatment == \"Treated\", 2, 0) +\n      site_effect + rnorm(n(), 0, 1.5)\n  )\n\nm_mixed &lt;- lmer(response ~ treatment + (1 | site), data = field_data)"
+  },
+  {
+    "objectID": "lectures/week13-tutorial.html#random-slopes",
+    "href": "lectures/week13-tutorial.html#random-slopes",
+    "title": "Week 13 Tutorial: Mixed-Effects Models II",
+    "section": "Random slopes",
+    "text": "Random slopes\nSometimes the treatment effect itself varies by site, not just the baseline.\n\nm_slopes &lt;- lmer(response ~ treatment + (treatment | site), data = field_data)\nsummary(m_slopes)\n\nLinear mixed model fit by REML. t-tests use Satterthwaite's method [\nlmerModLmerTest]\nFormula: response ~ treatment + (treatment | site)\n   Data: field_data\n\nREML criterion at convergence: 198.7\n\nScaled residuals: \n     Min       1Q   Median       3Q      Max \n-2.10602 -0.60783  0.05589  0.69783  1.57176 \n\nRandom effects:\n Groups   Name             Variance Std.Dev. Corr \n site     (Intercept)      19.02658 4.3619        \n          treatmentTreated  0.01367 0.1169   -1.00\n Residual                   2.08461 1.4438        \nNumber of obs: 48, groups:  site, 8\n\nFixed effects:\n                 Estimate Std. Error      df t value Pr(&gt;|t|)    \n(Intercept)       10.8638     1.5701  7.0018   6.919 0.000227 ***\ntreatmentTreated   2.1175     0.4188 35.7727   5.056 1.29e-05 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nCorrelation of Fixed Effects:\n            (Intr)\ntretmntTrtd -0.229\noptimizer (nloptwrap) convergence code: 0 (OK)\nboundary (singular) fit: see help('isSingular')\n\n\n\n\n\n\n\n\nNoteExercise 1\n\n\n\nCompare m_mixed and m_slopes with anova(m_mixed, m_slopes) (this refits with ML automatically). Does allowing the treatment effect to vary by site improve the fit significantly here? Would you expect it to, given how field_data was simulated?"
+  },
+  {
+    "objectID": "lectures/week13-tutorial.html#crossed-vs.-nested-random-effects",
+    "href": "lectures/week13-tutorial.html#crossed-vs.-nested-random-effects",
+    "title": "Week 13 Tutorial: Mixed-Effects Models II",
+    "section": "Crossed vs. nested random effects",
+    "text": "Crossed vs. nested random effects\n\nNested: each level of one factor only occurs within one level of another (e.g., plot within site — plot 1 at Site A is a different physical plot than plot 1 at Site B). Write as (1 | site/plot).\nCrossed: levels of one factor occur across multiple levels of another (e.g., the same observer measures animals at multiple sites). Write as (1 | site) + (1 | observer).\n\n\n\n\n\n\n\nNoteExercise 2\n\n\n\nYou measure lizard body condition at 5 sites, with 3 plots per site (plots are physically distinct per site), and each plot is visited by one of 2 rotating observers who each work across multiple sites. Write the lmer() random-effects structure you’d use, and explain in one sentence why each grouping factor is crossed or nested.\n\n\n\n\n\n\n\n\nNoteExercise 3\n\n\n\nLook back at Week 5’s tutorial on blocking. A randomized block design and a mixed model with (1 | block) are closely related ideas — both treat block-to-block variation as a nuisance to control for rather than a treatment to test. In 2–3 sentences, explain the connection in your own words."
+  },
+  {
+    "objectID": "lectures/week13-tutorial.html#wrap-up",
+    "href": "lectures/week13-tutorial.html#wrap-up",
+    "title": "Week 13 Tutorial: Mixed-Effects Models II",
+    "section": "Wrap-up",
+    "text": "Wrap-up\nKeep this file — the exercises here feed directly into this week’s assignment, which also includes a Data Safari exercise."
+  },
+  {
+    "objectID": "lectures/week12-tutorial.html",
+    "href": "lectures/week12-tutorial.html",
+    "title": "Week 12 Tutorial: Mixed-Effects Models I",
+    "section": "",
+    "text": "Recognize non-independence from repeated measures or nested sampling\nFit a random-intercept mixed model with lme4"
+  },
+  {
+    "objectID": "lectures/week12-tutorial.html#goals",
+    "href": "lectures/week12-tutorial.html#goals",
+    "title": "Week 12 Tutorial: Mixed-Effects Models I",
+    "section": "",
+    "text": "Recognize non-independence from repeated measures or nested sampling\nFit a random-intercept mixed model with lme4"
+  },
+  {
+    "objectID": "lectures/week12-tutorial.html#setup",
+    "href": "lectures/week12-tutorial.html#setup",
+    "title": "Week 12 Tutorial: Mixed-Effects Models I",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(tidyverse)\nlibrary(lme4)\nlibrary(lmerTest)  # adds p-values to lmer output"
+  },
+  {
+    "objectID": "lectures/week12-tutorial.html#why-not-just-use-lm-pseudoreplication-revisited",
+    "href": "lectures/week12-tutorial.html#why-not-just-use-lm-pseudoreplication-revisited",
+    "title": "Week 12 Tutorial: Mixed-Effects Models I",
+    "section": "Why not just use lm()? Pseudoreplication revisited",
+    "text": "Why not just use lm()? Pseudoreplication revisited\n\nset.seed(21)\nn_sites &lt;- 8\nn_per_site &lt;- 6\n\nfield_data &lt;- tibble(site = factor(rep(1:n_sites, each = n_per_site))) |&gt;\n  mutate(\n    site_effect = rep(rnorm(n_sites, 0, 3), each = n_per_site),\n    treatment = rep(rep(c(\"Control\", \"Treated\"), n_per_site / 2), n_sites),\n    response = 10 + ifelse(treatment == \"Treated\", 2, 0) +\n      site_effect + rnorm(n(), 0, 1.5)\n  )\n\nMeasurements within the same site aren’t independent — they share a site effect. Ignoring that (treating all 48 rows as independent) inflates your effective sample size and your false-positive rate.\n\nm_naive &lt;- lm(response ~ treatment, data = field_data)\nsummary(m_naive)$coefficients\n\n                  Estimate Std. Error   t value     Pr(&gt;|t|)\n(Intercept)      10.863814  0.8896883 12.210810 4.910819e-16\ntreatmentTreated  2.117502  1.2582092  1.682949 9.916133e-02"
+  },
+  {
+    "objectID": "lectures/week12-tutorial.html#random-intercept-mixed-model",
+    "href": "lectures/week12-tutorial.html#random-intercept-mixed-model",
+    "title": "Week 12 Tutorial: Mixed-Effects Models I",
+    "section": "Random-intercept mixed model",
+    "text": "Random-intercept mixed model\n\nm_mixed &lt;- lmer(response ~ treatment + (1 | site), data = field_data)\nsummary(m_mixed)\n\nLinear mixed model fit by REML. t-tests use Satterthwaite's method [\nlmerModLmerTest]\nFormula: response ~ treatment + (1 | site)\n   Data: field_data\n\nREML criterion at convergence: 198.7\n\nScaled residuals: \n     Min       1Q   Median       3Q      Max \n-2.05402 -0.64012  0.04745  0.69543  1.53333 \n\nRandom effects:\n Groups   Name        Variance Std.Dev.\n site     (Intercept) 18.519   4.303   \n Residual              2.088   1.445   \nNumber of obs: 48, groups:  site, 8\n\nFixed effects:\n                 Estimate Std. Error      df t value Pr(&gt;|t|)    \n(Intercept)       10.8638     1.5498  7.2602   7.010 0.000177 ***\ntreatmentTreated   2.1175     0.4172 39.0000   5.076 9.85e-06 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nCorrelation of Fixed Effects:\n            (Intr)\ntretmntTrtd -0.135\n\n\n\n\n\n\n\n\nNoteExercise 1\n\n\n\nCompare the standard error on the treatment coefficient between m_naive and m_mixed. Which is larger, and why does that make sense given that site is a real source of shared variation?\n\n\n\nggplot(field_data, aes(treatment, response, color = site)) +\n  geom_jitter(width = 0.1) +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Response by treatment, colored by site\n\n\n\n\n\n\n\n\n\n\n\nNoteExercise 2\n\n\n\nRefit m_mixed on a version of field_data with n_sites &lt;- 3 instead of 8 (re-run the simulation with that change). Does the mixed model still make sense with so few sites? (This is a preview of a real limitation of mixed models — they need enough groups to estimate the random-effect variance reliably, roughly 5–10 as a rule of thumb.)"
+  },
+  {
+    "objectID": "lectures/week12-tutorial.html#wrap-up",
+    "href": "lectures/week12-tutorial.html#wrap-up",
+    "title": "Week 12 Tutorial: Mixed-Effects Models I",
+    "section": "Wrap-up",
+    "text": "Wrap-up\nKeep this file — the exercises here feed directly into this week’s assignment. Next week’s tutorial continues with random slopes and crossed vs. nested designs."
+  },
+  {
+    "objectID": "lectures/week11-tutorial.html",
+    "href": "lectures/week11-tutorial.html",
+    "title": "Week 11 Tutorial: Logistic Regression and GLMs",
+    "section": "",
+    "text": "Recognize when a binary or count outcome needs something other than lm()\nFit and interpret a logistic regression (glm with a binomial family)\nGet a first look at Poisson regression for count data"
+  },
+  {
+    "objectID": "lectures/week11-tutorial.html#goals",
+    "href": "lectures/week11-tutorial.html#goals",
+    "title": "Week 11 Tutorial: Logistic Regression and GLMs",
+    "section": "",
+    "text": "Recognize when a binary or count outcome needs something other than lm()\nFit and interpret a logistic regression (glm with a binomial family)\nGet a first look at Poisson regression for count data"
+  },
+  {
+    "objectID": "lectures/week11-tutorial.html#setup",
+    "href": "lectures/week11-tutorial.html#setup",
+    "title": "Week 11 Tutorial: Logistic Regression and GLMs",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(tidyverse)\nlibrary(broom)"
+  },
+  {
+    "objectID": "lectures/week11-tutorial.html#why-not-just-use-lm",
+    "href": "lectures/week11-tutorial.html#why-not-just-use-lm",
+    "title": "Week 11 Tutorial: Logistic Regression and GLMs",
+    "section": "Why not just use lm()?",
+    "text": "Why not just use lm()?\nA linear model fit to a 0/1 outcome can predict probabilities below 0 or above 1, and violates the constant-variance assumption near the extremes. Logistic regression models the log-odds of the outcome instead."
+  },
+  {
+    "objectID": "lectures/week11-tutorial.html#logistic-regression-survival-example",
+    "href": "lectures/week11-tutorial.html#logistic-regression-survival-example",
+    "title": "Week 11 Tutorial: Logistic Regression and GLMs",
+    "section": "Logistic regression: survival example",
+    "text": "Logistic regression: survival example\n\nset.seed(11)\nn &lt;- 100\nseedlings &lt;- tibble(\n  light = runif(n, 0, 100),  # % canopy light\n  survived = rbinom(n, 1, plogis(-3 + 0.06 * light))\n)\n\n\nggplot(seedlings, aes(light, survived)) +\n  geom_jitter(height = 0.05, alpha = 0.5) +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Raw survival outcomes vs. light availability\n\n\n\n\n\n\nm1 &lt;- glm(survived ~ light, data = seedlings, family = binomial)\nsummary(m1)\n\n\nCall:\nglm(formula = survived ~ light, family = binomial, data = seedlings)\n\nCoefficients:\n            Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept) -4.17017    0.79104  -5.272 1.35e-07 ***\nlight        0.08332    0.01608   5.181 2.21e-07 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 133.750  on 99  degrees of freedom\nResidual deviance:  79.882  on 98  degrees of freedom\nAIC: 83.882\n\nNumber of Fisher Scoring iterations: 5\n\n\n\ntidy(m1, conf.int = TRUE, exponentiate = TRUE)  # odds ratios\n\n# A tibble: 2 x 7\n  term        estimate std.error statistic     p.value conf.low conf.high\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)   0.0154    0.791      -5.27 0.000000135  0.00266    0.0616\n2 light         1.09      0.0161      5.18 0.000000221  1.06       1.13  \n\n\n\nggplot(seedlings, aes(light, survived)) +\n  geom_jitter(height = 0.05, alpha = 0.4) +\n  geom_smooth(method = \"glm\", method.args = list(family = \"binomial\"), se = TRUE) +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 2: Fitted probability of survival by light level\n\n\n\n\n\n\n\n\n\n\n\nNoteExercise 1\n\n\n\nInterpret the exponentiated light coefficient (the odds ratio) in one sentence a non-statistician biologist would understand."
+  },
+  {
+    "objectID": "lectures/week11-tutorial.html#poisson-regression-a-first-look-at-count-data",
+    "href": "lectures/week11-tutorial.html#poisson-regression-a-first-look-at-count-data",
+    "title": "Week 11 Tutorial: Logistic Regression and GLMs",
+    "section": "Poisson regression: a first look at count data",
+    "text": "Poisson regression: a first look at count data\n\nset.seed(12)\ncounts &lt;- tibble(\n  density = runif(60, 1, 10),   # plants per m^2\n  seed_count = rpois(60, lambda = exp(0.5 + 0.15 * density))\n)\n\nm2 &lt;- glm(seed_count ~ density, data = counts, family = poisson)\nsummary(m2)\n\n\nCall:\nglm(formula = seed_count ~ density, family = poisson, data = counts)\n\nCoefficients:\n            Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept)  0.43512    0.17806   2.444   0.0145 *  \ndensity      0.16351    0.02621   6.238 4.44e-10 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for poisson family taken to be 1)\n\n    Null deviance: 81.263  on 59  degrees of freedom\nResidual deviance: 40.970  on 58  degrees of freedom\nAIC: 230.66\n\nNumber of Fisher Scoring iterations: 4\n\n\n\n\n\n\n\n\nNoteExercise 2\n\n\n\nFit m2 and report whether density significantly predicts seed_count. Then check for overdispersion by comparing the residual deviance to the residual degrees of freedom (summary(m2) prints both) — a ratio well above 1 suggests you’d want a quasi-Poisson or negative binomial model instead. Is that the case here?"
+  },
+  {
+    "objectID": "lectures/week11-tutorial.html#choosing-a-model-by-outcome-type",
+    "href": "lectures/week11-tutorial.html#choosing-a-model-by-outcome-type",
+    "title": "Week 11 Tutorial: Logistic Regression and GLMs",
+    "section": "Choosing a model by outcome type",
+    "text": "Choosing a model by outcome type\n\n\n\n\n\n\nNoteExercise 3\n\n\n\nFor each scenario below, name the outcome type and the model you’d reach for (lm, logistic glm, or Poisson/negative-binomial glm):\n\nNumber of eggs laid per clutch\nWhether a seed germinates (yes/no)\nBody mass in grams\nNumber of parasites found on an individual host"
+  },
+  {
+    "objectID": "lectures/week11-tutorial.html#wrap-up",
+    "href": "lectures/week11-tutorial.html#wrap-up",
+    "title": "Week 11 Tutorial: Logistic Regression and GLMs",
+    "section": "Wrap-up",
+    "text": "Wrap-up\nKeep this file — the exercises here feed directly into this week’s assignment."
+  },
+  {
+    "objectID": "lectures/week10-tutorial.html",
+    "href": "lectures/week10-tutorial.html",
+    "title": "Week 10 Tutorial: Multiple Regression and ANCOVA",
+    "section": "",
+    "text": "Extend simple regression to multiple predictors\nFit and interpret an ANCOVA (categorical + continuous predictor)\nPractice basic model comparison"
+  },
+  {
+    "objectID": "lectures/week10-tutorial.html#goals",
+    "href": "lectures/week10-tutorial.html#goals",
+    "title": "Week 10 Tutorial: Multiple Regression and ANCOVA",
+    "section": "",
+    "text": "Extend simple regression to multiple predictors\nFit and interpret an ANCOVA (categorical + continuous predictor)\nPractice basic model comparison"
+  },
+  {
+    "objectID": "lectures/week10-tutorial.html#setup",
+    "href": "lectures/week10-tutorial.html#setup",
+    "title": "Week 10 Tutorial: Multiple Regression and ANCOVA",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(tidyverse)\nlibrary(broom)\ndata(trees)"
+  },
+  {
+    "objectID": "lectures/week10-tutorial.html#multiple-regression",
+    "href": "lectures/week10-tutorial.html#multiple-regression",
+    "title": "Week 10 Tutorial: Multiple Regression and ANCOVA",
+    "section": "Multiple regression",
+    "text": "Multiple regression\n\nm1 &lt;- lm(Volume ~ Girth + Height, data = trees)\nsummary(m1)\n\n\nCall:\nlm(formula = Volume ~ Girth + Height, data = trees)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-6.4065 -2.6493 -0.2876  2.2003  8.4847 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) -57.9877     8.6382  -6.713 2.75e-07 ***\nGirth         4.7082     0.2643  17.816  &lt; 2e-16 ***\nHeight        0.3393     0.1302   2.607   0.0145 *  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.882 on 28 degrees of freedom\nMultiple R-squared:  0.948, Adjusted R-squared:  0.9442 \nF-statistic:   255 on 2 and 28 DF,  p-value: &lt; 2.2e-16\n\n\n\ntidy(m1, conf.int = TRUE)\n\n# A tibble: 3 x 7\n  term        estimate std.error statistic  p.value conf.low conf.high\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)  -58.0       8.64      -6.71 2.75e- 7 -75.7      -40.3  \n2 Girth          4.71      0.264     17.8  8.22e-17   4.17       5.25 \n3 Height         0.339     0.130      2.61 1.45e- 2   0.0726     0.606\n\n\n\n\n\n\n\n\nNoteExercise 1\n\n\n\nCompare this model’s R² to the simple Volume ~ Girth model from Week 9’s tutorial. Did adding Height meaningfully improve the fit? Use anova(m_simple, m1) to formally compare them (fit m_simple first)."
+  },
+  {
+    "objectID": "lectures/week10-tutorial.html#ancova-categorical-continuous-predictor",
+    "href": "lectures/week10-tutorial.html#ancova-categorical-continuous-predictor",
+    "title": "Week 10 Tutorial: Multiple Regression and ANCOVA",
+    "section": "ANCOVA: categorical + continuous predictor",
+    "text": "ANCOVA: categorical + continuous predictor\nWe’ll simulate a dataset where plant height depends on both a continuous covariate (starting size) and a categorical treatment — a common design in biology.\n\nset.seed(7)\nn &lt;- 40\nancova_data &lt;- tibble(\n  treatment = rep(c(\"Control\", \"Fertilizer\"), each = n / 2),\n  start_height = runif(n, 5, 15),\n  final_height = 2 + 1.1 * start_height +\n    ifelse(treatment == \"Fertilizer\", 4, 0) +\n    rnorm(n, 0, 1.5)\n)\n\n\nggplot(ancova_data, aes(start_height, final_height, color = treatment)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Final height vs. starting height, by treatment\n\n\n\n\n\n\nm_ancova &lt;- lm(final_height ~ start_height + treatment, data = ancova_data)\nsummary(m_ancova)\n\n\nCall:\nlm(formula = final_height ~ start_height + treatment, data = ancova_data)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-2.4858 -0.8144 -0.0333  0.9348  2.5330 \n\nCoefficients:\n                    Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)          1.83801    0.66225   2.775   0.0086 ** \nstart_height         1.13397    0.06569  17.263  &lt; 2e-16 ***\ntreatmentFertilizer  3.95701    0.41434   9.550 1.59e-11 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 1.266 on 37 degrees of freedom\nMultiple R-squared:  0.932, Adjusted R-squared:  0.9284 \nF-statistic: 253.7 on 2 and 37 DF,  p-value: &lt; 2.2e-16\n\n\n\n\n\n\n\n\nNoteExercise 2\n\n\n\nIn your own words, explain what the treatment coefficient represents in this model, and why controlling for start_height matters — what would happen to your conclusions if you ignored it and just compared final_height between groups with a t-test?"
+  },
+  {
+    "objectID": "lectures/week10-tutorial.html#checking-for-an-interaction",
+    "href": "lectures/week10-tutorial.html#checking-for-an-interaction",
+    "title": "Week 10 Tutorial: Multiple Regression and ANCOVA",
+    "section": "Checking for an interaction",
+    "text": "Checking for an interaction\nANCOVA assumes the slopes are parallel across groups (no treatment-by-covariate interaction). Always check this.\n\nm_interaction &lt;- lm(final_height ~ start_height * treatment, data = ancova_data)\nanova(m_ancova, m_interaction)\n\nAnalysis of Variance Table\n\nModel 1: final_height ~ start_height + treatment\nModel 2: final_height ~ start_height * treatment\n  Res.Df    RSS Df Sum of Sq      F Pr(&gt;F)\n1     37 59.331                           \n2     36 55.472  1    3.8589 2.5043 0.1223\n\n\n\n\n\n\n\n\nNoteExercise 3\n\n\n\nIs the interaction term significant? What would it mean, biologically, if it were? Then design a scenario (2–3 sentences) — a real or hypothetical biology dataset — where you’d genuinely expect treatment effects to depend on a covariate like starting size or age."
+  },
+  {
+    "objectID": "lectures/week10-tutorial.html#wrap-up",
+    "href": "lectures/week10-tutorial.html#wrap-up",
+    "title": "Week 10 Tutorial: Multiple Regression and ANCOVA",
+    "section": "Wrap-up",
+    "text": "Wrap-up\nKeep this file — the exercises here feed directly into this week’s assignment, which also includes a Data Safari exercise."
+  },
+  {
+    "objectID": "lectures/week09-tutorial.html",
+    "href": "lectures/week09-tutorial.html",
+    "title": "Week 9 Tutorial: Correlation and Linear Regression",
+    "section": "",
+    "text": "Distinguish correlation from regression, and both from causation\nFit and interpret a simple linear regression in R\nRecognize when observational data can (and can’t) stand in for an experiment"
+  },
+  {
+    "objectID": "lectures/week09-tutorial.html#goals",
+    "href": "lectures/week09-tutorial.html#goals",
+    "title": "Week 9 Tutorial: Correlation and Linear Regression",
+    "section": "",
+    "text": "Distinguish correlation from regression, and both from causation\nFit and interpret a simple linear regression in R\nRecognize when observational data can (and can’t) stand in for an experiment"
+  },
+  {
+    "objectID": "lectures/week09-tutorial.html#setup",
+    "href": "lectures/week09-tutorial.html#setup",
+    "title": "Week 9 Tutorial: Correlation and Linear Regression",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(tidyverse)\nlibrary(broom)\ndata(trees)  # built-in: girth, height, volume of felled black cherry trees"
+  },
+  {
+    "objectID": "lectures/week09-tutorial.html#correlation",
+    "href": "lectures/week09-tutorial.html#correlation",
+    "title": "Week 9 Tutorial: Correlation and Linear Regression",
+    "section": "Correlation",
+    "text": "Correlation\n\ncor(trees$Girth, trees$Volume)\n\n[1] 0.9671194\n\ncor.test(trees$Girth, trees$Volume)\n\n\n    Pearson's product-moment correlation\n\ndata:  trees$Girth and trees$Volume\nt = 20.478, df = 29, p-value &lt; 2.2e-16\nalternative hypothesis: true correlation is not equal to 0\n95 percent confidence interval:\n 0.9322519 0.9841887\nsample estimates:\n      cor \n0.9671194 \n\n\n\nggplot(trees, aes(Girth, Volume)) +\n  geom_point() +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Tree volume vs. girth"
+  },
+  {
+    "objectID": "lectures/week09-tutorial.html#simple-linear-regression",
+    "href": "lectures/week09-tutorial.html#simple-linear-regression",
+    "title": "Week 9 Tutorial: Correlation and Linear Regression",
+    "section": "Simple linear regression",
+    "text": "Simple linear regression\n\nm1 &lt;- lm(Volume ~ Girth, data = trees)\nsummary(m1)\n\n\nCall:\nlm(formula = Volume ~ Girth, data = trees)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-8.065 -3.107  0.152  3.495  9.587 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) -36.9435     3.3651  -10.98 7.62e-12 ***\nGirth         5.0659     0.2474   20.48  &lt; 2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 4.252 on 29 degrees of freedom\nMultiple R-squared:  0.9353,    Adjusted R-squared:  0.9331 \nF-statistic: 419.4 on 1 and 29 DF,  p-value: &lt; 2.2e-16\n\n\n\ntidy(m1, conf.int = TRUE)\n\n# A tibble: 2 x 7\n  term        estimate std.error statistic  p.value conf.low conf.high\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)   -36.9      3.37      -11.0 7.62e-12   -43.8     -30.1 \n2 Girth           5.07     0.247      20.5 8.64e-19     4.56      5.57\n\nglance(m1)\n\n# A tibble: 1 x 12\n  r.squared adj.r.squared sigma statistic  p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     0.935         0.933  4.25      419. 8.64e-19     1  -87.8  182.  186.\n# i 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;\n\n\n\nggplot(trees, aes(Girth, Volume)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 2: Linear fit of volume on girth"
+  },
+  {
+    "objectID": "lectures/week09-tutorial.html#checking-assumptions",
+    "href": "lectures/week09-tutorial.html#checking-assumptions",
+    "title": "Week 9 Tutorial: Correlation and Linear Regression",
+    "section": "Checking assumptions",
+    "text": "Checking assumptions\n\npar(mfrow = c(2, 2))\nplot(m1)\n\n\n\n\n\n\n\nFigure 3: Regression diagnostics\n\n\n\n\n\n\n\n\n\n\n\nNoteExercise 1\n\n\n\nLook at the residuals-vs-fitted and scale-location plots. Is there a pattern suggesting the linear model isn’t quite right for this relationship? (Hint: a tree’s volume relates to girth² × height geometrically — what does that suggest about linearity?)"
+  },
+  {
+    "objectID": "lectures/week09-tutorial.html#correlation-regression-and-design",
+    "href": "lectures/week09-tutorial.html#correlation-regression-and-design",
+    "title": "Week 9 Tutorial: Correlation and Linear Regression",
+    "section": "Correlation, regression, and design",
+    "text": "Correlation, regression, and design\n\n\n\n\n\n\nImportantObservational vs. experimental\n\n\n\ntrees is observational data — nobody assigned girth to trees. A significant regression here tells you girth and volume are associated, not that increasing girth causes more volume (though biologically we have good reason to believe a causal relationship exists in this case). Contrast this with Week 7’s tutorial, where treatment was randomly assigned — there, a significant result supports a causal claim.\n\n\n\n\n\n\n\n\nNoteExercise 2\n\n\n\nFit lm(Height ~ Girth, data = trees). Is the relationship as strong as Volume ~ Girth? Report the R² for both models and explain what R² means in your own words.\n\n\n\n\n\n\n\n\nNoteExercise 3\n\n\n\nDesign a experiment (not observational study) that could test whether a fertilizer treatment causally increases tree girth. What would you randomize, what would you measure, and what regression or ANOVA model would you fit to the resulting data?"
+  },
+  {
+    "objectID": "lectures/week09-tutorial.html#wrap-up",
+    "href": "lectures/week09-tutorial.html#wrap-up",
+    "title": "Week 9 Tutorial: Correlation and Linear Regression",
+    "section": "Wrap-up",
+    "text": "Wrap-up\nKeep this file — the exercises here feed directly into this week’s assignment."
+  },
+  {
+    "objectID": "lectures/week07-tutorial.html",
+    "href": "lectures/week07-tutorial.html",
+    "title": "Week 7 Tutorial: T-Tests and ANOVA",
+    "section": "",
+    "text": "Choose between a t-test and ANOVA based on the number of groups\nFit both in R and check their assumptions\nConnect the test back to the design question: how many groups, how many replicates, what’s the experimental unit?"
+  },
+  {
+    "objectID": "lectures/week07-tutorial.html#goals",
+    "href": "lectures/week07-tutorial.html#goals",
+    "title": "Week 7 Tutorial: T-Tests and ANOVA",
+    "section": "",
+    "text": "Choose between a t-test and ANOVA based on the number of groups\nFit both in R and check their assumptions\nConnect the test back to the design question: how many groups, how many replicates, what’s the experimental unit?"
+  },
+  {
+    "objectID": "lectures/week07-tutorial.html#setup",
+    "href": "lectures/week07-tutorial.html#setup",
+    "title": "Week 7 Tutorial: T-Tests and ANOVA",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(tidyverse)\nlibrary(car)      # Levene's test\nlibrary(emmeans)  # post-hoc comparisons"
+  },
+  {
+    "objectID": "lectures/week07-tutorial.html#two-groups-the-t-test",
+    "href": "lectures/week07-tutorial.html#two-groups-the-t-test",
+    "title": "Week 7 Tutorial: T-Tests and ANOVA",
+    "section": "Two groups: the t-test",
+    "text": "Two groups: the t-test\n\ndata(sleep)  # built-in: extra sleep hours under two drugs\nsleep\n\n   extra group ID\n1    0.7     1  1\n2   -1.6     1  2\n3   -0.2     1  3\n4   -1.2     1  4\n5   -0.1     1  5\n6    3.4     1  6\n7    3.7     1  7\n8    0.8     1  8\n9    0.0     1  9\n10   2.0     1 10\n11   1.9     2  1\n12   0.8     2  2\n13   1.1     2  3\n14   0.1     2  4\n15  -0.1     2  5\n16   4.4     2  6\n17   5.5     2  7\n18   1.6     2  8\n19   4.6     2  9\n20   3.4     2 10\n\n\n\nt.test(extra ~ group, data = sleep)\n\n\n    Welch Two Sample t-test\n\ndata:  extra by group\nt = -1.8608, df = 17.776, p-value = 0.07939\nalternative hypothesis: true difference in means between group 1 and group 2 is not equal to 0\n95 percent confidence interval:\n -3.3654832  0.2054832\nsample estimates:\nmean in group 1 mean in group 2 \n           0.75            2.33 \n\n\n\n\n\n\n\n\nNoteExercise 1\n\n\n\nIs this a paired or unpaired design? (Hint: look at the ID column — hours from the same patient appear under both drugs.) Re-run the test with paired = TRUE and compare the p-value to the unpaired version. Which is more appropriate here, and why?"
+  },
+  {
+    "objectID": "lectures/week07-tutorial.html#three-or-more-groups-one-way-anova",
+    "href": "lectures/week07-tutorial.html#three-or-more-groups-one-way-anova",
+    "title": "Week 7 Tutorial: T-Tests and ANOVA",
+    "section": "Three or more groups: one-way ANOVA",
+    "text": "Three or more groups: one-way ANOVA\n\ndata(PlantGrowth)\nm1 &lt;- aov(weight ~ group, data = PlantGrowth)\nsummary(m1)\n\n            Df Sum Sq Mean Sq F value Pr(&gt;F)  \ngroup        2  3.766  1.8832   4.846 0.0159 *\nResiduals   27 10.492  0.3886                 \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\npar(mfrow = c(1, 2))\nplot(m1, which = c(1, 2))\n\n\n\n\n\n\n\nFigure 1: Residual diagnostics for the PlantGrowth ANOVA\n\n\n\n\n\n\nleveneTest(weight ~ group, data = PlantGrowth)\n\nLevene's Test for Homogeneity of Variance (center = median)\n      Df F value Pr(&gt;F)\ngroup  2  1.1192 0.3412\n      27               \n\n\n\nemm &lt;- emmeans(m1, ~ group)\npairs(emm, adjust = \"tukey\")\n\n contrast    estimate    SE df t.ratio p.value\n ctrl - trt1    0.371 0.279 27   1.331  0.3909\n ctrl - trt2   -0.494 0.279 27  -1.772  0.1980\n trt1 - trt2   -0.865 0.279 27  -3.103  0.0120\n\nP value adjustment: tukey method for comparing a family of 3 estimates \n\n\n\n\n\n\n\n\nNoteExercise 2\n\n\n\nReport the ANOVA result (F, df, p) in one sentence suitable for a results section, and state which pairwise comparisons (if any) are significant after Tukey correction."
+  },
+  {
+    "objectID": "lectures/week07-tutorial.html#from-test-to-design",
+    "href": "lectures/week07-tutorial.html#from-test-to-design",
+    "title": "Week 7 Tutorial: T-Tests and ANOVA",
+    "section": "From test to design",
+    "text": "From test to design\nA test only tells you what to do with data you already have. The design determines whether that data can answer your question at all.\n\n\n\n\n\n\nNoteExercise 3\n\n\n\nYou want to know whether three fertilizer doses affect tomato yield. You have access to one greenhouse with 18 pots on a single bench.\n\nWhat is the experimental unit?\nPropose a randomization scheme for assigning doses to pots.\nIf you suspect a light gradient across the bench, how would you change the design (see Week 5’s design-principles tutorial, or preview: think about block as a second factor)?\nWhich R function/test from this lab would you use to analyze the resulting data, assuming no blocking?"
+  },
+  {
+    "objectID": "lectures/week07-tutorial.html#wrap-up",
+    "href": "lectures/week07-tutorial.html#wrap-up",
+    "title": "Week 7 Tutorial: T-Tests and ANOVA",
+    "section": "Wrap-up",
+    "text": "Wrap-up\nKeep this file — the exercises here feed directly into this week’s assignment, which also includes a Data Safari exercise."
+  },
+  {
+    "objectID": "lectures/week06-tutorial.html",
+    "href": "lectures/week06-tutorial.html",
+    "title": "Week 6 Tutorial: Design in Practice",
+    "section": "",
+    "text": "Practice identifying the elements of an experimental design from a methods section, rather than from a textbook diagram\nBuild a habit of asking the same short list of questions of any paper you read"
+  },
+  {
+    "objectID": "lectures/week06-tutorial.html#goals",
+    "href": "lectures/week06-tutorial.html#goals",
+    "title": "Week 6 Tutorial: Design in Practice",
+    "section": "",
+    "text": "Practice identifying the elements of an experimental design from a methods section, rather than from a textbook diagram\nBuild a habit of asking the same short list of questions of any paper you read"
+  },
+  {
+    "objectID": "lectures/week06-tutorial.html#a-framework-for-reading-a-methods-section",
+    "href": "lectures/week06-tutorial.html#a-framework-for-reading-a-methods-section",
+    "title": "Week 6 Tutorial: Design in Practice",
+    "section": "A framework for reading a methods section",
+    "text": "A framework for reading a methods section\nWhenever you read the methods of a paper, try to answer these questions, in this order:\n\nWhat is the experimental unit? The thing that was independently assigned to a treatment — not necessarily the thing that was measured (recall Week 5’s pseudoreplication discussion).\nWhat are the treatments/groups, and how many levels does each factor have?\nHow many experimental units per treatment (the replication)?\nWas assignment to treatment randomized? If so, how — and if not, is it an observational study instead?\nWas there any blocking, matching, or other control for a known source of variation?\nWhat was the response variable, and how was it measured?\nWhat statistical test or model did the authors use to analyze it — and does that choice match the design (matching what we covered in Weeks 5 and 7 onward)?"
+  },
+  {
+    "objectID": "lectures/week06-tutorial.html#worked-example-hypothetical",
+    "href": "lectures/week06-tutorial.html#worked-example-hypothetical",
+    "title": "Week 6 Tutorial: Design in Practice",
+    "section": "Worked example (hypothetical)",
+    "text": "Worked example (hypothetical)\nConsider a hypothetical study: researchers want to know whether a soil amendment increases seedling survival in a restoration planting. They have 40 plots across a hillside, and randomly assign half to receive the amendment and half to serve as controls. Survival is recorded after one growing season.\nApplying the framework:\n\nExperimental unit: the plot (not the individual seedling — seedlings within a plot share soil and microclimate, so they aren’t independent).\nTreatments: one factor, two levels (amendment vs. control).\nReplication: 20 plots per treatment.\nRandomization: yes — amendment assigned randomly across plots.\nBlocking: none mentioned; if the hillside has a known elevation gradient, that’s a missed opportunity to block.\nResponse variable: proportion of seedlings surviving per plot.\nAnalysis: a logistic regression or a t-test on arcsine-transformed proportions would both be defensible choices here — this connects to Week 11’s lecture on the logistic alternative to lm()."
+  },
+  {
+    "objectID": "lectures/week06-tutorial.html#exercise-find-your-own-paper",
+    "href": "lectures/week06-tutorial.html#exercise-find-your-own-paper",
+    "title": "Week 6 Tutorial: Design in Practice",
+    "section": "Exercise: find your own paper",
+    "text": "Exercise: find your own paper\n\n\n\n\n\n\nNoteExercise 1\n\n\n\nFind one primary research article in your own subfield that includes an experiment (not a purely observational study). Using the framework above, answer all seven questions for that paper’s design. If any answer isn’t clear from the methods section, say so — that’s itself a useful finding about how clearly (or not) the study reported its design.\n\n\n\n\n\n\n\n\nNoteExercise 2\n\n\n\nWould you have designed the study differently? Propose one concrete change (e.g., adding a blocking factor, increasing replication, changing what’s randomized) and explain what it would buy you."
+  },
+  {
+    "objectID": "lectures/week06-tutorial.html#wrap-up",
+    "href": "lectures/week06-tutorial.html#wrap-up",
+    "title": "Week 6 Tutorial: Design in Practice",
+    "section": "Wrap-up",
+    "text": "Wrap-up\nThis tutorial is deliberately close to this week’s assignment — the assignment asks you to do a more polished, formally written version of exactly this exercise with a paper of your choosing."
+  },
+  {
+    "objectID": "lectures/week05-tutorial.html",
+    "href": "lectures/week05-tutorial.html",
+    "title": "Week 5 Tutorial: Randomization, Replication, and Blocking",
+    "section": "",
+    "text": "Distinguish true replicates from pseudoreplicates\nSimulate a randomized block design in R\nSee how blocking can reduce residual variance"
+  },
+  {
+    "objectID": "lectures/week05-tutorial.html#goals",
+    "href": "lectures/week05-tutorial.html#goals",
+    "title": "Week 5 Tutorial: Randomization, Replication, and Blocking",
+    "section": "",
+    "text": "Distinguish true replicates from pseudoreplicates\nSimulate a randomized block design in R\nSee how blocking can reduce residual variance"
+  },
+  {
+    "objectID": "lectures/week05-tutorial.html#warm-up-discussion",
+    "href": "lectures/week05-tutorial.html#warm-up-discussion",
+    "title": "Week 5 Tutorial: Randomization, Replication, and Blocking",
+    "section": "Warm-up discussion",
+    "text": "Warm-up discussion\n\n\n\n\n\n\nNoteExercise 1: Spot the pseudoreplication\n\n\n\nA student measures leaf area on 40 leaves taken from a single tree per treatment (2 trees total, one per treatment) and treats each leaf as an independent replicate. What is the true experimental unit here? What would you recommend instead?"
+  },
+  {
+    "objectID": "lectures/week05-tutorial.html#simulating-a-randomized-complete-block-design",
+    "href": "lectures/week05-tutorial.html#simulating-a-randomized-complete-block-design",
+    "title": "Week 5 Tutorial: Randomization, Replication, and Blocking",
+    "section": "Simulating a randomized complete block design",
+    "text": "Simulating a randomized complete block design\nSuppose greenhouse bench position affects plant growth independent of treatment. A randomized block design assigns each treatment once per bench (block), so bench-to-bench variation can be separated from treatment effects.\n\nlibrary(tidyverse)\nset.seed(1)\n\n\nn_blocks &lt;- 6\ntreatments &lt;- c(\"Control\", \"Low_N\", \"High_N\")\n\ndesign &lt;- expand_grid(block = factor(1:n_blocks), treatment = treatments)\n\nblock_effect &lt;- rnorm(n_blocks, mean = 0, sd = 3)\nnames(block_effect) &lt;- levels(design$block)\n\ndesign &lt;- design |&gt;\n  mutate(\n    trt_effect = case_when(\n      treatment == \"Control\" ~ 0,\n      treatment == \"Low_N\"   ~ 2,\n      treatment == \"High_N\"  ~ 5\n    ),\n    growth = 20 + trt_effect + block_effect[as.character(block)] +\n      rnorm(n(), 0, 1.5)\n  )\n\ndesign\n\n# A tibble: 18 x 4\n   block treatment trt_effect growth\n   &lt;fct&gt; &lt;chr&gt;          &lt;dbl&gt;  &lt;dbl&gt;\n 1 1     Control            0   18.9\n 2 1     Low_N              2   21.2\n 3 1     High_N             5   24.0\n 4 2     Control            0   20.1\n 5 2     Low_N              2   24.8\n 6 2     High_N             5   26.1\n 7 3     Control            0   16.6\n 8 3     Low_N              2   16.2\n 9 3     High_N             5   24.2\n10 4     Control            0   24.7\n11 4     Low_N              2   26.8\n12 4     High_N             5   31.2\n13 5     Control            0   22.2\n14 5     Low_N              2   23.9\n15 5     High_N             5   27.4\n16 6     Control            0   18.7\n17 6     Low_N              2   19.7\n18 6     High_N             5   19.6\n\n\n\nggplot(design, aes(treatment, growth, color = block, group = block)) +\n  geom_point(size = 2) +\n  geom_line(alpha = 0.4) +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Simulated growth by treatment, colored by block"
+  },
+  {
+    "objectID": "lectures/week05-tutorial.html#compare-a-naive-vs.-blocked-model",
+    "href": "lectures/week05-tutorial.html#compare-a-naive-vs.-blocked-model",
+    "title": "Week 5 Tutorial: Randomization, Replication, and Blocking",
+    "section": "Compare a naive vs. blocked model",
+    "text": "Compare a naive vs. blocked model\n\nm_naive  &lt;- aov(growth ~ treatment, data = design)\nm_blocked &lt;- aov(growth ~ treatment + block, data = design)\n\nsummary(m_naive)\n\n            Df Sum Sq Mean Sq F value Pr(&gt;F)  \ntreatment    2  83.51   41.75   3.267 0.0664 .\nResiduals   15 191.71   12.78                 \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nsummary(m_blocked)\n\n            Df Sum Sq Mean Sq F value   Pr(&gt;F)    \ntreatment    2  83.51   41.75   15.48 0.000868 ***\nblock        5 164.73   32.95   12.21 0.000537 ***\nResiduals   10  26.98    2.70                     \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\n\n\n\n\n\nNoteExercise 2\n\n\n\nCompare the residual (within-group) mean square between the two models. What happened to it once block was added, and why? How does this affect your ability to detect the treatment effect?\n\n\n\n\n\n\n\n\nNoteExercise 3\n\n\n\nRe-run the simulation with block_effect set to have sd = 0.5 instead of 3. Does blocking still help as much? What does this tell you about when blocking is worth the added design complexity?"
+  },
+  {
+    "objectID": "lectures/week05-tutorial.html#wrap-up",
+    "href": "lectures/week05-tutorial.html#wrap-up",
+    "title": "Week 5 Tutorial: Randomization, Replication, and Blocking",
+    "section": "Wrap-up",
+    "text": "Wrap-up\nKeep this file — the exercises here feed directly into this week’s assignment. Next week we practice recognizing these same design principles in published studies."
+  },
+  {
+    "objectID": "lectures/week04-tutorial.html",
+    "href": "lectures/week04-tutorial.html",
+    "title": "Week 4 Tutorial: Visualizing Relationships",
+    "section": "",
+    "text": "Visualize relationships between two or more variables\nUse faceting to compare patterns across groups\nChoose plot types deliberately, not by habit"
+  },
+  {
+    "objectID": "lectures/week04-tutorial.html#goals",
+    "href": "lectures/week04-tutorial.html#goals",
+    "title": "Week 4 Tutorial: Visualizing Relationships",
+    "section": "",
+    "text": "Visualize relationships between two or more variables\nUse faceting to compare patterns across groups\nChoose plot types deliberately, not by habit"
+  },
+  {
+    "objectID": "lectures/week04-tutorial.html#setup",
+    "href": "lectures/week04-tutorial.html#setup",
+    "title": "Week 4 Tutorial: Visualizing Relationships",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(tidyverse)\ndata(iris)\niris &lt;- as_tibble(iris)"
+  },
+  {
+    "objectID": "lectures/week04-tutorial.html#two-numeric-variables-relationships",
+    "href": "lectures/week04-tutorial.html#two-numeric-variables-relationships",
+    "title": "Week 4 Tutorial: Visualizing Relationships",
+    "section": "Two numeric variables: relationships",
+    "text": "Two numeric variables: relationships\n\nggplot(iris, aes(Sepal.Length, Petal.Length, color = Species)) +\n  geom_point(alpha = 0.7) +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Sepal length vs. petal length"
+  },
+  {
+    "objectID": "lectures/week04-tutorial.html#many-variables-faceting",
+    "href": "lectures/week04-tutorial.html#many-variables-faceting",
+    "title": "Week 4 Tutorial: Visualizing Relationships",
+    "section": "Many variables: faceting",
+    "text": "Many variables: faceting\n\nggplot(iris, aes(Sepal.Length, Sepal.Width)) +\n  geom_point() +\n  facet_wrap(~Species) +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 2: Sepal length vs. width, faceted by species"
+  },
+  {
+    "objectID": "lectures/week04-tutorial.html#choosing-a-plot-deliberately",
+    "href": "lectures/week04-tutorial.html#choosing-a-plot-deliberately",
+    "title": "Week 4 Tutorial: Visualizing Relationships",
+    "section": "Choosing a plot deliberately",
+    "text": "Choosing a plot deliberately\nA quick decision guide, roughly in order of how often you’ll reach for it in this course:\n\n\n\n\n\n\n\nYou have…\nReach for…\n\n\n\n\nOne numeric variable\nHistogram or density plot\n\n\nOne numeric + one categorical\nBoxplot or jittered points\n\n\nTwo numeric variables\nScatterplot (+ trend line)\n\n\nA relationship that differs by group\nScatterplot colored by group, or facet_wrap()\n\n\nA variable over time, per individual\nLine plot grouped by individual ID"
+  },
+  {
+    "objectID": "lectures/week04-tutorial.html#exercises",
+    "href": "lectures/week04-tutorial.html#exercises",
+    "title": "Week 4 Tutorial: Visualizing Relationships",
+    "section": "Exercises",
+    "text": "Exercises\n\n\n\n\n\n\nNoteExercise 1\n\n\n\nUsing ChickWeight, plot weight vs. Time with one line per chick (geom_line(), grouped by Chick), colored by Diet. What pattern do you see?\n\n\n\n\n\n\n\n\nNoteExercise 2\n\n\n\nPick one plot from this week or last week’s tutorial and rewrite it with better axis labels, a descriptive title, and a colorblind-friendly palette (scale_color_viridis_d() / scale_fill_viridis_d())."
+  },
+  {
+    "objectID": "lectures/week04-tutorial.html#wrap-up",
+    "href": "lectures/week04-tutorial.html#wrap-up",
+    "title": "Week 4 Tutorial: Visualizing Relationships",
+    "section": "Wrap-up",
+    "text": "Wrap-up\nKeep this file — the exercises here feed directly into this week’s assignment, which also includes this course’s first Data Safari exercise."
+  },
+  {
+    "objectID": "lectures/week03-tutorial.html",
+    "href": "lectures/week03-tutorial.html",
+    "title": "Week 3 Tutorial: Exploring Distributions",
+    "section": "",
+    "text": "Build a habit of exploring data visually before modeling it\nPractice the core ggplot2 grammar: geoms, aesthetics\nRecognize skew and unequal variance by eye"
+  },
+  {
+    "objectID": "lectures/week03-tutorial.html#goals",
+    "href": "lectures/week03-tutorial.html#goals",
+    "title": "Week 3 Tutorial: Exploring Distributions",
+    "section": "",
+    "text": "Build a habit of exploring data visually before modeling it\nPractice the core ggplot2 grammar: geoms, aesthetics\nRecognize skew and unequal variance by eye"
+  },
+  {
+    "objectID": "lectures/week03-tutorial.html#setup",
+    "href": "lectures/week03-tutorial.html#setup",
+    "title": "Week 3 Tutorial: Exploring Distributions",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(tidyverse)\ndata(iris)\niris &lt;- as_tibble(iris)"
+  },
+  {
+    "objectID": "lectures/week03-tutorial.html#one-numeric-variable-distribution",
+    "href": "lectures/week03-tutorial.html#one-numeric-variable-distribution",
+    "title": "Week 3 Tutorial: Exploring Distributions",
+    "section": "One numeric variable: distribution",
+    "text": "One numeric variable: distribution\n\nggplot(iris, aes(Sepal.Length)) +\n  geom_histogram(binwidth = 0.2, fill = \"steelblue\", color = \"white\") +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Distribution of sepal length\n\n\n\n\n\n\nggplot(iris, aes(Sepal.Length, fill = Species)) +\n  geom_density(alpha = 0.4) +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 2: Density of sepal length by species"
+  },
+  {
+    "objectID": "lectures/week03-tutorial.html#one-numeric-one-categorical-comparing-groups",
+    "href": "lectures/week03-tutorial.html#one-numeric-one-categorical-comparing-groups",
+    "title": "Week 3 Tutorial: Exploring Distributions",
+    "section": "One numeric + one categorical: comparing groups",
+    "text": "One numeric + one categorical: comparing groups\n\nggplot(iris, aes(Species, Sepal.Length, fill = Species)) +\n  geom_boxplot(alpha = 0.6, show.legend = FALSE) +\n  geom_jitter(width = 0.15, alpha = 0.5) +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 3: Sepal length by species"
+  },
+  {
+    "objectID": "lectures/week03-tutorial.html#spotting-problems-before-modeling",
+    "href": "lectures/week03-tutorial.html#spotting-problems-before-modeling",
+    "title": "Week 3 Tutorial: Exploring Distributions",
+    "section": "Spotting problems before modeling",
+    "text": "Spotting problems before modeling\n\niris |&gt;\n  group_by(Species) |&gt;\n  summarise(\n    mean = mean(Sepal.Length),\n    sd = sd(Sepal.Length),\n    skew_check = mean(Sepal.Length) - median(Sepal.Length)\n  )\n\n# A tibble: 3 x 4\n  Species     mean    sd skew_check\n  &lt;fct&gt;      &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;\n1 setosa      5.01 0.352    0.00600\n2 versicolor  5.94 0.516    0.0360 \n3 virginica   6.59 0.636    0.0880 \n\n\n\n\n\n\n\n\nTipWhy this matters\n\n\n\nA large gap between mean and median flags skew. Wildly different SDs across groups flag unequal variance. Both affect which statistical test is appropriate later in the course — EDA is where you catch this before you’re deep into modeling."
+  },
+  {
+    "objectID": "lectures/week03-tutorial.html#exercises",
+    "href": "lectures/week03-tutorial.html#exercises",
+    "title": "Week 3 Tutorial: Exploring Distributions",
+    "section": "Exercises",
+    "text": "Exercises\n\n\n\n\n\n\nNoteExercise 1\n\n\n\nFor the built-in ChickWeight dataset, make a boxplot of final-day weight by Diet (you’ll need to filter() to the last time point first). Does the spread look similar across diets?\n\n\n\n\n\n\n\n\nNoteExercise 2\n\n\n\nFor PlantGrowth, compare the mean-vs-median gap across the three group levels the way we did for iris above. Do any groups look notably skewed?"
+  },
+  {
+    "objectID": "lectures/week03-tutorial.html#wrap-up",
+    "href": "lectures/week03-tutorial.html#wrap-up",
+    "title": "Week 3 Tutorial: Exploring Distributions",
+    "section": "Wrap-up",
+    "text": "Wrap-up\nKeep this file — the exercises here feed directly into this week’s assignment. Next week’s tutorial continues with relationships between variables and multi-panel plots."
+  },
+  {
+    "objectID": "lectures/week02-tutorial.html",
+    "href": "lectures/week02-tutorial.html",
+    "title": "Week 2 Tutorial: R Fundamentals and Data Wrangling",
+    "section": "",
+    "text": "Practice core R syntax: functions, control flow, data frames\nImport data from .csv and inspect it before doing anything else\nPractice core dplyr verbs and reshape data with pivot_longer()/pivot_wider()"
+  },
+  {
+    "objectID": "lectures/week02-tutorial.html#goals",
+    "href": "lectures/week02-tutorial.html#goals",
+    "title": "Week 2 Tutorial: R Fundamentals and Data Wrangling",
+    "section": "",
+    "text": "Practice core R syntax: functions, control flow, data frames\nImport data from .csv and inspect it before doing anything else\nPractice core dplyr verbs and reshape data with pivot_longer()/pivot_wider()"
+  },
+  {
+    "objectID": "lectures/week02-tutorial.html#setup",
+    "href": "lectures/week02-tutorial.html#setup",
+    "title": "Week 2 Tutorial: R Fundamentals and Data Wrangling",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "lectures/week02-tutorial.html#part-1-r-fundamentals",
+    "href": "lectures/week02-tutorial.html#part-1-r-fundamentals",
+    "title": "Week 2 Tutorial: R Fundamentals and Data Wrangling",
+    "section": "Part 1: R fundamentals",
+    "text": "Part 1: R fundamentals\n\nFunctions and control flow\n\nwing_length &lt;- c(23.1, 25.4, 22.8, 26.0, 24.3)\nspecies &lt;- c(\"A\", \"A\", \"B\", \"B\", \"B\")\n\nclassify_size &lt;- function(x, threshold = 24) {\n  if (x &gt; threshold) {\n    \"large\"\n  } else {\n    \"small\"\n  }\n}\n\nsapply(wing_length, classify_size)\n\n[1] \"small\" \"large\" \"small\" \"large\" \"large\"\n\n\n\n# A simple loop (you'll rarely need this once you know vectorized ops,\n# but it's worth understanding)\nfor (i in seq_along(wing_length)) {\n  cat(species[i], \"-\", wing_length[i], \"\\n\")\n}\n\nA - 23.1 \nA - 25.4 \nB - 22.8 \nB - 26 \nB - 24.3 \n\n\n\n\nData frames\n\nbirds &lt;- tibble(species, wing_length)\nbirds\n\n# A tibble: 5 x 2\n  species wing_length\n  &lt;chr&gt;         &lt;dbl&gt;\n1 A              23.1\n2 A              25.4\n3 B              22.8\n4 B              26  \n5 B              24.3\n\nbirds |&gt;\n  group_by(species) |&gt;\n  summarise(mean_wing = mean(wing_length), n = n())\n\n# A tibble: 2 x 3\n  species mean_wing     n\n  &lt;chr&gt;       &lt;dbl&gt; &lt;int&gt;\n1 A            24.2     2\n2 B            24.4     3\n\n\n\n\n\n\n\n\nNoteExercise 1\n\n\n\nWrite a function classify_mass(x, threshold) analogous to classify_size() above, returning \"heavy\" or \"light\". Then create a body_mass vector with 5 values and apply your function to it with sapply()."
+  },
+  {
+    "objectID": "lectures/week02-tutorial.html#part-2-data-wrangling",
+    "href": "lectures/week02-tutorial.html#part-2-data-wrangling",
+    "title": "Week 2 Tutorial: R Fundamentals and Data Wrangling",
+    "section": "Part 2: Data wrangling",
+    "text": "Part 2: Data wrangling\n\nImport and preview\nWe’ll simulate writing out and reading back a small dataset, since you won’t always start with your own .csv. In your own work, replace this with read_csv(\"data/your_file.csv\").\n\nset.seed(42)\ngrowth_wide &lt;- tibble(\n  plant_id = 1:12,\n  treatment = rep(c(\"Control\", \"Fertilizer\"), each = 6),\n  height_wk1 = round(rnorm(12, 10, 1), 1),\n  height_wk2 = round(rnorm(12, 14, 1.5), 1),\n  height_wk3 = round(rnorm(12, 18, 2), 1)\n)\n\nwrite_csv(growth_wide, \"growth_wide_example.csv\")\ngrowth_wide &lt;- read_csv(\"growth_wide_example.csv\")\n\n\nglimpse(growth_wide)\n\nRows: 12\nColumns: 5\n$ plant_id   &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12\n$ treatment  &lt;chr&gt; \"Control\", \"Control\", \"Control\", \"Control\", \"Control\", \"Con~\n$ height_wk1 &lt;dbl&gt; 11.4, 9.4, 10.4, 10.6, 10.4, 9.9, 11.5, 9.9, 12.0, 9.9, 11.~\n$ height_wk2 &lt;dbl&gt; 11.9, 13.6, 13.8, 15.0, 13.6, 10.0, 10.3, 16.0, 13.5, 11.3,~\n$ height_wk3 &lt;dbl&gt; 21.8, 17.1, 17.5, 14.5, 18.9, 16.7, 18.9, 19.4, 20.1, 16.8,~\n\nsummary(growth_wide)\n\n    plant_id      treatment           height_wk1      height_wk2   \n Min.   : 1.00   Length:12          Min.   : 9.40   Min.   :10.00  \n 1st Qu.: 3.75   Class :character   1st Qu.: 9.90   1st Qu.:11.75  \n Median : 6.50   Mode  :character   Median :10.50   Median :13.60  \n Mean   : 6.50                      Mean   :10.75   Mean   :13.21  \n 3rd Qu.: 9.25                      3rd Qu.:11.43   3rd Qu.:14.10  \n Max.   :12.00                      Max.   :12.30   Max.   :16.00  \n   height_wk3   \n Min.   :14.50  \n 1st Qu.:16.77  \n Median :18.20  \n Mean   :17.94  \n 3rd Qu.:19.10  \n Max.   :21.80  \n\n\n\n\nCore dplyr verbs\n\ngrowth_wide |&gt;\n  filter(treatment == \"Fertilizer\") |&gt;\n  select(plant_id, height_wk3) |&gt;\n  arrange(desc(height_wk3))\n\n# A tibble: 6 x 2\n  plant_id height_wk3\n     &lt;dbl&gt;      &lt;dbl&gt;\n1        9       20.1\n2        8       19.4\n3       11       19  \n4        7       18.9\n5       10       16.8\n6       12       14.6\n\n\n\ngrowth_wide |&gt;\n  mutate(growth_wk1_to_wk3 = height_wk3 - height_wk1) |&gt;\n  group_by(treatment) |&gt;\n  summarise(mean_growth = mean(growth_wk1_to_wk3), .groups = \"drop\")\n\n# A tibble: 2 x 2\n  treatment  mean_growth\n  &lt;chr&gt;            &lt;dbl&gt;\n1 Control           7.4 \n2 Fertilizer        6.98\n\n\n\n\nTidy data: wide → long\nMost statistical models in R expect long/tidy data — one row per observation, not one row per subject with repeated-measure columns.\n\ngrowth_long &lt;- growth_wide |&gt;\n  pivot_longer(\n    cols = starts_with(\"height_wk\"),\n    names_to = \"week\",\n    names_prefix = \"height_wk\",\n    values_to = \"height\"\n  ) |&gt;\n  mutate(week = as.integer(week))\n\ngrowth_long\n\n# A tibble: 36 x 4\n   plant_id treatment  week height\n      &lt;dbl&gt; &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;\n 1        1 Control       1   11.4\n 2        1 Control       2   11.9\n 3        1 Control       3   21.8\n 4        2 Control       1    9.4\n 5        2 Control       2   13.6\n 6        2 Control       3   17.1\n 7        3 Control       1   10.4\n 8        3 Control       2   13.8\n 9        3 Control       3   17.5\n10        4 Control       1   10.6\n# i 26 more rows\n\n\n\nggplot(growth_long, aes(week, height, group = plant_id, color = treatment)) +\n  geom_line(alpha = 0.5) +\n  geom_point() +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: Plant height over time by treatment\n\n\n\n\n\n\n\nLong → wide\n\ngrowth_long |&gt;\n  pivot_wider(names_from = week, values_from = height, names_prefix = \"wk_\")\n\n# A tibble: 12 x 5\n   plant_id treatment   wk_1  wk_2  wk_3\n      &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1        1 Control     11.4  11.9  21.8\n 2        2 Control      9.4  13.6  17.1\n 3        3 Control     10.4  13.8  17.5\n 4        4 Control     10.6  15    14.5\n 5        5 Control     10.4  13.6  18.9\n 6        6 Control      9.9  10    16.7\n 7        7 Fertilizer  11.5  10.3  18.9\n 8        8 Fertilizer   9.9  16    19.4\n 9        9 Fertilizer  12    13.5  20.1\n10       10 Fertilizer   9.9  11.3  16.8\n11       11 Fertilizer  11.3  13.7  19  \n12       12 Fertilizer  12.3  15.8  14.6\n\n\n\n\n\n\n\n\nNoteExercise 2\n\n\n\nAdd a column total_growth to growth_wide (week 3 height minus week 1 height) and identify the plant with the largest total growth in each treatment group, using slice_max().\n\n\n\n\n\n\n\n\nNoteExercise 3\n\n\n\nWhy does it matter, for later statistical modeling, whether your data are in wide or long format? Answer in 2–3 sentences, referencing the concept of the experimental/observational unit."
+  },
+  {
+    "objectID": "lectures/week02-tutorial.html#wrap-up",
+    "href": "lectures/week02-tutorial.html#wrap-up",
+    "title": "Week 2 Tutorial: R Fundamentals and Data Wrangling",
+    "section": "Wrap-up",
+    "text": "Wrap-up\nKeep this file — the exercises here feed directly into this week’s assignment. Next week we start exploring and visualizing data in earnest."
+  },
+  {
+    "objectID": "lectures/week01-tutorial.html",
+    "href": "lectures/week01-tutorial.html",
+    "title": "Week 1 Tutorial: Getting R Running",
+    "section": "",
+    "text": "Confirm R, RStudio, and Quarto are installed and working\nGet comfortable with the RStudio panes and project workflow\nWrite and run your first few lines of R"
+  },
+  {
+    "objectID": "lectures/week01-tutorial.html#goals",
+    "href": "lectures/week01-tutorial.html#goals",
+    "title": "Week 1 Tutorial: Getting R Running",
+    "section": "",
+    "text": "Confirm R, RStudio, and Quarto are installed and working\nGet comfortable with the RStudio panes and project workflow\nWrite and run your first few lines of R"
+  },
+  {
+    "objectID": "lectures/week01-tutorial.html#installation-check",
+    "href": "lectures/week01-tutorial.html#installation-check",
+    "title": "Week 1 Tutorial: Getting R Running",
+    "section": "Installation check",
+    "text": "Installation check\nRun this chunk. If it errors, come to office hours or post on Canvas for install help — don’t struggle with this alone before Week 2.\n\nr_version &lt;- R.version.string\nr_version\n\n[1] \"R version 4.3.3 (2024-02-29)\"\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "lectures/week01-tutorial.html#file-types-youll-see-in-this-course",
+    "href": "lectures/week01-tutorial.html#file-types-youll-see-in-this-course",
+    "title": "Week 1 Tutorial: Getting R Running",
+    "section": "File types you’ll see in this course",
+    "text": "File types you’ll see in this course\n\n\n\nExtension\nWhat it is\n\n\n\n\n.R\nPlain R script\n\n\n.qmd\nQuarto document (code + prose, like this file)\n\n\n.Rproj\nRStudio project file — keeps file paths relative\n\n\n.csv / .xlsx\nTabular data\n\n\n.html / .pdf\nRendered output from a .qmd"
+  },
+  {
+    "objectID": "lectures/week01-tutorial.html#your-first-r",
+    "href": "lectures/week01-tutorial.html#your-first-r",
+    "title": "Week 1 Tutorial: Getting R Running",
+    "section": "Your first R",
+    "text": "Your first R\n\n# Assignment\nwing_length &lt;- c(23.1, 25.4, 22.8, 26.0, 24.3)\n\n# Basic functions\nmean(wing_length)\n\n[1] 24.32\n\nsd(wing_length)\n\n[1] 1.395349\n\nlength(wing_length)\n\n[1] 5\n\n\n\n# Indexing\nwing_length[1]\n\n[1] 23.1\n\nwing_length[wing_length &gt; 24]\n\n[1] 25.4 26.0 24.3"
+  },
+  {
+    "objectID": "lectures/week01-tutorial.html#your-first-plot",
+    "href": "lectures/week01-tutorial.html#your-first-plot",
+    "title": "Week 1 Tutorial: Getting R Running",
+    "section": "Your first plot",
+    "text": "Your first plot\nA small reward for getting everything installed:\n\ntibble(wing_length) |&gt;\n  ggplot(aes(wing_length)) +\n  geom_histogram(binwidth = 1, fill = \"steelblue\", color = \"white\") +\n  theme_minimal()\n\n\n\n\n\n\n\nFigure 1: A first look at some simulated wing lengths"
+  },
+  {
+    "objectID": "lectures/week01-tutorial.html#exercises",
+    "href": "lectures/week01-tutorial.html#exercises",
+    "title": "Week 1 Tutorial: Getting R Running",
+    "section": "Exercises",
+    "text": "Exercises\n\n\n\n\n\n\nNoteExercise 1\n\n\n\nCreate a vector body_mass with 5 values of your choosing (grams). Compute its mean, standard deviation, and range using built-in functions (don’t hardcode the answers).\n\n\n\n\n\n\n\n\nNoteExercise 2\n\n\n\nIn a sentence or two: why might a biologist care about designing an experiment carefully, rather than just collecting data and running a statistical test afterward? There’s no single right answer — this is meant to get you thinking ahead of Week 5."
+  },
+  {
+    "objectID": "lectures/week01-tutorial.html#wrap-up",
+    "href": "lectures/week01-tutorial.html#wrap-up",
+    "title": "Week 1 Tutorial: Getting R Running",
+    "section": "Wrap-up",
+    "text": "Wrap-up\nKeep this file — the exercises here feed directly into this week’s assignment. Next week we go much further into R syntax and start wrangling real data."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Experimental Design & Analysis in Biology",
+    "section": "",
+    "text": "Experiments are one of the main ways we expand our understanding of biology. In this hands-on course, you’ll develop fundamental skills in experimental design, data analysis, and visualization — and learn to use R to analyze and visualize data. By the end, you’ll be able to describe experimental designs and analytic techniques (t-tests, ANOVA, linear regression, mixed-effects models, and more) commonly used in biological research, evaluate the appropriateness of different designs, and work through analytic workflows of medium complexity."
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Experimental Design & Analysis in Biology",
+    "section": "",
+    "text": "Experiments are one of the main ways we expand our understanding of biology. In this hands-on course, you’ll develop fundamental skills in experimental design, data analysis, and visualization — and learn to use R to analyze and visualize data. By the end, you’ll be able to describe experimental designs and analytic techniques (t-tests, ANOVA, linear regression, mixed-effects models, and more) commonly used in biological research, evaluate the appropriateness of different designs, and work through analytic workflows of medium complexity."
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "Over the semester you’ll complete a range of assignments designed to build on the lecture material. Each one starts life as a Quarto (.qmd) template — download it from the Schedule page, fill in your answers and code directly in the file, then render it. Quarto compiles it straight to PDF via Typst (bundled with Quarto — no separate LaTeX install needed). Submit both the completed .qmd and the rendered .pdf via Canvas.\nEach week follows the same rhythm: a Monday lecture, a Wednesday hands-on tutorial, and a problem set due before the following Monday. See the Schedule for links to every week’s specific slides, tutorial, and assignment files — click an assignment’s name (e.g. “PS1”) to download its blank .qmd template."
+  },
+  {
+    "objectID": "assignments.html#problem-sets",
+    "href": "assignments.html#problem-sets",
+    "title": "Assignments",
+    "section": "Problem sets",
+    "text": "Problem sets\nThese problem sets combine conceptual questions (theory, application to hypothetical and real-world scenarios) with applied analysis of example datasets. When analyzing example data, you’ll describe the methods and interpret results the way you would in a scientific publication. These assignments are graded on completion, but questions may be recycled in quizzes."
+  },
+  {
+    "objectID": "assignments.html#data-safari-exercises",
+    "href": "assignments.html#data-safari-exercises",
+    "title": "Assignments",
+    "section": "Data Safari exercises",
+    "text": "Data Safari exercises\nFour times this semester — Weeks 4, 7, 10, and 13 — you’ll replicate a figure from the published literature using the publicly available data from that study and reflect on the process:\n\nHow easy was it to follow the published methods?\nHow well does your plot match the published version?\nHow would you change the paper, plot, or data to improve reproducibility?\n\nThese assignments are graded on completion of a figure, clarity of the code, and quality of the reflections on the process."
+  },
+  {
+    "objectID": "assignments.html#project-graduate-students-only",
+    "href": "assignments.html#project-graduate-students-only",
+    "title": "Assignments",
+    "section": "Project (graduate students only)",
+    "text": "Project (graduate students only)\nGraduate students (BIOL 5860) are required to complete a project over the course of the semester, presented in Week 15.\nThe project is broken into the main analytic steps covered in the course — experimental design and planned hypothesis testing, data carpentry and exploration, statistical modeling, and visualization. Ideally you’ll use your own research data, though data from the published literature is also acceptable. Quarto files detailing each of these major steps will be due throughout the semester, with the expectation that the final presentation will cover the entirety of the process.\n\n\n\nCheckpoint\nDue by end of\n\n\n\n\nPart 1: Experimental design and planned hypothesis testing\nWeek 7\n\n\nPart 2: Data carpentry and exploration\nWeek 10\n\n\nPart 3: Statistical modeling\nWeek 13\n\n\nPart 4: Visualization\nWeek 14\n\n\nFinal presentation (entire process)\nWeek 15\n\n\n\nSee the Schedule for downloadable templates and PDF previews of each checkpoint."
+  },
+  {
+    "objectID": "lectures/week01-slides.html#welcome",
+    "href": "lectures/week01-slides.html#welcome",
+    "title": "Why Experimental Design Matters",
+    "section": "Welcome",
+    "text": "Welcome\n\nExperiments are one of the main ways we expand our understanding of biology\nThis course: design experiments well, analyze the data in R, communicate the results\nThree modules: R Crash Course → Data Exploration → Statistical Analysis and Interpretation"
+  },
+  {
+    "objectID": "lectures/week01-slides.html#a-question-to-sit-with",
+    "href": "lectures/week01-slides.html#a-question-to-sit-with",
+    "title": "Why Experimental Design Matters",
+    "section": "A question to sit with",
+    "text": "A question to sit with\n\nIf you ran the same experiment twice, would you trust the second result as much as the first?\n\n\nA good design makes the answer “yes”\nA bad design can make even a huge effect impossible to trust"
+  },
+  {
+    "objectID": "lectures/week01-slides.html#why-design-comes-before-analysis",
+    "href": "lectures/week01-slides.html#why-design-comes-before-analysis",
+    "title": "Why Experimental Design Matters",
+    "section": "Why design comes before analysis",
+    "text": "Why design comes before analysis\n\nNo statistical test can fix a poorly designed study\nCommon failure modes we’ll dissect this semester:\n\nPseudoreplication (measuring the same unit many times, treating it as many replicates)\nConfounding (treatment tangled up with some other variable)\nUnderpowered studies (too few replicates to detect a real effect)"
+  },
+  {
+    "objectID": "lectures/week01-slides.html#a-biology-example",
+    "href": "lectures/week01-slides.html#a-biology-example",
+    "title": "Why Experimental Design Matters",
+    "section": "A biology example",
+    "text": "A biology example\n\nQuestion: does a fertilizer increase plant growth?\nNaive approach: one plant, control side vs. treated side, measured many times\nProblem: n = 1 plant — no replication of the actual experimental unit\nWe’ll spend Weeks 5–6 building the vocabulary to catch this"
+  },
+  {
+    "objectID": "lectures/week01-slides.html#what-medium-complexity-looks-like-by-the-end",
+    "href": "lectures/week01-slides.html#what-medium-complexity-looks-like-by-the-end",
+    "title": "Why Experimental Design Matters",
+    "section": "What “medium complexity” looks like by the end",
+    "text": "What “medium complexity” looks like by the end\n\nImport and clean real data\nVisualize it honestly\nChoose a design and a matching statistical test\nFit that model in R, check its assumptions, interpret the result"
+  },
+  {
+    "objectID": "lectures/week01-slides.html#this-week",
+    "href": "lectures/week01-slides.html#this-week",
+    "title": "Why Experimental Design Matters",
+    "section": "This week",
+    "text": "This week\n\nMonday (today): why design matters, course logistics\nWednesday (tutorial): install R/RStudio/Quarto, write your first lines of R\nThis week’s assignment: a short reflection + a tiny R warm-up"
+  },
+  {
+    "objectID": "lectures/week01-slides.html#logistics",
+    "href": "lectures/week01-slides.html#logistics",
+    "title": "Why Experimental Design Matters",
+    "section": "Logistics",
+    "text": "Logistics\n\nCourse site: this website — syllabus, schedule, and all materials live here\nAssignments submitted via Canvas as rendered .qmd files\nOffice hours: see the syllabus — use them, especially in Weeks 1–3"
+  },
+  {
+    "objectID": "lectures/week01-slides.html#questions",
+    "href": "lectures/week01-slides.html#questions",
+    "title": "Why Experimental Design Matters",
+    "section": "Questions?",
+    "text": "Questions?\n\nSyllabus: policies, grading, required text\nSchedule: what we’re covering and when\nLet’s get R installed"
+  },
+  {
+    "objectID": "lectures/week02-slides.html#last-week",
+    "href": "lectures/week02-slides.html#last-week",
+    "title": "R Fundamentals and Data Wrangling",
+    "section": "Last week",
+    "text": "Last week\n\nGot R, RStudio, and Quarto installed\nWrote a first few lines: vectors, mean(), sd(), a histogram"
+  },
+  {
+    "objectID": "lectures/week02-slides.html#today-two-halves",
+    "href": "lectures/week02-slides.html#today-two-halves",
+    "title": "R Fundamentals and Data Wrangling",
+    "section": "Today: two halves",
+    "text": "Today: two halves\n\nR fundamentals — functions, control flow, data frames\nData wrangling — importing, cleaning, and reshaping data"
+  },
+  {
+    "objectID": "lectures/week02-slides.html#why-functions",
+    "href": "lectures/week02-slides.html#why-functions",
+    "title": "R Fundamentals and Data Wrangling",
+    "section": "Why functions?",
+    "text": "Why functions?\n\nAnything you do more than twice should probably be a function\nA function takes input, does something, returns output\n\nclassify_size &lt;- function(x, threshold = 24) {\n  if (x &gt; threshold) \"large\" else \"small\"\n}"
+  },
+  {
+    "objectID": "lectures/week02-slides.html#data-frames-tibbles",
+    "href": "lectures/week02-slides.html#data-frames-tibbles",
+    "title": "R Fundamentals and Data Wrangling",
+    "section": "Data frames (tibbles)",
+    "text": "Data frames (tibbles)\n\nThe core data structure for this entire course\nEach row = one observation; each column = one variable\ngroup_by() + summarise() is the single most useful pattern you’ll learn\n\nbirds |&gt;\n  group_by(species) |&gt;\n  summarise(mean_wing = mean(wing_length))"
+  },
+  {
+    "objectID": "lectures/week02-slides.html#importing-real-data",
+    "href": "lectures/week02-slides.html#importing-real-data",
+    "title": "R Fundamentals and Data Wrangling",
+    "section": "Importing real data",
+    "text": "Importing real data\n\nread_csv(\"data/your_file.csv\") — the workhorse\nAlways look before you touch:\n\nglimpse() — what columns, what types\nsummary() — ranges, missing values, obvious problems"
+  },
+  {
+    "objectID": "lectures/week02-slides.html#the-core-dplyr-verbs",
+    "href": "lectures/week02-slides.html#the-core-dplyr-verbs",
+    "title": "R Fundamentals and Data Wrangling",
+    "section": "The core dplyr verbs",
+    "text": "The core dplyr verbs\n\nfilter() — keep some rows\nselect() — keep some columns\nmutate() — add/change a column\narrange() — sort\ngroup_by() + summarise() — collapse to group-level summaries"
+  },
+  {
+    "objectID": "lectures/week02-slides.html#tidy-data-one-row-per-observation",
+    "href": "lectures/week02-slides.html#tidy-data-one-row-per-observation",
+    "title": "R Fundamentals and Data Wrangling",
+    "section": "Tidy data: one row per observation",
+    "text": "Tidy data: one row per observation\n\nWide: one row per subject, repeated-measure columns (height_wk1, height_wk2, …)\nLong: one row per subject-per-timepoint\nMost models in R (and most of this course) expect long data"
+  },
+  {
+    "objectID": "lectures/week02-slides.html#wide-long-wide",
+    "href": "lectures/week02-slides.html#wide-long-wide",
+    "title": "R Fundamentals and Data Wrangling",
+    "section": "Wide → long → wide",
+    "text": "Wide → long → wide\ngrowth_long &lt;- growth_wide |&gt;\n  pivot_longer(cols = starts_with(\"height_wk\"),\n               names_to = \"week\", values_to = \"height\")\n\npivot_wider() does the reverse when you need it"
+  },
+  {
+    "objectID": "lectures/week02-slides.html#why-this-distinction-matters",
+    "href": "lectures/week02-slides.html#why-this-distinction-matters",
+    "title": "R Fundamentals and Data Wrangling",
+    "section": "Why this distinction matters",
+    "text": "Why this distinction matters\n\nThe experimental/observational unit should usually be one row\nGet this wrong, and your model’s degrees of freedom (and your p-values) will be wrong too — a preview of Week 5"
+  },
+  {
+    "objectID": "lectures/week02-slides.html#this-week",
+    "href": "lectures/week02-slides.html#this-week",
+    "title": "R Fundamentals and Data Wrangling",
+    "section": "This week",
+    "text": "This week\n\nWednesday (tutorial): hands-on practice with all of the above\nAssignment: apply these verbs to a new dataset"
+  },
+  {
+    "objectID": "lectures/week03-slides.html#from-wrangling-to-exploring",
+    "href": "lectures/week03-slides.html#from-wrangling-to-exploring",
+    "title": "Exploring Distributions",
+    "section": "From wrangling to exploring",
+    "text": "From wrangling to exploring\n\nYou can now get data into R and reshape it\nBefore fitting any model: look at your data\nThis module (Weeks 3–4) is entirely about seeing what you have"
+  },
+  {
+    "objectID": "lectures/week03-slides.html#why-explore-before-modeling",
+    "href": "lectures/week03-slides.html#why-explore-before-modeling",
+    "title": "Exploring Distributions",
+    "section": "Why explore before modeling?",
+    "text": "Why explore before modeling?\n\nEvery statistical test we’ll cover assumes something about your data (roughly normal, similar variance across groups, no wild outliers)\nExploratory data analysis (EDA) is how you check those assumptions before you’re deep into a model and it’s too late to notice"
+  },
+  {
+    "objectID": "lectures/week03-slides.html#the-grammar-of-graphics-briefly",
+    "href": "lectures/week03-slides.html#the-grammar-of-graphics-briefly",
+    "title": "Exploring Distributions",
+    "section": "The grammar of graphics, briefly",
+    "text": "The grammar of graphics, briefly\n\nggplot(data, aes(x, y)) + geom_*()\nSame three ingredients, every time: data, aesthetic mapping, geometry\nOnce you know this grammar, every new plot type is just a new geom_*()"
+  },
+  {
+    "objectID": "lectures/week03-slides.html#one-numeric-variable",
+    "href": "lectures/week03-slides.html#one-numeric-variable",
+    "title": "Exploring Distributions",
+    "section": "One numeric variable",
+    "text": "One numeric variable\n\nHistogram: geom_histogram() — shape of the distribution\nDensity: geom_density() — smoothed version, good for comparing groups"
+  },
+  {
+    "objectID": "lectures/week03-slides.html#one-numeric-one-categorical",
+    "href": "lectures/week03-slides.html#one-numeric-one-categorical",
+    "title": "Exploring Distributions",
+    "section": "One numeric + one categorical",
+    "text": "One numeric + one categorical\n\nBoxplot: geom_boxplot() — median, spread, outliers at a glance\nAdd geom_jitter() on top to show the actual data points, not just the summary"
+  },
+  {
+    "objectID": "lectures/week03-slides.html#what-to-look-for",
+    "href": "lectures/week03-slides.html#what-to-look-for",
+    "title": "Exploring Distributions",
+    "section": "What to look for",
+    "text": "What to look for\n\nSkew: is the mean pulled away from the median?\nUnequal spread: do groups have wildly different variances?\nOutliers: are there points that don’t look like they belong?"
+  },
+  {
+    "objectID": "lectures/week03-slides.html#a-quick-numeric-check",
+    "href": "lectures/week03-slides.html#a-quick-numeric-check",
+    "title": "Exploring Distributions",
+    "section": "A quick numeric check",
+    "text": "A quick numeric check\niris |&gt;\n  group_by(Species) |&gt;\n  summarise(mean = mean(Sepal.Length),\n            sd = sd(Sepal.Length),\n            skew_check = mean(Sepal.Length) - median(Sepal.Length))\n\nA large mean–median gap flags skew before you even plot anything"
+  },
+  {
+    "objectID": "lectures/week03-slides.html#why-this-matters-later",
+    "href": "lectures/week03-slides.html#why-this-matters-later",
+    "title": "Exploring Distributions",
+    "section": "Why this matters later",
+    "text": "Why this matters later\n\nSkew and unequal variance are exactly the assumptions behind the t-test and ANOVA we’ll meet in Week 7\nCatching a problem now is far cheaper than debugging a confusing model result in six weeks"
+  },
+  {
+    "objectID": "lectures/week03-slides.html#this-week",
+    "href": "lectures/week03-slides.html#this-week",
+    "title": "Exploring Distributions",
+    "section": "This week",
+    "text": "This week\n\nWednesday (tutorial): histograms, density plots, boxplots in R\nAssignment: explore a new dataset and write up what you notice"
+  },
+  {
+    "objectID": "lectures/week04-slides.html#last-week-vs.-this-week",
+    "href": "lectures/week04-slides.html#last-week-vs.-this-week",
+    "title": "Visualizing Relationships and Group Comparisons",
+    "section": "Last week vs. this week",
+    "text": "Last week vs. this week\n\nLast week: one variable at a time (distributions, group comparisons)\nThis week: how do two or more variables relate?"
+  },
+  {
+    "objectID": "lectures/week04-slides.html#two-numeric-variables",
+    "href": "lectures/week04-slides.html#two-numeric-variables",
+    "title": "Visualizing Relationships and Group Comparisons",
+    "section": "Two numeric variables",
+    "text": "Two numeric variables\n\ngeom_point() for the raw relationship\nAdd geom_smooth(method = \"lm\") to show the trend\nColor points by a grouping variable to see if the relationship differs by group"
+  },
+  {
+    "objectID": "lectures/week04-slides.html#faceting-many-small-multiples",
+    "href": "lectures/week04-slides.html#faceting-many-small-multiples",
+    "title": "Visualizing Relationships and Group Comparisons",
+    "section": "Faceting: many small multiples",
+    "text": "Faceting: many small multiples\n\nfacet_wrap(~group) — one panel per group, same axes\nEasier to compare within each group than cramming everything into one busy plot"
+  },
+  {
+    "objectID": "lectures/week04-slides.html#choosing-a-plot-deliberately",
+    "href": "lectures/week04-slides.html#choosing-a-plot-deliberately",
+    "title": "Visualizing Relationships and Group Comparisons",
+    "section": "Choosing a plot deliberately",
+    "text": "Choosing a plot deliberately\n\n\n\nYou have…\nReach for…\n\n\n\n\nOne numeric variable\nHistogram / density\n\n\nOne numeric + one categorical\nBoxplot / jitter\n\n\nTwo numeric variables\nScatterplot (+ trend line)\n\n\nA relationship that differs by group\nColor by group, or facet\n\n\nA variable over time, per individual\nLine plot grouped by ID"
+  },
+  {
+    "objectID": "lectures/week04-slides.html#introducing-data-safari",
+    "href": "lectures/week04-slides.html#introducing-data-safari",
+    "title": "Visualizing Relationships and Group Comparisons",
+    "section": "Introducing: Data Safari",
+    "text": "Introducing: Data Safari\n\nStarting this week, you’ll periodically replicate a published figure using the actual publicly available data\nGoal: connect “here’s a plot in a paper” to “here’s the code that makes that plot”\nAlso a chance to reflect on how reproducible published methods actually are in practice"
+  },
+  {
+    "objectID": "lectures/week04-slides.html#what-data-safari-asks-of-you",
+    "href": "lectures/week04-slides.html#what-data-safari-asks-of-you",
+    "title": "Visualizing Relationships and Group Comparisons",
+    "section": "What Data Safari asks of you",
+    "text": "What Data Safari asks of you\n\nFind a paper with a figure and open data\nRecreate the figure as closely as you can\nReflect: how easy was it? How well does yours match? What would you change about the paper’s methods or data to make this easier?"
+  },
+  {
+    "objectID": "lectures/week04-slides.html#this-week",
+    "href": "lectures/week04-slides.html#this-week",
+    "title": "Visualizing Relationships and Group Comparisons",
+    "section": "This week",
+    "text": "This week\n\nWednesday (tutorial): scatterplots, faceting, and picking the right plot type\nAssignment + Data Safari #1: due this week"
+  },
+  {
+    "objectID": "lectures/week05-slides.html#from-exploring-to-designing",
+    "href": "lectures/week05-slides.html#from-exploring-to-designing",
+    "title": "Principles of Experimental Design",
+    "section": "From exploring to designing",
+    "text": "From exploring to designing\n\nWeeks 1–4: get comfortable with R and with looking at data\nStarting today: how do you make sure the data you collect can actually answer your question?"
+  },
+  {
+    "objectID": "lectures/week05-slides.html#three-pillars",
+    "href": "lectures/week05-slides.html#three-pillars",
+    "title": "Principles of Experimental Design",
+    "section": "Three pillars",
+    "text": "Three pillars\n\nReplication — measuring enough independent experimental units\nRandomization — assigning treatments in a way that avoids bias\nBlocking — controlling for a known source of variation you’re not interested in"
+  },
+  {
+    "objectID": "lectures/week05-slides.html#replication-how-many-is-enough",
+    "href": "lectures/week05-slides.html#replication-how-many-is-enough",
+    "title": "Principles of Experimental Design",
+    "section": "Replication: how many is enough?",
+    "text": "Replication: how many is enough?\n\nMore replicates → smaller standard errors → easier to detect a real effect\nBut replication means independent experimental units, not repeated measurements of the same unit\nWe’ll formalize “how many” with power analysis later in the course"
+  },
+  {
+    "objectID": "lectures/week05-slides.html#the-experimental-unit-again",
+    "href": "lectures/week05-slides.html#the-experimental-unit-again",
+    "title": "Principles of Experimental Design",
+    "section": "The experimental unit, again",
+    "text": "The experimental unit, again\n\nThe thing that was independently assigned to a treatment\nNot necessarily the thing you measured\nClassic trap: 1 tank of 50 fish, “n = 50” — really n = 1 tank"
+  },
+  {
+    "objectID": "lectures/week05-slides.html#pseudoreplication",
+    "href": "lectures/week05-slides.html#pseudoreplication",
+    "title": "Principles of Experimental Design",
+    "section": "Pseudoreplication",
+    "text": "Pseudoreplication\n\nTreating non-independent measurements as if they were independent replicates\nInflates your effective sample size\nInflates your false-positive rate — you’ll find “significant” effects that aren’t real"
+  },
+  {
+    "objectID": "lectures/week05-slides.html#randomization",
+    "href": "lectures/week05-slides.html#randomization",
+    "title": "Principles of Experimental Design",
+    "section": "Randomization",
+    "text": "Randomization\n\nProtects against confounding: without it, treatment can get tangled up with some other variable (time of day, position, batch)\n“I gave the healthiest-looking plants the new fertilizer” is not randomization — it’s a confound waiting to happen"
+  },
+  {
+    "objectID": "lectures/week05-slides.html#blocking",
+    "href": "lectures/week05-slides.html#blocking",
+    "title": "Principles of Experimental Design",
+    "section": "Blocking",
+    "text": "Blocking\n\nGroups experimental units into blocks that share some nuisance variable (bench position, day, litter, site)\nAssign every treatment once within each block\nLets you statistically remove block-to-block variation from your error term"
+  },
+  {
+    "objectID": "lectures/week05-slides.html#blocking-in-action",
+    "href": "lectures/week05-slides.html#blocking-in-action",
+    "title": "Principles of Experimental Design",
+    "section": "Blocking in action",
+    "text": "Blocking in action\n\nNaive model: growth ~ treatment\nBlocked model: growth ~ treatment + block\nBlocking usually shrinks the residual variance, making it easier to detect the treatment effect — we’ll simulate this today"
+  },
+  {
+    "objectID": "lectures/week05-slides.html#when-blocking-doesnt-help-much",
+    "href": "lectures/week05-slides.html#when-blocking-doesnt-help-much",
+    "title": "Principles of Experimental Design",
+    "section": "When blocking doesn’t help much",
+    "text": "When blocking doesn’t help much\n\nIf the nuisance variable barely matters, blocking costs you degrees of freedom for little benefit\nWorth checking, not assuming"
+  },
+  {
+    "objectID": "lectures/week05-slides.html#this-week",
+    "href": "lectures/week05-slides.html#this-week",
+    "title": "Principles of Experimental Design",
+    "section": "This week",
+    "text": "This week\n\nWednesday (tutorial): simulate a randomized block design in R, compare naive vs. blocked models\nNext week: find these same principles in real published studies"
+  },
+  {
+    "objectID": "lectures/week06-slides.html#last-week-vs.-this-week",
+    "href": "lectures/week06-slides.html#last-week-vs.-this-week",
+    "title": "Design in Practice: Reading the Literature",
+    "section": "Last week vs. this week",
+    "text": "Last week vs. this week\n\nLast week: replication, randomization, blocking — as concepts\nThis week: finding these same ideas inside a real methods section"
+  },
+  {
+    "objectID": "lectures/week06-slides.html#why-this-matters",
+    "href": "lectures/week06-slides.html#why-this-matters",
+    "title": "Design in Practice: Reading the Literature",
+    "section": "Why this matters",
+    "text": "Why this matters\n\nTextbook examples are clean by design\nReal papers bury the design in a paragraph of prose — you have to extract it yourself\nThis is a skill you’ll use for the rest of your career, not just this course"
+  },
+  {
+    "objectID": "lectures/week06-slides.html#a-framework-seven-questions",
+    "href": "lectures/week06-slides.html#a-framework-seven-questions",
+    "title": "Design in Practice: Reading the Literature",
+    "section": "A framework: seven questions",
+    "text": "A framework: seven questions\n\nWhat is the experimental unit?\nWhat are the treatments, and how many levels?\nHow many experimental units per treatment?\nWas assignment randomized?\nWas there blocking or matching?\nWhat was the response variable, and how was it measured?\nDoes the statistical analysis match the design?"
+  },
+  {
+    "objectID": "lectures/week06-slides.html#question-1-is-the-hardest",
+    "href": "lectures/week06-slides.html#question-1-is-the-hardest",
+    "title": "Design in Practice: Reading the Literature",
+    "section": "Question 1 is the hardest",
+    "text": "Question 1 is the hardest\n\nNot “how many measurements” — “how many independently assigned units”\nIf you’re unsure, ask: what would it mean to have one more replicate here?"
+  },
+  {
+    "objectID": "lectures/week06-slides.html#a-worked-example",
+    "href": "lectures/week06-slides.html#a-worked-example",
+    "title": "Design in Practice: Reading the Literature",
+    "section": "A worked example",
+    "text": "A worked example\n\nHypothetical: soil amendment vs. seedling survival, 40 plots, 20 per treatment, randomly assigned\nExperimental unit: the plot (not the individual seedling)\nRandomization: yes. Blocking: none — and the hillside likely has an elevation gradient that could have been blocked on"
+  },
+  {
+    "objectID": "lectures/week06-slides.html#what-no-blocking-costs-you",
+    "href": "lectures/week06-slides.html#what-no-blocking-costs-you",
+    "title": "Design in Practice: Reading the Literature",
+    "section": "What “no blocking” costs you",
+    "text": "What “no blocking” costs you\n\nNot necessarily wrong — just possibly less powerful than it could have been\nPart of your job as a reader (and later, a designer) is spotting missed opportunities like this"
+  },
+  {
+    "objectID": "lectures/week06-slides.html#todays-practice",
+    "href": "lectures/week06-slides.html#todays-practice",
+    "title": "Design in Practice: Reading the Literature",
+    "section": "Today’s practice",
+    "text": "Today’s practice\n\nFind one primary research article with an actual experiment\nApply the seven-question framework\nIf an answer isn’t in the methods section — that’s a finding too"
+  },
+  {
+    "objectID": "lectures/week06-slides.html#this-week",
+    "href": "lectures/week06-slides.html#this-week",
+    "title": "Design in Practice: Reading the Literature",
+    "section": "This week",
+    "text": "This week\n\nWednesday (tutorial): apply the framework together to a worked example, then to a paper of your choosing\nAssignment: a polished write-up of this same exercise"
+  },
+  {
+    "objectID": "lectures/week07-slides.html#from-design-to-your-first-test",
+    "href": "lectures/week07-slides.html#from-design-to-your-first-test",
+    "title": "Hypothesis Testing I: T-Tests and ANOVA",
+    "section": "From design to your first test",
+    "text": "From design to your first test\n\nWeeks 5–6: design principles, and finding them in the literature\nToday: your first formal hypothesis test — connecting a design to the right analysis"
+  },
+  {
+    "objectID": "lectures/week07-slides.html#the-simplest-case-two-groups",
+    "href": "lectures/week07-slides.html#the-simplest-case-two-groups",
+    "title": "Hypothesis Testing I: T-Tests and ANOVA",
+    "section": "The simplest case: two groups",
+    "text": "The simplest case: two groups\n\nComparing a numeric outcome between exactly two groups\nThe tool: t.test()\nPaired or unpaired? Depends on your design — measurements from the same subject under two conditions are paired"
+  },
+  {
+    "objectID": "lectures/week07-slides.html#three-or-more-groups-anova",
+    "href": "lectures/week07-slides.html#three-or-more-groups-anova",
+    "title": "Hypothesis Testing I: T-Tests and ANOVA",
+    "section": "Three or more groups: ANOVA",
+    "text": "Three or more groups: ANOVA\n\nComparing means across 3+ groups\nThe tool: aov()\nNull hypothesis: all group means are equal\nA significant ANOVA tells you some group differs — not which"
+  },
+  {
+    "objectID": "lectures/week07-slides.html#checking-assumptions",
+    "href": "lectures/week07-slides.html#checking-assumptions",
+    "title": "Hypothesis Testing I: T-Tests and ANOVA",
+    "section": "Checking assumptions",
+    "text": "Checking assumptions\n\nResiduals roughly normal (Q-Q plot)\nSimilar variance across groups (Levene’s test, residuals-vs-fitted plot)\nThese are exactly the checks Weeks 3–4 trained you to make"
+  },
+  {
+    "objectID": "lectures/week07-slides.html#after-a-significant-anova-post-hoc-tests",
+    "href": "lectures/week07-slides.html#after-a-significant-anova-post-hoc-tests",
+    "title": "Hypothesis Testing I: T-Tests and ANOVA",
+    "section": "After a significant ANOVA: post-hoc tests",
+    "text": "After a significant ANOVA: post-hoc tests\n\nemmeans() + pairs() for pairwise comparisons\nCorrect for multiple comparisons (Tukey) — testing many pairs inflates your false-positive rate"
+  },
+  {
+    "objectID": "lectures/week07-slides.html#from-test-back-to-design",
+    "href": "lectures/week07-slides.html#from-test-back-to-design",
+    "title": "Hypothesis Testing I: T-Tests and ANOVA",
+    "section": "From test back to design",
+    "text": "From test back to design\n\nA test only tells you what to do with data you already have\nThe design determines whether the data can answer your question at all\nExample: 3 fertilizer doses, 1 greenhouse, 18 pots — what’s the experimental unit? How would you randomize?"
+  },
+  {
+    "objectID": "lectures/week07-slides.html#this-week",
+    "href": "lectures/week07-slides.html#this-week",
+    "title": "Hypothesis Testing I: T-Tests and ANOVA",
+    "section": "This week",
+    "text": "This week\n\nWednesday (tutorial): fit both tests in R, check assumptions, run post-hoc comparisons\nAssignment + Data Safari #2: due this week"
+  },
+  {
+    "objectID": "lectures/week09-slides.html#welcome-back",
+    "href": "lectures/week09-slides.html#welcome-back",
+    "title": "Correlation and Linear Regression",
+    "section": "Welcome back",
+    "text": "Welcome back\n\nSpring Break’s over — quick recap: t-tests and ANOVA compare group means\nToday: what if both variables are continuous?"
+  },
+  {
+    "objectID": "lectures/week09-slides.html#correlation",
+    "href": "lectures/week09-slides.html#correlation",
+    "title": "Correlation and Linear Regression",
+    "section": "Correlation",
+    "text": "Correlation\n\ncor() / cor.test() — strength and direction of a linear relationship, summarized in a single number (−1 to 1)\nSays nothing about why two things move together"
+  },
+  {
+    "objectID": "lectures/week09-slides.html#simple-linear-regression",
+    "href": "lectures/week09-slides.html#simple-linear-regression",
+    "title": "Correlation and Linear Regression",
+    "section": "Simple linear regression",
+    "text": "Simple linear regression\n\nlm(y ~ x) — models y as a straight-line function of x\nGives you a slope (effect size), not just a correlation coefficient\ntidy() and glance() (from broom) for clean summaries"
+  },
+  {
+    "objectID": "lectures/week09-slides.html#checking-the-fit",
+    "href": "lectures/week09-slides.html#checking-the-fit",
+    "title": "Correlation and Linear Regression",
+    "section": "Checking the fit",
+    "text": "Checking the fit\n\nResiduals vs. fitted — is the relationship actually linear?\nQ-Q plot — are residuals roughly normal?\nR² — how much variance does the model explain?"
+  },
+  {
+    "objectID": "lectures/week09-slides.html#correlation-and-regression-are-not-causation",
+    "href": "lectures/week09-slides.html#correlation-and-regression-are-not-causation",
+    "title": "Correlation and Linear Regression",
+    "section": "Correlation and regression are not causation",
+    "text": "Correlation and regression are not causation\n\ntrees: girth predicts volume — but nobody assigned girth\nThis is observational data\nContrast with Week 7, where treatment was randomly assigned — there, a significant result supports a causal claim"
+  },
+  {
+    "objectID": "lectures/week09-slides.html#design-still-matters-here",
+    "href": "lectures/week09-slides.html#design-still-matters-here",
+    "title": "Correlation and Linear Regression",
+    "section": "Design still matters here",
+    "text": "Design still matters here\n\nA strong, statistically significant regression from observational data still can’t prove causation\nIf you want to claim causation, you need an experiment — random assignment of the predictor, not just measurement of it"
+  },
+  {
+    "objectID": "lectures/week09-slides.html#this-week",
+    "href": "lectures/week09-slides.html#this-week",
+    "title": "Correlation and Linear Regression",
+    "section": "This week",
+    "text": "This week\n\nWednesday (tutorial): fit and check a simple linear regression, compare correlation vs. regression\nAssignment: due this week"
+  },
+  {
+    "objectID": "lectures/week10-slides.html#from-one-predictor-to-several",
+    "href": "lectures/week10-slides.html#from-one-predictor-to-several",
+    "title": "Multiple Regression and ANCOVA",
+    "section": "From one predictor to several",
+    "text": "From one predictor to several\n\nLast week: y ~ x, one continuous predictor\nReal biological outcomes usually depend on more than one thing at once"
+  },
+  {
+    "objectID": "lectures/week10-slides.html#multiple-regression",
+    "href": "lectures/week10-slides.html#multiple-regression",
+    "title": "Multiple Regression and ANCOVA",
+    "section": "Multiple regression",
+    "text": "Multiple regression\n\nlm(y ~ x1 + x2) — each coefficient is the effect of that predictor holding the others constant\nCompare models with anova(model_simple, model_full) — does adding a predictor meaningfully improve the fit?"
+  },
+  {
+    "objectID": "lectures/week10-slides.html#ancova-mixing-categorical-and-continuous",
+    "href": "lectures/week10-slides.html#ancova-mixing-categorical-and-continuous",
+    "title": "Multiple Regression and ANCOVA",
+    "section": "ANCOVA: mixing categorical and continuous",
+    "text": "ANCOVA: mixing categorical and continuous\n\nOne categorical predictor (treatment) + one continuous covariate (e.g., starting size)\nlm(final ~ start + treatment)\nThe treatment coefficient is the group difference after accounting for the covariate"
+  },
+  {
+    "objectID": "lectures/week10-slides.html#why-control-for-the-covariate",
+    "href": "lectures/week10-slides.html#why-control-for-the-covariate",
+    "title": "Multiple Regression and ANCOVA",
+    "section": "Why control for the covariate?",
+    "text": "Why control for the covariate?\n\nWithout it: a group difference in final_height might just reflect a group difference in start_height, not a true treatment effect\nWith it: you’re comparing groups on a level playing field"
+  },
+  {
+    "objectID": "lectures/week10-slides.html#checking-for-an-interaction",
+    "href": "lectures/week10-slides.html#checking-for-an-interaction",
+    "title": "Multiple Regression and ANCOVA",
+    "section": "Checking for an interaction",
+    "text": "Checking for an interaction\n\nANCOVA assumes parallel slopes across groups\nlm(final ~ start * treatment) tests whether that assumption holds\nA significant interaction means the treatment effect depends on the covariate — a more interesting (and more complex) story"
+  },
+  {
+    "objectID": "lectures/week10-slides.html#connecting-back-to-design",
+    "href": "lectures/week10-slides.html#connecting-back-to-design",
+    "title": "Multiple Regression and ANCOVA",
+    "section": "Connecting back to design",
+    "text": "Connecting back to design\n\nThis is Experimental Designs III territory: multiple predictors mean your design needs to consider more than one source of variation\nA covariate you didn’t measure is a covariate you can’t control for"
+  },
+  {
+    "objectID": "lectures/week10-slides.html#this-week",
+    "href": "lectures/week10-slides.html#this-week",
+    "title": "Multiple Regression and ANCOVA",
+    "section": "This week",
+    "text": "This week\n\nWednesday (tutorial): fit multiple regression and ANCOVA models, test for interactions\nAssignment + Data Safari #3: due this week"
+  },
+  {
+    "objectID": "lectures/week11-slides.html#when-lm-breaks-down",
+    "href": "lectures/week11-slides.html#when-lm-breaks-down",
+    "title": "Logistic Regression and Other GLMs",
+    "section": "When lm() breaks down",
+    "text": "When lm() breaks down\n\nlm() assumes a continuous, roughly normal outcome\nWhat about survival (yes/no)? Count of offspring? Number of parasites?"
+  },
+  {
+    "objectID": "lectures/week11-slides.html#logistic-regression",
+    "href": "lectures/week11-slides.html#logistic-regression",
+    "title": "Logistic Regression and Other GLMs",
+    "section": "Logistic regression",
+    "text": "Logistic regression\n\nFor binary outcomes (survived/died, germinated/didn’t)\nglm(y ~ x, family = binomial)\nModels the log-odds of the outcome, not the outcome directly\nExponentiate coefficients to get odds ratios — more interpretable"
+  },
+  {
+    "objectID": "lectures/week11-slides.html#poisson-regression",
+    "href": "lectures/week11-slides.html#poisson-regression",
+    "title": "Logistic Regression and Other GLMs",
+    "section": "Poisson regression",
+    "text": "Poisson regression\n\nFor count outcomes (number of offspring, number of parasites)\nglm(y ~ x, family = poisson)\nWatch for overdispersion: if the residual deviance is much larger than the residual df, consider quasi-Poisson or negative binomial instead"
+  },
+  {
+    "objectID": "lectures/week11-slides.html#the-generalized-linear-model-glm-family",
+    "href": "lectures/week11-slides.html#the-generalized-linear-model-glm-family",
+    "title": "Logistic Regression and Other GLMs",
+    "section": "The generalized linear model (GLM) family",
+    "text": "The generalized linear model (GLM) family\n\n\n\nOutcome type\nModel\n\n\n\n\nContinuous\nlm()\n\n\nBinary\nLogistic glm()\n\n\nCount\nPoisson / negative binomial glm()\n\n\n\n\nSame underlying idea — a linear predictor, transformed to fit the outcome’s scale"
+  },
+  {
+    "objectID": "lectures/week11-slides.html#design-connection",
+    "href": "lectures/week11-slides.html#design-connection",
+    "title": "Logistic Regression and Other GLMs",
+    "section": "Design connection",
+    "text": "Design connection\n\nThe type of outcome you plan to measure should shape your design from the start — e.g., a binary outcome usually needs a larger sample size than a continuous one to achieve the same power"
+  },
+  {
+    "objectID": "lectures/week11-slides.html#this-week",
+    "href": "lectures/week11-slides.html#this-week",
+    "title": "Logistic Regression and Other GLMs",
+    "section": "This week",
+    "text": "This week\n\nWednesday (tutorial): fit logistic and Poisson models, check for overdispersion\nAssignment: due this week"
+  },
+  {
+    "objectID": "lectures/week12-slides.html#a-problem-weve-flagged-since-week-5",
+    "href": "lectures/week12-slides.html#a-problem-weve-flagged-since-week-5",
+    "title": "Accounting for Non-Independence: Mixed-Effects Models I",
+    "section": "A problem we’ve flagged since Week 5",
+    "text": "A problem we’ve flagged since Week 5\n\nPseudoreplication: measurements within the same site/subject/plot aren’t independent\nIgnoring this inflates your effective sample size and false-positive rate\nToday: a proper tool for handling it, instead of just avoiding it"
+  },
+  {
+    "objectID": "lectures/week12-slides.html#random-vs.-fixed-effects",
+    "href": "lectures/week12-slides.html#random-vs.-fixed-effects",
+    "title": "Accounting for Non-Independence: Mixed-Effects Models I",
+    "section": "Random vs. fixed effects",
+    "text": "Random vs. fixed effects\n\nFixed effect: a variable whose specific levels you care about (e.g., treatment)\nRandom effect: a grouping variable representing a sample from a larger population of possible groups (e.g., site, subject)"
+  },
+  {
+    "objectID": "lectures/week12-slides.html#the-random-intercept-model",
+    "href": "lectures/week12-slides.html#the-random-intercept-model",
+    "title": "Accounting for Non-Independence: Mixed-Effects Models I",
+    "section": "The random-intercept model",
+    "text": "The random-intercept model\n\nlmer(response ~ treatment + (1 | site), data = ...)\nLets each site have its own baseline, while estimating one shared treatment effect\nStandard errors on fixed effects usually get larger and more honest once you do this correctly"
+  },
+  {
+    "objectID": "lectures/week12-slides.html#why-not-just-add-site-as-a-fixed-effect",
+    "href": "lectures/week12-slides.html#why-not-just-add-site-as-a-fixed-effect",
+    "title": "Accounting for Non-Independence: Mixed-Effects Models I",
+    "section": "Why not just add site as a fixed effect?",
+    "text": "Why not just add site as a fixed effect?\n\nYou could — but then you’re estimating a separate parameter for every site, and can’t generalize beyond the specific sites you sampled\nA random effect treats site as a sample from a broader population, which is usually what you actually want to say"
+  },
+  {
+    "objectID": "lectures/week12-slides.html#connecting-back-to-blocking",
+    "href": "lectures/week12-slides.html#connecting-back-to-blocking",
+    "title": "Accounting for Non-Independence: Mixed-Effects Models I",
+    "section": "Connecting back to blocking",
+    "text": "Connecting back to blocking\n\nA randomized block design (Week 5) and (1 | block) are close cousins — both treat block-to-block variation as a nuisance to control for, not a treatment to test\nMixed models generalize this idea beyond simple block designs"
+  },
+  {
+    "objectID": "lectures/week12-slides.html#a-practical-limit",
+    "href": "lectures/week12-slides.html#a-practical-limit",
+    "title": "Accounting for Non-Independence: Mixed-Effects Models I",
+    "section": "A practical limit",
+    "text": "A practical limit\n\nRandom effects need enough groups to estimate their variance reliably — as a rule of thumb, 5–10 groups minimum\nWith very few groups, consider a fixed effect instead"
+  },
+  {
+    "objectID": "lectures/week12-slides.html#this-week",
+    "href": "lectures/week12-slides.html#this-week",
+    "title": "Accounting for Non-Independence: Mixed-Effects Models I",
+    "section": "This week",
+    "text": "This week\n\nWednesday (tutorial): fit a random-intercept model, compare to a naive lm()\nAssignment: due this week"
+  },
+  {
+    "objectID": "lectures/week13-slides.html#last-week-vs.-this-week",
+    "href": "lectures/week13-slides.html#last-week-vs.-this-week",
+    "title": "Mixed-Effects Models II: Slopes, Crossed, and Nested Designs",
+    "section": "Last week vs. this week",
+    "text": "Last week vs. this week\n\nLast week: random intercepts — each group gets its own baseline\nThis week: what if the effect itself varies by group, and what happens with more complex grouping structures?"
+  },
+  {
+    "objectID": "lectures/week13-slides.html#random-slopes",
+    "href": "lectures/week13-slides.html#random-slopes",
+    "title": "Mixed-Effects Models II: Slopes, Crossed, and Nested Designs",
+    "section": "Random slopes",
+    "text": "Random slopes\n\nlmer(response ~ treatment + (treatment | site), data = ...)\nLets the treatment effect itself vary from site to site\nCompare to the random-intercept-only model with anova() — does allowing varying slopes meaningfully improve the fit?"
+  },
+  {
+    "objectID": "lectures/week13-slides.html#nested-random-effects",
+    "href": "lectures/week13-slides.html#nested-random-effects",
+    "title": "Mixed-Effects Models II: Slopes, Crossed, and Nested Designs",
+    "section": "Nested random effects",
+    "text": "Nested random effects\n\nOne factor’s levels only make sense within another (e.g., plot within site — “plot 1” at Site A isn’t the same physical plot as “plot 1” at Site B)\nSyntax: (1 | site/plot)"
+  },
+  {
+    "objectID": "lectures/week13-slides.html#crossed-random-effects",
+    "href": "lectures/week13-slides.html#crossed-random-effects",
+    "title": "Mixed-Effects Models II: Slopes, Crossed, and Nested Designs",
+    "section": "Crossed random effects",
+    "text": "Crossed random effects\n\nLevels of one factor occur across multiple levels of another (e.g., the same observer measures animals at several sites)\nSyntax: (1 | site) + (1 | observer)"
+  },
+  {
+    "objectID": "lectures/week13-slides.html#telling-them-apart",
+    "href": "lectures/week13-slides.html#telling-them-apart",
+    "title": "Mixed-Effects Models II: Slopes, Crossed, and Nested Designs",
+    "section": "Telling them apart",
+    "text": "Telling them apart\n\nAsk: does “level 1” mean the same thing across every group?\n\nYes → crossed\nNo → nested\n\nGetting this wrong doesn’t always error — it silently gives you the wrong model"
+  },
+  {
+    "objectID": "lectures/week13-slides.html#putting-it-together",
+    "href": "lectures/week13-slides.html#putting-it-together",
+    "title": "Mixed-Effects Models II: Slopes, Crossed, and Nested Designs",
+    "section": "Putting it together",
+    "text": "Putting it together\n\nDesign (Weeks 5–6) → naive vs. blocked model (Week 5) → mixed model with random intercepts (Week 12) → random slopes and crossed/nested structures (today)\nSame underlying idea the whole way: account for the structure in how your data were collected"
+  },
+  {
+    "objectID": "lectures/week13-slides.html#this-week",
+    "href": "lectures/week13-slides.html#this-week",
+    "title": "Mixed-Effects Models II: Slopes, Crossed, and Nested Designs",
+    "section": "This week",
+    "text": "This week\n\nWednesday (tutorial): fit random-slopes models, practice writing crossed vs. nested syntax\nAssignment + Data Safari #4: due this week"
+  },
+  {
+    "objectID": "lectures/week14-slides.html#the-last-new-topic",
+    "href": "lectures/week14-slides.html#the-last-new-topic",
+    "title": "Nonparametric Alternatives and Choosing the Right Test",
+    "section": "The last new topic",
+    "text": "The last new topic\n\nWeeks 5–13 built up a toolkit: t-tests, ANOVA, regression, GLMs, mixed models\nToday: what to do when none of their assumptions hold — and how to choose between everything you now know"
+  },
+  {
+    "objectID": "lectures/week14-slides.html#when-parametric-tests-break-down",
+    "href": "lectures/week14-slides.html#when-parametric-tests-break-down",
+    "title": "Nonparametric Alternatives and Choosing the Right Test",
+    "section": "When parametric tests break down",
+    "text": "When parametric tests break down\n\nSmall sample size and clear evidence of non-normality or extreme outliers you can’t justify removing\nNonparametric tests, based on ranks rather than raw values, are a safer choice in that situation"
+  },
+  {
+    "objectID": "lectures/week14-slides.html#rank-based-alternatives",
+    "href": "lectures/week14-slides.html#rank-based-alternatives",
+    "title": "Nonparametric Alternatives and Choosing the Right Test",
+    "section": "Rank-based alternatives",
+    "text": "Rank-based alternatives\n\n\n\nParametric test\nNonparametric alternative\n\n\n\n\nt-test\nWilcoxon rank-sum test\n\n\nOne-way ANOVA\nKruskal-Wallis test\n\n\nPearson correlation\nSpearman correlation\n\n\n\n\nSame questions, different machinery — less sensitive to outliers and distributional shape"
+  },
+  {
+    "objectID": "lectures/week14-slides.html#a-general-purpose-backup-permutation-tests",
+    "href": "lectures/week14-slides.html#a-general-purpose-backup-permutation-tests",
+    "title": "Nonparametric Alternatives and Choosing the Right Test",
+    "section": "A general-purpose backup: permutation tests",
+    "text": "A general-purpose backup: permutation tests\n\nBuild a null distribution directly from your own data by shuffling group labels\nUseful when no standard nonparametric test fits your specific design\nMore computationally intensive, but conceptually simple"
+  },
+  {
+    "objectID": "lectures/week14-slides.html#choosing-a-test-the-whole-course-in-one-slide",
+    "href": "lectures/week14-slides.html#choosing-a-test-the-whole-course-in-one-slide",
+    "title": "Nonparametric Alternatives and Choosing the Right Test",
+    "section": "Choosing a test: the whole course in one slide",
+    "text": "Choosing a test: the whole course in one slide\n\nWhat type is your outcome? (continuous, binary, count)\nHow many groups / predictors?\nAre your residuals reasonably normal, with similar variance across groups?\nIs there any non-independence (repeated measures, nesting) you need to account for?\nIf assumptions are badly violated and nothing else fits — consider a nonparametric or permutation-based approach"
+  },
+  {
+    "objectID": "lectures/week14-slides.html#looking-back",
+    "href": "lectures/week14-slides.html#looking-back",
+    "title": "Nonparametric Alternatives and Choosing the Right Test",
+    "section": "Looking back",
+    "text": "Looking back\n\nWeek 1: why design matters\nWeeks 2–4: R, data wrangling, EDA\nWeeks 5–6: design principles, in theory and in the literature\nWeeks 7–14: matching a design to the right statistical model"
+  },
+  {
+    "objectID": "lectures/week14-slides.html#next-final-projects",
+    "href": "lectures/week14-slides.html#next-final-projects",
+    "title": "Nonparametric Alternatives and Choosing the Right Test",
+    "section": "Next: final projects",
+    "text": "Next: final projects\n\nWeek 15: presentations\nBring together design, analysis, and communication — everything this course covered"
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Weekly Schedule",
+    "section": "",
+    "text": "Note\n\n\n\nMondays: lecture (slides linked below). Wednesdays: hands-on tutorial in class, which feeds directly into that week’s assignment. Data Safari exercises appear in Weeks 4, 7, 10, and 13, alongside the regular assignment.\nEach assignment/Data Safari link (e.g. “PS1”) downloads the blank Quarto template (.qmd) — fill it in and render it yourself to produce your submission PDF. Tutorials and slides can be viewed with Code → View Source (top right of the page) if you’d like their .qmd source too."
+  },
+  {
+    "objectID": "schedule.html#graduate-project-milestones-biol-5860-only",
+    "href": "schedule.html#graduate-project-milestones-biol-5860-only",
+    "title": "Weekly Schedule",
+    "section": "Graduate project milestones (BIOL 5860 only)",
+    "text": "Graduate project milestones (BIOL 5860 only)\nFour checkpoint deliverables spread across the semester, each documenting one stage of your independent project. See the Assignments overview for the full description. As with weekly assignments, click the name to download the blank .qmd template.\n\n\n\n\n\n\n\n\nDue by end of\nMilestone\nTemplate\n\n\n\n\nWeek 7\nExperimental design and planned hypothesis testing\nPart 1\n\n\nWeek 10\nData carpentry and exploration\nPart 2\n\n\nWeek 13\nStatistical modeling\nPart 3\n\n\nWeek 14\nVisualization\nPart 4\n\n\nWeek 15\nFinal presentation covering the entire process\n—\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nThese due dates are a suggested pacing (each milestone lands a week after the most relevant course content), not fixed by any particular constraint — adjust freely in this table and in the corresponding files’ front matter if you’d prefer a different spread."
+  },
+  {
+    "objectID": "schedule.html#notes",
+    "href": "schedule.html#notes",
+    "title": "Weekly Schedule",
+    "section": "Notes",
+    "text": "Notes\n\nSlides open as a separate reveal.js presentation (use arrow keys or click to advance); tutorials and assignments render as regular pages on this site.\nThe graduate-only Project is presented in Week 15, alongside undergraduate project presentations."
+  }
+]

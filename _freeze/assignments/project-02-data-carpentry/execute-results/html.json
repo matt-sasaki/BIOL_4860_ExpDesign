@@ -1,0 +1,17 @@
+{
+  "hash": "7829b13a887118aaa65724c117471977",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Project Checkpoint Part 2: Data Carpentry and Exploration\"\nsubtitle: \"Graduate students only (BIOL 5860)\"\nauthor: PUT YOUR NAME HERE\nformat: typst\n---\n\nThis is the second of four checkpoint deliverables for the graduate project. Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas by the end of Week 10. See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\n## 1. Import and structure\n\nImport your data and show its structure (`glimpse()` or equivalent). Limit the columns shown to just those relevant for your analyses.\n\n\n::: {.cell}\n\n:::\n\n\nProvide a brief description of each column below - describe the data contained in the column, what is the data class, what are the summary statistics, and how are missing values recorded? Record these details in a table below.\n\n<!--# Table goes here -->\n\n## 2. Cleaning and tidying\n\nDocument the cleaning/tidying steps you needed (renaming columns, handling missing values, reshaping between wide and long, merging files, etc.). Show the code for each step - be sure to annotate as needed.\n\n\n::: {.cell}\n\n:::\n\n\nBriefly describe, in your own words, what each step accomplished and why it was necessary. <!--# Include your answer below -->\n\n## 3. Exploratory summaries and visualization\n\nProduce summary statistics and at least two exploratory plots of your key variables, following the practices from Weeks 3–4.\n\n\n::: {.cell}\n\n:::\n\n\n## 4. What the data are telling you\n\nBased on this exploration, do you see anything (skew, unequal variance, outliers, missing data, unexpected values) that might affect your planned analysis from Part 1? Do your hypotheses need any adjustment? <!--# Include your answer below -->\n",
+    "supporting": [
+      "project-02-data-carpentry_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

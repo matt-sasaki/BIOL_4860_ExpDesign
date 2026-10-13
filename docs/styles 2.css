@@ -1,0 +1,8 @@
+/* Small supplemental tweaks layered on top of styles.scss.
+   Available utility class: add class="due-date" to text (e.g. a
+   schedule cell) to flag an assignment deadline. */
+
+.due-date {
+  font-weight: 600;
+  color: #A2472D;
+}
