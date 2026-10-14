@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <title>Experimental Design &amp; Analysis in Biology – Nonparametric Alternatives and Choosing the Right Test</title>
+  <title>Experimental Design &amp; Analysis in Biology – When Assumptions Fail, and Choosing a Model</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -130,87 +130,133 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Nonparametric Alternatives and Choosing the Right Test</h1>
+  <h1 class="title">When Assumptions Fail, and Choosing a Model</h1>
   <p class="subtitle">Week 14 · BIOL 4860/5860</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="the-last-new-topic" class="slide level2">
-<h2>The last new topic</h2>
+<section id="where-we-are" class="slide level2">
+<h2>Where we are</h2>
 <ul>
-<li>Weeks 5–13 built up a toolkit: t-tests, ANOVA, regression, GLMs, mixed models</li>
-<li>Today: what to do when none of their assumptions hold — and how to choose between everything you now know</li>
+<li>Weeks 9–13: one framework, many extensions</li>
+<li>Today: what to do when the assumptions don’t hold, and how to pick a model for a new problem</li>
 </ul>
 </section>
-<section id="when-parametric-tests-break-down" class="slide level2">
-<h2>When parametric tests break down</h2>
-<ul>
-<li>Small sample size <strong>and</strong> clear evidence of non-normality or extreme outliers you can’t justify removing</li>
-<li>Nonparametric tests, based on ranks rather than raw values, are a safer choice in that situation</li>
-</ul>
-</section>
-<section id="rank-based-alternatives" class="slide level2">
-<h2>Rank-based alternatives</h2>
+<section id="nonparametric-tests-are-linear-models-on-ranks" class="slide level2">
+<h2>“Nonparametric” tests are linear models on ranks</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>Parametric test</th>
-<th>Nonparametric alternative</th>
+<th>Classic test</th>
+<th>Linear model</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>t-test</td>
-<td>Wilcoxon rank-sum test</td>
+<td>Spearman correlation</td>
+<td><code>lm(rank(y) ~ 1 + rank(x))</code></td>
 </tr>
 <tr class="even">
-<td>One-way ANOVA</td>
-<td>Kruskal-Wallis test</td>
+<td>Mann-Whitney U</td>
+<td><code>lm(signed_rank(y) ~ 1 + group)</code></td>
 </tr>
 <tr class="odd">
-<td>Pearson correlation</td>
-<td>Spearman correlation</td>
+<td>Kruskal-Wallis</td>
+<td><code>lm(rank(y) ~ group)</code></td>
+</tr>
+<tr class="even">
+<td>Wilcoxon signed-rank</td>
+<td><code>lm(signed_rank(y) ~ 1)</code></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>Same questions, different machinery — less sensitive to outliers and distributional shape</li>
+<li>Replace values by ranks, then run the same model</li>
+<li>Close approximations (not exact) for larger samples</li>
 </ul>
 </section>
-<section id="a-general-purpose-backup-permutation-tests" class="slide level2">
-<h2>A general-purpose backup: permutation tests</h2>
+<section id="the-cost-of-ranks" class="slide level2">
+<h2>The cost of ranks</h2>
 <ul>
-<li>Build a null distribution directly from your own data by shuffling group labels</li>
-<li>Useful when no standard nonparametric test fits your specific design</li>
-<li>More computationally intensive, but conceptually simple</li>
+<li>You lose the original units: “the rank difference is 7.2” isn’t an effect size</li>
+<li>Hard to extend to covariates and random effects</li>
+<li>Prefer transforms, GLMs, or robust standard errors when you can</li>
 </ul>
 </section>
-<section id="choosing-a-test-the-whole-course-in-one-slide" class="slide level2">
-<h2>Choosing a test: the whole course in one slide</h2>
+<section id="better-options-for-violated-assumptions" class="slide level2">
+<h2>Better options for violated assumptions</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Unequal variances</td>
+<td>Robust standard errors (<code>vcov = "HC3"</code>)</td>
+</tr>
+<tr class="even">
+<td>Skewed response</td>
+<td>Transform, or use a GLM</td>
+</tr>
+<tr class="odd">
+<td>Counts or proportions</td>
+<td><code>glm()</code> with the right family</td>
+</tr>
+<tr class="even">
+<td>Non-independence</td>
+<td>Mixed model</td>
+</tr>
+<tr class="odd">
+<td>Tiny samples, odd statistics</td>
+<td>Permutation / bootstrap</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="robust-standard-errors-with-marginaleffects" class="slide level2">
+<h2>Robust standard errors with marginaleffects</h2>
+<ul>
+<li>Welch’s t-test and friends are about <strong>unequal variance</strong></li>
+<li><code>avg_comparisons(m, variables = "group", vcov = "HC3")</code></li>
+<li>Same estimate, honest uncertainty</li>
+</ul>
+</section>
+<section id="permutation-tests" class="slide level2">
+<h2>Permutation tests</h2>
+<ul>
+<li>Idea: if treatment did nothing, labels are exchangeable</li>
+<li>Shuffle labels, refit, repeat; compare observed statistic to the shuffled distribution</li>
+<li>Works for any statistic you can compute from a model</li>
+</ul>
+</section>
+<section id="choosing-a-model" class="slide level2">
+<h2>Choosing a model</h2>
 <ol type="1">
-<li>What type is your outcome? (continuous, binary, count)</li>
-<li>How many groups / predictors?</li>
-<li>Are your residuals reasonably normal, with similar variance across groups?</li>
-<li>Is there any non-independence (repeated measures, nesting) you need to account for?</li>
-<li>If assumptions are badly violated and nothing else fits — consider a nonparametric or permutation-based approach</li>
+<li><strong>What is the response?</strong> continuous → <code>lm</code>; binary → binomial; count → poisson</li>
+<li><strong>What are the predictors?</strong> groups, covariates, interactions</li>
+<li><strong>Is the data independent?</strong> if not → random effects</li>
+<li><strong>What question am I asking?</strong> → <code>avg_comparisons</code>, <code>avg_slopes</code>, <code>hypotheses</code></li>
 </ol>
 </section>
-<section id="looking-back" class="slide level2">
-<h2>Looking back</h2>
+<section id="the-course-in-one-slide" class="slide level2">
+<h2>The course in one slide</h2>
 <ul>
-<li>Week 1: why design matters</li>
-<li>Weeks 2–4: R, data wrangling, EDA</li>
-<li>Weeks 5–6: design principles, in theory and in the literature</li>
-<li>Weeks 7–14: matching a design to the right statistical model</li>
+<li>A statistical test is a <strong>model</strong> + a <strong>question about its parameters</strong></li>
+<li>The model comes from the <strong>design</strong>: responses, predictors, structure</li>
+<li>The question is answered with <strong>marginal effects</strong> in the units of the data</li>
+<li>Check assumptions, report estimates with intervals</li>
 </ul>
 </section>
-<section id="next-final-projects" class="slide level2">
-<h2>Next: final projects</h2>
+<section id="this-week" class="slide level2">
+<h2>This week</h2>
 <ul>
-<li>Week 15: presentations</li>
-<li>Bring together design, analysis, and communication — everything this course covered</li>
+<li><strong>Wednesday (tutorial):</strong> rank-based tests as models, robust SEs, a permutation test, and a model-selection exercise</li>
+<li><strong>Assignment:</strong> due this week</li>
 </ul>
 
 

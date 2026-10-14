@@ -1,33 +1,56 @@
 ---
 title: "Week 9 Assignment"
-subtitle: "Correlation and linear regression"
+subtitle: "Everything is a linear model"
 format: typst
 ---
 
 Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 10's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.
 
-Using the built-in `trees` dataset:
+Load the packages you need first:
 
-1.  Compute the correlation between `Height` and `Volume`, with a significance test.
+```{r}
+library(tidyverse)
+library(marginaleffects)
+```
+
+**Part A: Group comparison.** Using the built-in `ToothGrowth` data, compare tooth length (`len`) between the two supplements (`supp`) at the highest dose (`dose == 2`).
+
+1.  Run a two-sample t-test (`var.equal = TRUE`).
 
 ```{r}
 
 ```
 
-2.  Fit a simple linear regression of `Volume ~ Height`.
+2.  Run the same comparison with `lm()`, and show that the p-value matches.
 
 ```{r}
 
 ```
 
-3.  Report the slope, R², and p-value, and interpret the slope in plain language (what does it mean biologically?). <!--# Include your answer below -->
+3.  Use `avg_comparisons()` and `avg_predictions()` on your linear model to report the group means and their difference. Write one sentence reporting the result with its 95% confidence interval. <!--# Include your answer below -->
 
-4.  Check the regression diagnostics.
+**Part B: Continuous predictor.** Using the built-in `trees` dataset:
+
+4.  Fit `lm(Volume ~ Height)`, and use `avg_slopes()` to report the slope.
 
 ```{r}
 
 ```
 
-Does a straight line look like a reasonable fit here? <!--# Include your answer below -->
+5.  Show that the standardized slope (use `scale()` on both variables) equals `cor(trees$Height, trees$Volume)`.
 
-5.  In 2–3 sentences: `trees` is observational data. What would need to be true about how the data were collected for you to make a causal claim ("increasing height causes increased volume") instead of just a correlational one? <!--# Include your answer below -->
+```{r}
+
+```
+
+6.  Check the diagnostics for the model in question 4. Does a straight line look reasonable? <!--# Include your answer below -->
+
+```{r}
+
+```
+
+**Part C: Concept.**
+
+7.  In 2–3 sentences, explain why a paired t-test is equivalent to an intercept-only linear model, and what the data in that model are. <!--# Include your answer below -->
+
+8.  `trees` is observational. What would need to be true about how data were collected before you could claim "increasing height *causes* increased volume"? <!--# Include your answer below -->

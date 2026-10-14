@@ -1,6 +1,6 @@
 ---
 title: "Week 10 Assignment"
-subtitle: "Multiple regression and ANCOVA"
+subtitle: "Multiple regression, ANCOVA, and interactions"
 format: typst
 ---
 
@@ -8,38 +8,61 @@ Render this file to PDF and submit both the `.qmd` and the rendered `.pdf`, alon
 
 **Note:** This week also includes a [Data Safari exercise](week10-data-safari.qmd) — a separate, short assignment. Both are due at the same time.
 
+```{r}
+library(tidyverse)
+library(marginaleffects)
+```
+
 ## Part 1: Multiple regression
 
 Using the built-in `trees` dataset:
 
-1.  Fit `lm(Volume ~ Girth + Height)`.
+1.  Fit `lm(Volume ~ Girth + Height)` and `lm(Volume ~ Girth)`.
 
 ```{r}
 
 ```
 
-2.  Compare its R² to the simple `Volume ~ Girth` model from Week 9. Support your answer with `anova()`.
+2.  Compare the two models with `anova()`.
 
 ```{r}
 
 ```
 
-Did adding `Height` meaningfully improve the fit? <!--# Include your answer below -->
+3.  Use `avg_slopes()` on the two-predictor model. Interpret the `Girth` slope in one sentence, including its 95% confidence interval and units. <!--# Include your answer below -->
 
-## Part 2: ANCOVA
+## Part 2: ANCOVA and interactions
 
-Using this week's tutorial's simulated `ancova_data` (or re-simulate it with a different `set.seed()` of your choosing):
+Using the built-in `iris` dataset, model `Petal.Width` as a function of `Petal.Length` and `Species`.
 
-1.  Fit `lm(final_height ~ start_height + treatment)`.
-
-```{r}
-
-```
-
-2.  Fit the version with an interaction term and compare the two models.
+4.  Fit the no-interaction (ANCOVA) model and the interaction model, then compare them with `anova()`.
 
 ```{r}
 
 ```
 
-3.  In 2–3 sentences: explain what the `treatment` coefficient means in the no-interaction model, and what a significant interaction would have meant instead. <!--# Include your answer below -->
+5.  Use `avg_slopes()` with `by = "Species"` to report the slope of `Petal.Length` within each species.
+
+```{r}
+
+```
+
+6.  Make a plot of the interaction model's predictions with `plot_predictions()`.
+
+```{r}
+
+```
+
+7.  In 2–3 sentences: does the slope depend on species? Support your answer with numbers from your outputs. <!--# Include your answer below -->
+
+## Part 3: Two-way design
+
+Using `ToothGrowth` (convert `dose` to a factor first):
+
+8.  Fit `len ~ supp * dose`, then use `avg_comparisons()` with `by = "dose"` to estimate the supplement effect at each dose.
+
+```{r}
+
+```
+
+9.  At which dose(s) does the supplement matter, and how large is the effect? Why can't the main effect of `supp` alone summarize this? <!--# Include your answer below -->

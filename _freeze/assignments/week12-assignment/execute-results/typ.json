@@ -1,9 +1,11 @@
 {
-  "hash": "a155ff2c9ee89b25cd2474fc6ada57c4",
+  "hash": "42dec934cbd1f9b8140285a545425163",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Week 12 Assignment\"\nsubtitle: \"Mixed-effects models I\"\nformat: typst\n---\n\n\n\nRender this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 13's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\nUsing this week's tutorial's simulated `field_data` (or re-simulate it with a different `set.seed()`):\n\n1.  Fit the naive model `lm(response ~ treatment)` and the mixed model `lmer(response ~ treatment + (1 | site))`.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n2.  Compare the standard error on the `treatment` coefficient between the two models. Which is larger, and why does that make sense? <!--# Include your answer below -->\n\n3.  Re-run the simulation with `n_sites <- 4` instead of 8. Refit the mixed model.\n\n\n\n::: {.cell}\n\n:::\n\n\n\nIn 2–3 sentences: does anything about the model's output make you less confident in the random-effect estimate with so few sites? <!--# Include your answer below -->\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Week 12 Assignment\"\nsubtitle: \"Accounting for non-independence: mixed-effects models I\"\nformat: typst\n---\n\n\n\nRender this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 13's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(lme4)\nlibrary(lmerTest)\nlibrary(marginaleffects)\n```\n:::\n\n\n\n**Part A: Pairing as a mixed model.** Using the built-in `sleep` data (rename `group` to `drug` first):\n\n1.  Run a paired t-test.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n2.  Fit `lmer(extra ~ drug + (1 | ID))`, and use `avg_comparisons()` to get the drug effect. Do the estimates match?\n\n\n\n::: {.cell}\n\n:::\n\n\n\n**Part B: Repeated measures.** Using `ChickWeight` restricted to diets 3 and 4:\n\n3.  Plot individual chick trajectories coloured by diet.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n4.  Fit a random-intercept model `weight ~ Time * Diet + (1 | Chick)`.\n\n\n\n::: {.cell}\n\n:::\n\n\n\n5.  Use `avg_slopes()` with `by = \"Diet\"` to estimate growth rates. Which diet leads to faster growth, and by how much (with a 95% CI)? <!--# Include your answer below -->\n\n\n\n::: {.cell}\n\n:::\n\n\n\n**Part C: Concept.**\n\n6.  A student measures 5 fish from each of 4 tanks (2 tanks per temperature treatment). What is the experimental unit for the temperature effect? How would you model it? <!--# Include your answer below -->\n\n7.  In 2–3 sentences: what does `re.form = NA` change in `predictions()`? <!--# Include your answer below -->\n",
+    "supporting": [
+      "week12-assignment_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

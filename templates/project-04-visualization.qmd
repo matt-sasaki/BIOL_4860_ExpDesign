@@ -9,7 +9,7 @@ This is the last of four checkpoint deliverables for the graduate project, due j
 
 ## 1. Key figure(s)
 
-Produce one or two publication-quality figures that best communicate your main result(s). Apply the plot-choice and design principles from Weeks 3–4 (appropriate geometry, clear labels, a colorblind-friendly palette if color is used). You must use ggPlot or base R to create this plot.
+Produce one or two publication-quality figures that best communicate your main result(s). Apply the plot-choice and design principles from Weeks 3–4 (appropriate geometry, clear labels, a colorblind-friendly palette if color is used). You must use ggPlot or base R to create this plot (`plot_predictions()` and `plot_comparisons()` from `marginaleffects` return ggplot objects, so they count).
 
 Further, using the chunk options, write a caption each figure as you would for a manuscript — describe what's shown, define any abbreviations or symbols, and state the key takeaway.
 

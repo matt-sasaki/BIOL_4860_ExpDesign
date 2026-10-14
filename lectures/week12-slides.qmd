@@ -1,5 +1,5 @@
 ---
-title: "Accounting for Non-Independence: Mixed-Effects Models I"
+title: "Non-Independence: Mixed-Effects Models I"
 subtitle: "Week 12 · BIOL 4860/5860"
 format:
   revealjs:
@@ -11,49 +11,62 @@ format:
 
 ## A problem we've flagged since Week 5
 
-- Pseudoreplication: measurements within the same site/subject/plot
-  aren't independent
+- Pseudoreplication: measurements from the same site, subject, or plot aren't independent
 - Ignoring this inflates your effective sample size and false-positive rate
 - Today: a proper tool for handling it, instead of just avoiding it
 
-## Random vs. fixed effects
+## You've already seen it
 
-- **Fixed effect**: a variable whose specific levels you care about
-  (e.g., treatment)
-- **Random effect**: a grouping variable representing a sample from a
-  larger population of possible groups (e.g., site, subject)
+- The **paired t-test** handles non-independence: each patient measured twice
+- In Week 9: `lm(y2 - y1 ~ 1)`
+- Another way: keep both measurements, and give each subject its own intercept
 
-## The random-intercept model
+## Random intercepts
 
-- `lmer(response ~ treatment + (1 | site), data = ...)`
-- Lets each site have its own baseline, while estimating one shared
-  treatment effect
-- Standard errors on fixed effects usually get **larger** and more
-  honest once you do this correctly
+$$y_{ij} = \beta_0 + \beta_1 x_{ij} + u_j + \varepsilon_{ij}, \quad u_j \sim N(0, \sigma_u^2)$$
 
-## Why not just add `site` as a fixed effect?
+- Each group *j* (subject, site, chick) has its own baseline $u_j$
+- One shared effect $\beta_1$ is estimated for everyone
+- `lmer(y ~ x + (1 | subject))`
 
-- You could — but then you're estimating a separate parameter for
-  every site, and can't generalize beyond the specific sites you
-  sampled
-- A random effect treats site as a sample from a broader population,
-  which is usually what you actually want to say
+## Fixed vs. random effects
 
-## Connecting back to blocking
+- **Fixed**: levels you care about (treatment, diet)
+- **Random**: groups sampled from a larger population (site, subject, tank)
+- Random effects estimate a **variance**, not one coefficient per level
 
-- A randomized block design (Week 5) and `(1 | block)` are close
-  cousins — both treat block-to-block variation as a nuisance to
-  control for, not a treatment to test
-- Mixed models generalize this idea beyond simple block designs
+## Paired t-test = random-intercept model
 
-## A practical limit
+| Classic test | Linear model |
+|----|----|
+| Paired t-test | `lm(y2 - y1 ~ 1)` |
+| Paired t-test (long data) | `lmer(y ~ condition + (1 \| subject))` |
 
-- Random effects need enough groups to estimate their variance
-  reliably — as a rule of thumb, 5–10 groups minimum
-- With very few groups, consider a fixed effect instead
+- Same estimate, same t, same p
+- But the mixed model **generalizes**: unbalanced data, more than two time points, covariates
+
+## Population vs. subject-specific predictions
+
+- With random effects, "the prediction" is ambiguous:
+  - for a typical subject (random effects set to zero)?
+  - for a specific subject?
+- In `marginaleffects`: `re.form = NA` gives population-level predictions
+- Marginal effects of the fixed effects are on the same scale as before
+
+## Reading a mixed model
+
+- `avg_comparisons()` for the treatment contrast
+- `avg_slopes(..., by = "diet")` for slopes within groups
+- `plot_predictions(m, condition = "Time", re.form = NA)` for the population trend
+- The **variance of the random effect** tells you how much groups differ at baseline (`VarCorr()`)
+
+## Design reminder
+
+- A mixed model fixes the statistics, not the design
+- You still need enough groups (≥5–6 for each random effect)
+- Replication happens at the level where treatment is applied
 
 ## This week
 
-- **Wednesday (tutorial):** fit a random-intercept model, compare to
-  a naive `lm()`
+- **Wednesday (tutorial):** paired t-test as a mixed model; chick growth under different diets
 - **Assignment:** due this week

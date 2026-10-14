@@ -1,34 +1,44 @@
 ---
 title: "Week 14 Assignment"
-subtitle: "Nonparametric alternatives and choosing the right test"
+subtitle: "When assumptions fail, and choosing a model"
 format: typst
 ---
 
-This is the last weekly assignment before final project presentations — nice work getting through the whole sequence. Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 15's presentations. See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 15. See the [syllabus](../syllabus.qmd#assignments) for the late policy.
 
-## Part 1: Applied
+```{r}
+library(tidyverse)
+library(marginaleffects)
+```
 
-Using the built-in `chickwts` dataset:
+**Part A: Ranks.** Using `chickwts` (weight by feed type), restrict to `casein` and `sunflower`.
 
-1.  Run a Kruskal-Wallis test of `weight` by `feed`.
+1.  Run `wilcox.test()` (use `exact = FALSE`).
 
 ```{r}
 
 ```
 
-2.  Run the parametric one-way ANOVA equivalent for comparison.
+2.  Run the same comparison with `lm(rank(weight) ~ feed)`. Compare conclusions.
 
 ```{r}
 
 ```
 
-3.  Do the two tests agree on whether there's a significant difference among feed types? If they disagreed, which would you trust more, and why? <!--# Include your answer below -->
+**Part B: Robust inference.** Using all of `chickwts`:
 
-## Part 2: Choosing a test, cover to cover
+3.  Fit `lm(weight ~ feed)`. Use `avg_comparisons()` for comparisons to the reference feed, with the default and with `vcov = "HC3"`. Which comparisons change the most?
 
-For each scenario, name the test or model from this course (any week) that you'd reach for, and briefly justify your choice: <!--# Include your answers below -->
+```{r}
 
-1.  Comparing mean growth between 2 treatment groups, with no reason to doubt normality or equal variance.
-2.  Comparing mean growth between 2 treatment groups, where one group has a couple of extreme outliers you can't justify removing.
-3.  Testing whether a continuous covariate predicts a binary outcome.
-4.  Testing a treatment effect when measurements are repeated across multiple sites, with random variation in both the baseline and the treatment effect from site to site.
+```
+
+**Part C: Choosing a model.**
+
+4.  For each scenario give the response type, the predictors, the independence structure, and the `R` call you'd use (a formula is enough):
+
+    a.  Counts of aphids on 30 plants, half sprayed, half not.
+    b.  Heart rate before and after caffeine in 15 students.
+    c.  Presence/absence of a species in 50 ponds across 5 lakes, as a function of pond area. <!--# Include your answers below -->
+
+5.  In 3–4 sentences: how has "everything is a linear model" changed how you think about picking a statistical test? <!--# Include your answer below -->

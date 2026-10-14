@@ -1,81 +1,108 @@
 ---
 title: "Week 12 Tutorial: Mixed-Effects Models I"
-subtitle: "Wednesday tutorial · reinforces Monday's lecture on non-independence and random intercepts"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture"
 toc: true
 ---
 
 ## Goals
 
-- Recognize non-independence from repeated measures or nested sampling
-- Fit a random-intercept mixed model with `lme4`
+-   Recognize non-independence in a dataset
+-   Fit random-intercept models with `lmer()`
+-   Use `marginaleffects` to report population-level effects
 
 ## Setup
 
 ```{r}
 #| label: setup
+#| message: false
 library(tidyverse)
 library(lme4)
-library(lmerTest)  # adds p-values to lmer output
+library(lmerTest)
+library(marginaleffects)
 ```
 
-## Why not just use `lm()`? Pseudoreplication revisited
+## The paired t-test, again
 
 ```{r}
-set.seed(21)
-n_sites <- 8
-n_per_site <- 6
-
-field_data <- tibble(site = factor(rep(1:n_sites, each = n_per_site))) |>
-  mutate(
-    site_effect = rep(rnorm(n_sites, 0, 3), each = n_per_site),
-    treatment = rep(rep(c("Control", "Treated"), n_per_site / 2), n_sites),
-    response = 10 + ifelse(treatment == "Treated", 2, 0) +
-      site_effect + rnorm(n(), 0, 1.5)
-  )
+sleep2 <- sleep |> rename(drug = group)
+t.test(extra ~ drug, data = sleep2, paired = TRUE)
 ```
-
-Measurements within the same site aren't independent — they share a
-site effect. Ignoring that (treating all 48 rows as independent)
-inflates your effective sample size and your false-positive rate.
 
 ```{r}
-m_naive <- lm(response ~ treatment, data = field_data)
-summary(m_naive)$coefficients
+m_pair <- lmer(extra ~ drug + (1 | ID), data = sleep2)
+summary(m_pair)
 ```
 
-## Random-intercept mixed model
+Same t value (−4.06), same p. Notice the model also estimates how much patients differ at baseline:
 
 ```{r}
-m_mixed <- lmer(response ~ treatment + (1 | site), data = field_data)
-summary(m_mixed)
+VarCorr(m_pair)
 ```
 
-::: {.callout-note}
+```{r}
+avg_comparisons(m_pair, variables = "drug")
+```
+
+::: callout-note
 ## Exercise 1
-Compare the standard error on the `treatment` coefficient between
-`m_naive` and `m_mixed`. Which is larger, and why does that make
-sense given that site is a real source of shared variation?
+
+What happens to the p-value if you ignore the pairing: `lm(extra ~ drug, data = sleep2)`? Why?
 :::
 
+## Repeated measures over time
+
+`ChickWeight`: weights of chicks over 21 days on different diets. Each chick is measured repeatedly. We'll compare diets 1 and 2.
+
 ```{r}
-#| label: fig-sites
-#| fig-cap: "Response by treatment, colored by site"
-ggplot(field_data, aes(treatment, response, color = site)) +
-  geom_jitter(width = 0.1) +
+cw <- ChickWeight |>
+  filter(Diet %in% c("1", "2")) |>
+  mutate(Chick = factor(Chick, ordered = FALSE), Diet = droplevels(Diet))
+```
+
+```{r}
+#| label: fig-chicks
+#| fig-cap: "Individual chick growth trajectories"
+ggplot(cw, aes(Time, weight, group = Chick, color = Diet)) +
+  geom_line(alpha = 0.6) +
   theme_minimal()
 ```
 
-::: {.callout-note}
+Ignoring the chick structure treats ~500 measurements as independent. Instead:
+
+```{r}
+m_cw <- lmer(weight ~ Time * Diet + (1 | Chick), data = cw)
+summary(m_cw)
+```
+
+Slopes within each diet (grams per day):
+
+```{r}
+avg_slopes(m_cw, variables = "Time", by = "Diet")
+```
+
+```{r}
+avg_slopes(m_cw, variables = "Time", by = "Diet", hypothesis = "pairwise")
+```
+
+Population-level predictions for a "typical" chick:
+
+```{r}
+predictions(m_cw, newdata = datagrid(Time = c(0, 21), Diet = c("1", "2")), re.form = NA)
+```
+
+```{r}
+#| label: fig-cw
+#| fig-cap: "Population-level predicted weight by diet"
+plot_predictions(m_cw, condition = c("Time", "Diet"), re.form = NA) +
+  theme_minimal()
+```
+
+::: callout-note
 ## Exercise 2
-Refit `m_mixed` on a version of `field_data` with `n_sites <- 3`
-instead of 8 (re-run the simulation with that change). Does the mixed
-model still make sense with so few sites? (This is a preview of a
-real limitation of mixed models — they need enough groups to estimate
-the random-effect variance reliably, roughly 5–10 as a rule of thumb.)
+
+The random-intercept model assumes every chick grows at the same rate within a diet. Look at the trajectory plot. Is that plausible? (Next week we relax it.)
 :::
 
 ## Wrap-up
 
-Keep this file — the exercises here feed directly into this week's
-[assignment](../assignments/week12-assignment.qmd). Next week's
-tutorial continues with random slopes and crossed vs. nested designs.
+Keep this file — the exercises feed directly into this week's [assignment](../assignments/week12-assignment.qmd).

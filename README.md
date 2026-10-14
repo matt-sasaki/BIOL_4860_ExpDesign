@@ -10,6 +10,8 @@ exp_design_course/
 ├── styles-bold.scss        # active theme: palette, type, layout
 ├── styles.scss               # alternate (quieter) theme, not currently referenced
 ├── styles.css                  # small supplemental CSS tweaks
+├── filters/
+│   └── typst-friendly.lua         # Typst-only Lua filter used by the syllabus and schedule PDFs
 ├── partials/
 │   ├── fonts.html                # Google Fonts <link> tags, loaded via include-in-header
 │   └── slides.scss                 # shared revealjs theme for the weekly slide decks
@@ -109,7 +111,21 @@ For everything else (tutorials, syllabus, schedule, slides' HTML chrome — anyt
 - **Slide decks** (`lectures/weekNN-slides.qmd`) use Quarto's `revealjs` format rather than the site's normal HTML format, and share `partials/slides.scss` for theming. Open the rendered `docs/lectures/weekNN-slides.html` directly (or via the Schedule page) to present — use arrow keys or click to advance slides.
 - **Graduate project checkpoints** (`assignments/project-0N-*.qmd`) follow the same `format: typst` pattern as weekly assignments, with due dates set in the Schedule page's project-milestones table and in `assignments.qmd`, not in the files themselves.
 
-> **Avoid callout blocks (`::: {.callout-*}`) in any `format: typst` file.** Quarto's Typst template pulls in a `fontawesome` package from the internet the moment a document contains a callout, which fails without network access (or behind a restrictive firewall). Weekly assignments and project files use plain **bold-lead-in** text instead (e.g. `**Note:** ...`) for asides that would otherwise be callouts — follow that pattern for new Typst files. Callouts remain totally fine in the site's regular HTML pages (syllabus, schedule, tutorials).
+## PDF syllabus and schedule
+
+`syllabus.qmd` and `schedule.qmd` render to **both** HTML and PDF (Typst) from the same source, via `format: html` + `format: typst` in their front matter. On the website, Quarto adds an "Other Formats → Typst" link in the right margin of each page; the PDFs are written to `docs/syllabus.pdf` and `docs/schedule.pdf`. Three details make the PDF versions work:
+
+- **`filters/typst-friendly.lua`** (a `pre-ast` filter, active for Typst only) converts callouts to plain bold-titled block quotes (avoiding the `fontawesome` download noted below) and strips links to other `.qmd` pages, keeping the link text.
+- **Conditional content.** The schedule's wide six-column table (with slide/tutorial links and download anchors) is wrapped in `::: {.content-visible when-format="html"}`; a compact Week/Topic/Assignment/Data Safari table is wrapped in `when-format="typst"`. **If you change the schedule, edit both tables.**
+- The syllabus's Undergraduate/Graduate grading `panel-tabset` renders in the PDF as two consecutive sections.
+
+## Course structure after Spring Break: "all tests are linear models"
+
+Weeks 9–14 are organized around the idea (Lindeløv, [*Common statistical tests are linear models*](https://lindeloev.github.io/tests-as-linear/)) that common tests are special cases of the linear model, and use the [`marginaleffects`](https://marginaleffects.com) package throughout: Week 9 (t-tests/ANOVA/correlation as `lm()`), Week 10 (multiple regression, ANCOVA, interactions, `avg_slopes()`/`avg_comparisons()`), Week 11 (GLMs; chi-square as Poisson regression), Weeks 12–13 (mixed models; `re.form = NA`), Week 14 (ranks, robust SEs via `vcov = "HC3"`, permutation tests, choosing a model).
+
+R packages needed: `tidyverse`, `broom`, `marginaleffects`, `lme4`, `lmerTest`. Note that `marginaleffects` cannot use a column named `group` in `by`/`variables`, so the tutorials rename `group` columns from built-in datasets (`sleep`, `PlantGrowth`).
+
+> **Avoid callout blocks (`::: {.callout-*}`) in any `format: typst` file.** Quarto's Typst template pulls in a `fontawesome` package from the internet the moment a document contains a callout, which fails without network access (or behind a restrictive firewall). Weekly assignments and project files use plain **bold-lead-in** text instead (e.g. `**Note:** ...`) for asides that would otherwise be callouts — follow that pattern for new Typst files. Callouts remain totally fine in the site's regular HTML pages (syllabus, schedule, tutorials) — but note that the syllabus and schedule are also rendered to PDF, where the Lua filter above converts them.
 
 ## Notes
 

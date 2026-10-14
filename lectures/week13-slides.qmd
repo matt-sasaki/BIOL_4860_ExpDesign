@@ -1,5 +1,5 @@
 ---
-title: "Mixed-Effects Models II: Slopes, Crossed, and Nested Designs"
+title: "Mixed-Effects Models II"
 subtitle: "Week 13 · BIOL 4860/5860"
 format:
   revealjs:
@@ -9,50 +9,47 @@ format:
     transition: fade
 ---
 
-## Last week vs. this week
+## Last week
 
-- Last week: random intercepts — each group gets its own baseline
-- This week: what if the **effect itself** varies by group, and what
-  happens with more complex grouping structures?
+- Random intercepts: each group has its own baseline
+- But groups often differ in **how they respond** too
 
 ## Random slopes
 
-- `lmer(response ~ treatment + (treatment | site), data = ...)`
-- Lets the treatment effect itself vary from site to site
-- Compare to the random-intercept-only model with `anova()` — does
-  allowing varying slopes meaningfully improve the fit?
+- `lmer(y ~ x + (1 + x | subject))`
+- Each subject gets their own intercept **and** their own slope
+- The fixed effect is the *average* slope; the random effect is how much it varies
 
-## Nested random effects
+## Why random slopes matter
 
-- One factor's levels only make sense within another
-  (e.g., `plot` within `site` — "plot 1" at Site A isn't the same
-  physical plot as "plot 1" at Site B)
-- Syntax: `(1 | site/plot)`
+- If the effect truly varies across groups and you leave out the random slope, standard errors are too small
+- **Keep it maximal where design supports it**: random slopes for effects that vary within groups
+- If the model won't converge, simplify (and report it)
 
-## Crossed random effects
+## Nested vs. crossed
 
-- Levels of one factor occur across multiple levels of another
-  (e.g., the same `observer` measures animals at several sites)
-- Syntax: `(1 | site) + (1 | observer)`
+- **Nested**: each lower unit belongs to exactly one higher unit (cask within batch)
+  - `(1 | batch/cask)`
+- **Crossed**: every unit appears in several higher units (every sample on every plate)
+  - `(1 | plate) + (1 | sample)`
+- Draw your design — the structure comes from the design, not from the data
 
-## Telling them apart
+## Marginal effects in mixed models
 
-- Ask: does "level 1" mean the same thing across every group?
-  - Yes → crossed
-  - No → nested
-- Getting this wrong doesn't always error — it silently gives you the
-  wrong model
+- Fixed-effect marginal effects: same `avg_slopes()` / `avg_comparisons()`
+- Population-level: `re.form = NA`
+- Subject-specific predictions are possible too, via `newdata`
+- Report the **variance components** alongside the fixed effects
 
-## Putting it together
+## Everything is a model, so models combine
 
-- Design (Weeks 5–6) → naive vs. blocked model (Week 5) → mixed model
-  with random intercepts (Week 12) → random slopes and
-  crossed/nested structures (today)
-- Same underlying idea the whole way: account for the structure in
-  how your data were collected
+- Week 9: tests as linear models
+- Week 10: more predictors
+- Week 11: other response types (GLM)
+- Weeks 12–13: non-independence (mixed)
+- GLMM: `glmer(y ~ x + (1 | group), family = binomial)` — all of them together
 
 ## This week
 
-- **Wednesday (tutorial):** fit random-slopes models, practice
-  writing crossed vs. nested syntax
+- **Wednesday (tutorial):** random slopes with `sleepstudy`; nested and crossed variance components
 - **Assignment + Data Safari #4:** due this week

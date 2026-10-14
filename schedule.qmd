@@ -4,15 +4,29 @@ subtitle: "Spring 2027 · Mondays are lecture, Wednesdays are tutorials"
 toc: false
 format:
   html: default
-  typst: default
+  typst:
+    papersize: us-letter
+    margin:
+      x: 1in
+      y: 1in
+filters:
+  - at: pre-ast
+    path: filters/typst-friendly.lua
 ---
 
+::: {.content-visible when-format="html"}
 ::: callout-note
 **Mondays:** lecture (slides linked below). **Wednesdays:** hands-on tutorial in class, which feeds directly into that week's assignment. Data Safari exercises appear in Weeks 4, 7, 10, and 13, alongside the regular assignment.
 
 Each assignment/Data Safari link (e.g. "PS1") downloads the blank Quarto template (`.qmd`) — fill it in and render it yourself to produce your submission PDF. Tutorials and slides can be viewed with **Code → View Source** (top right of the page) if you'd like their `.qmd` source too.
 :::
+:::
 
+::: {.content-visible when-format="typst"}
+**Mondays** are lecture; **Wednesdays** are hands-on tutorials that feed into that week's assignment. Data Safari exercises appear in Weeks 4, 7, 10, and 13. Slides, tutorials, and downloadable assignment templates are on the course website.
+:::
+
+::: {.content-visible when-format="html"}
 | Week | Topic | Slides | Tutorial | Assignment | Data Safari |
 |:--:|----|:--:|:--:|:--:|:--:|
 | 1 | Why experimental design matters; setting up R, RStudio, and Quarto | [Slides](lectures/week01-slides.qmd) | [Tutorial](lectures/week01-tutorial.qmd) | <a href="templates/week01-assignment.qmd" download="week01-assignment.qmd">PS1</a> |  |
@@ -23,13 +37,36 @@ Each assignment/Data Safari link (e.g. "PS1") downloads the blank Quarto templat
 | 6 | Design in practice: sketching designs from the published literature | [Slides](lectures/week06-slides.qmd) | [Tutorial](lectures/week06-tutorial.qmd) | <a href="templates/week06-assignment.qmd" download="week06-assignment.qmd">PS6</a> |  |
 | 7 | Hypothesis testing I: the t-test and one-way ANOVA | [Slides](lectures/week07-slides.qmd) | [Tutorial](lectures/week07-tutorial.qmd) | <a href="templates/week07-assignment.qmd" download="week07-assignment.qmd">PS7</a> | <a href="templates/week07-data-safari.qmd" download="week07-data-safari.qmd">Safari 2</a> |
 | 8 | **Spring Break** |  |  |  |  |
-| 9 | Correlation and simple linear regression | [Slides](lectures/week09-slides.qmd) | [Tutorial](lectures/week09-tutorial.qmd) | <a href="templates/week09-assignment.qmd" download="week09-assignment.qmd">PS9</a> |  |
-| 10 | Multiple regression and ANCOVA | [Slides](lectures/week10-slides.qmd) | [Tutorial](lectures/week10-tutorial.qmd) | <a href="templates/week10-assignment.qmd" download="week10-assignment.qmd">PS10</a> | <a href="templates/week10-data-safari.qmd" download="week10-data-safari.qmd">Safari 3</a> |
-| 11 | Generalized linear models: logistic regression for binary/count data | [Slides](lectures/week11-slides.qmd) | [Tutorial](lectures/week11-tutorial.qmd) | <a href="templates/week11-assignment.qmd" download="week11-assignment.qmd">PS11</a> |  |
-| 12 | Accounting for non-independence: introduction to mixed-effects models | [Slides](lectures/week12-slides.qmd) | [Tutorial](lectures/week12-tutorial.qmd) | <a href="templates/week12-assignment.qmd" download="week12-assignment.qmd">PS12</a> |  |
+| 9 | Everything is a linear model: t-tests, ANOVA, and correlation as `lm()` | [Slides](lectures/week09-slides.qmd) | [Tutorial](lectures/week09-tutorial.qmd) | <a href="templates/week09-assignment.qmd" download="week09-assignment.qmd">PS9</a> |  |
+| 10 | Multiple regression, ANCOVA, and interactions; marginal effects | [Slides](lectures/week10-slides.qmd) | [Tutorial](lectures/week10-tutorial.qmd) | <a href="templates/week10-assignment.qmd" download="week10-assignment.qmd">PS10</a> | <a href="templates/week10-data-safari.qmd" download="week10-data-safari.qmd">Safari 3</a> |
+| 11 | Generalized linear models: binary and count data; chi-square as a linear model | [Slides](lectures/week11-slides.qmd) | [Tutorial](lectures/week11-tutorial.qmd) | <a href="templates/week11-assignment.qmd" download="week11-assignment.qmd">PS11</a> |  |
+| 12 | Non-independence: mixed-effects models I (random intercepts) | [Slides](lectures/week12-slides.qmd) | [Tutorial](lectures/week12-tutorial.qmd) | <a href="templates/week12-assignment.qmd" download="week12-assignment.qmd">PS12</a> |  |
 | 13 | Mixed-effects models II: random slopes, nested vs. crossed designs | [Slides](lectures/week13-slides.qmd) | [Tutorial](lectures/week13-tutorial.qmd) | <a href="templates/week13-assignment.qmd" download="week13-assignment.qmd">PS13</a> | <a href="templates/week13-data-safari.qmd" download="week13-data-safari.qmd">Safari 4</a> |
-| 14 | Nonparametric alternatives and choosing the right test | [Slides](lectures/week14-slides.qmd) | [Tutorial](lectures/week14-tutorial.qmd) | <a href="templates/week14-assignment.qmd" download="week14-assignment.qmd">PS14</a> |  |
+| 14 | When assumptions fail (ranks, robust SEs, permutation) and choosing a model | [Slides](lectures/week14-slides.qmd) | [Tutorial](lectures/week14-tutorial.qmd) | <a href="templates/week14-assignment.qmd" download="week14-assignment.qmd">PS14</a> |  |
 | 15 | **Final Project Presentations** |  |  |  |  |
+:::
+
+::: {.content-visible when-format="typst"}
+| Week | Topic | Assignment | Data Safari |
+|:--:|----------|:--:|:--:|
+| 1 | Why experimental design matters; setting up R, RStudio, and Quarto | PS1 |  |
+| 2 | R fundamentals and data wrangling | PS2 |  |
+| 3 | Exploring data I: distributions and summary statistics | PS3 |  |
+| 4 | Exploring data II: relationships and group comparisons | PS4 | Safari 1 |
+| 5 | Principles of experimental design: replication, randomization, blocking | PS5 |  |
+| 6 | Design in practice: sketching designs from the published literature | PS6 |  |
+| 7 | Hypothesis testing I: the t-test and one-way ANOVA | PS7 | Safari 2 |
+| 8 | **Spring Break** |  |  |
+| 9 | Everything is a linear model: t-tests, ANOVA, and correlation as `lm()` | PS9 |  |
+| 10 | Multiple regression, ANCOVA, and interactions; marginal effects | PS10 | Safari 3 |
+| 11 | Generalized linear models: binary and count data; chi-square as a linear model | PS11 |  |
+| 12 | Non-independence: mixed-effects models I (random intercepts) | PS12 |  |
+| 13 | Mixed-effects models II: random slopes, nested vs. crossed designs | PS13 | Safari 4 |
+| 14 | When assumptions fail (ranks, robust SEs, permutation) and choosing a model | PS14 |  |
+| 15 | **Final Project Presentations** |  |  |
+:::
+
+From Week 9 onward the course is organized around one idea: **common statistical tests are special cases of the linear model**, and we read every model with the [`marginaleffects`](https://marginaleffects.com) package (predictions, comparisons, and slopes in the units of the data).
 
 ## Graduate project milestones (BIOL 5860 only)
 

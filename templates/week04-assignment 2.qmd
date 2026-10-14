@@ -1,0 +1,35 @@
+---
+title: "Week 4 Assignment"
+subtitle: "Visualizing relationships"
+format: typst
+---
+
+Render this file to PDF and submit both the `.qmd` and the rendered `.pdf`, along with your Data Safari submission, via Canvas before Week 5's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+
+**Note:** This week also includes your first [Data Safari exercise](week04-data-safari.qmd) — a separate, short assignment. Both are due at the same time.
+
+Using the built-in `trees` dataset (`data(trees)`):
+
+1.  Make a scatterplot of `Volume` vs. `Girth`, with a linear trend line added.
+
+```{r}
+
+```
+
+2.  Make a second scatterplot of `Volume` vs. `Height`.
+
+```{r}
+
+```
+
+Which of the two predictors looks more strongly related to `Volume`, just from the plots? <!--# Include your answer below -->
+
+3.  `trees` has no grouping variable, so faceting isn't useful here — instead, using the built-in `iris` dataset, make a faceted scatterplot of `Petal.Length` vs. `Petal.Width`, one panel per `Species`.
+
+```{r}
+
+```
+
+Does the relationship look similar across species, or different? <!--# Include your answer below -->
+
+4.  In 2–3 sentences: pick one plot from this course so far (any week) that you think could be improved, and describe what you'd change (labels, color palette, plot type) and why. <!--# Include your answer below -->

@@ -49,6 +49,11 @@ format:
 - Example: 3 fertilizer doses, 1 greenhouse, 18 pots — what's the
   experimental unit? How would you randomize?
 
+## A peek ahead
+
+- The t-test and ANOVA are special cases of the **linear model**: `lm(y ~ group)`
+- After Spring Break we'll build everything else on that idea, and read models with the `marginaleffects` package
+
 ## This week
 
 - **Wednesday (tutorial):** fit both tests in R, check assumptions,

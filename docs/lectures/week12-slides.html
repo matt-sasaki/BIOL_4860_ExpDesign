@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <title>Experimental Design &amp; Analysis in Biology – Accounting for Non-Independence: Mixed-Effects Models I</title>
+  <title>Experimental Design &amp; Analysis in Biology – Non-Independence: Mixed-Effects Models I</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -130,7 +130,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Accounting for Non-Independence: Mixed-Effects Models I</h1>
+  <h1 class="title">Non-Independence: Mixed-Effects Models I</h1>
   <p class="subtitle">Week 12 · BIOL 4860/5860</p>
 
 <div class="quarto-title-authors">
@@ -140,51 +140,94 @@
 <section id="a-problem-weve-flagged-since-week-5" class="slide level2">
 <h2>A problem we’ve flagged since Week 5</h2>
 <ul>
-<li>Pseudoreplication: measurements within the same site/subject/plot aren’t independent</li>
+<li>Pseudoreplication: measurements from the same site, subject, or plot aren’t independent</li>
 <li>Ignoring this inflates your effective sample size and false-positive rate</li>
 <li>Today: a proper tool for handling it, instead of just avoiding it</li>
 </ul>
 </section>
-<section id="random-vs.-fixed-effects" class="slide level2">
-<h2>Random vs.&nbsp;fixed effects</h2>
+<section id="youve-already-seen-it" class="slide level2">
+<h2>You’ve already seen it</h2>
 <ul>
-<li><strong>Fixed effect</strong>: a variable whose specific levels you care about (e.g., treatment)</li>
-<li><strong>Random effect</strong>: a grouping variable representing a sample from a larger population of possible groups (e.g., site, subject)</li>
+<li>The <strong>paired t-test</strong> handles non-independence: each patient measured twice</li>
+<li>In Week 9: <code>lm(y2 - y1 ~ 1)</code></li>
+<li>Another way: keep both measurements, and give each subject its own intercept</li>
 </ul>
 </section>
-<section id="the-random-intercept-model" class="slide level2">
-<h2>The random-intercept model</h2>
+<section id="random-intercepts" class="slide level2">
+<h2>Random intercepts</h2>
+<p><span class="math display">\[y_{ij} = \beta_0 + \beta_1 x_{ij} + u_j + \varepsilon_{ij}, \quad u_j \sim N(0, \sigma_u^2)\]</span></p>
 <ul>
-<li><code>lmer(response ~ treatment + (1 | site), data = ...)</code></li>
-<li>Lets each site have its own baseline, while estimating one shared treatment effect</li>
-<li>Standard errors on fixed effects usually get <strong>larger</strong> and more honest once you do this correctly</li>
+<li>Each group <em>j</em> (subject, site, chick) has its own baseline <span class="math inline">\(u_j\)</span></li>
+<li>One shared effect <span class="math inline">\(\beta_1\)</span> is estimated for everyone</li>
+<li><code>lmer(y ~ x + (1 | subject))</code></li>
 </ul>
 </section>
-<section id="why-not-just-add-site-as-a-fixed-effect" class="slide level2">
-<h2>Why not just add <code>site</code> as a fixed effect?</h2>
+<section id="fixed-vs.-random-effects" class="slide level2">
+<h2>Fixed vs.&nbsp;random effects</h2>
 <ul>
-<li>You could — but then you’re estimating a separate parameter for every site, and can’t generalize beyond the specific sites you sampled</li>
-<li>A random effect treats site as a sample from a broader population, which is usually what you actually want to say</li>
+<li><strong>Fixed</strong>: levels you care about (treatment, diet)</li>
+<li><strong>Random</strong>: groups sampled from a larger population (site, subject, tank)</li>
+<li>Random effects estimate a <strong>variance</strong>, not one coefficient per level</li>
 </ul>
 </section>
-<section id="connecting-back-to-blocking" class="slide level2">
-<h2>Connecting back to blocking</h2>
+<section id="paired-t-test-random-intercept-model" class="slide level2">
+<h2>Paired t-test = random-intercept model</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Classic test</th>
+<th>Linear model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Paired t-test</td>
+<td><code>lm(y2 - y1 ~ 1)</code></td>
+</tr>
+<tr class="even">
+<td>Paired t-test (long data)</td>
+<td><code>lmer(y ~ condition + (1 \| subject))</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>A randomized block design (Week 5) and <code>(1 | block)</code> are close cousins — both treat block-to-block variation as a nuisance to control for, not a treatment to test</li>
-<li>Mixed models generalize this idea beyond simple block designs</li>
+<li>Same estimate, same t, same p</li>
+<li>But the mixed model <strong>generalizes</strong>: unbalanced data, more than two time points, covariates</li>
 </ul>
 </section>
-<section id="a-practical-limit" class="slide level2">
-<h2>A practical limit</h2>
+<section id="population-vs.-subject-specific-predictions" class="slide level2">
+<h2>Population vs.&nbsp;subject-specific predictions</h2>
 <ul>
-<li>Random effects need enough groups to estimate their variance reliably — as a rule of thumb, 5–10 groups minimum</li>
-<li>With very few groups, consider a fixed effect instead</li>
+<li>With random effects, “the prediction” is ambiguous:
+<ul>
+<li>for a typical subject (random effects set to zero)?</li>
+<li>for a specific subject?</li>
+</ul></li>
+<li>In <code>marginaleffects</code>: <code>re.form = NA</code> gives population-level predictions</li>
+<li>Marginal effects of the fixed effects are on the same scale as before</li>
+</ul>
+</section>
+<section id="reading-a-mixed-model" class="slide level2">
+<h2>Reading a mixed model</h2>
+<ul>
+<li><code>avg_comparisons()</code> for the treatment contrast</li>
+<li><code>avg_slopes(..., by = "diet")</code> for slopes within groups</li>
+<li><code>plot_predictions(m, condition = "Time", re.form = NA)</code> for the population trend</li>
+<li>The <strong>variance of the random effect</strong> tells you how much groups differ at baseline (<code>VarCorr()</code>)</li>
+</ul>
+</section>
+<section id="design-reminder" class="slide level2">
+<h2>Design reminder</h2>
+<ul>
+<li>A mixed model fixes the statistics, not the design</li>
+<li>You still need enough groups (≥5–6 for each random effect)</li>
+<li>Replication happens at the level where treatment is applied</li>
 </ul>
 </section>
 <section id="this-week" class="slide level2">
 <h2>This week</h2>
 <ul>
-<li><strong>Wednesday (tutorial):</strong> fit a random-intercept model, compare to a naive <code>lm()</code></li>
+<li><strong>Wednesday (tutorial):</strong> paired t-test as a mixed model; chick growth under different diets</li>
 <li><strong>Assignment:</strong> due this week</li>
 </ul>
 

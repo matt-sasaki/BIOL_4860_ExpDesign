@@ -1,0 +1,56 @@
+---
+title: "Week 9 Assignment"
+subtitle: "Everything is a linear model"
+format: typst
+---
+
+Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 10's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+
+Load the packages you need first:
+
+```{r}
+library(tidyverse)
+library(marginaleffects)
+```
+
+**Part A: Group comparison.** Using the built-in `ToothGrowth` data, compare tooth length (`len`) between the two supplements (`supp`) at the highest dose (`dose == 2`).
+
+1.  Run a two-sample t-test (`var.equal = TRUE`).
+
+```{r}
+
+```
+
+2.  Run the same comparison with `lm()`, and show that the p-value matches.
+
+```{r}
+
+```
+
+3.  Use `avg_comparisons()` and `avg_predictions()` on your linear model to report the group means and their difference. Write one sentence reporting the result with its 95% confidence interval. <!--# Include your answer below -->
+
+**Part B: Continuous predictor.** Using the built-in `trees` dataset:
+
+4.  Fit `lm(Volume ~ Height)`, and use `avg_slopes()` to report the slope.
+
+```{r}
+
+```
+
+5.  Show that the standardized slope (use `scale()` on both variables) equals `cor(trees$Height, trees$Volume)`.
+
+```{r}
+
+```
+
+6.  Check the diagnostics for the model in question 4. Does a straight line look reasonable? <!--# Include your answer below -->
+
+```{r}
+
+```
+
+**Part C: Concept.**
+
+7.  In 2–3 sentences, explain why a paired t-test is equivalent to an intercept-only linear model, and what the data in that model are. <!--# Include your answer below -->
+
+8.  `trees` is observational. What would need to be true about how data were collected before you could claim "increasing height *causes* increased volume"? <!--# Include your answer below -->

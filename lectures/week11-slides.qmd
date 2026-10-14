@@ -1,5 +1,5 @@
 ---
-title: "Logistic Regression and Other GLMs"
+title: "Generalized Linear Models"
 subtitle: "Week 11 · BIOL 4860/5860"
 format:
   revealjs:
@@ -9,46 +9,61 @@ format:
     transition: fade
 ---
 
-## When `lm()` breaks down
+## When the response isn't a nice bell curve
 
-- `lm()` assumes a continuous, roughly normal outcome
-- What about survival (yes/no)? Count of offspring? Number of
-  parasites?
+- Survived / died. Germinated / didn't. Number of insects.
+- A straight-line model can predict *impossible* values (negative counts, probabilities over 1)
+- Fix: keep the linear model, but model a **transformation of the mean**
+
+## The generalized linear model
+
+$$g(\text{mean of } y) = \beta_0 + \beta_1 x_1 + \dots$$
+
+- The right-hand side is still the linear model you know
+- `g()` is the **link function**; the **family** says what the noise looks like
+
+| Response | Family | Link |
+|----|----|----|
+| Continuous | gaussian | identity (= `lm`) |
+| Binary (0/1) | binomial | logit |
+| Counts | poisson | log |
 
 ## Logistic regression
 
-- For binary outcomes (survived/died, germinated/didn't)
-- `glm(y ~ x, family = binomial)`
-- Models the **log-odds** of the outcome, not the outcome directly
-- Exponentiate coefficients to get odds ratios — more interpretable
+- `glm(survived ~ shade, family = binomial)`
+- Coefficients are **log-odds** — hard to think in!
+- `exp(coef)` gives odds ratios — still hard
 
-## Poisson regression
+## Marginal effects make GLMs readable
 
-- For count outcomes (number of offspring, number of parasites)
-- `glm(y ~ x, family = poisson)`
-- Watch for **overdispersion**: if the residual deviance is much
-  larger than the residual df, consider quasi-Poisson or negative
-  binomial instead
+- `avg_predictions(m)` — predicted **probabilities**
+- `avg_comparisons(m)` — the difference in probability between conditions (risk difference)
+- `comparison = "ratio"` — risk ratio; `"lnor"` — log odds ratio
+- Same function calls as Weeks 9–10, now on the **response scale**
 
-## The generalized linear model (GLM) family
+## Count data
 
-| Outcome type | Model |
-|---|---|
-| Continuous | `lm()` |
-| Binary | Logistic `glm()` |
-| Count | Poisson / negative binomial `glm()` |
+- `glm(count ~ treatment, family = poisson)`
+- Coefficients are log rate ratios
+- Watch for **overdispersion**: variance bigger than the mean → `quasipoisson` or negative binomial
 
-- Same underlying idea — a linear predictor, transformed to fit the
-  outcome's scale
+## Chi-square tests are linear models too
 
-## Design connection
+| Classic test | Model |
+|----|----|
+| Goodness of fit | `glm(n ~ 1, poisson)` |
+| Chi-square test of independence | `glm(n ~ row * col, poisson)` |
 
-- The type of outcome you plan to measure should shape your design
-  from the start — e.g., a binary outcome usually needs a larger
-  sample size than a continuous one to achieve the same power
+- Cell counts are the response; the **interaction** is the test of association
+- Same result as `chisq.test()`, but now you can add predictors
+
+## Design reminder
+
+- Binary outcomes need larger samples than continuous ones
+- Beware complete separation: a predictor that perfectly predicts the outcome
+- Replication unit still matters: 100 seeds in 1 dish is n = 1 for dish effects
 
 ## This week
 
-- **Wednesday (tutorial):** fit logistic and Poisson models, check
-  for overdispersion
+- **Wednesday (tutorial):** logistic regression, Poisson regression, and chi-square as a log-linear model
 - **Assignment:** due this week

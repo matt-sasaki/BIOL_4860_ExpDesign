@@ -1,5 +1,5 @@
 ---
-title: "Multiple Regression and ANCOVA"
+title: "Multiple Regression, ANCOVA, and Interactions"
 subtitle: "Week 10 · BIOL 4860/5860"
 format:
   revealjs:
@@ -9,47 +9,69 @@ format:
     transition: fade
 ---
 
-## From one predictor to several
+## Last week
 
-- Last week: `y ~ x`, one continuous predictor
-- Real biological outcomes usually depend on more than one thing at once
+- t-tests, ANOVA, and correlation are all `lm()` with one predictor
+- This week: **more than one predictor** — the models that biological experiments actually need
 
-## Multiple regression
+| Classic test | Linear model |
+|----|----|
+| ANCOVA | `lm(y ~ group + x)` |
+| Two-way ANOVA | `lm(y ~ A * B)` |
+| Multiple regression | `lm(y ~ x1 + x2)` |
 
-- `lm(y ~ x1 + x2)` — each coefficient is the effect of that predictor
-  *holding the others constant*
-- Compare models with `anova(model_simple, model_full)` — does adding
-  a predictor meaningfully improve the fit?
+## Why add predictors?
 
-## ANCOVA: mixing categorical and continuous
+- **Control for a nuisance variable** (e.g., initial size) → less noise, more power
+- **Ask about two factors at once** (e.g., supplement *and* dose)
+- **Ask whether an effect depends on context** → *interactions*
 
-- One categorical predictor (treatment) + one continuous covariate
-  (e.g., starting size)
-- `lm(final ~ start + treatment)`
-- The treatment coefficient is the group difference **after
-  accounting for** the covariate
+## ANCOVA
 
-## Why control for the covariate?
+- `lm(y ~ group + x)`: group differences **adjusted** for a continuous covariate
+- Fits parallel lines, one per group
+- The group coefficient = vertical distance between the lines
 
-- Without it: a group difference in `final_height` might just reflect
-  a group difference in `start_height`, not a true treatment effect
-- With it: you're comparing groups on a level playing field
+## Interactions
 
-## Checking for an interaction
+- `y ~ group * x` means `y ~ group + x + group:x`
+- The lines can now have **different slopes**
+- "Does the effect of x depend on group?" is a question about the `group:x` term
 
-- ANCOVA assumes parallel slopes across groups
-- `lm(final ~ start * treatment)` tests whether that assumption holds
-- A significant interaction means the treatment effect **depends on**
-  the covariate — a more interesting (and more complex) story
+## The interaction problem
 
-## Connecting back to design
+- With an interaction, "the effect of group" has no single value — it depends on x
+- Raw coefficients become hard to read: reference levels, centered or not...
+- This is where reading the table of coefficients stops working
 
-- This is Experimental Designs III territory: multiple predictors
-  mean your design needs to consider more than one source of variation
-- A covariate you didn't measure is a covariate you can't control for
+## Marginal effects to the rescue
+
+`marginaleffects` answers questions in the units of the data:
+
+- `avg_slopes(m, variables = "x", by = "group")` — the slope of x **within each group**
+- `avg_comparisons(m, variables = "group", by = "dose")` — the group effect **at each dose**
+- `plot_predictions(m, condition = c("x", "group"))` — the picture
+
+## Marginal means vs. marginal effects
+
+- **Predictions** — the model's expected outcome at chosen values (`predictions()`, `avg_predictions()`)
+- **Comparisons** — differences or ratios of predictions (`comparisons()`)
+- **Slopes** — the rate of change (`slopes()`)
+- Averaged ("`avg_`") over the sample, or evaluated at `datagrid()` values you choose
+
+## Effect sizes
+
+- A p-value says *whether* an effect is detectable; an **estimate with an interval** says how big
+- Marginal effects are effect sizes in the original units (grams, mm, seconds)
+- Report: estimate, 95% CI, and what it means biologically
+
+## Collinearity and caution
+
+- Correlated predictors → unstable coefficients (check VIF, `performance::check_collinearity()`)
+- Interpretation of a coefficient is always "holding the others constant"
+- Adding predictors doesn't fix a flawed design
 
 ## This week
 
-- **Wednesday (tutorial):** fit multiple regression and ANCOVA models,
-  test for interactions
+- **Wednesday (tutorial):** ANCOVA, interactions, and two-way ANOVA with `marginaleffects`
 - **Assignment + Data Safari #3:** due this week

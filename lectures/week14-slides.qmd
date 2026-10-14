@@ -1,5 +1,5 @@
 ---
-title: "Nonparametric Alternatives and Choosing the Right Test"
+title: "When Assumptions Fail, and Choosing a Model"
 subtitle: "Week 14 · BIOL 4860/5860"
 format:
   revealjs:
@@ -9,58 +9,66 @@ format:
     transition: fade
 ---
 
-## The last new topic
+## Where we are
 
-- Weeks 5–13 built up a toolkit: t-tests, ANOVA, regression, GLMs,
-  mixed models
-- Today: what to do when none of their assumptions hold — and how to
-  choose between everything you now know
+- Weeks 9–13: one framework, many extensions
+- Today: what to do when the assumptions don't hold, and how to pick a model for a new problem
 
-## When parametric tests break down
+## "Nonparametric" tests are linear models on ranks
 
-- Small sample size **and** clear evidence of non-normality or
-  extreme outliers you can't justify removing
-- Nonparametric tests, based on ranks rather than raw values, are a
-  safer choice in that situation
+| Classic test | Linear model |
+|----|----|
+| Spearman correlation | `lm(rank(y) ~ 1 + rank(x))` |
+| Mann-Whitney U | `lm(signed_rank(y) ~ 1 + group)` |
+| Kruskal-Wallis | `lm(rank(y) ~ group)` |
+| Wilcoxon signed-rank | `lm(signed_rank(y) ~ 1)` |
 
-## Rank-based alternatives
+- Replace values by ranks, then run the same model
+- Close approximations (not exact) for larger samples
 
-| Parametric test | Nonparametric alternative |
-|---|---|
-| t-test | Wilcoxon rank-sum test |
-| One-way ANOVA | Kruskal-Wallis test |
-| Pearson correlation | Spearman correlation |
+## The cost of ranks
 
-- Same questions, different machinery — less sensitive to outliers
-  and distributional shape
+- You lose the original units: "the rank difference is 7.2" isn't an effect size
+- Hard to extend to covariates and random effects
+- Prefer transforms, GLMs, or robust standard errors when you can
 
-## A general-purpose backup: permutation tests
+## Better options for violated assumptions
 
-- Build a null distribution directly from your own data by shuffling
-  group labels
-- Useful when no standard nonparametric test fits your specific design
-- More computationally intensive, but conceptually simple
+| Problem | Fix |
+|----|----|
+| Unequal variances | Robust standard errors (`vcov = "HC3"`) |
+| Skewed response | Transform, or use a GLM |
+| Counts or proportions | `glm()` with the right family |
+| Non-independence | Mixed model |
+| Tiny samples, odd statistics | Permutation / bootstrap |
 
-## Choosing a test: the whole course in one slide
+## Robust standard errors with marginaleffects
 
-1. What type is your outcome? (continuous, binary, count)
-2. How many groups / predictors?
-3. Are your residuals reasonably normal, with similar variance across
-   groups?
-4. Is there any non-independence (repeated measures, nesting) you
-   need to account for?
-5. If assumptions are badly violated and nothing else fits — consider
-   a nonparametric or permutation-based approach
+- Welch's t-test and friends are about **unequal variance**
+- `avg_comparisons(m, variables = "group", vcov = "HC3")`
+- Same estimate, honest uncertainty
 
-## Looking back
+## Permutation tests
 
-- Week 1: why design matters
-- Weeks 2–4: R, data wrangling, EDA
-- Weeks 5–6: design principles, in theory and in the literature
-- Weeks 7–14: matching a design to the right statistical model
+- Idea: if treatment did nothing, labels are exchangeable
+- Shuffle labels, refit, repeat; compare observed statistic to the shuffled distribution
+- Works for any statistic you can compute from a model
 
-## Next: final projects
+## Choosing a model
 
-- Week 15: presentations
-- Bring together design, analysis, and communication — everything
-  this course covered
+1. **What is the response?** continuous → `lm`; binary → binomial; count → poisson
+2. **What are the predictors?** groups, covariates, interactions
+3. **Is the data independent?** if not → random effects
+4. **What question am I asking?** → `avg_comparisons`, `avg_slopes`, `hypotheses`
+
+## The course in one slide
+
+- A statistical test is a **model** + a **question about its parameters**
+- The model comes from the **design**: responses, predictors, structure
+- The question is answered with **marginal effects** in the units of the data
+- Check assumptions, report estimates with intervals
+
+## This week
+
+- **Wednesday (tutorial):** rank-based tests as models, robust SEs, a permutation test, and a model-selection exercise
+- **Assignment:** due this week

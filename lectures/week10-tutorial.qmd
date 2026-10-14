@@ -1,94 +1,144 @@
 ---
-title: "Week 10 Tutorial: Multiple Regression and ANCOVA"
-subtitle: "Wednesday tutorial · reinforces Monday's lecture on regression with multiple predictors"
+title: "Week 10 Tutorial: Multiple Regression, ANCOVA, and Interactions"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture"
 toc: true
 ---
 
 ## Goals
 
--   Extend simple regression to multiple predictors
--   Fit and interpret an ANCOVA (categorical + continuous predictor)
--   Practice basic model comparison
+-   Fit models with more than one predictor (ANCOVA, interactions, two-way ANOVA)
+-   Use `slopes`, `comparisons`, and `predictions` to interpret interactions
+-   Report effects as estimates with confidence intervals
 
 ## Setup
 
 ```{r}
 #| label: setup
+#| message: false
 library(tidyverse)
-library(broom)
-data(trees)
+library(marginaleffects)
 ```
 
-## Multiple regression
+## ANCOVA: groups and a covariate
+
+Using `iris`: does sepal length differ among species after accounting for petal length?
 
 ```{r}
-m1 <- lm(Volume ~ Girth + Height, data = trees)
-summary(m1)
+#| label: fig-iris
+#| fig-cap: "Sepal vs. petal length by species"
+ggplot(iris, aes(Petal.Length, Sepal.Length, color = Species)) +
+  geom_point() +
+  theme_minimal()
 ```
 
 ```{r}
-tidy(m1, conf.int = TRUE)
+m_anc <- lm(Sepal.Length ~ Species + Petal.Length, data = iris)
+summary(m_anc)
+```
+
+The model assumes the same slope in every species. `avg_comparisons()` reports species differences *adjusted* for petal length:
+
+```{r}
+avg_comparisons(m_anc, variables = list(Species = "pairwise"))
+```
+
+## Interactions: does the slope depend on species?
+
+```{r}
+m_int <- lm(Sepal.Length ~ Petal.Length * Species, data = iris)
+summary(m_int)
+anova(m_anc, m_int)
+```
+
+The coefficient table is hard to read: `Petal.Length` is the slope in the *reference* species only. Ask for the slope in each species instead:
+
+```{r}
+avg_slopes(m_int, variables = "Petal.Length", by = "Species")
+```
+
+Is the slope for virginica different from versicolor?
+
+```{r}
+avg_slopes(m_int, variables = "Petal.Length", by = "Species", hypothesis = "pairwise")
+```
+
+```{r}
+#| label: fig-int
+#| fig-cap: "Model predictions with an interaction"
+plot_predictions(m_int, condition = c("Petal.Length", "Species")) +
+  theme_minimal()
 ```
 
 ::: callout-note
 ## Exercise 1
 
-Compare this model's R² to the simple `Volume ~ Girth` model from Week 9's tutorial. Did adding `Height` meaningfully improve the fit? Use `anova(m_simple, m1)` to formally compare them (fit `m_simple` first).
+Why does the `setosa` slope have such a wide confidence interval? (Hint: look at the figure.)
 :::
 
-## ANCOVA: categorical + continuous predictor
+## Two-way ANOVA: two factors
 
-We'll simulate a dataset where plant height depends on both a continuous covariate (starting size) and a categorical treatment — a common design in biology.
+`ToothGrowth`: tooth length in guinea pigs by vitamin C supplement (`supp`) and dose.
 
 ```{r}
-set.seed(7)
-n <- 40
-ancova_data <- tibble(
-  treatment = rep(c("Control", "Fertilizer"), each = n / 2),
-  start_height = runif(n, 5, 15),
-  final_height = 2 + 1.1 * start_height +
-    ifelse(treatment == "Fertilizer", 4, 0) +
-    rnorm(n, 0, 1.5)
-)
+tg <- ToothGrowth |> mutate(dose = factor(dose))
+m_tg <- lm(len ~ supp * dose, data = tg)
+anova(m_tg)
+```
+
+The interaction is significant, so "the effect of supplement" depends on dose. Estimate it at **each** dose:
+
+```{r}
+avg_comparisons(m_tg, variables = "supp", by = "dose")
 ```
 
 ```{r}
-#| label: fig-ancova
-#| fig-cap: "Final height vs. starting height, by treatment"
-ggplot(ancova_data, aes(start_height, final_height, color = treatment)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
+avg_predictions(m_tg, by = c("supp", "dose"))
+```
+
+```{r}
+#| label: fig-tg
+#| fig-cap: "Predicted tooth length by supplement and dose"
+plot_predictions(m_tg, condition = c("dose", "supp")) +
   theme_minimal()
 ```
 
+Is the supplement effect at dose 0.5 different from the effect at dose 2? That's a difference of differences:
+
 ```{r}
-m_ancova <- lm(final_height ~ start_height + treatment, data = ancova_data)
-summary(m_ancova)
+avg_comparisons(m_tg, variables = "supp", by = "dose", hypothesis = "b1 = b3")
+```
+
+## Multiple regression with continuous predictors
+
+```{r}
+m_trees <- lm(Volume ~ Girth + Height, data = trees)
+summary(m_trees)
+```
+
+```{r}
+avg_slopes(m_trees)
+```
+
+Compare the `Height` slope here with last week's `Volume ~ Height` model. What changed, and why?
+
+```{r}
+cor(trees$Girth, trees$Height)
 ```
 
 ::: callout-note
 ## Exercise 2
 
-In your own words, explain what the `treatment` coefficient represents in this model, and why controlling for `start_height` matters — what would happen to your conclusions if you ignored it and just compared `final_height` between groups with a t-test?
+Use `plot_slopes(m_trees, variables = "Height", condition = "Girth")` to see how the Height slope changes with Girth. Is it constant? Why should it be, in this model?
 :::
 
-## Checking for an interaction
+## Design reminder
 
-ANCOVA assumes the slopes are parallel across groups (no treatment-by-covariate interaction). Always check this.
+::: callout-important
+## Randomization and covariates
 
-```{r}
-m_interaction <- lm(final_height ~ start_height * treatment, data = ancova_data)
-anova(m_ancova, m_interaction)
-```
-
-::: callout-note
-## Exercise 3
-
-Is the interaction term significant? What would it mean, biologically, if it were? Then design a scenario (2–3 sentences) — a real or hypothetical biology dataset — where you'd genuinely expect treatment effects to depend on a covariate like starting size or age.
+ANCOVA's strength in experiments is **precision**: if treatment was randomly assigned, adjusting for a baseline covariate leaves the treatment estimate unbiased and shrinks its standard error. In observational data, adjustment cannot rescue a confounded design.
 :::
 
 ## Wrap-up
 
-Keep this file — the exercises here feed directly into this week's
-[assignment](../assignments/week10-assignment.qmd), which also
-includes a [Data Safari exercise](../assignments/week10-data-safari.qmd).
+Keep this file — the exercises feed directly into this week's [assignment](../assignments/week10-assignment.qmd).

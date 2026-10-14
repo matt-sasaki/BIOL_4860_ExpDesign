@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <title>Experimental Design &amp; Analysis in Biology – Logistic Regression and Other GLMs</title>
+  <title>Experimental Design &amp; Analysis in Biology – Generalized Linear Models</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -130,75 +130,117 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Logistic Regression and Other GLMs</h1>
+  <h1 class="title">Generalized Linear Models</h1>
   <p class="subtitle">Week 11 · BIOL 4860/5860</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="when-lm-breaks-down" class="slide level2">
-<h2>When <code>lm()</code> breaks down</h2>
+<section id="when-the-response-isnt-a-nice-bell-curve" class="slide level2">
+<h2>When the response isn’t a nice bell curve</h2>
 <ul>
-<li><code>lm()</code> assumes a continuous, roughly normal outcome</li>
-<li>What about survival (yes/no)? Count of offspring? Number of parasites?</li>
+<li>Survived / died. Germinated / didn’t. Number of insects.</li>
+<li>A straight-line model can predict <em>impossible</em> values (negative counts, probabilities over 1)</li>
+<li>Fix: keep the linear model, but model a <strong>transformation of the mean</strong></li>
 </ul>
 </section>
-<section id="logistic-regression" class="slide level2">
-<h2>Logistic regression</h2>
+<section id="the-generalized-linear-model" class="slide level2">
+<h2>The generalized linear model</h2>
+<p><span class="math display">\[g(\text{mean of } y) = \beta_0 + \beta_1 x_1 + \dots\]</span></p>
 <ul>
-<li>For binary outcomes (survived/died, germinated/didn’t)</li>
-<li><code>glm(y ~ x, family = binomial)</code></li>
-<li>Models the <strong>log-odds</strong> of the outcome, not the outcome directly</li>
-<li>Exponentiate coefficients to get odds ratios — more interpretable</li>
+<li>The right-hand side is still the linear model you know</li>
+<li><code>g()</code> is the <strong>link function</strong>; the <strong>family</strong> says what the noise looks like</li>
 </ul>
-</section>
-<section id="poisson-regression" class="slide level2">
-<h2>Poisson regression</h2>
-<ul>
-<li>For count outcomes (number of offspring, number of parasites)</li>
-<li><code>glm(y ~ x, family = poisson)</code></li>
-<li>Watch for <strong>overdispersion</strong>: if the residual deviance is much larger than the residual df, consider quasi-Poisson or negative binomial instead</li>
-</ul>
-</section>
-<section id="the-generalized-linear-model-glm-family" class="slide level2">
-<h2>The generalized linear model (GLM) family</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>Outcome type</th>
-<th>Model</th>
+<th>Response</th>
+<th>Family</th>
+<th>Link</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>Continuous</td>
-<td><code>lm()</code></td>
+<td>gaussian</td>
+<td>identity (= <code>lm</code>)</td>
 </tr>
 <tr class="even">
-<td>Binary</td>
-<td>Logistic <code>glm()</code></td>
+<td>Binary (0/1)</td>
+<td>binomial</td>
+<td>logit</td>
 </tr>
 <tr class="odd">
-<td>Count</td>
-<td>Poisson / negative binomial <code>glm()</code></td>
+<td>Counts</td>
+<td>poisson</td>
+<td>log</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="logistic-regression" class="slide level2">
+<h2>Logistic regression</h2>
+<ul>
+<li><code>glm(survived ~ shade, family = binomial)</code></li>
+<li>Coefficients are <strong>log-odds</strong> — hard to think in!</li>
+<li><code>exp(coef)</code> gives odds ratios — still hard</li>
+</ul>
+</section>
+<section id="marginal-effects-make-glms-readable" class="slide level2">
+<h2>Marginal effects make GLMs readable</h2>
+<ul>
+<li><code>avg_predictions(m)</code> — predicted <strong>probabilities</strong></li>
+<li><code>avg_comparisons(m)</code> — the difference in probability between conditions (risk difference)</li>
+<li><code>comparison = "ratio"</code> — risk ratio; <code>"lnor"</code> — log odds ratio</li>
+<li>Same function calls as Weeks 9–10, now on the <strong>response scale</strong></li>
+</ul>
+</section>
+<section id="count-data" class="slide level2">
+<h2>Count data</h2>
+<ul>
+<li><code>glm(count ~ treatment, family = poisson)</code></li>
+<li>Coefficients are log rate ratios</li>
+<li>Watch for <strong>overdispersion</strong>: variance bigger than the mean → <code>quasipoisson</code> or negative binomial</li>
+</ul>
+</section>
+<section id="chi-square-tests-are-linear-models-too" class="slide level2">
+<h2>Chi-square tests are linear models too</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Classic test</th>
+<th>Model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Goodness of fit</td>
+<td><code>glm(n ~ 1, poisson)</code></td>
+</tr>
+<tr class="even">
+<td>Chi-square test of independence</td>
+<td><code>glm(n ~ row * col, poisson)</code></td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>Same underlying idea — a linear predictor, transformed to fit the outcome’s scale</li>
+<li>Cell counts are the response; the <strong>interaction</strong> is the test of association</li>
+<li>Same result as <code>chisq.test()</code>, but now you can add predictors</li>
 </ul>
 </section>
-<section id="design-connection" class="slide level2">
-<h2>Design connection</h2>
+<section id="design-reminder" class="slide level2">
+<h2>Design reminder</h2>
 <ul>
-<li>The type of outcome you plan to measure should shape your design from the start — e.g., a binary outcome usually needs a larger sample size than a continuous one to achieve the same power</li>
+<li>Binary outcomes need larger samples than continuous ones</li>
+<li>Beware complete separation: a predictor that perfectly predicts the outcome</li>
+<li>Replication unit still matters: 100 seeds in 1 dish is n = 1 for dish effects</li>
 </ul>
 </section>
 <section id="this-week" class="slide level2">
 <h2>This week</h2>
 <ul>
-<li><strong>Wednesday (tutorial):</strong> fit logistic and Poisson models, check for overdispersion</li>
+<li><strong>Wednesday (tutorial):</strong> logistic regression, Poisson regression, and chi-square as a log-linear model</li>
 <li><strong>Assignment:</strong> due this week</li>
 </ul>
 

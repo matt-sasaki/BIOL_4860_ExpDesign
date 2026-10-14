@@ -1,89 +1,111 @@
 ---
 title: "Week 13 Tutorial: Mixed-Effects Models II"
-subtitle: "Wednesday tutorial · reinforces Monday's lecture on random slopes and crossed/nested designs"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture"
 toc: true
 ---
 
 ## Goals
 
-- Fit and interpret a random-slopes model
-- Distinguish crossed vs. nested random effects
+-   Fit and interpret random-slope models
+-   Distinguish nested and crossed random effects
+-   Report population-level marginal effects from mixed models
 
 ## Setup
 
 ```{r}
 #| label: setup
+#| message: false
 library(tidyverse)
 library(lme4)
 library(lmerTest)
+library(marginaleffects)
 ```
 
-We'll reuse the simulated `field_data` from Week 12's tutorial.
+## Random slopes: sleep deprivation
+
+`sleepstudy` (from `lme4`): reaction time of 18 subjects restricted to 3 hours of sleep per night over 10 days.
 
 ```{r}
-set.seed(21)
-n_sites <- 8
-n_per_site <- 6
-
-field_data <- tibble(site = factor(rep(1:n_sites, each = n_per_site))) |>
-  mutate(
-    site_effect = rep(rnorm(n_sites, 0, 3), each = n_per_site),
-    treatment = rep(rep(c("Control", "Treated"), n_per_site / 2), n_sites),
-    response = 10 + ifelse(treatment == "Treated", 2, 0) +
-      site_effect + rnorm(n(), 0, 1.5)
-  )
-
-m_mixed <- lmer(response ~ treatment + (1 | site), data = field_data)
+#| label: fig-sleep
+#| fig-cap: "Reaction time over days of sleep restriction, by subject"
+ggplot(sleepstudy, aes(Days, Reaction, group = Subject)) +
+  geom_line(alpha = 0.6) +
+  theme_minimal()
 ```
-
-## Random slopes
-
-Sometimes the treatment effect itself varies by site, not just the
-baseline.
 
 ```{r}
-m_slopes <- lmer(response ~ treatment + (treatment | site), data = field_data)
-summary(m_slopes)
+m_int <- lmer(Reaction ~ Days + (1 | Subject), data = sleepstudy)
+m_slope <- lmer(Reaction ~ Days + (1 + Days | Subject), data = sleepstudy)
+anova(m_int, m_slope)
 ```
 
-::: {.callout-note}
+```{r}
+summary(m_slope)
+```
+
+How much does each subject's slope vary around the average?
+
+```{r}
+VarCorr(m_slope)
+```
+
+The population-average effect, with honest uncertainty:
+
+```{r}
+avg_slopes(m_slope, variables = "Days")
+```
+
+Compare with the random-intercept-only model:
+
+```{r}
+avg_slopes(m_int, variables = "Days")
+```
+
+The estimate is the same, but the standard error grows when the model allows slopes to vary.
+
+```{r}
+predictions(m_slope, newdata = datagrid(Days = c(0, 9)), re.form = NA)
+```
+
+```{r}
+#| label: fig-slope-pred
+#| fig-cap: "Population-level prediction from the random-slope model"
+plot_predictions(m_slope, condition = "Days", re.form = NA) +
+  theme_minimal()
+```
+
+::: callout-note
 ## Exercise 1
-Compare `m_mixed` and `m_slopes` with `anova(m_mixed, m_slopes)` (this
-refits with ML automatically). Does allowing the treatment effect to
-vary by site improve the fit significantly here? Would you expect it
-to, given how `field_data` was simulated?
+
+Why is the standard error of the `Days` slope bigger with random slopes? What does that say about the effective sample size?
 :::
 
-## Crossed vs. nested random effects
+## Nested random effects
 
-- **Nested**: each level of one factor only occurs within one level
-  of another (e.g., `plot` within `site` — plot 1 at Site A is a
-  different physical plot than plot 1 at Site B). Write as
-  `(1 | site/plot)`.
-- **Crossed**: levels of one factor occur across multiple levels of
-  another (e.g., the same `observer` measures animals at multiple
-  `site`s). Write as `(1 | site) + (1 | observer)`.
+`Pastes` (from `lme4`): strength of paste from 10 batches, each with 3 casks, each sampled twice.
 
-::: {.callout-note}
+```{r}
+m_nest <- lmer(strength ~ 1 + (1 | batch/cask), data = Pastes)
+VarCorr(m_nest)
+```
+
+Which level has the most variability?
+
+## Crossed random effects
+
+`Penicillin`: inhibition zone diameter for 24 samples, each tested on all 6 plates (fully crossed).
+
+```{r}
+m_cross <- lmer(diameter ~ 1 + (1 | plate) + (1 | sample), data = Penicillin)
+VarCorr(m_cross)
+```
+
+::: callout-note
 ## Exercise 2
-You measure lizard body condition at 5 sites, with 3 plots per site
-(plots are physically distinct per site), and each plot is visited by
-one of 2 rotating observers who each work across multiple sites.
-Write the `lmer()` random-effects structure you'd use, and explain in
-one sentence why each grouping factor is crossed or nested.
-:::
 
-::: {.callout-note}
-## Exercise 3
-Look back at Week 5's tutorial on blocking. A randomized block design
-and a mixed model with `(1 | block)` are closely related ideas — both
-treat block-to-block variation as a nuisance to control for rather
-than a treatment to test. In 2–3 sentences, explain the connection in
-your own words.
+Sketch the design of each dataset. In one sentence each, describe the grouping structure and why nested or crossed is the right choice.
 :::
 
 ## Wrap-up
 
-Keep this file — the exercises here feed directly into this week's
-[assignment](../assignments/week13-assignment.qmd), which also
-includes a [Data Safari exercise](../assignments/week13-data-safari.qmd).
+Keep this file — the exercises feed directly into this week's [assignment](../assignments/week13-assignment.qmd).

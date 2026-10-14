@@ -45,7 +45,7 @@ Do the diagnostics look acceptable? If not, add additional chunks below and walk
 
 ## 3. Results
 
-Report your results in a results-section style summary: model summary, effect sizes, test statistics, degrees of freedom, p-values, and confidence intervals where relevant. <!--# Include your answer below -->
+Report your results in a results-section style summary: model summary, effect sizes, test statistics, degrees of freedom, p-values, and confidence intervals where relevant. Where possible, use `marginaleffects` (`avg_comparisons()`, `avg_slopes()`, `avg_predictions()`) to report effect sizes in the units of your data. <!--# Include your answer below -->
 
 ## 4. Interpretation
 

@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <title>Experimental Design &amp; Analysis in Biology – Mixed-Effects Models II: Slopes, Crossed, and Nested Designs</title>
+  <title>Experimental Design &amp; Analysis in Biology – Mixed-Effects Models II</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -130,64 +130,73 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Mixed-Effects Models II: Slopes, Crossed, and Nested Designs</h1>
+  <h1 class="title">Mixed-Effects Models II</h1>
   <p class="subtitle">Week 13 · BIOL 4860/5860</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="last-week-vs.-this-week" class="slide level2">
-<h2>Last week vs.&nbsp;this week</h2>
+<section id="last-week" class="slide level2">
+<h2>Last week</h2>
 <ul>
-<li>Last week: random intercepts — each group gets its own baseline</li>
-<li>This week: what if the <strong>effect itself</strong> varies by group, and what happens with more complex grouping structures?</li>
+<li>Random intercepts: each group has its own baseline</li>
+<li>But groups often differ in <strong>how they respond</strong> too</li>
 </ul>
 </section>
 <section id="random-slopes" class="slide level2">
 <h2>Random slopes</h2>
 <ul>
-<li><code>lmer(response ~ treatment + (treatment | site), data = ...)</code></li>
-<li>Lets the treatment effect itself vary from site to site</li>
-<li>Compare to the random-intercept-only model with <code>anova()</code> — does allowing varying slopes meaningfully improve the fit?</li>
+<li><code>lmer(y ~ x + (1 + x | subject))</code></li>
+<li>Each subject gets their own intercept <strong>and</strong> their own slope</li>
+<li>The fixed effect is the <em>average</em> slope; the random effect is how much it varies</li>
 </ul>
 </section>
-<section id="nested-random-effects" class="slide level2">
-<h2>Nested random effects</h2>
+<section id="why-random-slopes-matter" class="slide level2">
+<h2>Why random slopes matter</h2>
 <ul>
-<li>One factor’s levels only make sense within another (e.g., <code>plot</code> within <code>site</code> — “plot 1” at Site A isn’t the same physical plot as “plot 1” at Site B)</li>
-<li>Syntax: <code>(1 | site/plot)</code></li>
+<li>If the effect truly varies across groups and you leave out the random slope, standard errors are too small</li>
+<li><strong>Keep it maximal where design supports it</strong>: random slopes for effects that vary within groups</li>
+<li>If the model won’t converge, simplify (and report it)</li>
 </ul>
 </section>
-<section id="crossed-random-effects" class="slide level2">
-<h2>Crossed random effects</h2>
+<section id="nested-vs.-crossed" class="slide level2">
+<h2>Nested vs.&nbsp;crossed</h2>
 <ul>
-<li>Levels of one factor occur across multiple levels of another (e.g., the same <code>observer</code> measures animals at several sites)</li>
-<li>Syntax: <code>(1 | site) + (1 | observer)</code></li>
-</ul>
-</section>
-<section id="telling-them-apart" class="slide level2">
-<h2>Telling them apart</h2>
+<li><strong>Nested</strong>: each lower unit belongs to exactly one higher unit (cask within batch)
 <ul>
-<li>Ask: does “level 1” mean the same thing across every group?
-<ul>
-<li>Yes → crossed</li>
-<li>No → nested</li>
+<li><code>(1 | batch/cask)</code></li>
 </ul></li>
-<li>Getting this wrong doesn’t always error — it silently gives you the wrong model</li>
+<li><strong>Crossed</strong>: every unit appears in several higher units (every sample on every plate)
+<ul>
+<li><code>(1 | plate) + (1 | sample)</code></li>
+</ul></li>
+<li>Draw your design — the structure comes from the design, not from the data</li>
 </ul>
 </section>
-<section id="putting-it-together" class="slide level2">
-<h2>Putting it together</h2>
+<section id="marginal-effects-in-mixed-models" class="slide level2">
+<h2>Marginal effects in mixed models</h2>
 <ul>
-<li>Design (Weeks 5–6) → naive vs.&nbsp;blocked model (Week 5) → mixed model with random intercepts (Week 12) → random slopes and crossed/nested structures (today)</li>
-<li>Same underlying idea the whole way: account for the structure in how your data were collected</li>
+<li>Fixed-effect marginal effects: same <code>avg_slopes()</code> / <code>avg_comparisons()</code></li>
+<li>Population-level: <code>re.form = NA</code></li>
+<li>Subject-specific predictions are possible too, via <code>newdata</code></li>
+<li>Report the <strong>variance components</strong> alongside the fixed effects</li>
+</ul>
+</section>
+<section id="everything-is-a-model-so-models-combine" class="slide level2">
+<h2>Everything is a model, so models combine</h2>
+<ul>
+<li>Week 9: tests as linear models</li>
+<li>Week 10: more predictors</li>
+<li>Week 11: other response types (GLM)</li>
+<li>Weeks 12–13: non-independence (mixed)</li>
+<li>GLMM: <code>glmer(y ~ x + (1 | group), family = binomial)</code> — all of them together</li>
 </ul>
 </section>
 <section id="this-week" class="slide level2">
 <h2>This week</h2>
 <ul>
-<li><strong>Wednesday (tutorial):</strong> fit random-slopes models, practice writing crossed vs.&nbsp;nested syntax</li>
+<li><strong>Wednesday (tutorial):</strong> random slopes with <code>sleepstudy</code>; nested and crossed variance components</li>
 <li><strong>Assignment + Data Safari #4:</strong> due this week</li>
 </ul>
 

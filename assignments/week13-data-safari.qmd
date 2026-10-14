@@ -24,7 +24,7 @@ Full citation: <!--# Include the citation below -->
 
 ## Bonus (optional)
 
-If you can identify the grouping structure (subject, site, etc.) in the data, try fitting a simple mixed model and see whether the random-effect variance looks large relative to the fixed effect — does that match the visual spread you see in the figure?
+If you can identify the grouping structure (subject, site, etc.) in the data, try fitting a simple mixed model and see whether the random-effect variance looks large relative to the fixed effect — does that match the visual spread you see in the figure? Use `avg_slopes()` or `avg_comparisons()` from `marginaleffects` to report the population-level effect with a confidence interval.
 
 ```{r}
 

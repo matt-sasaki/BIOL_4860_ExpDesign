@@ -1,103 +1,148 @@
 ---
-title: "Week 11 Tutorial: Logistic Regression and GLMs"
-subtitle: "Wednesday tutorial · reinforces Monday's lecture on generalized linear models"
+title: "Week 11 Tutorial: Generalized Linear Models"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture"
 toc: true
 ---
 
 ## Goals
 
--   Recognize when a binary or count outcome needs something other than `lm()`
--   Fit and interpret a logistic regression (`glm` with a binomial family)
--   Get a first look at Poisson regression for count data
+-   Fit logistic and Poisson regression with `glm()`
+-   Use `marginaleffects` to report effects on the response scale
+-   Show that the chi-square test is a log-linear model
 
 ## Setup
 
 ```{r}
 #| label: setup
+#| message: false
 library(tidyverse)
-library(broom)
+library(marginaleffects)
 ```
 
-## Why not just use `lm()`?
+## Binary data: logistic regression
 
-A linear model fit to a 0/1 outcome can predict probabilities below 0 or above 1, and violates the constant-variance assumption near the extremes. **Logistic regression** models the log-odds of the outcome instead.
-
-## Logistic regression: survival example
+Simulated seedling survival in sun vs. shade (60 seedlings each):
 
 ```{r}
 set.seed(11)
-n <- 100
-seedlings <- tibble(
-  light = runif(n, 0, 100),  # % canopy light
-  survived = rbinom(n, 1, plogis(-3 + 0.06 * light))
-)
+seedlings <- tibble(light = rep(c("Sun", "Shade"), each = 60)) |>
+  mutate(light = factor(light, levels = c("Shade", "Sun")),
+         survived = rbinom(n(), 1, ifelse(light == "Sun", 0.7, 0.4)))
 ```
 
 ```{r}
-#| label: fig-raw
-#| fig-cap: "Raw survival outcomes vs. light availability"
-ggplot(seedlings, aes(light, survived)) +
-  geom_jitter(height = 0.05, alpha = 0.5) +
-  theme_minimal()
+m_log <- glm(survived ~ light, family = binomial, data = seedlings)
+summary(m_log)
+```
+
+The `lightSun` coefficient is a **log odds ratio**. Few people can interpret that. Ask in the units of the data:
+
+```{r}
+avg_predictions(m_log, by = "light")
 ```
 
 ```{r}
-m1 <- glm(survived ~ light, data = seedlings, family = binomial)
-summary(m1)
+avg_comparisons(m_log, variables = "light")
+```
+
+The difference in survival probability is the effect size most biologists want. Ratios are available too:
+
+```{r}
+avg_comparisons(m_log, variables = "light", comparison = "ratio")
 ```
 
 ```{r}
-tidy(m1, conf.int = TRUE, exponentiate = TRUE)  # odds ratios
-```
-
-```{r}
-#| label: fig-fit
-#| fig-cap: "Fitted probability of survival by light level"
-ggplot(seedlings, aes(light, survived)) +
-  geom_jitter(height = 0.05, alpha = 0.4) +
-  geom_smooth(method = "glm", method.args = list(family = "binomial"), se = TRUE) +
-  theme_minimal()
+avg_comparisons(m_log, variables = "light", comparison = "lnor", transform = "exp")
 ```
 
 ::: callout-note
 ## Exercise 1
 
-Interpret the exponentiated `light` coefficient (the odds ratio) in one sentence a non-statistician biologist would understand.
+Which is more informative to report: the risk difference, the risk ratio, or the odds ratio? When might they tell very different stories?
 :::
 
-## Poisson regression: a first look at count data
+## A continuous predictor in a GLM
+
+Add seedling height:
 
 ```{r}
-set.seed(12)
-counts <- tibble(
-  density = runif(60, 1, 10),   # plants per m^2
-  seed_count = rpois(60, lambda = exp(0.5 + 0.15 * density))
-)
-
-m2 <- glm(seed_count ~ density, data = counts, family = poisson)
-summary(m2)
+seedlings$height <- round(rnorm(nrow(seedlings), 10, 2), 1)
+m_log2 <- glm(survived ~ light + height, family = binomial, data = seedlings)
 ```
+
+```{r}
+#| label: fig-logit
+#| fig-cap: "Predicted survival probability across height and light"
+plot_predictions(m_log2, condition = c("height", "light")) +
+  theme_minimal()
+```
+
+```{r}
+avg_slopes(m_log2, variables = "height")
+```
+
+## Count data: Poisson regression
+
+`InsectSprays`: insects surviving six insecticide sprays.
+
+```{r}
+ggplot(InsectSprays, aes(spray, count)) +
+  geom_boxplot() +
+  theme_minimal()
+```
+
+```{r}
+m_pois <- glm(count ~ spray, family = poisson, data = InsectSprays)
+```
+
+```{r}
+avg_predictions(m_pois, by = "spray")
+```
+
+Rate ratios relative to spray A:
+
+```{r}
+avg_comparisons(m_pois, variables = list(spray = "reference"), comparison = "ratio")
+```
+
+Check for overdispersion: residual deviance should be close to its degrees of freedom.
+
+```{r}
+deviance(m_pois) / df.residual(m_pois)
+```
+
+## Chi-square as a linear model
+
+A hand-built 2×2 table: germination (yes/no) with and without cold stratification.
+
+```{r}
+germ <- data.frame(
+  treatment = rep(c("Stratified", "Control"), each = 2),
+  germinated = rep(c("Yes", "No"), times = 2),
+  n = c(30, 10, 18, 22)
+)
+xtabs(n ~ treatment + germinated, germ)
+```
+
+```{r}
+chisq.test(xtabs(n ~ treatment + germinated, germ), correct = FALSE)
+```
+
+The same test as a Poisson regression. The **interaction** asks whether the germination split depends on treatment:
+
+```{r}
+m_chi <- glm(n ~ treatment * germinated, family = poisson, data = germ)
+anova(m_chi, test = "Rao")
+```
+
+The `Rao` score statistic for the interaction matches the chi-square.
 
 ::: callout-note
 ## Exercise 2
 
-Fit `m2` and report whether `density` significantly predicts `seed_count`. Then check for overdispersion by comparing the residual deviance to the residual degrees of freedom (`summary(m2)` prints both) — a ratio well above 1 suggests you'd want a quasi-Poisson or negative binomial model instead. Is that the case here?
-:::
-
-## Choosing a model by outcome type
-
-::: callout-note
-## Exercise 3
-
-For each scenario below, name the outcome type and the model you'd reach for (`lm`, logistic `glm`, or Poisson/negative-binomial `glm`):
-
-a.  Number of eggs laid per clutch
-b.  Whether a seed germinates (yes/no)
-c.  Body mass in grams
-d.  Number of parasites found on an individual host
+Convert the same table to individual-level data (one row per seed) and fit `glm(germinated ~ treatment, family = binomial)`. Use `avg_comparisons()` to report the difference in germination probability. How does the answer relate to the chi-square result?
 :::
 
 ## Wrap-up
 
-Keep this file — the exercises here feed directly into this week's
-[assignment](../assignments/week11-assignment.qmd).
+Keep this file — the exercises feed directly into this week's [assignment](../assignments/week11-assignment.qmd).

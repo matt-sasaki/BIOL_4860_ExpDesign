@@ -24,7 +24,7 @@ Full citation: <!--# Include the citation below -->
 
 ## Bonus (optional)
 
-If the paper reports a regression coefficient or R², try fitting the same model yourself and compare your numbers to theirs.
+If the paper reports a regression coefficient or R², try fitting the same model yourself and compare your numbers to theirs. Then use `avg_slopes()` (or `avg_comparisons()`) from the `marginaleffects` package to report the slope in each group — do your numbers match the paper's?
 
 ```{r}
 

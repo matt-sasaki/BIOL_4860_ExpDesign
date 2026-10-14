@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <title>Experimental Design &amp; Analysis in Biology – Multiple Regression and ANCOVA</title>
+  <title>Experimental Design &amp; Analysis in Biology – Multiple Regression, ANCOVA, and Interactions</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -130,61 +130,112 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Multiple Regression and ANCOVA</h1>
+  <h1 class="title">Multiple Regression, ANCOVA, and Interactions</h1>
   <p class="subtitle">Week 10 · BIOL 4860/5860</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="from-one-predictor-to-several" class="slide level2">
-<h2>From one predictor to several</h2>
+<section id="last-week" class="slide level2">
+<h2>Last week</h2>
 <ul>
-<li>Last week: <code>y ~ x</code>, one continuous predictor</li>
-<li>Real biological outcomes usually depend on more than one thing at once</li>
+<li>t-tests, ANOVA, and correlation are all <code>lm()</code> with one predictor</li>
+<li>This week: <strong>more than one predictor</strong> — the models that biological experiments actually need</li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Classic test</th>
+<th>Linear model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ANCOVA</td>
+<td><code>lm(y ~ group + x)</code></td>
+</tr>
+<tr class="even">
+<td>Two-way ANOVA</td>
+<td><code>lm(y ~ A * B)</code></td>
+</tr>
+<tr class="odd">
+<td>Multiple regression</td>
+<td><code>lm(y ~ x1 + x2)</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="why-add-predictors" class="slide level2">
+<h2>Why add predictors?</h2>
+<ul>
+<li><strong>Control for a nuisance variable</strong> (e.g., initial size) → less noise, more power</li>
+<li><strong>Ask about two factors at once</strong> (e.g., supplement <em>and</em> dose)</li>
+<li><strong>Ask whether an effect depends on context</strong> → <em>interactions</em></li>
 </ul>
 </section>
-<section id="multiple-regression" class="slide level2">
-<h2>Multiple regression</h2>
+<section id="ancova" class="slide level2">
+<h2>ANCOVA</h2>
 <ul>
-<li><code>lm(y ~ x1 + x2)</code> — each coefficient is the effect of that predictor <em>holding the others constant</em></li>
-<li>Compare models with <code>anova(model_simple, model_full)</code> — does adding a predictor meaningfully improve the fit?</li>
+<li><code>lm(y ~ group + x)</code>: group differences <strong>adjusted</strong> for a continuous covariate</li>
+<li>Fits parallel lines, one per group</li>
+<li>The group coefficient = vertical distance between the lines</li>
 </ul>
 </section>
-<section id="ancova-mixing-categorical-and-continuous" class="slide level2">
-<h2>ANCOVA: mixing categorical and continuous</h2>
+<section id="interactions" class="slide level2">
+<h2>Interactions</h2>
 <ul>
-<li>One categorical predictor (treatment) + one continuous covariate (e.g., starting size)</li>
-<li><code>lm(final ~ start + treatment)</code></li>
-<li>The treatment coefficient is the group difference <strong>after accounting for</strong> the covariate</li>
+<li><code>y ~ group * x</code> means <code>y ~ group + x + group:x</code></li>
+<li>The lines can now have <strong>different slopes</strong></li>
+<li>“Does the effect of x depend on group?” is a question about the <code>group:x</code> term</li>
 </ul>
 </section>
-<section id="why-control-for-the-covariate" class="slide level2">
-<h2>Why control for the covariate?</h2>
+<section id="the-interaction-problem" class="slide level2">
+<h2>The interaction problem</h2>
 <ul>
-<li>Without it: a group difference in <code>final_height</code> might just reflect a group difference in <code>start_height</code>, not a true treatment effect</li>
-<li>With it: you’re comparing groups on a level playing field</li>
+<li>With an interaction, “the effect of group” has no single value — it depends on x</li>
+<li>Raw coefficients become hard to read: reference levels, centered or not…</li>
+<li>This is where reading the table of coefficients stops working</li>
 </ul>
 </section>
-<section id="checking-for-an-interaction" class="slide level2">
-<h2>Checking for an interaction</h2>
+<section id="marginal-effects-to-the-rescue" class="slide level2">
+<h2>Marginal effects to the rescue</h2>
+<p><code>marginaleffects</code> answers questions in the units of the data:</p>
 <ul>
-<li>ANCOVA assumes parallel slopes across groups</li>
-<li><code>lm(final ~ start * treatment)</code> tests whether that assumption holds</li>
-<li>A significant interaction means the treatment effect <strong>depends on</strong> the covariate — a more interesting (and more complex) story</li>
+<li><code>avg_slopes(m, variables = "x", by = "group")</code> — the slope of x <strong>within each group</strong></li>
+<li><code>avg_comparisons(m, variables = "group", by = "dose")</code> — the group effect <strong>at each dose</strong></li>
+<li><code>plot_predictions(m, condition = c("x", "group"))</code> — the picture</li>
 </ul>
 </section>
-<section id="connecting-back-to-design" class="slide level2">
-<h2>Connecting back to design</h2>
+<section id="marginal-means-vs.-marginal-effects" class="slide level2">
+<h2>Marginal means vs.&nbsp;marginal effects</h2>
 <ul>
-<li>This is Experimental Designs III territory: multiple predictors mean your design needs to consider more than one source of variation</li>
-<li>A covariate you didn’t measure is a covariate you can’t control for</li>
+<li><strong>Predictions</strong> — the model’s expected outcome at chosen values (<code>predictions()</code>, <code>avg_predictions()</code>)</li>
+<li><strong>Comparisons</strong> — differences or ratios of predictions (<code>comparisons()</code>)</li>
+<li><strong>Slopes</strong> — the rate of change (<code>slopes()</code>)</li>
+<li>Averaged (“<code>avg_</code>”) over the sample, or evaluated at <code>datagrid()</code> values you choose</li>
+</ul>
+</section>
+<section id="effect-sizes" class="slide level2">
+<h2>Effect sizes</h2>
+<ul>
+<li>A p-value says <em>whether</em> an effect is detectable; an <strong>estimate with an interval</strong> says how big</li>
+<li>Marginal effects are effect sizes in the original units (grams, mm, seconds)</li>
+<li>Report: estimate, 95% CI, and what it means biologically</li>
+</ul>
+</section>
+<section id="collinearity-and-caution" class="slide level2">
+<h2>Collinearity and caution</h2>
+<ul>
+<li>Correlated predictors → unstable coefficients (check VIF, <code>performance::check_collinearity()</code>)</li>
+<li>Interpretation of a coefficient is always “holding the others constant”</li>
+<li>Adding predictors doesn’t fix a flawed design</li>
 </ul>
 </section>
 <section id="this-week" class="slide level2">
 <h2>This week</h2>
 <ul>
-<li><strong>Wednesday (tutorial):</strong> fit multiple regression and ANCOVA models, test for interactions</li>
+<li><strong>Wednesday (tutorial):</strong> ANCOVA, interactions, and two-way ANOVA with <code>marginaleffects</code></li>
 <li><strong>Assignment + Data Safari #3:</strong> due this week</li>
 </ul>
 

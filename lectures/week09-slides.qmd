@@ -1,5 +1,5 @@
 ---
-title: "Correlation and Linear Regression"
+title: "Everything Is a Linear Model"
 subtitle: "Week 9 · BIOL 4860/5860"
 format:
   revealjs:
@@ -11,44 +11,89 @@ format:
 
 ## Welcome back
 
-- Spring Break's over — quick recap: t-tests and ANOVA compare
-  **group means**
-- Today: what if both variables are continuous?
+- Weeks 7 gave you a menu: t-test, ANOVA, ...
+- The second half of the course replaces the menu with **one idea**:
 
-## Correlation
+> Most common statistical tests are special cases of the **linear model**.
+> — Jonas Lindeløv, *Common statistical tests are linear models*
 
-- `cor()` / `cor.test()` — strength and direction of a linear
-  relationship, summarized in a single number (−1 to 1)
-- Says nothing about *why* two things move together
+- Learn one framework deeply, and you can answer almost any question in this course
 
-## Simple linear regression
+## The one equation
 
-- `lm(y ~ x)` — models y as a straight-line function of x
-- Gives you a slope (effect size), not just a correlation coefficient
-- `tidy()` and `glance()` (from `broom`) for clean summaries
+$$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \varepsilon$$
 
-## Checking the fit
+- In R: `lm(y ~ 1 + x1 + x2)`
+- The test you want is almost always **a question about one or more β's**
+- Different tests = different choices of what goes on the right-hand side
 
-- Residuals vs. fitted — is the relationship actually linear?
-- Q-Q plot — are residuals roughly normal?
-- R² — how much variance does the model explain?
+## One sample and paired t-tests
 
-## Correlation and regression are not causation
+| Classic test | Linear model |
+|----|----|
+| One-sample t-test | `lm(y ~ 1)` |
+| Paired t-test | `lm(y2 - y1 ~ 1)` |
 
-- `trees`: girth predicts volume — but nobody *assigned* girth
-- This is **observational data**
-- Contrast with Week 7, where treatment was randomly assigned — there,
-  a significant result supports a causal claim
+- The intercept **is** the mean (or the mean difference)
+- The test of the intercept against 0 **is** the t-test
 
-## Design still matters here
+## Two groups and many groups
 
-- A strong, statistically significant regression from observational
-  data still can't prove causation
-- If you want to claim causation, you need an experiment — random
-  assignment of the predictor, not just measurement of it
+| Classic test | Linear model |
+|----|----|
+| Two-sample t-test | `lm(y ~ 1 + group)` |
+| One-way ANOVA | `lm(y ~ 1 + group)` + `anova()` |
+
+- With a categorical predictor, R creates 0/1 **dummy variables**
+- Intercept = mean of the reference group; each slope = difference from it
+- t-test and ANOVA are the *same model* — two groups vs. three or more
+
+## Continuous predictors
+
+| Classic test | Linear model |
+|----|----|
+| Pearson correlation | `lm(y ~ 1 + x)` (standardized) |
+| Simple regression | `lm(y ~ 1 + x)` |
+| Spearman correlation | `lm(rank(y) ~ 1 + rank(x))` |
+
+- Slope = change in y per one-unit change in x
+- Correlation is just the slope when both variables are z-scored
+
+## Why bother?
+
+- **Fewer things to learn** — and the assumptions are the same ones every time
+- **Easy to extend** — add a covariate, an interaction, a random effect
+- **Better communication** — an estimate with an interval, not just a p-value
+- Weeks 10–14 build directly on this: every new test is a small extension
+
+## A tool for reading models: `marginaleffects`
+
+- Model coefficients depend on how the model was coded (reference levels, interactions, link functions...)
+- `marginaleffects` asks questions in the units of the **data**:
+
+| Question | Function |
+|----|----|
+| What does the model predict? | `predictions()`, `avg_predictions()` |
+| How does the outcome differ between groups / treatments? | `comparisons()`, `avg_comparisons()` |
+| What's the slope of the outcome in x? | `slopes()`, `avg_slopes()` |
+| Custom tests of combinations | `hypotheses()` |
+
+## The same three questions, every week
+
+1. **Fit** a model (`lm`, `glm`, `lmer`, ...)
+2. **Check** its assumptions
+3. **Ask** the question with `marginaleffects`
+
+- Same workflow Weeks 9–14, only the model in step 1 changes
+- Docs: [marginaleffects.com](https://marginaleffects.com)
+
+## Design still matters
+
+- A linear model can't tell you whether the data *can* answer your question
+- Randomized treatment → causal estimate; measured predictor → association
+- The model describes; the **design** justifies
 
 ## This week
 
-- **Wednesday (tutorial):** fit and check a simple linear regression,
-  compare correlation vs. regression
+- **Wednesday (tutorial):** reproduce `t.test()`, `aov()`, and `cor.test()` with `lm()`, then read the same models with `marginaleffects`
 - **Assignment:** due this week

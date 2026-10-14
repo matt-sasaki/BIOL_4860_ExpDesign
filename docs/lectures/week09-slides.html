@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.9.38">
 
-  <title>Experimental Design &amp; Analysis in Biology – Correlation and Linear Regression</title>
+  <title>Experimental Design &amp; Analysis in Biology – Everything Is a Linear Model</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -130,7 +130,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Correlation and Linear Regression</h1>
+  <h1 class="title">Everything Is a Linear Model</h1>
   <p class="subtitle">Week 9 · BIOL 4860/5860</p>
 
 <div class="quarto-title-authors">
@@ -140,52 +140,175 @@
 <section id="welcome-back" class="slide level2">
 <h2>Welcome back</h2>
 <ul>
-<li>Spring Break’s over — quick recap: t-tests and ANOVA compare <strong>group means</strong></li>
-<li>Today: what if both variables are continuous?</li>
+<li>Weeks 7 gave you a menu: t-test, ANOVA, …</li>
+<li>The second half of the course replaces the menu with <strong>one idea</strong>:</li>
+</ul>
+<blockquote>
+<p>Most common statistical tests are special cases of the <strong>linear model</strong>. — Jonas Lindeløv, <em>Common statistical tests are linear models</em></p>
+</blockquote>
+<ul>
+<li>Learn one framework deeply, and you can answer almost any question in this course</li>
 </ul>
 </section>
-<section id="correlation" class="slide level2">
-<h2>Correlation</h2>
+<section id="the-one-equation" class="slide level2">
+<h2>The one equation</h2>
+<p><span class="math display">\[y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \varepsilon\]</span></p>
 <ul>
-<li><code>cor()</code> / <code>cor.test()</code> — strength and direction of a linear relationship, summarized in a single number (−1 to 1)</li>
-<li>Says nothing about <em>why</em> two things move together</li>
+<li>In R: <code>lm(y ~ 1 + x1 + x2)</code></li>
+<li>The test you want is almost always <strong>a question about one or more β’s</strong></li>
+<li>Different tests = different choices of what goes on the right-hand side</li>
 </ul>
 </section>
-<section id="simple-linear-regression" class="slide level2">
-<h2>Simple linear regression</h2>
+<section id="one-sample-and-paired-t-tests" class="slide level2">
+<h2>One sample and paired t-tests</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Classic test</th>
+<th>Linear model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One-sample t-test</td>
+<td><code>lm(y ~ 1)</code></td>
+</tr>
+<tr class="even">
+<td>Paired t-test</td>
+<td><code>lm(y2 - y1 ~ 1)</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><code>lm(y ~ x)</code> — models y as a straight-line function of x</li>
-<li>Gives you a slope (effect size), not just a correlation coefficient</li>
-<li><code>tidy()</code> and <code>glance()</code> (from <code>broom</code>) for clean summaries</li>
+<li>The intercept <strong>is</strong> the mean (or the mean difference)</li>
+<li>The test of the intercept against 0 <strong>is</strong> the t-test</li>
 </ul>
 </section>
-<section id="checking-the-fit" class="slide level2">
-<h2>Checking the fit</h2>
+<section id="two-groups-and-many-groups" class="slide level2">
+<h2>Two groups and many groups</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Classic test</th>
+<th>Linear model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Two-sample t-test</td>
+<td><code>lm(y ~ 1 + group)</code></td>
+</tr>
+<tr class="even">
+<td>One-way ANOVA</td>
+<td><code>lm(y ~ 1 + group)</code> + <code>anova()</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>Residuals vs.&nbsp;fitted — is the relationship actually linear?</li>
-<li>Q-Q plot — are residuals roughly normal?</li>
-<li>R² — how much variance does the model explain?</li>
+<li>With a categorical predictor, R creates 0/1 <strong>dummy variables</strong></li>
+<li>Intercept = mean of the reference group; each slope = difference from it</li>
+<li>t-test and ANOVA are the <em>same model</em> — two groups vs.&nbsp;three or more</li>
 </ul>
 </section>
-<section id="correlation-and-regression-are-not-causation" class="slide level2">
-<h2>Correlation and regression are not causation</h2>
+<section id="continuous-predictors" class="slide level2">
+<h2>Continuous predictors</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Classic test</th>
+<th>Linear model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pearson correlation</td>
+<td><code>lm(y ~ 1 + x)</code> (standardized)</td>
+</tr>
+<tr class="even">
+<td>Simple regression</td>
+<td><code>lm(y ~ 1 + x)</code></td>
+</tr>
+<tr class="odd">
+<td>Spearman correlation</td>
+<td><code>lm(rank(y) ~ 1 + rank(x))</code></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><code>trees</code>: girth predicts volume — but nobody <em>assigned</em> girth</li>
-<li>This is <strong>observational data</strong></li>
-<li>Contrast with Week 7, where treatment was randomly assigned — there, a significant result supports a causal claim</li>
+<li>Slope = change in y per one-unit change in x</li>
+<li>Correlation is just the slope when both variables are z-scored</li>
 </ul>
 </section>
-<section id="design-still-matters-here" class="slide level2">
-<h2>Design still matters here</h2>
+<section id="why-bother" class="slide level2">
+<h2>Why bother?</h2>
 <ul>
-<li>A strong, statistically significant regression from observational data still can’t prove causation</li>
-<li>If you want to claim causation, you need an experiment — random assignment of the predictor, not just measurement of it</li>
+<li><strong>Fewer things to learn</strong> — and the assumptions are the same ones every time</li>
+<li><strong>Easy to extend</strong> — add a covariate, an interaction, a random effect</li>
+<li><strong>Better communication</strong> — an estimate with an interval, not just a p-value</li>
+<li>Weeks 10–14 build directly on this: every new test is a small extension</li>
+</ul>
+</section>
+<section id="a-tool-for-reading-models-marginaleffects" class="slide level2">
+<h2>A tool for reading models: <code>marginaleffects</code></h2>
+<ul>
+<li>Model coefficients depend on how the model was coded (reference levels, interactions, link functions…)</li>
+<li><code>marginaleffects</code> asks questions in the units of the <strong>data</strong>:</li>
+</ul>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Question</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>What does the model predict?</td>
+<td><code>predictions()</code>, <code>avg_predictions()</code></td>
+</tr>
+<tr class="even">
+<td>How does the outcome differ between groups / treatments?</td>
+<td><code>comparisons()</code>, <code>avg_comparisons()</code></td>
+</tr>
+<tr class="odd">
+<td>What’s the slope of the outcome in x?</td>
+<td><code>slopes()</code>, <code>avg_slopes()</code></td>
+</tr>
+<tr class="even">
+<td>Custom tests of combinations</td>
+<td><code>hypotheses()</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="the-same-three-questions-every-week" class="slide level2">
+<h2>The same three questions, every week</h2>
+<ol type="1">
+<li><strong>Fit</strong> a model (<code>lm</code>, <code>glm</code>, <code>lmer</code>, …)</li>
+<li><strong>Check</strong> its assumptions</li>
+<li><strong>Ask</strong> the question with <code>marginaleffects</code></li>
+</ol>
+<ul>
+<li>Same workflow Weeks 9–14, only the model in step 1 changes</li>
+<li>Docs: <a href="https://marginaleffects.com">marginaleffects.com</a></li>
+</ul>
+</section>
+<section id="design-still-matters" class="slide level2">
+<h2>Design still matters</h2>
+<ul>
+<li>A linear model can’t tell you whether the data <em>can</em> answer your question</li>
+<li>Randomized treatment → causal estimate; measured predictor → association</li>
+<li>The model describes; the <strong>design</strong> justifies</li>
 </ul>
 </section>
 <section id="this-week" class="slide level2">
 <h2>This week</h2>
 <ul>
-<li><strong>Wednesday (tutorial):</strong> fit and check a simple linear regression, compare correlation vs.&nbsp;regression</li>
+<li><strong>Wednesday (tutorial):</strong> reproduce <code>t.test()</code>, <code>aov()</code>, and <code>cor.test()</code> with <code>lm()</code>, then read the same models with <code>marginaleffects</code></li>
 <li><strong>Assignment:</strong> due this week</li>
 </ul>
 

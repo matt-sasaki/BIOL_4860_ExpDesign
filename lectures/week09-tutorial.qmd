@@ -1,30 +1,121 @@
 ---
-title: "Week 9 Tutorial: Correlation and Linear Regression"
-subtitle: "Wednesday tutorial · reinforces Monday's lecture on regression"
+title: "Week 9 Tutorial: Everything Is a Linear Model"
+subtitle: "Wednesday tutorial · reinforces Monday's lecture"
 toc: true
 ---
 
 ## Goals
 
--   Distinguish correlation from regression, and both from causation
--   Fit and interpret a simple linear regression in R
--   Recognize when observational data can (and can't) stand in for an experiment
+-   Reproduce familiar tests (t-tests, ANOVA, correlation) with `lm()`
+-   See that the "different" tests are the same model with different predictors
+-   Use `marginaleffects` to turn a fitted model into predictions, comparisons, and slopes
 
 ## Setup
 
 ```{r}
 #| label: setup
+#| message: false
 library(tidyverse)
 library(broom)
-data(trees)  # built-in: girth, height, volume of felled black cherry trees
+library(marginaleffects)
 ```
 
-## Correlation
+::: callout-note
+`marginaleffects` can't use a column named `group` (it conflicts with its own output columns), so we rename that column in the built-in datasets below.
+:::
+
+## One-sample and paired t-tests
+
+The built-in `sleep` data: extra hours of sleep for 10 patients under two drugs. Each patient appears twice (this is a **paired** design).
 
 ```{r}
-cor(trees$Girth, trees$Volume)
-cor.test(trees$Girth, trees$Volume)
+sleep2 <- sleep |> rename(drug = group)
+wide <- sleep2 |> pivot_wider(names_from = drug, values_from = extra, names_prefix = "drug")
+wide$diff <- wide$drug2 - wide$drug1
 ```
+
+The classic way:
+
+```{r}
+t.test(wide$drug2, wide$drug1, paired = TRUE)
+```
+
+The linear model way: an intercept-only model on the *differences*.
+
+```{r}
+m_paired <- lm(diff ~ 1, data = wide)
+tidy(m_paired, conf.int = TRUE)
+```
+
+Same t, same p, same confidence interval. The intercept **is** the mean difference.
+
+::: callout-note
+## Exercise 1
+
+What would `lm(drug1 ~ 1, data = wide)` test? Compare its output to `t.test(wide$drug1, mu = 0)`.
+:::
+
+## Two groups: the two-sample t-test
+
+```{r}
+pg <- PlantGrowth |> rename(treatment = group)
+two <- pg |> filter(treatment %in% c("ctrl", "trt1")) |> droplevels()
+```
+
+```{r}
+t.test(weight ~ treatment, data = two, var.equal = TRUE)
+```
+
+```{r}
+m_two <- lm(weight ~ treatment, data = two)
+tidy(m_two, conf.int = TRUE)
+```
+
+- `(Intercept)` = mean of the reference group (`ctrl`)
+- `treatmenttrt1` = difference in means (`trt1 − ctrl`): this row **is** the t-test
+
+### Reading the model with marginaleffects
+
+```{r}
+avg_predictions(m_two, by = "treatment")
+```
+
+```{r}
+avg_comparisons(m_two, variables = "treatment")
+```
+
+`avg_predictions()` returns the group means; `avg_comparisons()` returns the difference. You didn't need to remember which coefficient meant what.
+
+## Three groups: one-way ANOVA
+
+```{r}
+m_aov <- lm(weight ~ treatment, data = pg)
+anova(m_aov)
+summary(aov(weight ~ treatment, data = pg))
+```
+
+The F-test is the same. The ANOVA table asks "does *any* coefficient differ from zero?". Now ask the pairwise questions directly:
+
+```{r}
+avg_comparisons(m_aov, variables = list(treatment = "pairwise"))
+```
+
+Custom questions with `hypotheses()` — here, is the average of the two treatments different from the control?
+
+```{r}
+coef(m_aov)
+hypotheses(m_aov, "(b2 + b3) / 2 = b1")
+```
+
+(`b1`, `b2`, `b3` are the coefficients in the order printed by `coef()`.)
+
+::: callout-note
+## Exercise 2
+
+Use `hypotheses()` to test whether `trt1` and `trt2` differ, using the coefficient names. Compare with the `trt2 - trt1` row from `avg_comparisons()`.
+:::
+
+## Two continuous variables: correlation and regression
 
 ```{r}
 #| label: fig-scatter
@@ -34,40 +125,62 @@ ggplot(trees, aes(Girth, Volume)) +
   theme_minimal()
 ```
 
-## Simple linear regression
-
 ```{r}
-m1 <- lm(Volume ~ Girth, data = trees)
-summary(m1)
+cor.test(trees$Girth, trees$Volume)
 ```
 
 ```{r}
-tidy(m1, conf.int = TRUE)
-glance(m1)
+m_trees <- lm(Volume ~ Girth, data = trees)
+tidy(m_trees, conf.int = TRUE)
+```
+
+Standardize both variables, and the slope becomes the correlation:
+
+```{r}
+coef(lm(scale(Volume) ~ scale(Girth), data = trees))
+cor(trees$Girth, trees$Volume)
+```
+
+Spearman's rank correlation is the same model on ranks:
+
+```{r}
+coef(lm(rank(Volume) ~ rank(Girth), data = trees))[2]
+cor(trees$Girth, trees$Volume, method = "spearman")
+```
+
+### Predictions and slopes
+
+```{r}
+avg_slopes(m_trees, variables = "Girth")
 ```
 
 ```{r}
-#| label: fig-fit
-#| fig-cap: "Linear fit of volume on girth"
-ggplot(trees, aes(Girth, Volume)) +
-  geom_point() +
-  geom_smooth(method = "lm") +
+predictions(m_trees, newdata = datagrid(Girth = c(10, 14, 18)))
+```
+
+```{r}
+#| label: fig-pred
+#| fig-cap: "Model-predicted volume across girth, with 95% confidence band"
+plot_predictions(m_trees, condition = "Girth") +
+  geom_point(data = trees, aes(Girth, Volume)) +
   theme_minimal()
 ```
 
 ## Checking assumptions
 
+All of these models share assumptions about the **residuals**, not the raw data:
+
 ```{r}
 #| label: fig-diagnostics
 #| fig-cap: "Regression diagnostics"
 par(mfrow = c(2, 2))
-plot(m1)
+plot(m_trees)
 ```
 
 ::: callout-note
-## Exercise 1
+## Exercise 3
 
-Look at the residuals-vs-fitted and scale-location plots. Is there a pattern suggesting the linear model isn't quite right for this relationship? (Hint: a tree's volume relates to girth² × height geometrically — what does that suggest about linearity?)
+Look at the residual plots. A tree's volume is roughly proportional to girth² × height. What does that suggest about the straight-line fit? (We'll fix this with multiple regression next week.)
 :::
 
 ## Correlation, regression, and design
@@ -75,22 +188,9 @@ Look at the residuals-vs-fitted and scale-location plots. Is there a pattern sug
 ::: callout-important
 ## Observational vs. experimental
 
-`trees` is **observational data** — nobody assigned girth to trees. A significant regression here tells you girth and volume are associated, not that increasing girth *causes* more volume (though biologically we have good reason to believe a causal relationship exists in this case). Contrast this with Week 7's tutorial, where treatment was **randomly assigned** — there, a significant result supports a causal claim.
-:::
-
-::: callout-note
-## Exercise 2
-
-Fit `lm(Height ~ Girth, data = trees)`. Is the relationship as strong as `Volume ~ Girth`? Report the R² for both models and explain what R² means in your own words.
-:::
-
-::: callout-note
-## Exercise 3
-
-Design a *experiment* (not observational study) that could test whether a fertilizer treatment causally increases tree girth. What would you randomize, what would you measure, and what regression or ANOVA model would you fit to the resulting data?
+`trees` is **observational** — nobody assigned girth to trees. The model describes an association. In `PlantGrowth`, treatment was assigned, so the same kind of model supports a **causal** statement about treatment effects. The statistics are identical; the *design* differs.
 :::
 
 ## Wrap-up
 
-Keep this file — the exercises here feed directly into this week's
-[assignment](../assignments/week09-assignment.qmd).
+Keep this file — the exercises feed directly into this week's [assignment](../assignments/week09-assignment.qmd).

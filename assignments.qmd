@@ -41,4 +41,4 @@ The project is broken into the main analytic steps covered in the course — exp
 | [Part 4: Visualization](assignments/project-04-visualization.qmd) | Week 14 |
 | Final presentation (entire process) | Week 15 |
 
-See the [Schedule](schedule.qmd#graduate-project-milestones-biol-5860-only) for downloadable templates and PDF previews of each checkpoint.
+See the [Schedule](schedule.qmd#graduate-project-milestones-biol-5860-only) for downloadable templates of each checkpoint.
