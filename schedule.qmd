@@ -28,7 +28,7 @@ Each assignment/Data Safari link (e.g. "PS1") downloads the blank Quarto templat
 
 ::: {.content-visible when-format="html"}
 | Week | Topic | Slides | Tutorial | Assignment | Data Safari | Note |
-|:----:|------------|:------:|:-------:|:-----------:|:-------:|-----------------|
+|:---------:|-----------|:---------:|:---------:|:---------:|:---------:|-----------|
 | 1 | Why experimental design matters; setting up R, RStudio, and Quarto | [Slides](lectures/week01-slides.qmd) | [Tutorial](lectures/week01-tutorial.qmd) | <a href="templates/week01-assignment.qmd" download="week01-assignment.qmd">PS1</a> |  | No lecture on Monday |
 | 2 | R fundamentals and data wrangling | [Slides](lectures/week02-slides.qmd) | [Tutorial](lectures/week02-tutorial.qmd) | <a href="templates/week02-assignment.qmd" download="week02-assignment.qmd">PS2</a> |  |  |
 | 3 | Exploring data I: distributions and summary statistics | [Slides](lectures/week03-slides.qmd) | [Tutorial](lectures/week03-tutorial.qmd) | <a href="templates/week03-assignment.qmd" download="week03-assignment.qmd">PS3</a> |  |  |
@@ -48,7 +48,7 @@ Each assignment/Data Safari link (e.g. "PS1") downloads the blank Quarto templat
 
 ::: {.content-visible when-format="typst"}
 | Week | Topic | Assignment | Data Safari | Note |
-|:-----:|----------------------------|:---------:|:--------:|-----------------|
+|:-----------:|----------------------|:-----------:|:-----------:|-------------|
 | 1 | Why experimental design matters; setting up R, RStudio, and Quarto | PS1 |  | No lecture on Monday |
 | 2 | R fundamentals and data wrangling | PS2 |  |  |
 | 3 | Exploring data I: distributions and summary statistics | PS3 |  |  |
@@ -66,8 +66,6 @@ Each assignment/Data Safari link (e.g. "PS1") downloads the blank Quarto templat
 | 15 | **Final Project Presentations** |  |  |  |
 :::
 
-From Week 9 onward the course is organized around one idea: **common statistical tests are special cases of the linear model**, and we read every model with the [`marginaleffects`](https://marginaleffects.com) package (predictions, comparisons, and slopes in the units of the data).
-
 ## Graduate project milestones (BIOL 5860 only)
 
 Four checkpoint deliverables spread across the semester, each documenting one stage of your independent project. See the [Assignments overview](assignments.qmd#project-graduate-students-only) for the full description. As with weekly assignments, click the name to download the blank `.qmd` template.
@@ -79,12 +77,3 @@ Four checkpoint deliverables spread across the semester, each documenting one st
 | Week 13 | Statistical modeling | <a href="templates/project-03-statistical-modeling.qmd" download="project-03-statistical-modeling.qmd">Part 3</a> |
 | Week 14 | Visualization | <a href="templates/project-04-visualization.qmd" download="project-04-visualization.qmd">Part 4</a> |
 | Week 15 | Final presentation covering the entire process | — |
-
-::: callout-note
-These due dates are a suggested pacing (each milestone lands a week after the most relevant course content), not fixed by any particular constraint — adjust freely in this table and in the corresponding files' front matter if you'd prefer a different spread.
-:::
-
-## Notes
-
-- Slides open as a separate reveal.js presentation (use arrow keys or click to advance); tutorials and assignments render as regular pages on this site.
-- The graduate-only [Project](assignments.qmd#project-graduate-students-only) is presented in Week 15, alongside undergraduate project presentations.
