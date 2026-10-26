@@ -7,6 +7,7 @@ format:
     slide-number: true
     footer: "BIOL 4860/5860 — Experimental Design and Analysis"
     transition: fade
+    chalkboard: true
 ---
 
 ## Welcome
@@ -17,8 +18,7 @@ format:
 
 ## A question to sit with
 
-> If you ran the same experiment twice, would you trust the second
-> result as much as the first?
+> If you ran the same experiment twice, would you trust the second result as much as the first?
 
 - A good design makes the answer "yes"
 - A bad design can make even a huge effect impossible to trust
