@@ -1572,7 +1572,7 @@
     "href": "lectures/week14-slides.html#better-options-for-violated-assumptions",
     "title": "When Assumptions Fail, and Choosing a Model",
     "section": "Better options for violated assumptions",
-    "text": "Better options for violated assumptions\n\n\n\nProblem\nFix\n\n\n\n\nUnequal variances\nRobust standard errors (vcov = \"HC3\")\n\n\nSkewed response\nTransform, or use a GLM\n\n\nCounts or proportions\nglm() with the right family\n\n\nNon-independence\nMixed model\n\n\nTiny samples, odd statistics\nPermutation / bootstrap"
+    "text": "Better options for violated assumptions\n\n\n\n\n\n\n\nProblem\nFix\n\n\n\n\nUnequal variances\nRobust standard errors (vcov = \"HC3\")\n\n\nSkewed response\nTransform, or use a GLM\n\n\nCounts or proportions\nglm() with the right family\n\n\nNon-independence\nMixed model\n\n\nTiny samples, odd statistics\nPermutation / bootstrap"
   },
   {
     "objectID": "lectures/week14-slides.html#robust-standard-errors-with-marginaleffects",
@@ -1622,12 +1622,5 @@
     "title": "Weekly Schedule",
     "section": "Graduate project milestones (BIOL 5860 only)",
     "text": "Graduate project milestones (BIOL 5860 only)\nFour checkpoint deliverables spread across the semester, each documenting one stage of your independent project. See the Assignments overview for the full description. As with weekly assignments, click the name to download the blank .qmd template.\n\n\n\n\n\n\n\n\nDue by end of\nMilestone\nTemplate\n\n\n\n\nWeek 7\nExperimental design and planned hypothesis testing\nPart 1\n\n\nWeek 10\nData carpentry and exploration\nPart 2\n\n\nWeek 13\nStatistical modeling\nPart 3\n\n\nWeek 14\nVisualization\nPart 4\n\n\nWeek 15\nFinal presentation covering the entire process\n—"
-  },
-  {
-    "objectID": "schedule.html#notes",
-    "href": "schedule.html#notes",
-    "title": "Weekly Schedule",
-    "section": "Notes",
-    "text": "Notes\n\nSlides open as a separate reveal.js presentation (use arrow keys or click to advance); tutorials and assignments render as regular pages on this site.\nThe graduate-only Project is presented in Week 15, alongside undergraduate project presentations."
   }
 ]

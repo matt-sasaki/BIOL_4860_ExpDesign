@@ -7,20 +7,22 @@ format:
     slide-number: true
     footer: "BIOL 4860/5860 — Experimental Design and Analysis"
     transition: fade
+    chalkboard: 
+      theme: whiteboard
+      boardmarker-width: 3
+      grid: false
 ---
 
 ## From design to your first test
 
 - Weeks 5–6: design principles, and finding them in the literature
-- Today: your first formal hypothesis test — connecting a design to
-  the right analysis
+- Today: your first formal hypothesis test — connecting a design to the right analysis
 
 ## The simplest case: two groups
 
 - Comparing a numeric outcome between exactly two groups
 - The tool: `t.test()`
-- Paired or unpaired? Depends on your design — measurements from the
-  same subject under two conditions are **paired**
+- Paired or unpaired? Depends on your design — measurements from the same subject under two conditions are **paired**
 
 ## Three or more groups: ANOVA
 
@@ -38,16 +40,13 @@ format:
 ## After a significant ANOVA: post-hoc tests
 
 - `emmeans()` + `pairs()` for pairwise comparisons
-- Correct for multiple comparisons (Tukey) — testing many pairs
-  inflates your false-positive rate
+- Correct for multiple comparisons (Tukey) — testing many pairs inflates your false-positive rate
 
 ## From test back to design
 
 - A test only tells you what to do with data you already have
-- The **design** determines whether the data can answer your
-  question at all
-- Example: 3 fertilizer doses, 1 greenhouse, 18 pots — what's the
-  experimental unit? How would you randomize?
+- The **design** determines whether the data can answer your question at all
+- Example: 3 fertilizer doses, 1 greenhouse, 18 pots — what's the experimental unit? How would you randomize?
 
 ## A peek ahead
 
@@ -56,6 +55,5 @@ format:
 
 ## This week
 
-- **Wednesday (tutorial):** fit both tests in R, check assumptions,
-  run post-hoc comparisons
+- **Wednesday (tutorial):** fit both tests in R, check assumptions, run post-hoc comparisons
 - **Assignment + Data Safari #2:** due this week

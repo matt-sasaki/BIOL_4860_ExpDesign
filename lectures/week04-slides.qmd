@@ -7,6 +7,10 @@ format:
     slide-number: true
     footer: "BIOL 4860/5860 — Experimental Design and Analysis"
     transition: fade
+    chalkboard: 
+      theme: whiteboard
+      boardmarker-width: 3
+      grid: false
 ---
 
 ## Last week vs. this week
@@ -18,43 +22,36 @@ format:
 
 - `geom_point()` for the raw relationship
 - Add `geom_smooth(method = "lm")` to show the trend
-- Color points by a grouping variable to see if the relationship
-  differs by group
+- Color points by a grouping variable to see if the relationship differs by group
 
 ## Faceting: many small multiples
 
 - `facet_wrap(~group)` — one panel per group, same axes
-- Easier to compare *within* each group than cramming everything
-  into one busy plot
+- Easier to compare *within* each group than cramming everything into one busy plot
 
 ## Choosing a plot deliberately
 
-| You have... | Reach for... |
-|---|---|
-| One numeric variable | Histogram / density |
-| One numeric + one categorical | Boxplot / jitter |
-| Two numeric variables | Scatterplot (+ trend line) |
-| A relationship that differs by group | Color by group, or facet |
-| A variable over time, per individual | Line plot grouped by ID |
+| You have...                          | Reach for...               |
+|--------------------------------------|----------------------------|
+| One numeric variable                 | Histogram / density        |
+| One numeric + one categorical        | Boxplot / jitter           |
+| Two numeric variables                | Scatterplot (+ trend line) |
+| A relationship that differs by group | Color by group, or facet   |
+| A variable over time, per individual | Line plot grouped by ID    |
 
 ## Introducing: Data Safari
 
-- Starting this week, you'll periodically replicate a **published
-  figure** using the actual publicly available data
-- Goal: connect "here's a plot in a paper" to "here's the code that
-  makes that plot"
-- Also a chance to reflect on how reproducible published methods
-  actually are in practice
+- Starting this week, you'll periodically replicate a **published figure** using the actual publicly available data
+- Goal: connect "here's a plot in a paper" to "here's the code that makes that plot"
+- Also a chance to reflect on how reproducible published methods actually are in practice
 
 ## What Data Safari asks of you
 
-1. Find a paper with a figure and open data
-2. Recreate the figure as closely as you can
-3. Reflect: how easy was it? How well does yours match? What would
-   you change about the paper's methods or data to make this easier?
+1.  Find a paper with a figure and open data
+2.  Recreate the figure as closely as you can
+3.  Reflect: how easy was it? How well does yours match? What would you change about the paper's methods or data to make this easier?
 
 ## This week
 
-- **Wednesday (tutorial):** scatterplots, faceting, and picking the
-  right plot type
+- **Wednesday (tutorial):** scatterplots, faceting, and picking the right plot type
 - **Assignment + Data Safari #1:** due this week

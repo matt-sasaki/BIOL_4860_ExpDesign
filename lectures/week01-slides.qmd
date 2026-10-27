@@ -7,7 +7,10 @@ format:
     slide-number: true
     footer: "BIOL 4860/5860 — Experimental Design and Analysis"
     transition: fade
-    chalkboard: true
+    chalkboard: 
+      theme: whiteboard
+      boardmarker-width: 3
+      grid: false
 ---
 
 ## Welcome

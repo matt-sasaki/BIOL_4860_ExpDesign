@@ -7,6 +7,10 @@ format:
     slide-number: true
     footer: "BIOL 4860/5860 — Experimental Design and Analysis"
     transition: fade
+    chalkboard: 
+      theme: whiteboard
+      boardmarker-width: 3
+      grid: false
 ---
 
 ## Last week vs. this week
@@ -17,41 +21,34 @@ format:
 ## Why this matters
 
 - Textbook examples are clean by design
-- Real papers bury the design in a paragraph of prose — you have to
-  extract it yourself
-- This is a skill you'll use for the rest of your career, not just
-  this course
+- Real papers bury the design in a paragraph of prose — you have to extract it yourself
+- This is a skill you'll use for the rest of your career, not just this course
 
 ## A framework: seven questions
 
-1. What is the experimental unit?
-2. What are the treatments, and how many levels?
-3. How many experimental units per treatment?
-4. Was assignment randomized?
-5. Was there blocking or matching?
-6. What was the response variable, and how was it measured?
-7. Does the statistical analysis match the design?
+1.  What is the experimental unit?
+2.  What are the treatments, and how many levels?
+3.  How many experimental units per treatment?
+4.  Was assignment randomized?
+5.  Was there blocking or matching?
+6.  What was the response variable, and how was it measured?
+7.  Does the statistical analysis match the design?
 
 ## Question 1 is the hardest
 
 - Not "how many measurements" — "how many independently assigned units"
-- If you're unsure, ask: *what would it mean to have one more
-  replicate here?*
+- If you're unsure, ask: *what would it mean to have one more replicate here?*
 
 ## A worked example
 
-- Hypothetical: soil amendment vs. seedling survival, 40 plots,
-  20 per treatment, randomly assigned
+- Hypothetical: soil amendment vs. seedling survival, 40 plots, 20 per treatment, randomly assigned
 - Experimental unit: the **plot** (not the individual seedling)
-- Randomization: yes. Blocking: none — and the hillside likely has an
-  elevation gradient that could have been blocked on
+- Randomization: yes. Blocking: none — and the hillside likely has an elevation gradient that could have been blocked on
 
 ## What "no blocking" costs you
 
-- Not necessarily wrong — just possibly less powerful than it could
-  have been
-- Part of your job as a reader (and later, a designer) is spotting
-  missed opportunities like this
+- Not necessarily wrong — just possibly less powerful than it could have been
+- Part of your job as a reader (and later, a designer) is spotting missed opportunities like this
 
 ## Today's practice
 
@@ -61,6 +58,5 @@ format:
 
 ## This week
 
-- **Wednesday (tutorial):** apply the framework together to a
-  worked example, then to a paper of your choosing
+- **Wednesday (tutorial):** apply the framework together to a worked example, then to a paper of your choosing
 - **Assignment:** a polished write-up of this same exercise

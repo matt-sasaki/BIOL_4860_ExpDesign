@@ -7,6 +7,10 @@ format:
     slide-number: true
     footer: "BIOL 4860/5860 — Experimental Design and Analysis"
     transition: fade
+    chalkboard: 
+      theme: whiteboard
+      boardmarker-width: 3
+      grid: false
 ---
 
 ## A problem we've flagged since Week 5
@@ -37,9 +41,9 @@ $$y_{ij} = \beta_0 + \beta_1 x_{ij} + u_j + \varepsilon_{ij}, \quad u_j \sim N(0
 
 ## Paired t-test = random-intercept model
 
-| Classic test | Linear model |
-|----|----|
-| Paired t-test | `lm(y2 - y1 ~ 1)` |
+| Classic test              | Linear model                           |
+|---------------------------|----------------------------------------|
+| Paired t-test             | `lm(y2 - y1 ~ 1)`                      |
 | Paired t-test (long data) | `lmer(y ~ condition + (1 \| subject))` |
 
 - Same estimate, same t, same p

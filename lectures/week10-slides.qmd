@@ -7,6 +7,10 @@ format:
     slide-number: true
     footer: "BIOL 4860/5860 — Experimental Design and Analysis"
     transition: fade
+    chalkboard: 
+      theme: whiteboard
+      boardmarker-width: 3
+      grid: false
 ---
 
 ## Last week
@@ -14,11 +18,11 @@ format:
 - t-tests, ANOVA, and correlation are all `lm()` with one predictor
 - This week: **more than one predictor** — the models that biological experiments actually need
 
-| Classic test | Linear model |
-|----|----|
-| ANCOVA | `lm(y ~ group + x)` |
-| Two-way ANOVA | `lm(y ~ A * B)` |
-| Multiple regression | `lm(y ~ x1 + x2)` |
+| Classic test        | Linear model        |
+|---------------------|---------------------|
+| ANCOVA              | `lm(y ~ group + x)` |
+| Two-way ANOVA       | `lm(y ~ A * B)`     |
+| Multiple regression | `lm(y ~ x1 + x2)`   |
 
 ## Why add predictors?
 

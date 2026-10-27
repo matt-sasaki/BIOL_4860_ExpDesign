@@ -7,6 +7,10 @@ format:
     slide-number: true
     footer: "BIOL 4860/5860 — Experimental Design and Analysis"
     transition: fade
+    chalkboard: 
+      theme: whiteboard
+      boardmarker-width: 3
+      grid: false
 ---
 
 ## Last week
@@ -16,15 +20,15 @@ format:
 
 ## Today: two halves
 
-1. R fundamentals — functions, control flow, data frames
-2. Data wrangling — importing, cleaning, and reshaping data
+1.  R fundamentals — functions, control flow, data frames
+2.  Data wrangling — importing, cleaning, and reshaping data
 
 ## Why functions?
 
 - Anything you do more than twice should probably be a function
 - A function takes input, does something, returns output
 
-```r
+``` r
 classify_size <- function(x, threshold = 24) {
   if (x > threshold) "large" else "small"
 }
@@ -36,7 +40,7 @@ classify_size <- function(x, threshold = 24) {
 - Each row = one observation; each column = one variable
 - `group_by()` + `summarise()` is the single most useful pattern you'll learn
 
-```r
+``` r
 birds |>
   group_by(species) |>
   summarise(mean_wing = mean(wing_length))
@@ -65,7 +69,7 @@ birds |>
 
 ## Wide → long → wide
 
-```r
+``` r
 growth_long <- growth_wide |>
   pivot_longer(cols = starts_with("height_wk"),
                names_to = "week", values_to = "height")
@@ -76,8 +80,7 @@ growth_long <- growth_wide |>
 ## Why this distinction matters
 
 - The experimental/observational unit should usually be **one row**
-- Get this wrong, and your model's degrees of freedom (and your
-  p-values) will be wrong too — a preview of Week 5
+- Get this wrong, and your model's degrees of freedom (and your p-values) will be wrong too — a preview of Week 5
 
 ## This week
 

@@ -7,6 +7,10 @@ format:
     slide-number: true
     footer: "BIOL 4860/5860 — Experimental Design and Analysis"
     transition: fade
+    chalkboard: 
+      theme: whiteboard
+      boardmarker-width: 3
+      grid: false
 ---
 
 ## Where we are
@@ -16,12 +20,12 @@ format:
 
 ## "Nonparametric" tests are linear models on ranks
 
-| Classic test | Linear model |
-|----|----|
-| Spearman correlation | `lm(rank(y) ~ 1 + rank(x))` |
-| Mann-Whitney U | `lm(signed_rank(y) ~ 1 + group)` |
-| Kruskal-Wallis | `lm(rank(y) ~ group)` |
-| Wilcoxon signed-rank | `lm(signed_rank(y) ~ 1)` |
+| Classic test         | Linear model                     |
+|----------------------|----------------------------------|
+| Spearman correlation | `lm(rank(y) ~ 1 + rank(x))`      |
+| Mann-Whitney U       | `lm(signed_rank(y) ~ 1 + group)` |
+| Kruskal-Wallis       | `lm(rank(y) ~ group)`            |
+| Wilcoxon signed-rank | `lm(signed_rank(y) ~ 1)`         |
 
 - Replace values by ranks, then run the same model
 - Close approximations (not exact) for larger samples
@@ -34,13 +38,13 @@ format:
 
 ## Better options for violated assumptions
 
-| Problem | Fix |
-|----|----|
-| Unequal variances | Robust standard errors (`vcov = "HC3"`) |
-| Skewed response | Transform, or use a GLM |
-| Counts or proportions | `glm()` with the right family |
-| Non-independence | Mixed model |
-| Tiny samples, odd statistics | Permutation / bootstrap |
+| Problem                      | Fix                                     |
+|------------------------------|-----------------------------------------|
+| Unequal variances            | Robust standard errors (`vcov = "HC3"`) |
+| Skewed response              | Transform, or use a GLM                 |
+| Counts or proportions        | `glm()` with the right family           |
+| Non-independence             | Mixed model                             |
+| Tiny samples, odd statistics | Permutation / bootstrap                 |
 
 ## Robust standard errors with marginaleffects
 
@@ -56,10 +60,10 @@ format:
 
 ## Choosing a model
 
-1. **What is the response?** continuous → `lm`; binary → binomial; count → poisson
-2. **What are the predictors?** groups, covariates, interactions
-3. **Is the data independent?** if not → random effects
-4. **What question am I asking?** → `avg_comparisons`, `avg_slopes`, `hypotheses`
+1.  **What is the response?** continuous → `lm`; binary → binomial; count → poisson
+2.  **What are the predictors?** groups, covariates, interactions
+3.  **Is the data independent?** if not → random effects
+4.  **What question am I asking?** → `avg_comparisons`, `avg_slopes`, `hypotheses`
 
 ## The course in one slide
 

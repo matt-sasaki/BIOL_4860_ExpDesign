@@ -1,0 +1,52 @@
+---
+title: "Project Checkpoint Part 3: Statistical Modeling"
+subtitle: "Graduate students only (BIOL 5860)"
+author: PUT YOUR NAME HERE
+format: typst
+---
+
+This is the third of four checkpoint deliverables for the graduate project. Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas by the end of Week 13. See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+
+## 1. Plan 
+
+Restate your hypothesis here.
+
+<!--# Include your answer below -->
+
+Revisit your plan from Project Checkpoint Part 1 — update it here if your thinking has changed. Explain why any changes were made.
+
+<!--# Include your answer below -->
+
+How will you test your stated hypothesis?
+
+<!--# Include your answer below -->
+
+What is your alternative analysis plan (i.e. what will you do if your initial plan is not possible)?
+
+<!--# Include your answer below -->
+
+## 2. Model
+
+Based on the analysis plan, fit the statistical model or test that matches your design.
+
+```{r}
+
+```
+
+## 3. Assumptions and diagnostics
+
+Check the assumptions relevant to your model (residual diagnostics, equal variance, overdispersion, or whatever applies) the way we've practiced throughout the course.
+
+```{r}
+
+```
+
+Do the diagnostics look acceptable? If not, add additional chunks below and walk through additional steps (transformation, restructuring, a nonparametric alternative, etc.). If you change your model, make sure you stick to your analysis plan to avoid p-hacking or HARKing. <!--# Include your answer below -->
+
+## 3. Results
+
+Report your results in a results-section style summary: model summary, effect sizes, test statistics, degrees of freedom, p-values, and confidence intervals where relevant. Where possible, use `marginaleffects` (`avg_comparisons()`, `avg_slopes()`, `avg_predictions()`) to report effect sizes in the units of your data. <!--# Include your answer below -->
+
+## 4. Interpretation
+
+In 3–5 sentences, interpret your results in the context of your original research question from Part 1. What do they mean biologically, and do they support or refute your hypotheses? <!--# Include your answer below -->

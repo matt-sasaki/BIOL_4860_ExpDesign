@@ -7,6 +7,10 @@ format:
     slide-number: true
     footer: "BIOL 4860/5860 — Experimental Design and Analysis"
     transition: fade
+    chalkboard: 
+      theme: whiteboard
+      boardmarker-width: 3
+      grid: false
 ---
 
 ## From wrangling to exploring
@@ -17,10 +21,8 @@ format:
 
 ## Why explore before modeling?
 
-- Every statistical test we'll cover assumes something about your data
-  (roughly normal, similar variance across groups, no wild outliers)
-- Exploratory data analysis (EDA) is how you check those assumptions
-  *before* you're deep into a model and it's too late to notice
+- Every statistical test we'll cover assumes something about your data (roughly normal, similar variance across groups, no wild outliers)
+- Exploratory data analysis (EDA) is how you check those assumptions *before* you're deep into a model and it's too late to notice
 
 ## The grammar of graphics, briefly
 
@@ -46,7 +48,7 @@ format:
 
 ## A quick numeric check
 
-```r
+``` r
 iris |>
   group_by(Species) |>
   summarise(mean = mean(Sepal.Length),
@@ -58,10 +60,8 @@ iris |>
 
 ## Why this matters later
 
-- Skew and unequal variance are exactly the assumptions behind the
-  t-test and ANOVA we'll meet in Week 7
-- Catching a problem now is far cheaper than debugging a confusing
-  model result in six weeks
+- Skew and unequal variance are exactly the assumptions behind the t-test and ANOVA we'll meet in Week 7
+- Catching a problem now is far cheaper than debugging a confusing model result in six weeks
 
 ## This week
 

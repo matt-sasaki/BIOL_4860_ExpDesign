@@ -7,27 +7,27 @@ format:
     slide-number: true
     footer: "BIOL 4860/5860 — Experimental Design and Analysis"
     transition: fade
+    chalkboard: 
+      theme: whiteboard
+      boardmarker-width: 3
+      grid: false
 ---
 
 ## From exploring to designing
 
 - Weeks 1–4: get comfortable with R and with looking at data
-- Starting today: how do you make sure the data you collect can
-  actually answer your question?
+- Starting today: how do you make sure the data you collect can actually answer your question?
 
 ## Three pillars
 
-1. **Replication** — measuring enough independent experimental units
-2. **Randomization** — assigning treatments in a way that avoids bias
-3. **Blocking** — controlling for a known source of variation you're
-   not interested in
+1.  **Replication** — measuring enough independent experimental units
+2.  **Randomization** — assigning treatments in a way that avoids bias
+3.  **Blocking** — controlling for a known source of variation you're not interested in
 
 ## Replication: how many is enough?
 
-- More replicates → smaller standard errors → easier to detect a
-  real effect
-- But replication means independent **experimental units**, not
-  repeated measurements of the same unit
+- More replicates → smaller standard errors → easier to detect a real effect
+- But replication means independent **experimental units**, not repeated measurements of the same unit
 - We'll formalize "how many" with power analysis later in the course
 
 ## The experimental unit, again
@@ -38,42 +38,33 @@ format:
 
 ## Pseudoreplication
 
-- Treating non-independent measurements as if they were independent
-  replicates
+- Treating non-independent measurements as if they were independent replicates
 - Inflates your effective sample size
-- Inflates your false-positive rate — you'll find "significant"
-  effects that aren't real
+- Inflates your false-positive rate — you'll find "significant" effects that aren't real
 
 ## Randomization
 
-- Protects against confounding: without it, treatment can get
-  tangled up with some other variable (time of day, position, batch)
-- "I gave the healthiest-looking plants the new fertilizer" is not
-  randomization — it's a confound waiting to happen
+- Protects against confounding: without it, treatment can get tangled up with some other variable (time of day, position, batch)
+- "I gave the healthiest-looking plants the new fertilizer" is not randomization — it's a confound waiting to happen
 
 ## Blocking
 
-- Groups experimental units into blocks that share some nuisance
-  variable (bench position, day, litter, site)
+- Groups experimental units into blocks that share some nuisance variable (bench position, day, litter, site)
 - Assign every treatment once within each block
-- Lets you statistically remove block-to-block variation from your
-  error term
+- Lets you statistically remove block-to-block variation from your error term
 
 ## Blocking in action
 
 - Naive model: `growth ~ treatment`
 - Blocked model: `growth ~ treatment + block`
-- Blocking usually **shrinks the residual variance**, making it
-  easier to detect the treatment effect — we'll simulate this today
+- Blocking usually **shrinks the residual variance**, making it easier to detect the treatment effect — we'll simulate this today
 
 ## When blocking doesn't help much
 
-- If the nuisance variable barely matters, blocking costs you
-  degrees of freedom for little benefit
+- If the nuisance variable barely matters, blocking costs you degrees of freedom for little benefit
 - Worth checking, not assuming
 
 ## This week
 
-- **Wednesday (tutorial):** simulate a randomized block design in R,
-  compare naive vs. blocked models
+- **Wednesday (tutorial):** simulate a randomized block design in R, compare naive vs. blocked models
 - **Next week:** find these same principles in real published studies

@@ -7,6 +7,10 @@ format:
     slide-number: true
     footer: "BIOL 4860/5860 — Experimental Design and Analysis"
     transition: fade
+    chalkboard: 
+      theme: whiteboard
+      boardmarker-width: 3
+      grid: false
 ---
 
 ## Welcome back
@@ -14,8 +18,7 @@ format:
 - Weeks 7 gave you a menu: t-test, ANOVA, ...
 - The second half of the course replaces the menu with **one idea**:
 
-> Most common statistical tests are special cases of the **linear model**.
-> — Jonas Lindeløv, *Common statistical tests are linear models*
+> Most common statistical tests are special cases of the **linear model**. — Jonas Lindeløv, *Common statistical tests are linear models*
 
 - Learn one framework deeply, and you can answer almost any question in this course
 
@@ -29,20 +32,20 @@ $$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \varepsilon$$
 
 ## One sample and paired t-tests
 
-| Classic test | Linear model |
-|----|----|
-| One-sample t-test | `lm(y ~ 1)` |
-| Paired t-test | `lm(y2 - y1 ~ 1)` |
+| Classic test      | Linear model      |
+|-------------------|-------------------|
+| One-sample t-test | `lm(y ~ 1)`       |
+| Paired t-test     | `lm(y2 - y1 ~ 1)` |
 
 - The intercept **is** the mean (or the mean difference)
 - The test of the intercept against 0 **is** the t-test
 
 ## Two groups and many groups
 
-| Classic test | Linear model |
-|----|----|
-| Two-sample t-test | `lm(y ~ 1 + group)` |
-| One-way ANOVA | `lm(y ~ 1 + group)` + `anova()` |
+| Classic test      | Linear model                    |
+|-------------------|---------------------------------|
+| Two-sample t-test | `lm(y ~ 1 + group)`             |
+| One-way ANOVA     | `lm(y ~ 1 + group)` + `anova()` |
 
 - With a categorical predictor, R creates 0/1 **dummy variables**
 - Intercept = mean of the reference group; each slope = difference from it
@@ -50,11 +53,11 @@ $$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \varepsilon$$
 
 ## Continuous predictors
 
-| Classic test | Linear model |
-|----|----|
-| Pearson correlation | `lm(y ~ 1 + x)` (standardized) |
-| Simple regression | `lm(y ~ 1 + x)` |
-| Spearman correlation | `lm(rank(y) ~ 1 + rank(x))` |
+| Classic test         | Linear model                   |
+|----------------------|--------------------------------|
+| Pearson correlation  | `lm(y ~ 1 + x)` (standardized) |
+| Simple regression    | `lm(y ~ 1 + x)`                |
+| Spearman correlation | `lm(rank(y) ~ 1 + rank(x))`    |
 
 - Slope = change in y per one-unit change in x
 - Correlation is just the slope when both variables are z-scored
@@ -72,7 +75,7 @@ $$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \varepsilon$$
 - `marginaleffects` asks questions in the units of the **data**:
 
 | Question | Function |
-|----|----|
+|------------------------------------|------------------------------------|
 | What does the model predict? | `predictions()`, `avg_predictions()` |
 | How does the outcome differ between groups / treatments? | `comparisons()`, `avg_comparisons()` |
 | What's the slope of the outcome in x? | `slopes()`, `avg_slopes()` |
@@ -80,9 +83,9 @@ $$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \varepsilon$$
 
 ## The same three questions, every week
 
-1. **Fit** a model (`lm`, `glm`, `lmer`, ...)
-2. **Check** its assumptions
-3. **Ask** the question with `marginaleffects`
+1.  **Fit** a model (`lm`, `glm`, `lmer`, ...)
+2.  **Check** its assumptions
+3.  **Ask** the question with `marginaleffects`
 
 - Same workflow Weeks 9–14, only the model in step 1 changes
 - Docs: [marginaleffects.com](https://marginaleffects.com)

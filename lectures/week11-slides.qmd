@@ -7,6 +7,10 @@ format:
     slide-number: true
     footer: "BIOL 4860/5860 — Experimental Design and Analysis"
     transition: fade
+    chalkboard: 
+      theme: whiteboard
+      boardmarker-width: 3
+      grid: false
 ---
 
 ## When the response isn't a nice bell curve
@@ -22,11 +26,11 @@ $$g(\text{mean of } y) = \beta_0 + \beta_1 x_1 + \dots$$
 - The right-hand side is still the linear model you know
 - `g()` is the **link function**; the **family** says what the noise looks like
 
-| Response | Family | Link |
-|----|----|----|
-| Continuous | gaussian | identity (= `lm`) |
-| Binary (0/1) | binomial | logit |
-| Counts | poisson | log |
+| Response     | Family   | Link              |
+|--------------|----------|-------------------|
+| Continuous   | gaussian | identity (= `lm`) |
+| Binary (0/1) | binomial | logit             |
+| Counts       | poisson  | log               |
 
 ## Logistic regression
 
@@ -49,9 +53,9 @@ $$g(\text{mean of } y) = \beta_0 + \beta_1 x_1 + \dots$$
 
 ## Chi-square tests are linear models too
 
-| Classic test | Model |
-|----|----|
-| Goodness of fit | `glm(n ~ 1, poisson)` |
+| Classic test                    | Model                         |
+|---------------------------------|-------------------------------|
+| Goodness of fit                 | `glm(n ~ 1, poisson)`         |
 | Chi-square test of independence | `glm(n ~ row * col, poisson)` |
 
 - Cell counts are the response; the **interaction** is the test of association

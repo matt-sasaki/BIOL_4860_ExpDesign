@@ -1,0 +1,62 @@
+---
+title: "Week 11 Assignment"
+subtitle: "Generalized linear models"
+format: typst
+---
+
+Render this file to PDF and submit both the `.qmd` and the rendered `.pdf` via Canvas before Week 12's lecture (Monday). See the [syllabus](../syllabus.qmd#assignments) for the late policy.
+
+```{r}
+library(tidyverse)
+library(marginaleffects)
+```
+
+**Part A: Binary response.** Using the built-in `mtcars` data, model whether a car has a manual transmission (`am`) as a function of weight (`wt`).
+
+1.  Fit a logistic regression.
+
+```{r}
+
+```
+
+2.  Use `avg_slopes()` to report the average change in the probability of a manual transmission per 1,000 lb (1 unit of `wt`). Interpret it in one sentence. <!--# Include your answer below -->
+
+```{r}
+
+```
+
+3.  Plot predicted probability against weight with `plot_predictions()`.
+
+```{r}
+
+```
+
+**Part B: Count response.** Using `InsectSprays`:
+
+4.  Fit a Poisson regression of `count ~ spray`. Check for overdispersion.
+
+```{r}
+
+```
+
+5.  Use `avg_comparisons()` to report rate ratios of each spray relative to spray A. Which sprays differ most from A? <!--# Include your answer below -->
+
+```{r}
+
+```
+
+**Part C: Chi-square as a linear model.** A survey of 100 plants: 40 of 60 plants in sun had flowers; 10 of 40 plants in shade had flowers.
+
+6.  Build the 2×2 table, then run `chisq.test(correct = FALSE)`.
+
+```{r}
+
+```
+
+7.  Run the same test as a Poisson `glm()` with an interaction, and show the test statistics match.
+
+```{r}
+
+```
+
+8.  In 2–3 sentences: explain why the interaction (rather than a main effect) is the test of association. <!--# Include your answer below -->
